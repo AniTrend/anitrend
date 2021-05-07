@@ -1,0 +1,5 @@
+fragment Series on Series {
+    id
+    title
+    status
+}
