@@ -1,6 +1,6 @@
-# Anitrend Relations
+# [W.I.P] Anitrend Relations
 
-A python graogqk API for [anime-offline-database](https://github.com/manami-project/anime-offline-database) which is updated every week: A JSON based offline anime database containing the most important meta data as well as cross references to various anime sites such as MAL, ANIDB, ANILIST, KITSU and more...
+A python graphql API for [anime-offline-database](https://github.com/manami-project/anime-offline-database) which is updated every week: A JSON based offline anime database containing the most important meta-data as well as cross-references to various anime sites such as MAL, ANIDB, ANILIST, KITSU and more...
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAniTrend%2Fanitrend-relations-py.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FAniTrend%2Fanitrend-relations-py?ref=badge_large)
 
