@@ -18,7 +18,6 @@ TYPE_CHOICES = (
 
 
 class CommonSourceModel(models.Model):
-    tvdb = models.IntegerField(null=True)
     anidb = models.IntegerField(null=True)
     anilist = models.IntegerField(null=True)
     animeplanet = models.CharField(max_length=256, null=True)
@@ -34,7 +33,7 @@ class CommonSourceModel(models.Model):
 
 
 class Source(CommonSourceModel):
-    pass
+    tvdb = models.IntegerField(null=True)
 
 
 class Relation(CommonSourceModel):
@@ -71,7 +70,7 @@ class Series(models.Model):
 
 class CommonTitleModel(models.Model):
     title = models.CharField(max_length=256)
-    series = models.ForeignKey(Series, on_delete=models.CASCADE, null=True)
+    series = models.ForeignKey(Series, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
