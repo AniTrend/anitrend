@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 # APPEND_SLASH = False
 
 XEM_BASE_URL = "http://thexem.de/"
-RELATION_BASE_URL = "https://github.com/manami-project/anime-offline-database/"
+RELATION_BASE_URL = "https://raw.githubusercontent.com/manami-project/anime-offline-database/"
 
 # Application definition
 
