@@ -1,5 +1,6 @@
 class AttributeDictionary(dict):
-    # A dict that supports attribute access.
+    """A dict that supports attribute access."""
+
     def __getattr__(self, key):
         return self[key]
 
