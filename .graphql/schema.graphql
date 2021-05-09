@@ -51,19 +51,31 @@ type Query {
         offset: Int,
         "Ordering"
         orderBy: String,
-        status: String,
         title: String
     ): SeriesConnection
 }
 
+"Related media urls"
+type Relation {
+    series: Series!
+    url: String!
+}
+
 "Single series model"
 type Series implements SeriesNode {
+    episodes: Int!
     "The ID of the object."
     id: ID!
+    picture: String!
+    relationSet: [Relation!]!
     source: Source!
     status: SeriesStatus!
     synonymSet: [Synonym!]!
+    tagSet: [Tag!]!
+    thumbnail: String!
     title: String!
+    type: SeriesType!
+    updatedAt: DateTime!
 }
 
 type SeriesConnection {
@@ -97,7 +109,14 @@ type Source {
 type Synonym {
     "Alternative name for the series"
     name: String
-    series: Series
+    series: Series!
+    title: String!
+}
+
+"Tags for a series"
+type Tag {
+    series: Series!
+    title: String!
 }
 
 "An enumeration."
@@ -111,3 +130,25 @@ enum SeriesStatus {
     "UPCOMING"
     UPCOMING
 }
+
+"An enumeration."
+enum SeriesType {
+    "Movie"
+    MOVIE
+    "ONA"
+    ONA
+    "OVA"
+    OVA
+    "Special"
+    SPECIAL
+    "TV"
+    TV
+}
+
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
