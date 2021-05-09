@@ -33,14 +33,18 @@ class XemUseCase(IUseCase):
                 else:
                     self._logger.warning(f"Data result status is not `success` possible reason: {data.message}")
             else:
-                self._logger.error(f"Data received for xem was null")
+                raise RuntimeError(f"Data received for relations was null")
         except Exception as e:
             self._logger.error(f"Unable to complete execution", exc_info=e)
             raise e
 
     def fetch_all_mappings(self, time_frame: datetime):
-        data = self._repository.invoke()
-        self._on_post_data_fetched(data)
+        try:
+            data = self._repository.invoke()
+            self._on_post_data_fetched(data)
+        except Exception as e:
+            self._logger.error(f"Uncaught exception", exc_info=e)
+            raise e
 
 
 class RelationUseCase(IUseCase):
@@ -55,11 +59,16 @@ class RelationUseCase(IUseCase):
             if data is not None:
                 self._repository.map_and_save_results(data)
             else:
-                self._logger.warning(f"Data received for xem was null")
+                raise RuntimeError(f"Data received for relation was null")
         except Exception as e:
             self._logger.error(f"Unable to complete execution", exc_info=e)
             raise e
 
     def fetch_all_records(self, time_frame: datetime):
-        data = self._repository.invoke()
-        self._on_post_data_fetched(data)
+        try:
+            data = self._repository.invoke()
+            self._on_post_data_fetched(data)
+        except Exception as e:
+            self._logger.error(f"Uncaught exception", exc_info=e)
+            raise e
+

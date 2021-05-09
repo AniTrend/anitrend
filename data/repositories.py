@@ -59,17 +59,8 @@ class XemRepository(IRepository):
                 default_names=1
             )
             return result
-        except self._remote_source.exceptions.ConnectionError as e:
-            self._logger.warning("Connection error occurred", exc_info=e)
-        except self._remote_source.exceptions.InvalidURL as e:
-            self._logger.warning("The supplied url maybe invalid", exc_info=e)
-        except self._remote_source.exceptions.ServerTimeout | \
-                self._remote_source.exceptions.ConnectionTimeout as e:
-            self._logger.warning("Server or connection timeout occurred", exc_info=e)
-        except self._remote_source.exceptions.SSLError as e:
-            self._logger.warning("Secure socket error occurred", exc_info=e)
         except JSONDecodeError as e:
-            self._logger.error(f"Malformed response: {e.doc}", exc_info=e)
+            self._logger.error(f"Malformed response with error message `{e.doc}`", exc_info=e)
 
         return None
 
@@ -97,34 +88,35 @@ class RelationRepository(IRepository):
         for item in entity.data:
             item: RelationDataEntity
             _sources = self.__create_attributes_from_links(item.sources)
-            _relations = self.__create_attributes_from_links(item.relations)
+
+            source, created = Source.objects.update_or_create(
+                tvdb=_sources.tvdb,
+                anidb=_sources.anidb,
+                anilist=_sources.anilist,
+                animeplanet=_sources.animeplanet,
+                kitsu=_sources.kitsu,
+                mal=_sources.mal,
+                notify=_sources.notify,
+            )
+            self._logger.debug(f"Saved `{source}` and creation status: {created}")
+
             series, created = self._local_source.update_or_create(
                 title=item.title,
-                source=Source(
-                    tvdb=_sources.tvdb,
-                    anidb=_sources.anidb,
-                    anilist=_sources.anilist,
-                    animeplanet=_sources.animeplanet,
-                    kitsu=_sources.kitsu,
-                    mal=_sources.mal,
-                    notify=_sources.notify,
-                ),
+                source=source,
                 type=item.type,
                 episodes=item.episodes,
                 status=item.status,
                 picture=item.picture,
                 thumbnail=item.thumbnail,
-                relation=Relation(
-                    anidb=_relations.anidb,
-                    anilist=_relations.anilist,
-                    animeplanet=_relations.animeplanet,
-                    kitsu=_relations.kitsu,
-                    mal=_relations.mal,
-                    notify=_relations.notify,
-                ),
-                updated_at=item.updated_at,
             )
             self._logger.debug(f"Saved `{series}` and creation status: {created}")
+
+            for relation in item.relations:
+                obj, created = Relation.objects.update_or_create(
+                    url=relation,
+                    series=series
+                )
+                self._logger.debug(f"Saved `{obj}` and creation status: {created}")
 
             for synonym in item.synonyms:
                 obj, created = Synonym.objects.update_or_create(
@@ -144,16 +136,7 @@ class RelationRepository(IRepository):
         try:
             result = self._remote_source.get_anime_entries()
             return result
-        except self._remote_source.exceptions.ConnectionError as e:
-            self._logger.warning("Connection error occurred", exc_info=e)
-        except self._remote_source.exceptions.InvalidURL as e:
-            self._logger.warning("The supplied url maybe invalid", exc_info=e)
-        except self._remote_source.exceptions.ServerTimeout | \
-                self._remote_source.exceptions.ConnectionTimeout as e:
-            self._logger.warning("Server or connection timeout occurred", exc_info=e)
-        except self._remote_source.exceptions.SSLError as e:
-            self._logger.warning("Secure socket error occurred", exc_info=e)
         except JSONDecodeError as e:
-            self._logger.error(f"Malformed response: {e.doc}", exc_info=e)
+            self._logger.error(f"Malformed response with error message `{e.doc}`", exc_info=e)
 
         return None
