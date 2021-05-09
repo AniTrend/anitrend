@@ -1,13 +1,15 @@
 from json import JSONDecodeError
 from logging import Logger
-from typing import Optional, Any, List, Dict
+from typing import Optional, Any, List
 
 from uplink import Consumer
-from api.models import Series
-from service.models import Mapping
+from api.models import Series, Source, Relation, Synonym, Tag
+from common import AttributeDictionary
+from common.utilities import RegexUtility
+from service.models import Mapping, MappingTitle
 from common.contracts import CommonRepository
 from data.remote_sources import XemRemoteSource, RelationRemoteSource
-from data.model_entities import RelationContainerEntity, XemContainerEntity
+from data.model_entities import RelationContainerEntity, XemContainerEntity, RelationDataEntity
 
 
 class IRepository(CommonRepository):
@@ -16,11 +18,10 @@ class IRepository(CommonRepository):
         super().__init__(logger)
         self._remote_source = remote_source
 
-    def save(self, items: List[Any]):
+    def map_and_save_results(self, entity: Any):
         """
-        Save a number of items
-        :param items: Collection of items to save
-        :return:
+        Processes an entity and saves the results
+        :param entity: Entity containing data which needs to be mapped
         """
         pass
 
@@ -37,15 +38,18 @@ class XemRepository(IRepository):
 
     def __init__(self, logger: Logger, remote_source: Consumer) -> None:
         super().__init__(logger, remote_source)
-        self._local_source = Mapping.objects
+        self._local_source = MappingTitle.objects
 
-    def save(self, items: List[Mapping]):
-        self._logger.debug(f"Saving {len(items)} mapping items")
-        self._local_source.bulk_create(items)
-        self._logger.debug(f"Bulk create completed successfully")
-
-    def map_results(self, items: List[Dict]) -> List[Mapping]:
-        pass
+    def map_and_save_results(self, entity: XemContainerEntity):
+        for _id, _titles in entity.data.items():
+            mapping, created = Mapping.objects.update_or_create(id=_id)
+            self._logger.debug(f"Saved `{mapping}` and creation status: {created}")
+            for title in _titles:
+                mapping_title, created = self._local_source.update_or_create(
+                    title=title,
+                    mapping=mapping
+                )
+                self._logger.debug(f"Saved `{mapping_title}` and creation status: {created}")
 
     def invoke(self) -> Optional[XemContainerEntity]:
         try:
@@ -77,13 +81,64 @@ class RelationRepository(IRepository):
         super().__init__(logger, remote_source)
         self._local_source = Series.objects
 
-    def save(self, items: List[Series]):
-        self._logger.debug(f"Saving {len(items)} relation items")
-        self._local_source.bulk_create(items)
-        self._logger.debug(f"Bulk create completed successfully")
+    @staticmethod
+    def __create_attributes_from_links(links: List[str]) -> AttributeDictionary:
+        attr_dictionary = AttributeDictionary()
+        attr_dictionary.tvdb = RegexUtility.extract_id_if_matches(links, "thetvdb.com")
+        attr_dictionary.anidb = RegexUtility.extract_id_if_matches(links, "anidb.net")
+        attr_dictionary.anilist = RegexUtility.extract_id_if_matches(links, "anilist.co")
+        attr_dictionary.animeplanet = RegexUtility.extract_id_if_matches(links, "anime-planet.com")
+        attr_dictionary.kitsu = RegexUtility.extract_id_if_matches(links, "kitsu.io")
+        attr_dictionary.mal = RegexUtility.extract_id_if_matches(links, "myanimelist.net")
+        attr_dictionary.notify = RegexUtility.extract_id_if_matches(links, "notify.moe")
+        return attr_dictionary
 
-    def map_results(self, items: List[Any]) -> List[Series]:
-        pass
+    def map_and_save_results(self, entity: RelationContainerEntity):
+        for item in entity.data:
+            item: RelationDataEntity
+            _sources = self.__create_attributes_from_links(item.sources)
+            _relations = self.__create_attributes_from_links(item.relations)
+            series, created = self._local_source.update_or_create(
+                title=item.title,
+                source=Source(
+                    tvdb=_sources.tvdb,
+                    anidb=_sources.anidb,
+                    anilist=_sources.anilist,
+                    animeplanet=_sources.animeplanet,
+                    kitsu=_sources.kitsu,
+                    mal=_sources.mal,
+                    notify=_sources.notify,
+                ),
+                type=item.type,
+                episodes=item.episodes,
+                status=item.status,
+                picture=item.picture,
+                thumbnail=item.thumbnail,
+                relation=Relation(
+                    anidb=_relations.anidb,
+                    anilist=_relations.anilist,
+                    animeplanet=_relations.animeplanet,
+                    kitsu=_relations.kitsu,
+                    mal=_relations.mal,
+                    notify=_relations.notify,
+                ),
+                updated_at=item.updated_at,
+            )
+            self._logger.debug(f"Saved `{series}` and creation status: {created}")
+
+            for synonym in item.synonyms:
+                obj, created = Synonym.objects.update_or_create(
+                    title=synonym,
+                    series=series
+                )
+                self._logger.debug(f"Saved `{obj}` and creation status: {created}")
+
+            for tag in item.tags:
+                obj, created = Tag.objects.update_or_create(
+                    title=tag,
+                    series=series
+                )
+                self._logger.debug(f"Saved `{obj}` and creation status: {created}")
 
     def invoke(self) -> Optional[RelationContainerEntity]:
         try:
