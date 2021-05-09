@@ -17,27 +17,14 @@ TYPE_CHOICES = (
 )
 
 
-class CommonSourceModel(models.Model):
+class Source(models.Model):
+    tvdb = models.IntegerField(null=True)
     anidb = models.IntegerField(null=True)
     anilist = models.IntegerField(null=True)
     animeplanet = models.CharField(max_length=256, null=True)
     kitsu = models.IntegerField(null=True)
     mal = models.IntegerField(null=True)
     notify = models.CharField(max_length=25, null=True)
-
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return self.anilist
-
-
-class Source(CommonSourceModel):
-    tvdb = models.IntegerField(null=True)
-
-
-class Relation(CommonSourceModel):
-    pass
 
 
 class Series(models.Model):
@@ -58,7 +45,6 @@ class Series(models.Model):
     thumbnail = models.CharField(
         max_length=128,
     )
-    relation = models.OneToOneField(Relation, on_delete=models.CASCADE)
     updated_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -66,6 +52,14 @@ class Series(models.Model):
 
     class Meta:
         ordering = ("title",)
+
+
+class Relation(models.Model):
+    url = models.CharField(max_length=256)
+    series = models.ForeignKey(Series, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.url
 
 
 class CommonTitleModel(models.Model):

@@ -41,7 +41,7 @@ class Source(DjangoObjectType):
 
 class Relation(DjangoObjectType):
     class Meta:
-        description = "Relation source ids"
+        description = "Related media urls"
         model = api.models.Relation
         exclude = ["id"]
 
