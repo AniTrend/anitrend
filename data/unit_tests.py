@@ -17,4 +17,4 @@ class EntityDeserializationTestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    EntityDeserializationTestCase()
+    unittest.main()

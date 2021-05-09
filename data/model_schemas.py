@@ -1,12 +1,24 @@
+import typing
+from logging import Logger
 from typing import Any
 
-from marshmallow import Schema, fields, EXCLUDE, post_load
+from marshmallow import Schema, fields, EXCLUDE, post_load, types
 from marshmallow.fields import String, Dict, List, Nested, Int
 
-from .model_entities import XemContainerEntity, RelationContainerEntity, RelationSeasonEntity, RelationDataEntity
+from di import MainContainer
+from .model_entities import XemContainerEntity, RelationContainerEntity
 
 
 class CommonSchema(Schema):
+    _logger: Logger
+
+    def __init__(self, *, only: typing.Optional[types.StrSequenceOrSet] = None, exclude: types.StrSequenceOrSet = (),
+                 many: bool = False, context: typing.Optional[typing.Dict] = None,
+                 load_only: types.StrSequenceOrSet = (), dump_only: types.StrSequenceOrSet = (),
+                 partial: typing.Union[bool, types.StrSequenceOrSet] = False, unknown: typing.Optional[str] = None):
+        super().__init__(only=only, exclude=exclude, many=many, context=context, load_only=load_only,
+                         dump_only=dump_only, partial=partial, unknown=unknown)
+        self._logger = MainContainer.logging_utility().get_default_logger(__name__)
 
     def _on_post_load(self, data, many, **kwargs) -> Any:
         pass
@@ -19,18 +31,16 @@ class XemContainer(CommonSchema):
 
     @post_load()
     def _on_post_load(self, data, many, **kwargs) -> XemContainerEntity:
-        entity = XemContainerEntity.from_dict(data)
-        return entity
+        try:
+            entity = XemContainerEntity.from_dict(data)
+            return entity
+        except Exception as e:
+            self._logger.error(f"Conversion from dictionary failed", exc_info=e)
 
 
 class RelationSeason(CommonSchema):
     season: String = fields.Str()
     year: Int = fields.Int(allow_none=True)
-
-    @post_load()
-    def _on_post_load(self, data, many, **kwargs) -> RelationSeasonEntity:
-        entity = RelationSeasonEntity.from_dict(data)
-        return entity
 
 
 class RelationData(CommonSchema):
@@ -62,20 +72,20 @@ class RelationData(CommonSchema):
         allow_none=True,
     )
 
-    @post_load()
-    def _on_post_load(self, data, many, **kwargs) -> RelationDataEntity:
-        entity = RelationDataEntity.from_dict(data)
-        return entity
-
 
 class RelationContainer(CommonSchema):
-    data: Nested = fields.Nested(
-        nested=RelationData,
-        allow_none=False,
-        unknown=EXCLUDE
+    data: List = fields.List(
+        fields.Nested(
+            nested=RelationData,
+            allow_none=False,
+            unknown=EXCLUDE
+        )
     )
 
     @post_load()
-    def _on_post_load(self, data, many, **kwargs) -> RelationContainerEntity:
-        entity = RelationContainerEntity.from_dict(data)
-        return entity
+    def __on_post_load(self, data, many, **kwargs) -> RelationContainerEntity:
+        try:
+            entity = RelationContainerEntity.from_dict(data)
+            return entity
+        except Exception as e:
+            self._logger.error(f"Conversion from dictionary failed", exc_info=e)

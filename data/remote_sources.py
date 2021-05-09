@@ -3,7 +3,8 @@ from data.model_schemas import XemContainer, RelationContainer
 from marshmallow import EXCLUDE
 from di import MainContainer
 
-__TIME_OUT__: int = 120
+# 10 minutes read timeout
+__TIME_OUT__: int = 600
 __MAX_ATTEMPTS__: int = 5
 __RATE_LIMIT_CALLS__: int = 5
 __RATE_LIMIT_PERIOD_CALLS__: int = 10
@@ -61,7 +62,7 @@ class XemRemoteSource(Consumer):
 class RelationRemoteSource(Consumer):
 
     @raise_api_error
-    @get("raw/master/anime-offline-database.json")
+    @get("master/anime-offline-database.json")
     def get_anime_entries(self) -> RelationContainer(unknown=EXCLUDE):
         """
         Retrieve a snapshot of relations
