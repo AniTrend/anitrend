@@ -25,7 +25,18 @@ class XemUseCase(IUseCase):
         super().__init__(logger, repository)
 
     def _on_post_data_fetched(self, data: Optional[XemContainerEntity]):
-        self._logger.debug(f"Fetched data -> {data}")
+        self._logger.debug(f"Data received for xem -> {data}")
+        try:
+            if data is not None:
+                if data.result == "success":
+                    self._repository.map_and_save_results(data)
+                else:
+                    self._logger.warning(f"Data result status is not `success` possible reason: {data.message}")
+            else:
+                self._logger.error(f"Data received for xem was null")
+        except Exception as e:
+            self._logger.error(f"Unable to complete execution", exc_info=e)
+            raise e
 
     def fetch_all_mappings(self, time_frame: datetime):
         data = self._repository.invoke()
@@ -39,7 +50,15 @@ class RelationUseCase(IUseCase):
         super().__init__(logger, repository)
 
     def _on_post_data_fetched(self, data: Optional[RelationContainerEntity]):
-        self._logger.debug(f"Fetched data -> {data}")
+        try:
+            self._logger.debug(f"Data received for relations -> {data}")
+            if data is not None:
+                self._repository.map_and_save_results(data)
+            else:
+                self._logger.warning(f"Data received for xem was null")
+        except Exception as e:
+            self._logger.error(f"Unable to complete execution", exc_info=e)
+            raise e
 
     def fetch_all_records(self, time_frame: datetime):
         data = self._repository.invoke()
