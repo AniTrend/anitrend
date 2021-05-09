@@ -3,7 +3,7 @@ from django.utils import timezone
 from service.dependencies import UseCaseProvider
 
 
-def get_all_data_from_xem():
+def poll_from_xem(*args, **kwargs):
     """
     Syncs all the relation if any of them was last updated more than 1 week ago
     """
@@ -12,7 +12,7 @@ def get_all_data_from_xem():
     use_case.fetch_all_mappings(one_week_ago)
 
 
-def get_all_data_from_relations():
+def poll_from_relations(*args, **kwargs):
     """
     Syncs all the relation if any of them was last updated more than 1 week ago
     """
@@ -21,17 +21,10 @@ def get_all_data_from_relations():
     use_case.fetch_all_records(one_week_ago)
 
 
-def merge_relational_entries():
+def merge_entries(*args, **kwargs):
     """
-    Deletes dead entries if any of them was last updated more than 1 week ago
+    Mergers data from both source into one source of truth
     """
-    one_week_ago = timezone.now() - timezone.timedelta(weeks=1)
     pass
 
 
-def delete_dead_entries():
-    """
-    Deletes dead entries if any of them was last updated more than 1 week ago
-    """
-    one_week_ago = timezone.now() - timezone.timedelta(weeks=1)
-    pass
