@@ -1,0 +1,30 @@
+query Paged {
+  seriesPaged {
+      pageInfo {
+          ... PageInfo
+      }
+      edges {
+          cursor
+          node {
+              ... Series
+              source {
+                  anilist
+              }
+          }
+      }
+  }
+}
+
+query Single {
+  series(animeplanet: "death-note") {
+      ... Series
+    source {
+        mal
+        anilist
+        animeplanet
+        notify
+        anidb
+        kitsu
+    }
+  }
+}
