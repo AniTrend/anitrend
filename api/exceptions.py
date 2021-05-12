@@ -1,3 +1,0 @@
-
-class NoArgumentsError(RuntimeError):
-    pass

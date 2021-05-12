@@ -481,3 +481,7 @@ sketch
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/react,node,python,django,pycharm,visualstudiocode
+
+# Ignore migrations until model strucutres are finalized
+
+**/migrations/

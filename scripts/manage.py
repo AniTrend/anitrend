@@ -5,6 +5,10 @@ import sys
 
 
 def __get_base_dir() -> str:
+    """
+    Returns the root project directory
+    :return:
+    """
     current_path = os.path.abspath(os.path.dirname(__file__))
     return os.path.join(current_path, '..')
 
@@ -12,7 +16,8 @@ def __get_base_dir() -> str:
 def main():
     """Run administrative tasks."""
     sys.path.append(__get_base_dir())
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')
+    # TODO: Change settings to production when ready for deployment
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings.development')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

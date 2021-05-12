@@ -6,7 +6,7 @@ schema {
 
 "Series node with ID"
 interface SeriesNode {
-    "The ID of the object."
+    "The ID of the object"
     id: ID!
 }
 
@@ -23,7 +23,7 @@ type PageInfo {
 }
 
 type Query {
-    "Find specific series item"
+    "Find a series item by filtering with an id"
     series(
         "AniDB Id"
         anidb: Int,
@@ -57,25 +57,36 @@ type Query {
 
 "Related media urls"
 type Relation {
-    series: Series!
+    "Url of the related item of this series"
     url: String!
 }
 
-"Single series model"
+"A representation of a series item"
 type Series implements SeriesNode {
+    "Number of episodes"
     episodes: Int!
-    "The ID of the object."
+    "The ID of the object"
     id: ID!
-    picture: String!
-    relationSet: [Relation!]!
+    "Primary picture of the series"
+    picture: String
+    "Related series urls"
+    relationSet: [Relation]!
+    "Release season"
+    season: SeasonType!
+    "Other sources"
     source: Source!
-    status: SeriesStatus!
-    synonymSet: [Synonym!]!
-    tagSet: [Tag!]!
-    thumbnail: String!
+    "Series type"
+    status: StatusType!
+    "Primary picture of the series"
+    thumbnail: String
+    "Title of the series"
     title: String!
+    "Series type"
     type: SeriesType!
-    updatedAt: DateTime!
+    "Last updated time"
+    updatedAt: Int!
+    "Release year"
+    year: Int
 }
 
 type SeriesConnection {
@@ -93,62 +104,49 @@ type SeriesEdge {
     node: Series
 }
 
-"Alternative source ids"
+"Other source ids of where this series can be found"
 type Source {
+    "Identifier for anidb"
     anidb: Int
+    "Identifier for anilist"
     anilist: Int
+    "Identifier for animeplanet"
     animeplanet: String
+    "Identifier for kitsu"
     kitsu: Int
+    "Identifier for mal"
     mal: Int
+    "Identifier for notify"
     notify: String
-    series: Series
+    "Identifier for tmdb"
+    tmdb: Int
+    "Identifier for trakt"
+    trakt: Int
+    "Identifier for tvdb"
     tvdb: Int
 }
 
-"Alternative name model for a series"
-type Synonym {
-    "Alternative name for the series"
-    name: String
-    series: Series!
-    title: String!
-}
-
-"Tags for a series"
-type Tag {
-    series: Series!
-    title: String!
-}
-
 "An enumeration."
-enum SeriesStatus {
-    "CURRENTLY"
-    CURRENTLY
-    "FINISHED"
-    FINISHED
-    "UNKNOWN"
-    UNKNOWN
-    "UPCOMING"
-    UPCOMING
+enum SeasonType {
+    FALL
+    SPRING
+    SUMMER
+    WINTER
 }
 
 "An enumeration."
 enum SeriesType {
-    "Movie"
     MOVIE
-    "ONA"
     ONA
-    "OVA"
     OVA
-    "Special"
     SPECIAL
-    "TV"
     TV
 }
 
-
-"""
-The `DateTime` scalar type represents a DateTime
-value as specified by
-[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
-"""
-scalar DateTime
+"An enumeration."
+enum StatusType {
+    CURRENTLY
+    FINISHED
+    UNKNOWN
+    UPCOMING
+}
