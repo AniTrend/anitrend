@@ -11,3 +11,8 @@ class SeriesParams:
     notify: Optional[str]
     kitsu: Optional[int]
     mal: Optional[int]
+
+
+@dataclass
+class SeasonParams:
+    seriesId: Optional[int]

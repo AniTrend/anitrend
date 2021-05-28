@@ -33,13 +33,11 @@ class SeriesTypes:
 
 class StatusTypes:
     FINISHED = "FINISHED"
-    CURRENTLY = "CURRENTLY"
-    UPCOMING = "UPCOMING"
-    UNKNOWN = "UNKNOWN"
+    RELEASING = "RELEASING"
+    NOT_YET_RELEASED = "NOT_YET_RELEASED"
 
     CHOICES = [
         (FINISHED, "Finished airing"),
-        (CURRENTLY, "Currently airing"),
-        (UPCOMING, "Not yet released"),
-        (UNKNOWN, "Unknown status"),
+        (RELEASING, "Currently airing"),
+        (NOT_YET_RELEASED, "Not yet released"),
     ]

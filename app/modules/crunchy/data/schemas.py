@@ -1,7 +1,7 @@
 import typing
 from itertools import chain
 
-from marshmallow import Schema, fields, EXCLUDE, post_load, RAISE
+from marshmallow import fields, EXCLUDE, post_load, RAISE
 from marshmallow.error_store import ErrorStore
 from marshmallow.fields import String, Integer, Float, Boolean, List
 from marshmallow.schema import _T as T

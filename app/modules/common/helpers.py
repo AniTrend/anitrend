@@ -1,12 +1,12 @@
 import os
 import sys
-from logging.handlers import TimedRotatingFileHandler
-from typing import Union
-
 import logging
+
+from typing import Union
 
 from pathlib import Path
 from logging import Formatter, StreamHandler, Logger
+from logging.handlers import TimedRotatingFileHandler
 
 
 class FileSystem:

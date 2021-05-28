@@ -1,2 +1,2 @@
-from .entities import SeriesParams
+from .entities import SeriesParams, SeasonParams
 from .repositories import SeriesRepository

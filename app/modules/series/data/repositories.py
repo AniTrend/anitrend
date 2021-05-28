@@ -6,8 +6,8 @@ from django.db.models import QuerySet
 from app.modules.common.repositories import CommonRepository
 from app.modules.common.errors import NoArgumentError
 
-from . import SeriesParams
-from ..models import Series
+from . import SeriesParams, SeasonParams
+from ..models import Series, Season
 
 
 class SeriesRepository(CommonRepository):
@@ -15,6 +15,7 @@ class SeriesRepository(CommonRepository):
     def __init__(self, logger: Logger) -> None:
         super().__init__(logger)
         self.__series = Series.objects
+        self.__season = Season.objects
 
     def get_by_param(self, param: SeriesParams) -> Optional[Series]:
         query_set: Optional[QuerySet] = None
@@ -32,6 +33,17 @@ class SeriesRepository(CommonRepository):
             query_set = self.__series.filter(source__kitsu=param.kitsu)
         elif param.mal is not None:
             query_set = self.__series.filter(source__mal=param.mal)
+
+        if query_set is None:
+            self._logger.warning("A minimum of one argument is required")
+            raise NoArgumentError("A minimum of one argument is required")
+        self._logger.debug(f"Filter query -> {query_set.query}")
+        return query_set.first()
+
+    def get_by_season_param(self, param: SeasonParams) -> Optional[Season]:
+        query_set: Optional[QuerySet] = None
+        if param.seriesId is not None:
+            query_set = self.__season.filter(series__id=param.seriesId)
 
         if query_set is None:
             self._logger.warning("A minimum of one argument is required")
