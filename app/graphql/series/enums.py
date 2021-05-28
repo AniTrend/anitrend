@@ -10,7 +10,7 @@ SeriesType = graphene.Enum(
 
 StatusType = graphene.Enum(
     "StatusType",
-    [(str_to_enum(choice[0]), choice[0]) for choice in StatusTypes.CHOICES]
+    [(str_to_enum(choice[0]), choice[0]) for choice in StatusTypes.CHOICES],
 )
 
 SeasonType = graphene.Enum(
