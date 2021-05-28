@@ -1,15 +1,9 @@
 from django.db import models
-from django.db.models import QuerySet
+from django.contrib.postgres.fields import ArrayField
 from django.utils import timezone
 
-from app.modules.common import SEASON_CHOICES, TYPE_CHOICES, STATUS_CHOICES
-
-
-class CommonModel(models.Model):
-    objects: QuerySet = models.Manager
-
-    class Meta:
-        abstract = True
+from .choices import SEASON_CHOICES, TYPE_CHOICES, STATUS_CHOICES
+from ..common.models import CommonModel
 
 
 class AnimeSource(CommonModel):
@@ -39,25 +33,15 @@ class Anime(CommonModel):
     title = models.CharField(max_length=256)
     source = models.OneToOneField(AnimeSource, on_delete=models.CASCADE)
     year = models.IntegerField(null=True)
-    season = models.CharField(
-        max_length=12,
-        choices=SEASON_CHOICES
-    )
-    type = models.CharField(
-        max_length=12,
-        choices=TYPE_CHOICES
-    )
+    season = models.CharField(max_length=12, choices=SEASON_CHOICES)
+    type = models.CharField(max_length=12, choices=TYPE_CHOICES)
     episodes = models.IntegerField()
-    status = models.CharField(
-        max_length=12,
-        choices=STATUS_CHOICES
-    )
-    picture = models.CharField(
-        max_length=256,
-    )
-    thumbnail = models.CharField(
-        max_length=256,
-    )
+    status = models.CharField(max_length=12, choices=STATUS_CHOICES)
+    picture = models.CharField(max_length=256,)
+    thumbnail = models.CharField(max_length=256,)
+    synonyms = ArrayField(models.CharField(max_length=256))
+    relations = ArrayField(models.CharField(max_length=256))
+    tags = ArrayField(models.CharField(max_length=256))
     updated_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -65,11 +49,3 @@ class Anime(CommonModel):
 
     class Meta:
         ordering = ("title", "updated_at")
-
-
-class AnimeRelation(CommonModel):
-    url = models.CharField(max_length=256)
-    anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.url}"

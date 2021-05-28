@@ -9,7 +9,7 @@ from app.modules.common.errors import NoDataError
 from app.modules.common.repositories import DataRepository
 
 from ..domain.entities import XemContainer
-from ..models import Xem, XemTitle
+from ..models import Xem
 from .sources import RemoteSource
 
 
@@ -19,20 +19,17 @@ class Repository(DataRepository):
     def __init__(self, logger: Logger, remote_source: Consumer) -> None:
         super().__init__(logger, remote_source)
         self.__xem: QuerySet = Xem.objects
-        self.__xem_title: QuerySet = XemTitle.objects
 
     def map_and_save_results(self, container: XemContainer) -> Any:
         created_records: int = 0
         updated_records: int = 0
         self._logger.info(f"Mapping and save results starting")
         for _id, _titles in container.data.items():
-            _xem, created = self.__xem.update_or_create(id=_id)
+            _xem, created = self.__xem.update_or_create(
+                id=_id,
+                titles=_titles
+            )
             if created:
-                for title in _titles:
-                    self.__xem_title.update_or_create(
-                        title=title,
-                        xem=_xem
-                    )
                 created_records += 1
                 self._logger.info(f"Added new entry -> {_xem.id}")
             else:

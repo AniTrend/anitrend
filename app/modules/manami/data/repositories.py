@@ -12,7 +12,7 @@ from app.modules.common.repositories import DataRepository
 
 from ..domain.entities import AnimeContainer, AnimeData
 from ..data.sources import RemoteSource
-from ..models import Anime, AnimeSource, AnimeRelation
+from ..models import Anime, AnimeSource
 
 
 class Repository(DataRepository):
@@ -22,7 +22,6 @@ class Repository(DataRepository):
         super().__init__(logger, remote_source)
         self.__anime: QuerySet = Anime.objects
         self.__anime_source: QuerySet = AnimeSource.objects
-        self.__anime_relations: QuerySet = AnimeRelation.objects
 
     @staticmethod
     def __create_attributes_from_links(links: List[str]) -> AttributeDictionary:
@@ -61,6 +60,9 @@ class Repository(DataRepository):
                 status=data.status,
                 picture=data.picture,
                 thumbnail=data.thumbnail,
+                synonyms=data.synonyms,
+                relations=data.relations,
+                tags=data.tags,
             )
 
             if _anime_created:
@@ -69,12 +71,6 @@ class Repository(DataRepository):
             else:
                 updated_records += 1
                 self._logger.info(f"Updated entry -> {_anime.title}")
-
-            for relation_url in data.relations:
-                self.__anime_relations.update_or_create(
-                    url=relation_url,
-                    anime=_anime
-                )
 
         return {
             "created": created_records,
