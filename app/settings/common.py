@@ -32,6 +32,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config("DJANGO_SECRET_KEY", cast=str)
 
+CRUNCHY_TOKEN = config("DJANGO_CRUNCHY_TOKEN", cast=str)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
 
@@ -58,6 +60,7 @@ INSTALLED_APPS = [
     "app.modules.crunchy",
     "app.modules.trakt",
     "app.modules.xem",
+    "app.modules.skyhook",
 ]
 
 MIDDLEWARE = [
