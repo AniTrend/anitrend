@@ -1,0 +1,2656 @@
+{
+    "tvdbId": 305074,
+    "title": "My Hero Academia",
+    "overview": "A superhero-loving boy without any powers is determined to enroll in a prestigious hero academy and learn what it really means to be a hero.",
+    "slug": "my-hero-academia",
+    "firstAired": "2016-04-03",
+    "tvMazeId": 13615,
+    "added": "2015-12-29T08:48:57Z",
+    "lastUpdated": "2021-05-22T13:28:58Z",
+    "status": "Continuing",
+    "runtime": 25,
+    "timeOfDay": {
+        "hours": 17,
+        "minutes": 30
+    },
+    "network": "Nippon TV",
+    "imdbId": "tt5626028",
+    "genres": [
+        "Action",
+        "Adventure",
+        "Animation"
+    ],
+    "contentRating": "TV-14",
+    "rating": {
+        "count": 859,
+        "value": "8.8"
+    },
+    "alternativeTitles": [
+        {
+            "title": "Boku no Hero Academia"
+        }
+    ],
+    "actors": [
+        {
+            "name": "Daiki Yamashita",
+            "character": "Izuku Midoriya"
+        },
+        {
+            "name": "Nobuhiko Okamoto",
+            "character": "Katsuki Bakugo"
+        },
+        {
+            "name": "Ayane Sakura",
+            "character": "Ochako Uraraka"
+        },
+        {
+            "name": "Ayane Sakura",
+            "character": "Ochako Uraraka"
+        },
+        {
+            "name": "Kaito Ishikawa",
+            "character": "Tenya Iida"
+        },
+        {
+            "name": "Yuuki Kaji",
+            "character": "Shouto Todoroki"
+        },
+        {
+            "name": "Aoi Yuuki",
+            "character": "Tsuyu Asui"
+        },
+        {
+            "name": "Ryou Hirohashi",
+            "character": "Minoru Mineta"
+        },
+        {
+            "name": "Toshiki Masuda",
+            "character": "Eijiro Kirishima"
+        },
+        {
+            "name": "Marina Inoue",
+            "character": "Momo Yaoyorozu"
+        },
+        {
+            "name": "Yoshimasa Hosoya",
+            "character": "Fumikage Tokoyami"
+        },
+        {
+            "name": "Tasuku Hatanaka",
+            "character": "Denki Kaminari"
+        },
+        {
+            "name": "Kousuke Kuwano",
+            "character": "Yuuga Aoyama"
+        },
+        {
+            "name": "Kousuke Kuwano",
+            "character": "Yuuga Aoyama"
+        },
+        {
+            "name": "Kei Shindou",
+            "character": "Kyouka Jirou"
+        },
+        {
+            "name": "Eri Kitamura",
+            "character": "Mina Ashido"
+        },
+        {
+            "name": "Masakazu Nishida",
+            "character": "Mezou Shouji"
+        },
+        {
+            "name": "Masakazu Nishida",
+            "character": "Mezou Shouji"
+        },
+        {
+            "name": "Kousuke Miyoshi",
+            "character": "Mashirao Ojiro"
+        },
+        {
+            "name": "Kiyotaka Furushima",
+            "character": "Hanta Sero"
+        },
+        {
+            "name": "Kiyotaka Furushima",
+            "character": "Hanta Sero"
+        },
+        {
+            "name": "Kaori Nazuka",
+            "character": "Tooru Hagakure"
+        },
+        {
+            "name": "Kaori Nazuka",
+            "character": "Tooru Hagakure"
+        },
+        {
+            "name": "Tooru Nara",
+            "character": "Rikido Sato"
+        },
+        {
+            "name": "Takuma Nagatsuka",
+            "character": "Kouji Kouda"
+        },
+        {
+            "name": "Kouhei Amasaki",
+            "character": "Neito Monoma"
+        },
+        {
+            "name": "Saki Ogasawara",
+            "character": "Itsuka Kendou"
+        },
+        {
+            "name": "Kouji Okino",
+            "character": "Tetsutetsu Tetsutetsu"
+        },
+        {
+            "name": "Kouji Okino",
+            "character": "Tetsutetsu Tetsutetsu"
+        },
+        {
+            "name": "Miho Masaka",
+            "character": "Ibara Shiozaki"
+        },
+        {
+            "name": "Masamichi Kitada",
+            "character": "Juzo Honenuki"
+        },
+        {
+            "name": "Masamichi Kitada",
+            "character": "Juzo Honenuki"
+        },
+        {
+            "name": "Yoshitsugu Matsuoka",
+            "character": "Yosetsu Awase"
+        },
+        {
+            "name": "Tomoaki Maeno",
+            "character": "Sen Kaibara"
+        },
+        {
+            "name": "Ayane Sakura",
+            "character": "Reiko Yanagi"
+        },
+        {
+            "name": "Ayane Sakura",
+            "character": "Reiko Yanagi"
+        },
+        {
+            "name": "Eve Yurianne",
+            "character": "Yui Kodai"
+        },
+        {
+            "name": "Kousuke Kuwano",
+            "character": "Hiryuu Rin"
+        },
+        {
+            "name": "Kousuke Kuwano",
+            "character": "Hiryuu Rin"
+        },
+        {
+            "name": "Daisuke Kishio",
+            "character": "Togaru Kamakiri"
+        },
+        {
+            "name": "Kaede Hondo",
+            "character": "Tsunotori Pony"
+        },
+        {
+            "name": "Hitomi Nabatame",
+            "character": "Setsuna Tokage"
+        },
+        {
+            "name": "Tarusuke Shingaki",
+            "character": "Mirio Togata"
+        },
+        {
+            "name": "Yuuto Uemura",
+            "character": "Tamaki Amajiki "
+        },
+        {
+            "name": "Kiyono Yasuno",
+            "character": "Nejire Hadou"
+        },
+        {
+            "name": "Azu Sakura",
+            "character": "Mei Hatsume"
+        },
+        {
+            "name": "Wataru Hatano",
+            "character": "Hitoshi Shinso"
+        },
+        {
+            "name": "Kenta Miyake",
+            "character": "All Might"
+        },
+        {
+            "name": "Jun'ichi Suwabe",
+            "character": "Aizawa Shouta"
+        },
+        {
+            "name": "Hiroyuki Yoshino",
+            "character": "Present Mic"
+        },
+        {
+            "name": "Etsuko Kozakura",
+            "character": "Chiyo Shuuzenji"
+        },
+        {
+            "name": "Inuko Inuyama",
+            "character": "13 Gou"
+        },
+        {
+            "name": "Yasuhiro Takato",
+            "character": "Nezu-kouchou"
+        },
+        {
+            "name": "Akeno Watanabe",
+            "character": "Midnight"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Cementos"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Cementos"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Cementos"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Cementos"
+        },
+        {
+            "name": "Shin'ya Fukumatsu",
+            "character": "Snipe"
+        },
+        {
+            "name": "Masakazu Nishida",
+            "character": "Ectoplasm"
+        },
+        {
+            "name": "Masakazu Nishida",
+            "character": "Ectoplasm"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Vlad King"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Vlad King"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Vlad King"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Vlad King"
+        },
+        {
+            "name": "Tetsu Inada",
+            "character": "Endeavor"
+        },
+        {
+            "name": "Yuuichi Nakamura",
+            "character": "Hawks"
+        },
+        {
+            "name": "Ken'ichi Ogata",
+            "character": "Gran Torino"
+        },
+        {
+            "name": "Shin'ichirou Miki",
+            "character": "Sir Nighteye"
+        },
+        {
+            "name": "Kazuyuki Okitsu",
+            "character": "Fatgum"
+        },
+        {
+            "name": "Kaori Yagi",
+            "character": "Ryuukyuu"
+        },
+        {
+            "name": "Rie Murakawa",
+            "character": "Bubble Girl"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Centipeder"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Centipeder"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Centipeder"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Centipeder"
+        },
+        {
+            "name": "Hikaru Midorikawa",
+            "character": "Best Jeanist"
+        },
+        {
+            "name": "Kenta Kamakari",
+            "character": "Edgeshot"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Gang Orca"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Gang Orca"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Gang Orca"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Gang Orca"
+        },
+        {
+            "name": "Yasuhiro Fujiwara",
+            "character": "Locklock"
+        },
+        {
+            "name": "Kaori Nazuka",
+            "character": "Mount Lady"
+        },
+        {
+            "name": "Kaori Nazuka",
+            "character": "Mount Lady"
+        },
+        {
+            "name": "Masamichi Kitada",
+            "character": "Kamui Shinrin"
+        },
+        {
+            "name": "Masamichi Kitada",
+            "character": "Kamui Shinrin"
+        },
+        {
+            "name": "Shinnosuke Ogami",
+            "character": "Desutegoro"
+        },
+        {
+            "name": "Shinnosuke Ogami",
+            "character": "Desutegoro"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Backdraft"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Backdraft"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Backdraft"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Backdraft"
+        },
+        {
+            "name": "Meiko Kawasaki",
+            "character": "Mandalay"
+        },
+        {
+            "name": "Chisa Suganuma",
+            "character": "Ragdoll"
+        },
+        {
+            "name": "Serina Machiyama",
+            "character": "Pixie-bob"
+        },
+        {
+            "name": "Shinnosuke Ogami",
+            "character": "Tora"
+        },
+        {
+            "name": "Shinnosuke Ogami",
+            "character": "Tora"
+        },
+        {
+            "name": "Takahiro Fujiwara",
+            "character": "Fourth Kind"
+        },
+        {
+            "name": "Takahiro Fujiwara",
+            "character": "Fourth Kind"
+        },
+        {
+            "name": "Kouji Okino",
+            "character": "Gunhead"
+        },
+        {
+            "name": "Kouji Okino",
+            "character": "Gunhead"
+        },
+        {
+            "name": "Mai Yamane",
+            "character": "Uwabami"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Manual"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Manual"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Manual"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Manual"
+        },
+        {
+            "name": "Tomokazu Seki",
+            "character": "Selkie"
+        },
+        {
+            "name": "Ami Koshimizu",
+            "character": "Sirius"
+        },
+        {
+            "name": "Kouki Uchiyama",
+            "character": "Tomura Shigaraki"
+        },
+        {
+            "name": "Akio Ootsuka",
+            "character": "All For One"
+        },
+        {
+            "name": "Takahiro Fujiwara",
+            "character": "Kurogiri"
+        },
+        {
+            "name": "Takahiro Fujiwara",
+            "character": "Kurogiri"
+        },
+        {
+            "name": "Hiro Shimono",
+            "character": "Dabi"
+        },
+        {
+            "name": "Misato Fukuen",
+            "character": "Himiko Toga"
+        },
+        {
+            "name": "Daichi Endou",
+            "character": "Twice"
+        },
+        {
+            "name": "Tsuguo Mogami",
+            "character": "Mr. Compress"
+        },
+        {
+            "name": "Tsuguo Mogami",
+            "character": "Mr. Compress"
+        },
+        {
+            "name": "Ryou Iwasaki",
+            "character": "Spinner"
+        },
+        {
+            "name": "Satoru Inoue",
+            "character": "Magne"
+        },
+        {
+            "name": "Kousuke Takaguchi",
+            "character": "Muscular"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Moonfish"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Moonfish"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Moonfish"
+        },
+        {
+            "name": "Shuuhei Matsuda",
+            "character": "Moonfish"
+        },
+        {
+            "name": "Kiyotaka Furushima",
+            "character": "Mustard"
+        },
+        {
+            "name": "Kiyotaka Furushima",
+            "character": "Mustard"
+        },
+        {
+            "name": "Gou Inoue",
+            "character": "Stain"
+        },
+        {
+            "name": "Tsuguo Mogami",
+            "character": "Noumu"
+        },
+        {
+            "name": "Tsuguo Mogami",
+            "character": "Noumu"
+        },
+        {
+            "name": "Kouichi Yamadera",
+            "character": "Gentle Criminal"
+        },
+        {
+            "name": "Yui Horie",
+            "character": "La Brava"
+        },
+        {
+            "name": "Anri Katsu",
+            "character": "Innsmouth"
+        },
+        {
+            "name": "Yasuhiro Mamiya",
+            "character": "Joi Irinaka"
+        },
+        {
+            "name": "Takumi Asahina",
+            "character": "Chronostasis"
+        },
+        {
+            "name": "Kenjirou Tsuda",
+            "character": "Overhaul "
+        },
+        {
+            "name": "Hiroaki Okuda",
+            "character": "Rikiya Katsukame"
+        },
+        {
+            "name": "Ken'ichirou [Kenn] Oohashi",
+            "character": "Toya Setsuno"
+        },
+        {
+            "name": "Ken'ichirou Matsuda",
+            "character": "Yu Hojo"
+        },
+        {
+            "name": "Kengo Tsujii",
+            "character": "Soramitsu Tabe"
+        },
+        {
+            "name": "Shouhei Kajikawa",
+            "character": "Kendo Rappa"
+        },
+        {
+            "name": "Jun Miyamoto",
+            "character": "Hekiji Tengai"
+        },
+        {
+            "name": "Takayuki Masuda",
+            "character": "Shin Nemoto"
+        },
+        {
+            "name": "Kouji Takahashi",
+            "character": "Deidoro Sakaki"
+        },
+        {
+            "name": "Ryouta Iwasaki",
+            "character": "Inasa Yoarashi"
+        },
+        {
+            "name": "Minori Chihara",
+            "character": "Kemy Utsushimi"
+        },
+        {
+            "name": "Makoto Furukawa",
+            "character": "Seiji Shishikura"
+        },
+        {
+            "name": "Oota Volcano",
+            "character": "Nagamasa Moura"
+        },
+        {
+            "name": "Yuuta Kasuya",
+            "character": "Yo Shindo"
+        },
+        {
+            "name": "Mariko Nagai",
+            "character": "Ms.Joke"
+        },
+        {
+            "name": "Megumi Han",
+            "character": "Tatami Nakagame"
+        },
+        {
+            "name": "Hiromichi Kogami",
+            "character": "Shikkui Makabe"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Itejiro Toteki"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Itejiro Toteki"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Itejiro Toteki"
+        },
+        {
+            "name": "Kenta Ookuma",
+            "character": "Itejiro Toteki"
+        },
+        {
+            "name": "Tokuyoshi Kawashima",
+            "character": "Naomasa Tsukauchi"
+        },
+        {
+            "name": "Ryouta Takeuchi",
+            "character": "Kenji Tsuragame"
+        },
+        {
+            "name": "Seiran Kobayashi",
+            "character": "Eri"
+        },
+        {
+            "name": "Michiru Yamazaki",
+            "character": "Kota Izumi"
+        },
+        {
+            "name": "Masami Iwasaki",
+            "character": "Mera Yokumiru"
+        }
+    ],
+    "images": [
+        {
+            "coverType": "Banner",
+            "url": "https://artworks.thetvdb.com/banners/graphical/305074-g.jpg"
+        },
+        {
+            "coverType": "Poster",
+            "url": "https://artworks.thetvdb.com/banners/posters/305074-11.jpg"
+        },
+        {
+            "coverType": "Fanart",
+            "url": "https://artworks.thetvdb.com/banners/fanart/original/305074-4.jpg"
+        }
+    ],
+    "seasons": [
+        {
+            "seasonNumber": 0,
+            "images": [
+                {
+                    "coverType": "Poster",
+                    "url": "https://artworks.thetvdb.com/banners/seasons/5cf5825ace9b9.jpg"
+                }
+            ]
+        },
+        {
+            "seasonNumber": 1,
+            "images": [
+                {
+                    "coverType": "Poster",
+                    "url": "https://artworks.thetvdb.com/banners/seasons/305074-1-5.jpg"
+                }
+            ]
+        },
+        {
+            "seasonNumber": 2,
+            "images": [
+                {
+                    "coverType": "Poster",
+                    "url": "https://artworks.thetvdb.com/banners/seasons/305074-2-5.jpg"
+                }
+            ]
+        },
+        {
+            "seasonNumber": 3,
+            "images": [
+                {
+                    "coverType": "Poster",
+                    "url": "https://artworks.thetvdb.com/banners/seasons/5bb3b31cbfbe1.jpg"
+                }
+            ]
+        },
+        {
+            "seasonNumber": 4,
+            "images": [
+                {
+                    "coverType": "Poster",
+                    "url": "https://artworks.thetvdb.com/banners/series/305074/seasons/814583/posters/5fead35292e01.jpg"
+                }
+            ]
+        },
+        {
+            "seasonNumber": 5,
+            "images": [
+                {
+                    "coverType": "Poster",
+                    "url": "https://artworks.thetvdb.com/banners/v4/season/1887579/posters/6069afc21c3ae.jpg"
+                }
+            ]
+        }
+    ],
+    "episodes": [
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5864088,
+            "seasonNumber": 0,
+            "episodeNumber": 1,
+            "airedAfterSeasonNumber": 1,
+            "title": "Save! Rescue Training!",
+            "airDate": "2016-11-27",
+            "airDateUtc": "2016-11-27T08:30:00Z",
+            "overview": "Four weeks after the League of Villains' attempt to assassinate All Might, the students of Class 1-A return to USJ to complete their disaster training. However, unbeknownst to the heroes-in-training, an unexpected foe is lurking within the facility's walls and waiting to strike...",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5864088.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6018063,
+            "seasonNumber": 0,
+            "episodeNumber": 2,
+            "airedBeforeSeasonNumber": 2,
+            "airedBeforeEpisodeNumber": 1,
+            "title": "Hero Notebook",
+            "airDate": "2017-03-25",
+            "airDateUtc": "2017-03-25T08:30:00Z",
+            "overview": "Recap of Boku no Hero Academia's first season, aired a week before the second season.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6018063.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029200,
+            "seasonNumber": 0,
+            "episodeNumber": 3,
+            "airedAfterSeasonNumber": 2,
+            "title": "Training of the Dead",
+            "airDate": "2017-06-02",
+            "airDateUtc": "2017-06-02T08:30:00Z",
+            "overview": "Story about a joint practice session between Izuku's class and Isami High students at U. A. Academy, takes place after the field training arc in the second season.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "guestStars": [
+                "Aoi Yuuki",
+                "Ayane Sakura",
+                "Daiki Yamashita",
+                "Jun'ichi Suwabe",
+                "Kaito Ishikawa",
+                "Kenta Miyake",
+                "Nobuhiko Okamoto",
+                "Yuuki Kaji",
+                "Asami Yoshikawa",
+                "Kei Minegishi",
+                "Maaya Uchida",
+                "Ryouhei Kimura"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029200.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6767275,
+            "seasonNumber": 0,
+            "episodeNumber": 4,
+            "airedAfterSeasonNumber": 2,
+            "title": "My Hero Academia: The Two Heroes",
+            "airDate": "2018-08-03",
+            "airDateUtc": "2018-08-03T08:30:00Z",
+            "overview": "The climactic finals are over, and U.A. is getting ready for the summer training camp. Deku and All Might receive an invitation from a certain person to go overseas to a giant artificial moving city called I-Island. This island, a kind of “science Hollywood” that gathers the knowledge of scientists from around the world, is holding an exhibition called I-Expo showcasing the results of Quirk and hero item research. In the midst of all this, Deku meets a Quirkless girl named Melissa and remembers his own Quirkless past. Out of the blue, the impregnable security system the island boasts is hacked by villains, and all the people on the island are taken as hostages! Now, a plan that could shake hero society has been put into motion! The man who holds the key to it all is the number one hero and Symbol of Peace, All Might.",
+            "writers": [
+                "Kôhei Horikoshi",
+                "Yôsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6767275.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6715141,
+            "seasonNumber": 0,
+            "episodeNumber": 5,
+            "title": "All Might: Rising",
+            "airDate": "2019-02-13",
+            "airDateUtc": "2019-02-13T08:30:00Z",
+            "overview": "Young All Might sees his mentor, Nana Shimura, be defeated by One For All.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6715141.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7121388,
+            "seasonNumber": 0,
+            "episodeNumber": 6,
+            "title": "End-Roll: BBQ Scene - Picture Drama",
+            "airDate": "2019-02-13",
+            "airDateUtc": "2019-02-13T08:30:00Z",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/7121388.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7265883,
+            "seasonNumber": 0,
+            "episodeNumber": 7,
+            "airedAfterSeasonNumber": 4,
+            "title": "My Hero Academia: Heroes Rising",
+            "airDate": "2020-02-26",
+            "airDateUtc": "2020-02-26T08:30:00Z",
+            "overview": "Deku and the rest of the heroes of Class 1-A must save a group of islanders from Nine, the strongest villain yet.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/5fa0a1dd9f942.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7877555,
+            "seasonNumber": 0,
+            "episodeNumber": 8,
+            "airedAfterSeasonNumber": 4,
+            "title": "Make It! Do-or-Die Survival Training, Part 1",
+            "airDate": "2020-08-15",
+            "airDateUtc": "2020-08-15T08:30:00Z",
+            "overview": "UA's sophomore students are undergoing targeted training to prepare for their provisional license exams, and today they will have to take part in a rescue operation. This is just a simulation, but teamwork will be required in order to succeed in the exercise. Except that as soon as the mission begins, a landslide changes the game. The ten students who had split into several groups find themselves trapped by debris. Is this accident part of the exercise? Will the students come out of it unharmed? The survival test has just begun.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/5f380e51b8be1.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7877556,
+            "seasonNumber": 0,
+            "episodeNumber": 9,
+            "airedAfterSeasonNumber": 4,
+            "title": "Make It! Do-or-Die Survival Training, Part 2",
+            "airDate": "2020-08-15",
+            "airDateUtc": "2020-08-15T08:30:00Z",
+            "overview": "In preparation for the provisional license exam, UA's 10th grade students are participating in a simulated rescue, but the rescue has gone wrong and the students are now trapped in an underground shopping mall. As if the situation wasn't complicated enough, water starts seeping through the walls. The students have to get out of here as soon as possible. That said, Bakugo still takes the mission very seriously and refuses to go out without finding and evacuating the rescue dummy. The water is rising dangerously. Will they be able to evacuate and avoid the disaster?",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/5f380eb6aa816.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5465180,
+            "seasonNumber": 1,
+            "episodeNumber": 1,
+            "absoluteEpisodeNumber": 1,
+            "title": "Izuku Midoriya: Origin",
+            "airDate": "2016-04-03",
+            "airDateUtc": "2016-04-03T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "Izuku Midoriya desperately wants to be a hero, but he is one of the few in his generation born without a Quirk. Will meeting the number one hero, All Might, change his fate?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5465180.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5569820,
+            "seasonNumber": 1,
+            "episodeNumber": 2,
+            "absoluteEpisodeNumber": 2,
+            "title": "What It Takes to Be a Hero",
+            "airDate": "2016-04-10",
+            "airDateUtc": "2016-04-10T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "Izuku accidentally learns of All Might's secret, but there's trouble in town again before Izuku has time to process it. Will All Might be able to save the day again?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5569820.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5569821,
+            "seasonNumber": 1,
+            "episodeNumber": 3,
+            "absoluteEpisodeNumber": 3,
+            "title": "Roaring Muscles",
+            "airDate": "2016-04-17",
+            "airDateUtc": "2016-04-17T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "All Might tells Izuku that he can become a hero, but does he really have what it takes to become one?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5569821.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5569822,
+            "seasonNumber": 1,
+            "episodeNumber": 4,
+            "absoluteEpisodeNumber": 4,
+            "title": "Start Line",
+            "airDate": "2016-04-24",
+            "airDateUtc": "2016-04-24T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "At the entrance exam, Izuku falls behind as the other students defeat faux villains left and right. Will he be able to get enough points to pass?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5569822.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570618,
+            "seasonNumber": 1,
+            "episodeNumber": 5,
+            "absoluteEpisodeNumber": 5,
+            "title": "What I Can Do for Now",
+            "airDate": "2016-05-01",
+            "airDateUtc": "2016-05-01T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "It's Izuku's first day of high school, and he still can't control his new Quirk. Will he make it to the second day of school with his eccentric new teacher?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570618.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570619,
+            "seasonNumber": 1,
+            "episodeNumber": 6,
+            "absoluteEpisodeNumber": 6,
+            "title": "Rage, You Damn Nerd",
+            "airDate": "2016-05-08",
+            "airDateUtc": "2016-05-08T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "Izuku somehow gets through his first day of school and falls into a regular schedule of classes and training at U.A. In their first class with All Might...",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570619.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570620,
+            "seasonNumber": 1,
+            "episodeNumber": 7,
+            "absoluteEpisodeNumber": 7,
+            "title": "Deku vs. Kacchan",
+            "airDate": "2016-05-15",
+            "airDateUtc": "2016-05-15T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "In All Might's first class, Izuku will have to face off against Katsuki! As the hero team, can Izuku and Uraraka beat the villain team of Katsuki and Tenya?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570620.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570621,
+            "seasonNumber": 1,
+            "episodeNumber": 8,
+            "absoluteEpisodeNumber": 8,
+            "title": "Bakugo's Start Line",
+            "airDate": "2016-05-22",
+            "airDateUtc": "2016-05-22T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "After the combat training lesson, the students and All Might reflect on their matches as they think about their next steps.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570621.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570622,
+            "seasonNumber": 1,
+            "episodeNumber": 9,
+            "absoluteEpisodeNumber": 9,
+            "title": "Yeah, Just Do Your Best, Iida!",
+            "airDate": "2016-05-29",
+            "airDateUtc": "2016-05-29T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "Class 1-A has to elect a class representative, and everyone wants the job! How will they choose? And what lies in wait for them at the next class?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570622.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570623,
+            "seasonNumber": 1,
+            "episodeNumber": 10,
+            "absoluteEpisodeNumber": 10,
+            "title": "Encounter With the Unknown",
+            "airDate": "2016-06-05",
+            "airDateUtc": "2016-06-05T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "Villains have attacked USJ, and it's up to Class 1-A to stop them. What are the villains after? Will All Might be able to save the day again?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570623.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570624,
+            "seasonNumber": 1,
+            "episodeNumber": 11,
+            "absoluteEpisodeNumber": 11,
+            "title": "Game Over",
+            "airDate": "2016-06-12",
+            "airDateUtc": "2016-06-12T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "The students fight for their lives against the Villains while Iida manages to escape with his friends' help. Once knowing that Iida will warn the other teachers who will come to stop them, the Villains' leader Tomura Shigaraki decides to kill Izuku and his friends just to hurt All Might's pride before they leave, when All Might himself appears.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570624.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570625,
+            "seasonNumber": 1,
+            "episodeNumber": 12,
+            "absoluteEpisodeNumber": 12,
+            "title": "All Might",
+            "airDate": "2016-06-19",
+            "airDateUtc": "2016-06-19T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "All Might has finally shown up, but will he be able to defeat Nomu and save the day?!",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570625.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5570626,
+            "seasonNumber": 1,
+            "episodeNumber": 13,
+            "absoluteEpisodeNumber": 13,
+            "title": "In Each of Our Hearts",
+            "airDate": "2016-06-26",
+            "airDateUtc": "2016-06-26T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "As the battle at USJ winds down, Izuku and All Might think about its repercussions. Meanwhile, the villains slink home to plan their next move.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5570626.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 5661737,
+            "seasonNumber": 2,
+            "episodeNumber": 1,
+            "absoluteEpisodeNumber": 14,
+            "title": "That's the Idea, Ochaco",
+            "airDate": "2017-04-01",
+            "airDateUtc": "2017-04-01T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "As U.A. students and teachers recover from the League of Villains attack on USJ, Izuku learns about why Ochaco wants to become a hero.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/5661737.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029064,
+            "seasonNumber": 2,
+            "episodeNumber": 2,
+            "absoluteEpisodeNumber": 15,
+            "title": "Roaring Sports Festival",
+            "airDate": "2017-04-08",
+            "airDateUtc": "2017-04-08T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "The U.A. sports festival begins and all eyes are on the first-years as they start their qualifying round—the obstacle course race.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029064.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029066,
+            "seasonNumber": 2,
+            "episodeNumber": 3,
+            "absoluteEpisodeNumber": 16,
+            "title": "In Their Own Quirky Ways",
+            "airDate": "2017-04-15",
+            "airDateUtc": "2017-04-15T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "The first-years try to stand out as they struggle to finish the obstacle course and qualify for a spot in the next round.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029066.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029067,
+            "seasonNumber": 2,
+            "episodeNumber": 4,
+            "absoluteEpisodeNumber": 17,
+            "title": "Strategy, Strategy, Strategy",
+            "airDate": "2017-04-22",
+            "airDateUtc": "2017-04-22T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "Izuku's having trouble finding a team for the cavalry battle in the next round of the U.A. sports festival. Luckily, he has a plan.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029067.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029068,
+            "seasonNumber": 2,
+            "episodeNumber": 5,
+            "absoluteEpisodeNumber": 18,
+            "title": "Cavalry Battle Finale",
+            "airDate": "2017-04-29",
+            "airDateUtc": "2017-04-29T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "The teams are fighting it out in the second half of the cavalry battle. Will Team Midoriya be able to keep their place in the top four?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029068.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029069,
+            "seasonNumber": 2,
+            "episodeNumber": 6,
+            "absoluteEpisodeNumber": 19,
+            "title": "The Boy Born with Everything",
+            "airDate": "2017-05-06",
+            "airDateUtc": "2017-05-06T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "Izuku learns more about Todoroki's past as the first-years head into the final round of the sports festival.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029069.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029971,
+            "seasonNumber": 2,
+            "episodeNumber": 7,
+            "absoluteEpisodeNumber": 20,
+            "title": "Victory or Defeat",
+            "airDate": "2017-05-13",
+            "airDateUtc": "2017-05-13T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "Izuku is up against Shinso in the first match of the finals, but how will he overcome Shinso's Quirk to advance to the next round?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029971.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029972,
+            "seasonNumber": 2,
+            "episodeNumber": 8,
+            "absoluteEpisodeNumber": 21,
+            "title": "Battle on, Challengers!",
+            "airDate": "2017-05-20",
+            "airDateUtc": "2017-05-20T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "It's one match after another in the first round of the finals tournament. Who will advance to the second round?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029972.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029973,
+            "seasonNumber": 2,
+            "episodeNumber": 9,
+            "absoluteEpisodeNumber": 22,
+            "title": "Bakugo vs. Uraraka",
+            "airDate": "2017-05-27",
+            "airDateUtc": "2017-05-27T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "Bakugo seems almost villainous when he's up against Uraraka, but she has a plan to keep it from being a one-sided match.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029973.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029974,
+            "seasonNumber": 2,
+            "episodeNumber": 10,
+            "absoluteEpisodeNumber": 23,
+            "title": "Shoto Todoroki: Origin",
+            "airDate": "2017-06-03",
+            "airDateUtc": "2017-06-03T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "Izuku forces Todoroki to face his past in a chilling battle as the two class rivals finally go head to head!",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029974.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029975,
+            "seasonNumber": 2,
+            "episodeNumber": 11,
+            "absoluteEpisodeNumber": 24,
+            "title": "Fight on, Iida",
+            "airDate": "2017-06-10",
+            "airDateUtc": "2017-06-10T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "It’s class rep versus child prodigy as Iida and Todoroki square off. Will Iida's Reciproburst be enough to beat the boy of fire and ice?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029975.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029976,
+            "seasonNumber": 2,
+            "episodeNumber": 12,
+            "absoluteEpisodeNumber": 25,
+            "title": "Todoroki vs. Bakugo",
+            "airDate": "2017-06-17",
+            "airDateUtc": "2017-06-17T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "The explosive showdown between Todoroki and Bakugo begins. Only one can take the title of first-year champion!",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029976.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029977,
+            "seasonNumber": 2,
+            "episodeNumber": 13,
+            "absoluteEpisodeNumber": 26,
+            "title": "Time to Pick Some Names",
+            "airDate": "2017-06-24",
+            "airDateUtc": "2017-06-24T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "Following their epic debut at the sports festival, it’s time for the first-years to pick the most important part of their identities—their hero name!",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029977.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029978,
+            "seasonNumber": 2,
+            "episodeNumber": 14,
+            "absoluteEpisodeNumber": 27,
+            "title": "Bizarre! Gran Torino Appears",
+            "airDate": "2017-07-08",
+            "airDateUtc": "2017-07-08T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "The internships begin! While everyone adjusts to their new tasks, Izuku starts training with Gran Torino, the same man who once taught All Might.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029978.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029979,
+            "seasonNumber": 2,
+            "episodeNumber": 15,
+            "absoluteEpisodeNumber": 28,
+            "title": "Midoriya and Shigaraki",
+            "airDate": "2017-07-15",
+            "airDateUtc": "2017-07-15T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "The U.A. students are finally starting to get the hang of their internships, but Izuku has much more to learn about One For All.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029979.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029980,
+            "seasonNumber": 2,
+            "episodeNumber": 16,
+            "absoluteEpisodeNumber": 29,
+            "title": "Hero Killer: Stain vs. U.A. Students",
+            "airDate": "2017-07-22",
+            "airDateUtc": "2017-07-22T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "Stain strikes again, and this time some U.A. students are around when it happens. Will they be able to hold him off until the pros come?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029980.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029981,
+            "seasonNumber": 2,
+            "episodeNumber": 17,
+            "absoluteEpisodeNumber": 30,
+            "title": "Climax",
+            "airDate": "2017-07-29",
+            "airDateUtc": "2017-07-29T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "8.0"
+            },
+            "overview": "It all comes to a head as Izuku, Iida, and Todoroki face off against Stain while the pro heroes in Hosu City fight against the Nomus.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029981.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029982,
+            "seasonNumber": 2,
+            "episodeNumber": 18,
+            "absoluteEpisodeNumber": 31,
+            "title": "The Aftermath of Hero Killer: Stain",
+            "airDate": "2017-08-05",
+            "airDateUtc": "2017-08-05T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "Stain is finally captured, but now the hero community must deal with the consequences of their actions.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029982.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029983,
+            "seasonNumber": 2,
+            "episodeNumber": 19,
+            "absoluteEpisodeNumber": 32,
+            "title": "Everyone's Internships",
+            "airDate": "2017-08-12",
+            "airDateUtc": "2017-08-12T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "As Izuku, Iida, and Todoroki recover from their fight with Stain, the other members of Class 1-A work hard at their own internships.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029983.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029984,
+            "seasonNumber": 2,
+            "episodeNumber": 20,
+            "absoluteEpisodeNumber": 33,
+            "title": "Listen Up!! A Tale from the Past",
+            "airDate": "2017-08-19",
+            "airDateUtc": "2017-08-19T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "The students return to their daily lives while All Might has a special history lesson for Izuku. It’s time to learn about One For All!",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029984.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029985,
+            "seasonNumber": 2,
+            "episodeNumber": 21,
+            "absoluteEpisodeNumber": 34,
+            "title": "Gear Up for Final Exams",
+            "airDate": "2017-09-02",
+            "airDateUtc": "2017-09-02T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "Finals are coming up and Class 1-A is going to need more than a cram session. This year, the teachers are changing the practical exams.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029985.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029986,
+            "seasonNumber": 2,
+            "episodeNumber": 22,
+            "absoluteEpisodeNumber": 35,
+            "title": "Yaoyorozu: Rising",
+            "airDate": "2017-09-09",
+            "airDateUtc": "2017-09-09T08:30:00Z",
+            "rating": {
+                "count": 29,
+                "value": "8.0"
+            },
+            "overview": "The exams are turning out to be much more challenging than the students expected. Can any of the teams hold their own against a teacher?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029986.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029988,
+            "seasonNumber": 2,
+            "episodeNumber": 23,
+            "absoluteEpisodeNumber": 36,
+            "title": "Stripping the Varnish",
+            "airDate": "2017-09-16",
+            "airDateUtc": "2017-09-16T08:30:00Z",
+            "overview": "As the students of Class 1-A fight in their practical exams, their resolve to become heroes is put to the test.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029988.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029989,
+            "seasonNumber": 2,
+            "episodeNumber": 24,
+            "absoluteEpisodeNumber": 37,
+            "title": "Katsuki Bakugo: Origin",
+            "airDate": "2017-09-23",
+            "airDateUtc": "2017-09-23T08:30:00Z",
+            "overview": "It's finally time for Izuku and Bakugo's practical exam. How can they challenge All Might without a plan?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029989.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6029990,
+            "seasonNumber": 2,
+            "episodeNumber": 25,
+            "absoluteEpisodeNumber": 38,
+            "title": "Encounter",
+            "airDate": "2017-09-30",
+            "airDateUtc": "2017-09-30T08:30:00Z",
+            "overview": "Class 1-A goes shopping for training camp supplies, but things get out of hand when a villain pulls Izuku aside.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6029990.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6341861,
+            "seasonNumber": 3,
+            "episodeNumber": 1,
+            "absoluteEpisodeNumber": 39,
+            "title": "Game Start",
+            "airDate": "2018-04-07",
+            "airDateUtc": "2018-04-07T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "10.0"
+            },
+            "overview": "Before the U.A. students head to their training camp, Class 1-A goes to the pool for extra training, and the League of Villains plots their next move.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6341861.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633228,
+            "seasonNumber": 3,
+            "episodeNumber": 2,
+            "absoluteEpisodeNumber": 40,
+            "title": "Wild, Wild Pussycats",
+            "airDate": "2018-04-14",
+            "airDateUtc": "2018-04-14T08:30:00Z",
+            "rating": {
+                "count": 30,
+                "value": "10.0"
+            },
+            "overview": "Class 1-A faces the first challenge of their summer training camp when they have to fight their way through \"The Beast's Forest\" before lunch.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633228.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633229,
+            "seasonNumber": 3,
+            "episodeNumber": 3,
+            "absoluteEpisodeNumber": 41,
+            "title": "Kota",
+            "airDate": "2018-04-21",
+            "airDateUtc": "2018-04-21T08:30:00Z",
+            "overview": "Midoriya tries to talk with Kota as the first-years start their training in earnest. Little do they know what awaits them in the forest.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633229.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633230,
+            "seasonNumber": 3,
+            "episodeNumber": 4,
+            "absoluteEpisodeNumber": 42,
+            "title": "My Hero",
+            "airDate": "2018-04-28",
+            "airDateUtc": "2018-04-28T08:30:00Z",
+            "overview": "The villains launch their attack, and only Izuku knows where Kota is. Can he get to him in time?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633230.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633231,
+            "seasonNumber": 3,
+            "episodeNumber": 5,
+            "absoluteEpisodeNumber": 43,
+            "title": "Drive It Home, Iron Fist!!!",
+            "airDate": "2018-05-05",
+            "airDateUtc": "2018-05-05T08:30:00Z",
+            "overview": "Izuku finally makes it back to the training camp only to leave again with a message for Mandalay to broadcast.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633231.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633232,
+            "seasonNumber": 3,
+            "episodeNumber": 6,
+            "absoluteEpisodeNumber": 44,
+            "title": "Roaring Upheaval",
+            "airDate": "2018-05-12",
+            "airDateUtc": "2018-05-12T08:30:00Z",
+            "overview": "Students and teachers of UJS are still fighting in the woods, but the Vanguard avant-garde team has already accomplished its mission ...?!",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633232.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633233,
+            "seasonNumber": 3,
+            "episodeNumber": 7,
+            "absoluteEpisodeNumber": 45,
+            "title": "What a Twist!",
+            "airDate": "2018-05-19",
+            "airDateUtc": "2018-05-19T08:30:00Z",
+            "overview": "The battle at the training camp concludes, and now the students and teachers of U.A. have to deal with the aftermath.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633233.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633234,
+            "seasonNumber": 3,
+            "episodeNumber": 8,
+            "absoluteEpisodeNumber": 46,
+            "title": "From Iida to Midoriya",
+            "airDate": "2018-05-26",
+            "airDateUtc": "2018-05-26T08:30:00Z",
+            "overview": "Todoroki, Kirishima, and Midoriya want to go after Bakugo, but the class rep is standing in their way. Meanwhile, Shigaraki makes Bakugo an offer…",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633234.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633235,
+            "seasonNumber": 3,
+            "episodeNumber": 9,
+            "absoluteEpisodeNumber": 47,
+            "title": "All For One",
+            "airDate": "2018-06-02",
+            "airDateUtc": "2018-06-02T08:30:00Z",
+            "overview": "The heroes and U.A. students close in on the League of Villains' hideouts, but the League still has an ace up its sleeve…",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633235.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633236,
+            "seasonNumber": 3,
+            "episodeNumber": 10,
+            "absoluteEpisodeNumber": 48,
+            "title": "Symbol of Peace",
+            "airDate": "2018-06-09",
+            "airDateUtc": "2018-06-09T08:30:00Z",
+            "overview": "As the fight against the League of Villains escalates, can the U.A. students get Bakugo out in time for All Might to make a big comeback?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633236.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633237,
+            "seasonNumber": 3,
+            "episodeNumber": 11,
+            "absoluteEpisodeNumber": 49,
+            "title": "One For All",
+            "airDate": "2018-06-16",
+            "airDateUtc": "2018-06-16T08:30:00Z",
+            "overview": "All Might's time is running out as he faces his ultimate nemesis head on. Will he finally be able to defeat All For One once and for all?",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633237.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633238,
+            "seasonNumber": 3,
+            "episodeNumber": 12,
+            "absoluteEpisodeNumber": 50,
+            "title": "End of the Beginning, Beginning of the End",
+            "airDate": "2018-06-23",
+            "airDateUtc": "2018-06-23T08:30:00Z",
+            "overview": "After All Might and All For One's fight, the students go back home while the U.A. teachers decide how to deal with the aftermath.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633238.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633239,
+            "seasonNumber": 3,
+            "episodeNumber": 13,
+            "absoluteEpisodeNumber": 51,
+            "title": "Moving into Dorms",
+            "airDate": "2018-06-30",
+            "airDateUtc": "2018-06-30T08:30:00Z",
+            "overview": "The students of Class 1-A move into the dorms and have a competition to determine who has the best room as they settle in.",
+            "writers": [
+                "Yōsuke Kuroda"
+            ],
+            "directors": [
+                "Kenji Nagasaki"
+            ],
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633239.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633240,
+            "seasonNumber": 3,
+            "episodeNumber": 14,
+            "absoluteEpisodeNumber": 52,
+            "title": "Create Those Ultimate Moves",
+            "airDate": "2018-07-14",
+            "airDateUtc": "2018-07-14T08:30:00Z",
+            "overview": "Class 1-A works on developing their Quirks and creating ultimate moves in order to get ready for the provisional hero licensing exam.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633240.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633241,
+            "seasonNumber": 3,
+            "episodeNumber": 15,
+            "absoluteEpisodeNumber": 53,
+            "title": "The Test",
+            "airDate": "2018-07-21",
+            "airDateUtc": "2018-07-21T08:30:00Z",
+            "overview": "Izuku and his classmates make some final adjustments to their ultimate moves and then head off to the provisional licensing exam.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633241.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633242,
+            "seasonNumber": 3,
+            "episodeNumber": 16,
+            "absoluteEpisodeNumber": 54,
+            "title": "Shiketsu High Lurking",
+            "airDate": "2018-07-28",
+            "airDateUtc": "2018-07-28T08:30:00Z",
+            "overview": "The provisional licensing exam has begun, and everyone's after Class 1-A! Can they last long enough to pass this first test?",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633242.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633243,
+            "seasonNumber": 3,
+            "episodeNumber": 17,
+            "absoluteEpisodeNumber": 55,
+            "title": "Class 1-A",
+            "airDate": "2018-08-04",
+            "airDateUtc": "2018-08-04T08:30:00Z",
+            "overview": "Todoroki's on his own against Seijin High, and Yaoyorozu's group is pitted against Seiai Academy as they and the rest of Class 1-A fight to pass the first test.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633243.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633244,
+            "seasonNumber": 3,
+            "episodeNumber": 18,
+            "absoluteEpisodeNumber": 56,
+            "title": "RUSH!",
+            "airDate": "2018-08-11",
+            "airDateUtc": "2018-08-11T08:30:00Z",
+            "overview": "It's down to the final minutes of the first test of the provisional licensing exam and almost half of Class A is still left…",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633244.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633245,
+            "seasonNumber": 3,
+            "episodeNumber": 19,
+            "absoluteEpisodeNumber": 57,
+            "title": "Rescue Exercises",
+            "airDate": "2018-08-18",
+            "airDateUtc": "2018-08-18T08:30:00Z",
+            "overview": "The second test of the provisional licensing exam has begun, and the hero candidates are suddenly thrust into a rescue operation.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633245.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633246,
+            "seasonNumber": 3,
+            "episodeNumber": 20,
+            "absoluteEpisodeNumber": 58,
+            "title": "Special Episode - Save the World with Love!",
+            "airDate": "2018-08-25",
+            "airDateUtc": "2018-08-25T08:30:00Z",
+            "overview": "We take a break from the provisional licensing exam to visit a class held before the summer training camp!",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633246.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633247,
+            "seasonNumber": 3,
+            "episodeNumber": 21,
+            "absoluteEpisodeNumber": 59,
+            "title": "What's the Big Idea?",
+            "airDate": "2018-09-01",
+            "airDateUtc": "2018-09-01T08:30:00Z",
+            "overview": "The exam nears its end, but Izuku and the other hero candidates must fend off Gang Orca to finish the rescue mission.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633247.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633248,
+            "seasonNumber": 3,
+            "episodeNumber": 22,
+            "absoluteEpisodeNumber": 60,
+            "title": "A Talk About Your Quirk",
+            "airDate": "2018-09-08",
+            "airDateUtc": "2018-09-08T08:30:00Z",
+            "overview": "While the U.A. students finish up the provisional licensing exam and get their results, All Might has a talk with All For One.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633248.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633249,
+            "seasonNumber": 3,
+            "episodeNumber": 23,
+            "absoluteEpisodeNumber": 61,
+            "title": "Deku vs. Kacchan, Part 2",
+            "airDate": "2018-09-15",
+            "airDateUtc": "2018-09-15T08:30:00Z",
+            "overview": "Following the provisional licensing exam, Izuku tries out his Shoot Style on Bakugo as they have a heart-to-heart through their fight.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633249.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633250,
+            "seasonNumber": 3,
+            "episodeNumber": 24,
+            "absoluteEpisodeNumber": 62,
+            "title": "A Season for Encounters",
+            "airDate": "2018-09-22",
+            "airDateUtc": "2018-09-22T08:30:00Z",
+            "overview": "The world has changed for villains and heroes alike in the weeks after All Might's fight with All For One, and the U.A. students start their second semester.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633250.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 6633251,
+            "seasonNumber": 3,
+            "episodeNumber": 25,
+            "absoluteEpisodeNumber": 63,
+            "title": "Unrivaled",
+            "airDate": "2018-09-29",
+            "airDateUtc": "2018-09-29T08:30:00Z",
+            "overview": "The students of Class 1-A learn about work studies from the Big Three. Meanwhile, the villains also prepare their next steps.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/6633251.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7233329,
+            "seasonNumber": 4,
+            "episodeNumber": 1,
+            "absoluteEpisodeNumber": 64,
+            "title": "The Scoop on U.A. Class 1-A",
+            "airDate": "2019-10-12",
+            "airDateUtc": "2019-10-12T08:30:00Z",
+            "overview": "After All Might announces his retirement, freelance reporter Taneo Tokuda goes to the dorms to investigate U.A. Class 1-A.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/7233329.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7381250,
+            "seasonNumber": 4,
+            "episodeNumber": 2,
+            "absoluteEpisodeNumber": 65,
+            "title": "Overhaul",
+            "airDate": "2019-10-19",
+            "airDateUtc": "2019-10-19T08:30:00Z",
+            "overview": "Overhaul pays a visit to the League of Villains, and Midoriya tries to find a place to do his work study.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/7381250.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7381252,
+            "seasonNumber": 4,
+            "episodeNumber": 3,
+            "absoluteEpisodeNumber": 66,
+            "title": "Boy Meets...",
+            "airDate": "2019-10-26",
+            "airDateUtc": "2019-10-26T08:30:00Z",
+            "overview": "Izuku battles Sir Nighteye so he can do his work study at Nighteye's agency, but Nighteye has someone else in mind to be All Might's successor...",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/7381252.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7388141,
+            "seasonNumber": 4,
+            "episodeNumber": 4,
+            "absoluteEpisodeNumber": 67,
+            "title": "Fighting Fate",
+            "airDate": "2019-11-09",
+            "airDateUtc": "2019-11-09T08:30:00Z",
+            "overview": "Izuku's mind is swirling with feelings from his work study, so he goes and talks to All Might about it and learns about All Might's fate.",
+            "image": "https://artworks.thetvdb.com/banners/episodes/305074/7388141.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7441444,
+            "seasonNumber": 4,
+            "episodeNumber": 5,
+            "absoluteEpisodeNumber": 68,
+            "title": "Let's Go, Gutsy Red Riot",
+            "airDate": "2019-11-16",
+            "airDateUtc": "2019-11-16T08:30:00Z",
+            "overview": "The U.A. work study students go out with their respective heroes and become involved in some big fights.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7441444.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7467228,
+            "seasonNumber": 4,
+            "episodeNumber": 6,
+            "absoluteEpisodeNumber": 69,
+            "title": "An Unpleasant Talk",
+            "airDate": "2019-11-23",
+            "airDateUtc": "2019-11-23T08:30:00Z",
+            "overview": "The work study students from U.A. attend a meeting of heroes gathered by Sir Nighteye and leave with new resolve.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7451642.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7467230,
+            "seasonNumber": 4,
+            "episodeNumber": 7,
+            "absoluteEpisodeNumber": 70,
+            "title": "GO!!",
+            "airDate": "2019-11-30",
+            "airDateUtc": "2019-11-30T08:30:00Z",
+            "overview": "The work study students wait until the pro heroes find Eri and it's time to start the operation to save her.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7467230.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7453195,
+            "seasonNumber": 4,
+            "episodeNumber": 8,
+            "absoluteEpisodeNumber": 71,
+            "title": "Suneater of the Big Three",
+            "airDate": "2019-12-07",
+            "airDateUtc": "2019-12-07T08:30:00Z",
+            "overview": "The Shie Hassaikai is going all out to stop the heroes, and Suneater volunteers to take out the first batch of Eight Bullets members in their way.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7453195.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7459806,
+            "seasonNumber": 4,
+            "episodeNumber": 9,
+            "absoluteEpisodeNumber": 72,
+            "title": "Red Riot",
+            "airDate": "2019-12-14",
+            "airDateUtc": "2019-12-14T08:30:00Z",
+            "overview": "As the fight with the Shie Hassaikai continues, Kirishima has to face his past when he and Fat Gum get separated from the others.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7459806.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7461711,
+            "seasonNumber": 4,
+            "episodeNumber": 10,
+            "absoluteEpisodeNumber": 73,
+            "title": "Temp Squad",
+            "airDate": "2019-12-21",
+            "airDateUtc": "2019-12-21T08:30:00Z",
+            "overview": "The Hassaikai gets some help from the League of Villains as the heroes continue to make their way to Chisaki to rescue Eri.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7461711.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7461712,
+            "seasonNumber": 4,
+            "episodeNumber": 11,
+            "absoluteEpisodeNumber": 74,
+            "title": "Lemillion",
+            "airDate": "2019-12-28",
+            "airDateUtc": "2019-12-28T08:30:00Z",
+            "overview": "The League of Villains stay true to their name in their fight. Meanwhile, Togata catches up to Chisaki and Eri first...",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7461712.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7461713,
+            "seasonNumber": 4,
+            "episodeNumber": 12,
+            "absoluteEpisodeNumber": 75,
+            "title": "Unforeseen Hope",
+            "airDate": "2020-01-04",
+            "airDateUtc": "2020-01-04T08:30:00Z",
+            "overview": "Izuku, Eraser Head, and Sir Nighteye finally reach the area where Chisaki and the others are and find Togata past his limit...",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7461713.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7510624,
+            "seasonNumber": 4,
+            "episodeNumber": 13,
+            "absoluteEpisodeNumber": 76,
+            "title": "Infinite 100%",
+            "airDate": "2020-01-11",
+            "airDateUtc": "2020-01-11T08:30:00Z",
+            "overview": "As the fight with the Shie Hassaikai reaches its climax, Chisaki looks back on how it all started, and Izuku uses All For One at 100%.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7510624.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7513642,
+            "seasonNumber": 4,
+            "episodeNumber": 14,
+            "absoluteEpisodeNumber": 77,
+            "title": "Bright Future",
+            "airDate": "2020-01-18",
+            "airDateUtc": "2020-01-18T08:30:00Z",
+            "overview": "As the heroes deal with the aftermath of the fight with the Shie Hassaikai, the vehicle transporting Chisaki has an encounter with the League of Villains...",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7513642.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7513644,
+            "seasonNumber": 4,
+            "episodeNumber": 15,
+            "absoluteEpisodeNumber": 78,
+            "title": "Smoldering Flames",
+            "airDate": "2020-01-25",
+            "airDateUtc": "2020-01-25T08:30:00Z",
+            "overview": "After the fight with the Shie Hassaikai, a new villain emerges, and the students who participated reflect on their own roles as future heroes.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/7513644.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553206,
+            "seasonNumber": 4,
+            "episodeNumber": 16,
+            "absoluteEpisodeNumber": 79,
+            "title": "Win Those Kids' Hearts",
+            "airDate": "2020-02-01",
+            "airDateUtc": "2020-02-01T08:30:00Z",
+            "overview": "Camie joins the provisional license training course and is added to the team working with the kids from Masegaki. Meanwhile, Endeavor has a serious talk with All Might. l",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/62068712.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553207,
+            "seasonNumber": 4,
+            "episodeNumber": 17,
+            "absoluteEpisodeNumber": 80,
+            "title": "Relief for License Trainees",
+            "airDate": "2020-02-08",
+            "airDateUtc": "2020-02-08T08:30:00Z",
+            "overview": "The trainees bond with the precocious Masegaki kids and life at U.A. goes back to normal as autumn approaches, but Aoyama has been acting strangely...",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/62074850.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553208,
+            "seasonNumber": 4,
+            "episodeNumber": 18,
+            "absoluteEpisodeNumber": 81,
+            "title": "School Festival",
+            "airDate": "2020-02-15",
+            "airDateUtc": "2020-02-15T08:30:00Z",
+            "overview": "Class 1-A needs to decide what they want to do for the upcoming school festival, and Midoriya and Togata pay Eri a visit at the hospital.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/62080841.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553209,
+            "seasonNumber": 4,
+            "episodeNumber": 19,
+            "absoluteEpisodeNumber": 82,
+            "title": "Prepping for the School Festival Is the Funnest Part",
+            "airDate": "2020-02-22",
+            "airDateUtc": "2020-02-22T08:30:00Z",
+            "overview": "Class 1-A assigns roles for their performance at the school festival, and Gentle starts preparing his next plan.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/62087664.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553210,
+            "seasonNumber": 4,
+            "episodeNumber": 20,
+            "absoluteEpisodeNumber": 83,
+            "title": "Golden Tips Imperial",
+            "airDate": "2020-02-29",
+            "airDateUtc": "2020-02-29T08:30:00Z",
+            "overview": "Eri visits U.A. while the students are preparing for the school festival, and Gentle finalizes his plans.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/62094766.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553211,
+            "seasonNumber": 4,
+            "episodeNumber": 21,
+            "absoluteEpisodeNumber": 84,
+            "title": "Deku vs. Gentle Criminal",
+            "airDate": "2020-03-07",
+            "airDateUtc": "2020-03-07T08:30:00Z",
+            "overview": "As Deku buys some last-minute supplies for the school festival, he encounters a mysterious man wrapped in a trench coat...",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/62101317.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553212,
+            "seasonNumber": 4,
+            "episodeNumber": 22,
+            "absoluteEpisodeNumber": 85,
+            "title": "School Festival Start!!",
+            "airDate": "2020-03-14",
+            "airDateUtc": "2020-03-14T08:30:00Z",
+            "overview": "Izuku must stop Gentle Criminal and his partner, La Brava, or else the school festival will be cancelled.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/62107659.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553213,
+            "seasonNumber": 4,
+            "episodeNumber": 23,
+            "absoluteEpisodeNumber": 86,
+            "title": "Let It Flow! School Festival!",
+            "airDate": "2020-03-21",
+            "airDateUtc": "2020-03-21T08:30:00Z",
+            "overview": "Izuku rushes back to the school festival after his encounter with Gentle Criminal and La Brava, but will he make it in time for his performance?",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/5e75e276bd193.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553214,
+            "seasonNumber": 4,
+            "episodeNumber": 24,
+            "absoluteEpisodeNumber": 87,
+            "title": "Japanese Hero Billboard Chart",
+            "airDate": "2020-03-28",
+            "airDateUtc": "2020-03-28T08:30:00Z",
+            "overview": "It's time for the next Japanese Hero Billboard Chart rankings to be announced, and this time, all the top ten heroes make an appearance.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/5e7ef317868bf.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 7553216,
+            "seasonNumber": 4,
+            "episodeNumber": 25,
+            "absoluteEpisodeNumber": 88,
+            "title": "His Start",
+            "airDate": "2020-04-04",
+            "airDateUtc": "2020-04-04T08:30:00Z",
+            "overview": "Endeavor and Hawks are up against High-End, and it's Endeavor's chance to show the world what the new number one hero is like.",
+            "image": "https://artworks.thetvdb.com/banners/series/305074/episodes/5e881febd4c22.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8094037,
+            "seasonNumber": 5,
+            "episodeNumber": 1,
+            "absoluteEpisodeNumber": 89,
+            "title": "All Hands on Deck! Class 1-A",
+            "airDate": "2021-03-27",
+            "airDateUtc": "2021-03-27T08:30:00Z",
+            "overview": "There's an emergency drill at U.A. High School, and Class 1-A is requested to report for duty!",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8094037/screencap/605f727eb5b82.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159505,
+            "seasonNumber": 5,
+            "episodeNumber": 2,
+            "absoluteEpisodeNumber": 90,
+            "title": "Vestiges",
+            "airDate": "2021-04-03",
+            "airDateUtc": "2021-04-03T08:30:00Z",
+            "overview": "After their fight with the Nomu, Hawks and Endeavor return to daily life, and Izuku dreams of One For All...",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159505/screencap/606652020e5fc.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159506,
+            "seasonNumber": 5,
+            "episodeNumber": 3,
+            "absoluteEpisodeNumber": 91,
+            "title": "Clash! Class A vs. Class B!",
+            "airDate": "2021-04-10",
+            "airDateUtc": "2021-04-10T08:30:00Z",
+            "overview": "Class A and Class B are joined by a special guest as they battle it out during their joint combat training.",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159506/screencap/60705dc6cd2b6.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159507,
+            "seasonNumber": 5,
+            "episodeNumber": 4,
+            "absoluteEpisodeNumber": 92,
+            "title": "Make It Happen, Shinso!",
+            "airDate": "2021-04-17",
+            "airDateUtc": "2021-04-17T08:30:00Z",
+            "overview": "The Class A team tries to put Shinso and his new equipment to good use in the first match against Class B.",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159507/screencap/607ab1bbe701e.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159508,
+            "seasonNumber": 5,
+            "episodeNumber": 5,
+            "absoluteEpisodeNumber": 93,
+            "title": "Operation New Improv Moves",
+            "airDate": "2021-04-24",
+            "airDateUtc": "2021-04-24T08:30:00Z",
+            "overview": "It's darkness versus darkness as Tokoyami and Kuroiro face off in the second match of the class battles!",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159508/screencap/608415e86f48f.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159509,
+            "seasonNumber": 5,
+            "episodeNumber": 6,
+            "absoluteEpisodeNumber": 94,
+            "title": "Foresight",
+            "airDate": "2021-05-01",
+            "airDateUtc": "2021-05-01T08:30:00Z",
+            "overview": "Separated from her team, Yaoyorozu's leadership skills are put to the test in the second match of the class battles.",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159509/screencap/608d5d3503feb.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159510,
+            "seasonNumber": 5,
+            "episodeNumber": 7,
+            "absoluteEpisodeNumber": 95,
+            "title": "Match 3",
+            "airDate": "2021-05-08",
+            "airDateUtc": "2021-05-08T08:30:00Z",
+            "overview": "In the third match of the class battles, Honenuki leads the Class B team against a well-balanced Class A team.",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159510/screencap/6096a2ce5dbcb.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159511,
+            "seasonNumber": 5,
+            "episodeNumber": 8,
+            "absoluteEpisodeNumber": 96,
+            "title": "Match 3 Conclusion",
+            "airDate": "2021-05-15",
+            "airDateUtc": "2021-05-15T08:30:00Z",
+            "overview": "It's still anybody's game as the the third match continues with an endurance battle between Todoroki and Tetsutetsu.",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159511/screencap/609fde68ea4aa.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159512,
+            "seasonNumber": 5,
+            "episodeNumber": 9,
+            "absoluteEpisodeNumber": 97,
+            "title": "Early Bird!",
+            "airDate": "2021-05-22",
+            "airDateUtc": "2021-05-22T08:30:00Z",
+            "overview": "Bakugo shows a different side of himself in the fourth team match as the class battles continue.",
+            "image": "https://artworks.thetvdb.com/banners/v4/episode/8159512/screencap/60a907198296d.jpg"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159513,
+            "seasonNumber": 5,
+            "episodeNumber": 10,
+            "absoluteEpisodeNumber": 98,
+            "title": "That Which Is Inherited",
+            "airDate": "2021-05-29",
+            "airDateUtc": "2021-05-29T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159514,
+            "seasonNumber": 5,
+            "episodeNumber": 11,
+            "absoluteEpisodeNumber": 99,
+            "title": "Episode 11",
+            "airDate": "2021-06-05",
+            "airDateUtc": "2021-06-05T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8159515,
+            "seasonNumber": 5,
+            "episodeNumber": 12,
+            "absoluteEpisodeNumber": 100,
+            "title": "Episode 12",
+            "airDate": "2021-06-12",
+            "airDateUtc": "2021-06-12T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8327241,
+            "seasonNumber": 5,
+            "episodeNumber": 13,
+            "absoluteEpisodeNumber": 101,
+            "title": "Episode 13",
+            "airDate": "2021-06-19",
+            "airDateUtc": "2021-06-19T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329802,
+            "seasonNumber": 5,
+            "episodeNumber": 14,
+            "title": "Episode 14",
+            "airDate": "2021-06-26",
+            "airDateUtc": "2021-06-26T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329803,
+            "seasonNumber": 5,
+            "episodeNumber": 15,
+            "title": "Episode 15",
+            "airDate": "2021-07-03",
+            "airDateUtc": "2021-07-03T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329804,
+            "seasonNumber": 5,
+            "episodeNumber": 16,
+            "title": "Episode 16",
+            "airDate": "2021-07-10",
+            "airDateUtc": "2021-07-10T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329805,
+            "seasonNumber": 5,
+            "episodeNumber": 17,
+            "title": "Episode 17",
+            "airDate": "2021-07-17",
+            "airDateUtc": "2021-07-17T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329806,
+            "seasonNumber": 5,
+            "episodeNumber": 18,
+            "title": "Episode 18",
+            "airDate": "2021-07-24",
+            "airDateUtc": "2021-07-24T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329807,
+            "seasonNumber": 5,
+            "episodeNumber": 19,
+            "title": "Episode 19",
+            "airDate": "2021-07-31",
+            "airDateUtc": "2021-07-31T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329808,
+            "seasonNumber": 5,
+            "episodeNumber": 20,
+            "title": "Episode 20",
+            "airDate": "2021-08-07",
+            "airDateUtc": "2021-08-07T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329809,
+            "seasonNumber": 5,
+            "episodeNumber": 21,
+            "title": "Episode 21",
+            "airDate": "2021-08-14",
+            "airDateUtc": "2021-08-14T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329810,
+            "seasonNumber": 5,
+            "episodeNumber": 22,
+            "title": "Episode 22",
+            "airDate": "2021-08-21",
+            "airDateUtc": "2021-08-21T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329811,
+            "seasonNumber": 5,
+            "episodeNumber": 23,
+            "title": "Episode 23",
+            "airDate": "2021-08-28",
+            "airDateUtc": "2021-08-28T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329812,
+            "seasonNumber": 5,
+            "episodeNumber": 24,
+            "title": "Episode 24",
+            "airDate": "2021-09-04",
+            "airDateUtc": "2021-09-04T08:30:00Z"
+        },
+        {
+            "tvdbShowId": 305074,
+            "tvdbId": 8329813,
+            "seasonNumber": 5,
+            "episodeNumber": 25,
+            "title": "Episode 25",
+            "airDate": "2021-09-11",
+            "airDateUtc": "2021-09-11T08:30:00Z"
+        }
+    ]
+}
