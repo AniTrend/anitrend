@@ -5,9 +5,8 @@ from ..common.models import CommonModel
 
 
 class CrunchyToken(CommonModel):
-    bucket = models.CharField(max_length=64)
     access_token = models.TextField(null=True)
-    expires_in = models.IntegerField()
+    expires_at = models.IntegerField()
     token_type = models.CharField(max_length=128)
     country = models.CharField(max_length=128)
 
@@ -35,8 +34,8 @@ class CrunchySeriesPanel(CommonModel):
     is_dubbed = models.BooleanField()
     is_simulcast = models.BooleanField()
     maturity_ratings = ArrayField(models.CharField(max_length=24))
-    tenant_categories = ArrayField(models.CharField(max_length=24))
-    last_public_season_number = models.IntegerField()
+    tenant_categories = ArrayField(models.CharField(max_length=24), null=True)
+    last_public_season_number = models.IntegerField(null=True)
     last_public_episode_number = models.IntegerField(null=True)
 
 
@@ -50,7 +49,7 @@ class CrunchyMoviePanel(CommonModel):
     is_dubbed = models.BooleanField()
     available_offline = models.BooleanField()
     maturity_ratings = ArrayField(models.CharField(max_length=24))
-    tenant_categories = ArrayField(models.CharField(max_length=24))
+    tenant_categories = ArrayField(models.CharField(max_length=24), null=True)
 
 
 class CrunchyPanel(CommonModel):
@@ -60,11 +59,10 @@ class CrunchyPanel(CommonModel):
     title = models.CharField(max_length=256)
     description = models.TextField(null=True)
     type = models.CharField(max_length=24)
-    slug = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128)
     images = models.JSONField(null=True)
     movie_listing_metadata = models.OneToOneField(CrunchyMoviePanel, on_delete=models.CASCADE, null=True)
     series_metadata = models.OneToOneField(CrunchySeriesPanel, on_delete=models.CASCADE, null=True)
-    locale = models.CharField(max_length=24)
     last_public = models.DateTimeField()
     new = models.BooleanField()
     new_content = models.BooleanField()
@@ -97,7 +95,7 @@ class CrunchyEpisode(CommonModel):
     season_tags = ArrayField(models.CharField(max_length=128))
     available_offline = models.BooleanField()
     media_type = models.CharField(max_length=128)
-    slug = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128)
     images = models.JSONField(null=True)
     duration_ms = models.IntegerField(null=True)
     is_premium_only = models.BooleanField()
@@ -128,7 +126,7 @@ class CrunchySeries(CommonModel):
     series_id = models.CharField(max_length=128)
     channel_id = models.CharField(max_length=128)
     title = models.CharField(max_length=128)
-    slug = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128)
     description = models.TextField(null=True)
     keywords = ArrayField(models.CharField(max_length=128))
     season_tags = ArrayField(models.CharField(max_length=128))
@@ -149,7 +147,7 @@ class CrunchyMovie(CommonModel):
     movie_id = models.CharField(max_length=25)
     channel_id = models.CharField(max_length=25)
     title = models.CharField(max_length=256)
-    slug = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=128)
     description = models.TextField(null=True)
     keywords = ArrayField(models.CharField(max_length=128))
     images = models.JSONField(null=True)

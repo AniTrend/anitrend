@@ -4,17 +4,17 @@ from itertools import chain
 from marshmallow import fields, EXCLUDE, post_load, RAISE
 from marshmallow.error_store import ErrorStore
 from marshmallow.fields import String, Integer, Float, Boolean, List
-from marshmallow.schema import _T as T
+from marshmallow.schema import _T
 
 from ...common.schemas import CommonSchema
-from ..domain.entities import CrunchySigningPolicyContainer, CrunchyToken, CrunchyIndex, CrunchyPanelCollection, \
-    CrunchyEpisodeCollection, CrunchySeasonCollection, CrunchyMovie, CrunchySeries
+from ..domain.entities import CrunchySigningPolicyContainer, CrunchyToken, CrunchyPanelCollection, \
+    CrunchyEpisodeCollection, CrunchySeasonCollection, CrunchyMovie, CrunchySeries, CrunchyIndexContainer
 
 
 class ResourceSchema(CommonSchema):
-    __class__: String = fields.Str()
-    __href__: String = fields.Str()
-    __resource_key__: String = fields.Str(allow_none=True, )
+    # __class__: String = fields.Str()
+    # __href__: String = fields.Str()
+    # __resource_key__: String = fields.Str()
 
     @staticmethod
     def __modify_image_body(
@@ -36,16 +36,14 @@ class ResourceSchema(CommonSchema):
 
     def _deserialize(
             self,
-            data: typing.Union[
-                typing.Mapping[str, typing.Any],
-                typing.Iterable[typing.Mapping[str, typing.Any]],
-            ], *,
+            data: typing.Union[typing.Mapping[str, typing.Any], typing.Iterable[typing.Mapping[str, typing.Any]]],
+            *,
             error_store: ErrorStore,
             many: bool = False,
             partial=False,
             unknown=RAISE,
             index=None
-    ) -> typing.Union[T, typing.List[T]]:
+    ) -> typing.Union[_T, typing.List[_T]]:
         return super()._deserialize(
             self.__modify_image_body(data),
             error_store=error_store,
@@ -57,7 +55,6 @@ class ResourceSchema(CommonSchema):
 
 
 class TokenSchema(CommonSchema):
-    bucket: String = fields.Str()
     access_token: String = fields.Str()
     expires_in: Integer = fields.Int()
     token_type: String = fields.Str()
@@ -115,9 +112,9 @@ class IndexContainerSchema(ResourceSchema):
     )
 
     @post_load()
-    def __on_post_load(self, data, many, **kwargs) -> CrunchyIndex:
+    def __on_post_load(self, data, many, **kwargs) -> CrunchyIndexContainer:
         try:
-            model = CrunchyIndex.from_dict(data)
+            model = CrunchyIndexContainer.from_dict(data)
             return model
         except Exception as e:
             self._logger.error(f"Conversion from dictionary failed", exc_info=e)

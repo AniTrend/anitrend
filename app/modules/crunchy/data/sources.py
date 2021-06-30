@@ -73,7 +73,7 @@ class CmsEndpoint(Consumer):
     @get("content/v1/browse/index")
     def get_panel(
             self,
-            authorization: Header(name="Authorization"),
+            authorization: Header("Authorization"),
             locale: Query(name="locale", type=str) = "en-US"
     ) -> PanelSchema(unknown=EXCLUDE):
         pass
@@ -82,7 +82,7 @@ class CmsEndpoint(Consumer):
     @get("content/v1/browse")
     def get_index(
             self,
-            authorization: Header(name="Authorization"),
+            authorization: Header("Authorization"),
             q: Query(name="q", type=str),
             sort_by: Query(name="sort_by", type=str) = "alphabetical",
             n: Query(name="n", type=int) = 100,
@@ -108,7 +108,7 @@ class BucketEndpoint(Consumer):
     @get("cms/v2/{bucket}/series/{series_id}")
     def get_series_details(
             self,
-            authorization: Header(name="Authorization"),
+            authorization: Header("Authorization"),
             bucket: Path(name="bucket", type=str),
             series_id: Path(name="series_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"
@@ -119,7 +119,7 @@ class BucketEndpoint(Consumer):
     @get("cms/v2/{bucket}/seasons")
     def get_seasons(
             self,
-            authorization: Header(name="Authorization"),
+            authorization: Header("Authorization"),
             bucket: Path(name="bucket", type=str),
             series_id: Query(name="series_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"
@@ -130,7 +130,7 @@ class BucketEndpoint(Consumer):
     @get("cms/v2/{bucket}/episodes")
     def get_episodes(
             self,
-            authorization: Header(name="Authorization"),
+            authorization: Header("Authorization"),
             bucket: Path(name="bucket", type=str),
             season_id: Query(name="season_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"
@@ -141,7 +141,7 @@ class BucketEndpoint(Consumer):
     @get("cms/v2/{bucket}/episodes")
     def get_episodes(
             self,
-            authorization: Header(name="Authorization"),
+            authorization: Header("Authorization"),
             bucket: Path(name="bucket", type=str),
             season_id: Query(name="season_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"

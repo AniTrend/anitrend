@@ -2,7 +2,6 @@ from serde import Model, fields
 
 
 class CrunchyToken(Model):
-    bucket = fields.Str()
     access_token = fields.Str()
     expires_in = fields.Int()
     token_type = fields.Str()
@@ -22,12 +21,6 @@ class CrunchySigningPolicyContainer(Model):
     service_available = fields.Bool()
 
 
-class CrunchyIndex(Model):
-    prefix = fields.Str()
-    offset = fields.Int()
-    count = fields.Int()
-
-
 class CrunchySeriesPanel(Model):
     episode_count = fields.Int()
     season_count = fields.Int()
@@ -37,8 +30,8 @@ class CrunchySeriesPanel(Model):
     is_dubbed = fields.Bool()
     is_simulcast = fields.Bool()
     maturity_ratings = fields.List(fields.Str())
-    tenant_categories = fields.List(fields.Str)
-    last_public_season_number = fields.Int()
+    tenant_categories = fields.Optional(fields.List(fields.Str))
+    last_public_season_number = fields.Optional(fields.Int())
     last_public_episode_number = fields.Optional(fields.Int())
 
 
@@ -58,7 +51,7 @@ class CrunchyMoviePanel(Model):
 class CrunchySearchMeta(Model):
     score = fields.Int()
     rank = fields.Int()
-    popularity_score: float
+    popularity_score = fields.Float()
 
 
 class CrunchyImage(Model):
@@ -83,18 +76,31 @@ class CrunchyPanel(Model):
     type = fields.Str()
     slug = fields.Str()
     images = fields.Optional(fields.Nested(CrunchyImageContainer))
-    movie_listing_metadata: fields.Optional(fields.Nested(CrunchyMoviePanel))
-    series_metadata: fields.Optional(fields.Nested(CrunchySeriesPanel))
-    locale = fields.Str()
-    search_metadata: fields.Optional(fields.Nested(CrunchySearchMeta))
+    movie_listing_metadata = fields.Optional(fields.Nested(CrunchyMoviePanel))
+    series_metadata = fields.Optional(fields.Nested(CrunchySeriesPanel))
+    search_metadata = fields.Optional(fields.Nested(CrunchySearchMeta))
     last_public = fields.Optional(fields.Str())
-    new = fields.Bool()
-    new_content = fields.Bool()
+    new = fields.Optional(fields.Bool())
+    new_content = fields.Optional(fields.Bool())
 
 
 class CrunchyPanelCollection(Model):
     total = fields.Int()
     items = fields.List(fields.Nested(CrunchyPanel))
+
+
+class CrunchyIndex(Model):
+    prefix = fields.Str()
+    offset = fields.Int()
+    count = fields.Int()
+    num_items = fields.Int()
+    items = fields.List(fields.Nested(CrunchyPanel))
+
+
+class CrunchyIndexContainer(Model):
+    total_count = fields.Int()
+    num_items = fields.Int()
+    items = fields.List(fields.Nested(CrunchyIndex))
 
 
 class CrunchyAdBreak(Model):
