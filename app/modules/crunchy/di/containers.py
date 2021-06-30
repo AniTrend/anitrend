@@ -44,7 +44,7 @@ class RepositoryContainer(containers.DeclarativeContainer):
         time_utility=AppContainer.time_zone_utility(),
     )
 
-    singing_repository = providers.Singleton(
+    signing_repository = providers.Singleton(
         SingingRepository,
         logger=__logging_utility.get_default_logger("service.repository.crunchy"),
         remote_source=RemoteSourceContainer.signing_source(),
@@ -62,6 +62,9 @@ class RepositoryContainer(containers.DeclarativeContainer):
         BucketRepository,
         logger=__logging_utility.get_default_logger("service.repository.crunchy"),
         remote_source=RemoteSourceContainer.bucket_source(),
+        cms_repository=cms_repository(),
+        signing_repository=signing_repository(),
+        authentication_repository=authentication_repository(),
     )
 
 

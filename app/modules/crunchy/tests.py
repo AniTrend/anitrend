@@ -25,7 +25,7 @@ class DependenciesTestCase(TestCase):
         self.assertIsNotNone(repository)
 
     def test_signing_repository_provider(self):
-        repository = RepositoryContainer.singing_repository()
+        repository = RepositoryContainer.signing_repository()
         self.assertIsNotNone(repository)
 
     def test_cms_repository_provider(self):

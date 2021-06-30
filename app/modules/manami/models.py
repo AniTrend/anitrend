@@ -37,10 +37,10 @@ class Anime(CommonModel):
     type = models.CharField(max_length=12, choices=TYPE_CHOICES)
     episodes = models.IntegerField()
     status = models.CharField(max_length=12, choices=STATUS_CHOICES)
-    picture = models.CharField(max_length=256,)
+    picture = models.URLField()
     thumbnail = models.CharField(max_length=256,)
     synonyms = ArrayField(models.CharField(max_length=256))
-    relations = ArrayField(models.CharField(max_length=256))
+    relations = ArrayField(models.URLField())
     tags = ArrayField(models.CharField(max_length=256))
     updated_at = models.DateTimeField(default=timezone.now)
 

@@ -97,7 +97,7 @@ class SingingRepository(DataRepository):
         )
         return signing_policy
 
-    def __map_and_save(self, signing_policy):
+    def __map_and_save(self, signing_policy) -> Optional[CrunchySigningPolicy]:
         _model, _created = self.__signing_policy.update_or_create(
             bucket=signing_policy.bucket,
             policy=signing_policy.policy,
@@ -107,6 +107,7 @@ class SingingRepository(DataRepository):
         )
         if _created:
             self._logger.debug(f"Created signing policy {_model}")
+        return _model
 
     def __assure_only_valid_token_exist(self) -> None:
         _deleted, deleted_count = self.__signing_policy.filter(
@@ -118,10 +119,15 @@ class SingingRepository(DataRepository):
             )
 
     def __latest_signing_policy(self) -> Optional[CrunchySigningPolicy]:
-        pass
+        return self.__signing_policy.latest()
 
     def invoke(self, **kwargs) -> Optional[CrunchySigningPolicy]:
-        return super().invoke(**kwargs)
+        self.__assure_only_valid_token_exist()
+        existing = self.__latest_signing_policy()
+        if existing is not None:
+            return existing
+        signing_policy = self.__make_request()
+        return self.__map_and_save(signing_policy)
 
 
 class CmsRepository(DataRepository):
@@ -140,11 +146,24 @@ class CmsRepository(DataRepository):
 class BucketRepository(DataRepository):
     _remote_source: BucketEndpoint
 
-    def __init__(self, logger: Logger, remote_source: Consumer) -> None:
+    def __init__(
+            self,
+            logger: Logger,
+            remote_source: Consumer,
+            cms_repository: CmsRepository,
+            signing_repository: SingingRepository,
+            authentication_repository: AuthenticationRepository
+    ) -> None:
         super().__init__(logger, remote_source)
         self.__panel: QuerySet = CrunchyPanel.objects
         self.__movie_panel: QuerySet = CrunchyMoviePanel.objects
         self.__series_panel: QuerySet = CrunchySeriesPanel.objects
+        self.__cms_repository = cms_repository
+        self.__signing_repository = signing_repository
+        self.__authentication_repository = authentication_repository
+
+    def __make_request(self):
+        policy = self.__signing_repository.invoke()
 
     def map_and_save_results(self, container: IndexContainer) -> Any:
         created_records: int = 0
@@ -221,4 +240,4 @@ class BucketRepository(DataRepository):
         }
 
     def invoke(self, **kwargs) -> Optional[Any]:
-        return super().invoke(**kwargs)
+        return self.__make_request()
