@@ -83,7 +83,7 @@ class Repository(DataRepository):
         else:
             raise NoDataError(f"Data received for anime entries was null")
 
-    def invoke(self) -> Optional[Any]:
+    def invoke(self, **kwargs) -> Optional[Any]:
         try:
             data = self._remote_source.get_anime_entries()
             return self.__on_result(data)

@@ -19,7 +19,7 @@ class DataRepository(CommonRepository):
         super().__init__(logger)
         self._remote_source = remote_source
 
-    def invoke(self) -> Optional[Any]:
+    def invoke(self, **kwargs) -> Optional[Any]:
         """
         Requests data from a remote source
         :return: Optional payload

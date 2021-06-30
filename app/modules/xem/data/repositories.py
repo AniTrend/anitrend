@@ -51,7 +51,7 @@ class Repository(DataRepository):
         else:
             raise NoDataError(f"Data received for relations was null")
 
-    def invoke(self) -> Optional[Any]:
+    def invoke(self, **kwargs) -> Optional[Any]:
         try:
             result = self._remote_source.get_all_names(
                 origin="tvdb",
