@@ -1,6 +1,8 @@
 import unittest
 
-from app.modules.common.utilities import LinkUtility
+from datetime import datetime
+
+from app.modules.common.utilities import LinkUtility, TimeUtility, LoggingUtility
 
 
 class RegexSearchTestCase(unittest.TestCase):
@@ -34,6 +36,22 @@ class RegexSearchTestCase(unittest.TestCase):
         notify = "https://notify.moe/anime/0-A-5Fimg"
         _id = LinkUtility.extract_id_if_matches([notify], "notify.moe")
         self.assertEqual(_id, "0-A-5Fimg")
+
+
+class TimeUtilTestCase(unittest.TestCase):
+
+    def setUp(self) -> None:
+        super().setUp()
+        logging_utility = LoggingUtility(is_debug=True)
+        self.time_util = TimeUtility(
+            logger=logging_utility.get_default_logger("utility.common.time_zone"),
+            time_zone="Africa/Johannesburg"
+        )
+
+    def test_as_local_time(self):
+        expected = datetime.strptime('2020-03-16T21:37:14+0200', '%Y-%m-%dT%H:%M:%S%z')
+        result = self.time_util.as_local_time('2020-03-16T19:37:14+0000', '%Y-%m-%dT%H:%M:%S%z')
+        self.assertEqual(expected.toordinal(), result.toordinal())
 
 
 if __name__ == '__main__':
