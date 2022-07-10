@@ -10,6 +10,9 @@ class CrunchyToken(CommonModel):
     token_type = models.CharField(max_length=128)
     country = models.CharField(max_length=128)
 
+    def __str__(self):
+        return f"Bearer {self.access_token}"
+
 
 class CrunchySigningPolicy(CommonModel):
     bucket = models.CharField(max_length=64)
@@ -24,8 +27,17 @@ class CrunchyIndex(CommonModel):
     offset = models.IntegerField()
     count = models.IntegerField()
 
+    def __str__(self):
+        return f"{self.prefix} - {self.count}"
 
-class CrunchySeriesPanel(CommonModel):
+
+class CrunchySeriesMeta(CommonModel):
+    audio_locales = ArrayField(models.CharField(max_length=8))
+    subtitle_locales = ArrayField(models.CharField(max_length=8))
+    extended_description = models.TextField()
+    slug = models.CharField(max_length=480)
+    title = models.CharField(max_length=480)
+    slug_title = models.CharField(max_length=480)
     episode_count = models.IntegerField()
     season_count = models.IntegerField()
     is_mature = models.BooleanField()
@@ -39,7 +51,13 @@ class CrunchySeriesPanel(CommonModel):
     last_public_episode_number = models.IntegerField(null=True)
 
 
-class CrunchyMoviePanel(CommonModel):
+class CrunchyMovieMeta(CommonModel):
+    audio_locales = ArrayField(models.CharField(max_length=8))
+    subtitle_locales = ArrayField(models.CharField(max_length=8))
+    extended_description = models.TextField()
+    slug = models.CharField(max_length=480)
+    title = models.CharField(max_length=480)
+    slug_title = models.CharField(max_length=480)
     duration_ms = models.IntegerField()
     movie_release_year = models.IntegerField()
     is_premium_only = models.BooleanField()
@@ -61,8 +79,8 @@ class CrunchyPanel(CommonModel):
     type = models.CharField(max_length=24)
     slug = models.SlugField(max_length=128)
     images = models.JSONField(null=True)
-    movie_listing_metadata = models.OneToOneField(CrunchyMoviePanel, on_delete=models.CASCADE, null=True)
-    series_metadata = models.OneToOneField(CrunchySeriesPanel, on_delete=models.CASCADE, null=True)
+    movie_listing_metadata = models.OneToOneField(CrunchyMovieMeta, on_delete=models.CASCADE, null=True)
+    series_metadata = models.OneToOneField(CrunchySeriesMeta, on_delete=models.CASCADE, null=True)
     last_public = models.DateTimeField()
     new = models.BooleanField()
     new_content = models.BooleanField()

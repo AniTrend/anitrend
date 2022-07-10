@@ -1,7 +1,6 @@
 import logging
 import pytz
 
-from pytz import BaseTzInfo
 from datetime import datetime, tzinfo
 from urllib.parse import urlparse
 from logging import Logger

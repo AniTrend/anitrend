@@ -21,7 +21,7 @@ class CrunchySigningPolicyContainer(Model):
     service_available = fields.Bool()
 
 
-class CrunchySeriesPanel(Model):
+class CrunchySeriesMeta(Model):
     episode_count = fields.Int()
     season_count = fields.Int()
     is_mature = fields.Bool()
@@ -30,12 +30,12 @@ class CrunchySeriesPanel(Model):
     is_dubbed = fields.Bool()
     is_simulcast = fields.Bool()
     maturity_ratings = fields.List(fields.Str())
-    tenant_categories = fields.Optional(fields.List(fields.Str))
+    tenant_categories = fields.Optional(fields.List(fields.Str()))
     last_public_season_number = fields.Optional(fields.Int())
     last_public_episode_number = fields.Optional(fields.Int())
 
 
-class CrunchyMoviePanel(Model):
+class CrunchyMovieMeta(Model):
     duration_ms = fields.Int()
     movie_release_year = fields.Int()
     is_premium_only = fields.Bool()
@@ -45,7 +45,7 @@ class CrunchyMoviePanel(Model):
     is_dubbed = fields.Bool()
     available_offline = fields.Bool()
     maturity_ratings = fields.List(fields.Str())
-    tenant_categories = fields.List(fields.Str)
+    tenant_categories = fields.List(fields.Str())
 
 
 class CrunchySearchMeta(Model):
@@ -76,8 +76,8 @@ class CrunchyPanel(Model):
     type = fields.Str()
     slug = fields.Str()
     images = fields.Optional(fields.Nested(CrunchyImageContainer))
-    movie_listing_metadata = fields.Optional(fields.Nested(CrunchyMoviePanel))
-    series_metadata = fields.Optional(fields.Nested(CrunchySeriesPanel))
+    movie_listing_metadata = fields.Optional(fields.Nested(CrunchyMovieMeta))
+    series_metadata = fields.Optional(fields.Nested(CrunchySeriesMeta))
     search_metadata = fields.Optional(fields.Nested(CrunchySearchMeta))
     last_public = fields.Optional(fields.Str())
     new = fields.Optional(fields.Bool())
@@ -101,6 +101,11 @@ class CrunchyIndexContainer(Model):
     total_count = fields.Int()
     num_items = fields.Int()
     items = fields.List(fields.Nested(CrunchyIndex))
+
+
+class CrunchyBrowseContainer(Model):
+    total = fields.Int()
+    items = fields.List(fields.Nested(CrunchyPanel))
 
 
 class CrunchyAdBreak(Model):

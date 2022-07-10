@@ -8,7 +8,8 @@ from marshmallow.schema import _T
 
 from ...common.schemas import CommonSchema
 from ..domain.entities import CrunchySigningPolicyContainer, CrunchyToken, CrunchyPanelCollection, \
-    CrunchyEpisodeCollection, CrunchySeasonCollection, CrunchyMovie, CrunchySeries, CrunchyIndexContainer
+    CrunchyEpisodeCollection, CrunchySeasonCollection, CrunchyMovie, CrunchySeries, CrunchyIndexContainer, \
+    CrunchyBrowseContainer
 
 
 class ResourceSchema(CommonSchema):
@@ -94,34 +95,13 @@ class SigningPolicyContainerSchema(CommonSchema):
             raise e
 
 
-class IndexSchema(CommonSchema):
-    prefix: String = fields.Str()
-    offset: Integer = fields.Int()
-    count: Integer = fields.Int()
-
-
-class IndexContainerSchema(ResourceSchema):
-    total_count: Integer = fields.Int()
-    num_items: Integer = fields.Int()
-    items = fields.List(
-        fields.Nested(
-            nested=IndexSchema,
-            allow_none=True,
-            unknown=EXCLUDE
-        )
-    )
-
-    @post_load()
-    def __on_post_load(self, data, many, **kwargs) -> CrunchyIndexContainer:
-        try:
-            model = CrunchyIndexContainer.from_dict(data)
-            return model
-        except Exception as e:
-            self._logger.error(f"Conversion from dictionary failed", exc_info=e)
-            raise e
-
-
 class SeriesPanelMetaSchema(CommonSchema):
+    audio_locales: List = fields.List(fields.Str())
+    subtitle_locales: List = fields.List(fields.Str())
+    extended_description: String = fields.Str()
+    slug: String = fields.Str()
+    title: String = fields.Str()
+    slug_title: String = fields.Str()
     episode_count: Integer = fields.Int()
     season_count: Integer = fields.Int()
     is_mature: Boolean = fields.Bool()
@@ -130,12 +110,18 @@ class SeriesPanelMetaSchema(CommonSchema):
     is_dubbed: Boolean = fields.Bool()
     is_simulcast: Boolean = fields.Bool()
     maturity_ratings: List = fields.List(fields.Str())
-    tenant_categories: List = fields.List(fields.Str)
+    tenant_categories: List = fields.List(fields.Str())
     last_public_season_number: Integer = fields.Int()
     last_public_episode_number: Integer = fields.Int()
 
 
 class MoviePanelMetaSchema(CommonSchema):
+    audio_locales: List = fields.List(fields.Str())
+    subtitle_locales: List = fields.List(fields.Str())
+    extended_description: String = fields.Str()
+    slug: String = fields.Str()
+    title: String = fields.Str()
+    slug_title: String = fields.Str()
     duration_ms: Integer = fields.Int()
     movie_release_year: Integer = fields.Int()
     is_premium_only: Boolean = fields.Bool()
@@ -200,30 +186,82 @@ class PanelSchema(ResourceSchema):
         nested=ImageContainerSchema,
         allow_none=True,
         unknown=EXCLUDE,
-
     )
     movie_listing_metadata = fields.Nested(
         nested=MoviePanelMetaSchema,
         allow_none=True,
         unknown=EXCLUDE,
-
     )
     series_metadata = fields.Nested(
         nested=SeriesPanelMetaSchema,
         allow_none=True,
         unknown=EXCLUDE,
-
     )
     locale: String = fields.Str()
     search_metadata = fields.Nested(
         nested=SearchMetaSchema,
         allow_none=True,
         unknown=EXCLUDE,
-
     )
     last_public: String = fields.Str(allow_none=True)
+    linked_resource_key: String = fields.Str(allow_none=True)
     new: Boolean = fields.Bool()
     new_content: Boolean = fields.Bool()
+
+
+class IndexSchema(CommonSchema):
+    prefix: String = fields.Str()
+    offset: Integer = fields.Int()
+    count: Integer = fields.Int()
+    num_items: Integer = fields.Int()
+    items = fields.List(
+        fields.Nested(
+            nested=PanelSchema,
+            allow_none=True,
+            unknown=EXCLUDE
+        )
+    )
+
+
+class IndexContainerSchema(ResourceSchema):
+    total_count: Integer = fields.Int()
+    num_items: Integer = fields.Int()
+    items = fields.List(
+        fields.Nested(
+            nested=IndexSchema,
+            allow_none=True,
+            unknown=EXCLUDE
+        )
+    )
+
+    @post_load()
+    def __on_post_load(self, data, many, **kwargs) -> CrunchyIndexContainer:
+        try:
+            model = CrunchyIndexContainer.from_dict(data)
+            return model
+        except Exception as e:
+            self._logger.error(f"Conversion from dictionary failed", exc_info=e)
+            raise e
+
+
+class BrowseContainerSchema(ResourceSchema):
+    total: Integer = fields.Int()
+    items = fields.List(
+        fields.Nested(
+            nested=PanelSchema,
+            allow_none=True,
+            unknown=EXCLUDE
+        )
+    )
+
+    @post_load()
+    def __on_post_load(self, data, many, **kwargs) -> CrunchyBrowseContainer:
+        try:
+            model = CrunchyBrowseContainer.from_dict(data)
+            return model
+        except Exception as e:
+            self._logger.error(f"Conversion from dictionary failed", exc_info=e)
+            raise e
 
 
 class CollectionContainerSchema(ResourceSchema):

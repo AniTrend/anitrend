@@ -41,7 +41,7 @@ class BucketRepositoryTestCase(TestCase):
 
     def setUp(self):
         self.repository = RepositoryContainer.bucket_repository()
-        data = FileSystem.get_file_contents(".samples", "crunchy_sample.json")
+        data = FileSystem.get_file_contents(".samples", "crunchy_index_sample.json")
         self.container = CrunchyIndexContainer.from_json(data)
         self.assertIsNotNone(self.container)
 

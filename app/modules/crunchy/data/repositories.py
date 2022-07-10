@@ -1,22 +1,25 @@
 from json import JSONDecodeError
 from logging import Logger
-from typing import Optional, Any, List
+from typing import Optional, Any, List, Tuple, Dict
 
 from django.db.models import QuerySet
+from pyxtension.streams import stream
 from uplink import Consumer
 
 from app.modules.common import AttributeDictionary, TimeUtility
 from app.modules.common.errors import NoDataError
 from app.modules.common.repositories import DataRepository
+from .schemas import IndexContainerSchema, SigningPolicySchema
 
 from ..domain.entities import CrunchyToken as Token, CrunchySigningPolicyContainer as SigningPolicyContainer, \
     CrunchyPanelCollection as PanelCollection, CrunchySeasonCollection as SeasonCollection, \
-    CrunchyEpisodeCollection as EpisodeCollection, CrunchySeries as Series, \
+    CrunchyEpisodeCollection as EpisodeCollection, CrunchySeries as Series, CrunchyMovieMeta as MovieMeta, \
+    CrunchySeriesMeta as SeriesMeta, CrunchyBrowseContainer as BrowseContainer, \
     CrunchyIndexContainer as IndexContainer, CrunchyIndex as Index, CrunchyPanel as Panel, \
     CrunchyImageContainer as ImageContainer
 from ..data.sources import TokenEndpoint, SigningEndpoint, CmsEndpoint, BucketEndpoint
 from ..models import CrunchyToken, CrunchySigningPolicy, CrunchySeries, CrunchySeason, CrunchyEpisode, \
-    CrunchyPanel, CrunchySeriesPanel, CrunchyMoviePanel
+    CrunchyPanel, CrunchySeriesMeta, CrunchyMovieMeta, CrunchyIndex
 
 
 class AuthenticationRepository(DataRepository):
@@ -72,7 +75,7 @@ class AuthenticationRepository(DataRepository):
     def get_authorization_header(self) -> Optional[str]:
         token = self.invoke()
         if token is not None:
-            return f"Bearer {token.access_token}"
+            return str(token)
         return None
 
 
@@ -91,7 +94,7 @@ class SingingRepository(DataRepository):
         self.__auth_repository = auth_repository
         self.__time_utility = time_utility
 
-    def __make_request(self) -> Optional[Any]:
+    def __make_request(self) -> Optional[SigningPolicySchema]:
         signing_policy = self._remote_source.get_signing_policy(
             authorization=self.__auth_repository.get_authorization_header()
         )
@@ -133,14 +136,163 @@ class SingingRepository(DataRepository):
 class CmsRepository(DataRepository):
     _remote_source: CmsEndpoint
 
-    def __init__(self, logger: Logger, remote_source: Consumer) -> None:
+    def __init__(
+            self,
+            logger: Logger,
+            remote_source: Consumer,
+            auth_repository: AuthenticationRepository
+    ) -> None:
         super().__init__(logger, remote_source)
+        self.__index: QuerySet = CrunchyIndex.objects
         self.__panel: QuerySet = CrunchyPanel.objects
-        self.__series_panel: QuerySet = CrunchySeriesPanel.objects
-        self.__movie_panel: QuerySet = CrunchyMoviePanel.objects
+        self.__series_panel: QuerySet = CrunchySeriesMeta.objects
+        self.__movie_panel: QuerySet = CrunchyMovieMeta.objects
+        self.__auth_repository = auth_repository
+
+    def __make_request(self) -> Optional[IndexContainer]:
+        return self._remote_source.get_index(
+            authorization=self.__auth_repository.get_authorization_header()
+        )
+
+    def __make_panel_request(self, prefix: str, size: int) -> Optional[BrowseContainer]:
+        return self._remote_source.get_browse(
+            authorization=self.__auth_repository.get_authorization_header(),
+            q=prefix,
+            n=size
+        )
+
+    @staticmethod
+    def __map_movie_listing_meta(metadata: Optional[MovieMeta]) -> Optional[CrunchyMovieMeta]:
+        if metadata is not None:
+            return CrunchyMovieMeta(
+                audio_locales=metadata.audio_locales,
+                subtitle_locales=metadata.subtitle_locales,
+                extended_description=metadata.extended_description,
+                slug=metadata.slug,
+                title=metadata.title,
+                slug_title=metadata.slug_title,
+                duration_ms=metadata.duration_ms,
+                movie_release_year=metadata.movie_release_year,
+                is_premium_only=metadata.is_premium_only,
+                is_mature=metadata.is_mature,
+                mature_blocked=metadata.mature_blocked,
+                is_subbed=metadata.is_subbed,
+                is_dubbed=metadata.is_dubbed,
+                available_offline=metadata.available_offline,
+                maturity_ratings=metadata.maturity_ratings,
+                tenant_categories=metadata.tenant_categories,
+            )
+        return None
+
+    @staticmethod
+    def __map_series_listing_meta(metadata: Optional[SeriesMeta]) -> Optional[CrunchySeriesMeta]:
+        if metadata is not None:
+            return CrunchySeriesMeta(
+                audio_locales=metadata.audio_locales,
+                subtitle_locales=metadata.subtitle_locales,
+                extended_description=metadata.extended_description,
+                slug=metadata.slug,
+                title=metadata.title,
+                slug_title=metadata.slug_title,
+                episode_count=metadata.episode_count,
+                season_count=metadata.season_count,
+                is_mature=metadata.is_mature,
+                mature_blocked=metadata.mature_blocked,
+                is_subbed=metadata.is_subbed,
+                is_dubbed=metadata.is_dubbed,
+                is_simulcast=metadata.is_simulcast,
+                maturity_ratings=metadata.maturity_ratings,
+                tenant_categories=metadata.tenant_categories,
+                last_public_season_number=metadata.last_public_season_number,
+                last_public_episode_number=metadata.last_public_episode_number,
+            )
+        return None
+
+    def __map_panels(self, panels: List[Panel]) -> Tuple[int, int]:
+        created_records: int = 0
+        updated_records: int = 0
+
+        for panel in panels:
+            panel: Panel
+            _panel, _panel_created = self.__panel.update_or_create(
+                panel_id=panel.id,
+                external_id=panel.external_id.lstrip("SRZ."),
+                channel_id=panel.channel_id,
+                title=panel.title,
+                description=panel.description,
+                type=panel.type,
+                slug=panel.slug,
+                images=panel.images,
+                movie_listing_metadata=self.__map_movie_listing_meta(panel.movie_listing_metadata),
+                series_metadata=self.__map_series_listing_meta(panel.series_metadata),
+                last_public=panel.last_public,
+                new=panel.new,
+                new_content=panel.new_content,
+            )
+
+            if created_records:
+                created_records += 1
+                self._logger.info(f"Added new entry -> {_panel.title}")
+            else:
+                updated_records += 1
+                self._logger.info(f"Updated entry -> {_panel.title}")
+
+        return created_records, updated_records
+
+    def map_and_save_results(self, container: IndexContainer) -> Dict:
+        created_records: int = 0
+        updated_records: int = 0
+
+        self._logger.info(f"Mapping and save results starting")
+
+        for index in container.items:
+            index: Index
+            _index, _created = self.__index.update_or_create(
+                prefix=index.prefix,
+                offset=index.offset,
+                count=index.count
+            )
+
+            if _created:
+                created_records += 1
+                self._logger.info(f"Added new entry -> {_index}")
+            else:
+                updated_records += 1
+                self._logger.info(f"Updated entry -> {_index}")
+
+        created_panels: int = 0
+        updated_panels: int = 0
+
+        if created_records > 0 or updated_records > 0:
+            for index in container.items:
+                index: Index
+                browse_container = self.__make_panel_request(index.prefix, index.num_items)
+                created_panels, updated_panels = self.__map_panels(browse_container.items)
+
+        return {
+            "index": {
+                "created": created_records,
+                "updated": updated_records
+            },
+            "panel": {
+                "created": created_panels,
+                "updated": updated_panels
+            }
+        }
+
+    def __on_result(self, data: IndexContainer) -> Dict:
+        if data is not None:
+            return self.map_and_save_results(data)
+        else:
+            raise NoDataError(f"Data received for anime entries was null")
 
     def invoke(self, **kwargs) -> Optional[Any]:
-        return super().invoke(**kwargs)
+        try:
+            data = self.__make_request()
+            return self.__on_result(data)
+        except JSONDecodeError as e:
+            self._logger.error(f"Malformed response with error message `{e.doc}`", exc_info=e)
+            raise e
 
 
 class BucketRepository(DataRepository):
@@ -152,18 +304,21 @@ class BucketRepository(DataRepository):
             remote_source: Consumer,
             cms_repository: CmsRepository,
             signing_repository: SingingRepository,
-            authentication_repository: AuthenticationRepository
+            auth_repository: AuthenticationRepository
     ) -> None:
         super().__init__(logger, remote_source)
         self.__panel: QuerySet = CrunchyPanel.objects
-        self.__movie_panel: QuerySet = CrunchyMoviePanel.objects
-        self.__series_panel: QuerySet = CrunchySeriesPanel.objects
+        self.__movie_panel: QuerySet = CrunchyMovieMeta.objects
+        self.__series_panel: QuerySet = CrunchySeriesMeta.objects
         self.__cms_repository = cms_repository
         self.__signing_repository = signing_repository
-        self.__authentication_repository = authentication_repository
+        self.__auth_repository = auth_repository
 
-    def __make_request(self):
-        policy = self.__signing_repository.invoke()
+    def __make_request(self, panel_id: str) -> Optional[CrunchySeries]:
+        return self._remote_source.get_series_details(
+            authorization=self.__auth_repository.get_authorization_header(),
+            series_id=panel_id
+        )
 
     def map_and_save_results(self, container: IndexContainer) -> Any:
         created_records: int = 0
@@ -179,7 +334,7 @@ class BucketRepository(DataRepository):
                 if panel.movie_listing_metadata is not None:
                     generated_id: str = panel.external_id
                     movie_listing, created = self.__movie_panel.update_or_create(
-                        id=generated_id.lstrip("SRZ."),
+                        id=generated_id,
                         duration_ms=panel.movie_listing_metadata.duration_ms,
                         movie_release_year=panel.movie_listing_metadata.movie_release_year,
                         is_premium_only=panel.movie_listing_metadata.is_premium_only,
@@ -196,7 +351,7 @@ class BucketRepository(DataRepository):
                 if panel.series_metadata is not None:
                     generated_id: str = panel.external_id
                     series_listing, created = self.__series_panel.update_or_create(
-                        id=generated_id.lstrip("SRZ."),
+                        id=generated_id,
                         episode_count=panel.series_metadata.episode_count,
                         season_count=panel.series_metadata.season_count,
                         is_mature=panel.series_metadata.is_mature,
@@ -240,4 +395,8 @@ class BucketRepository(DataRepository):
         }
 
     def invoke(self, **kwargs) -> Optional[Any]:
+        for panel in self.__panel:
+            panel: CrunchyPanel
+            self.__make_request(panel.panel_id)
+
         return self.__make_request()

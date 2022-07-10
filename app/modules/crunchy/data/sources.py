@@ -3,7 +3,7 @@ from marshmallow import EXCLUDE
 
 from app.modules.common.decorators import raise_api_error
 from ..data.schemas import TokenSchema, SigningPolicySchema, IndexContainerSchema, \
-    PanelSchema, SeriesSchema, SeasonContainerSchema, EpisodeContainerSchema
+    BrowseContainerSchema, SeriesSchema, SeasonContainerSchema, EpisodeContainerSchema
 
 __TIME_OUT__: int = 180
 __MAX_ATTEMPTS__: int = 5
@@ -71,23 +71,23 @@ class CmsEndpoint(Consumer):
 
     @raise_api_error
     @get("content/v1/browse/index")
-    def get_panel(
+    def get_index(
             self,
             authorization: Header("Authorization"),
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> PanelSchema(unknown=EXCLUDE):
+    ) -> IndexContainerSchema(unknown=EXCLUDE):
         pass
 
     @raise_api_error
     @get("content/v1/browse")
-    def get_index(
+    def get_browse(
             self,
             authorization: Header("Authorization"),
             q: Query(name="q", type=str),
             sort_by: Query(name="sort_by", type=str) = "alphabetical",
             n: Query(name="n", type=int) = 100,
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> IndexContainerSchema(unknown=EXCLUDE):
+    ) -> BrowseContainerSchema(unknown=EXCLUDE):
         pass
 
 
@@ -124,17 +124,6 @@ class BucketEndpoint(Consumer):
             series_id: Query(name="series_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"
     ) -> SeasonContainerSchema(unknown=EXCLUDE):
-        pass
-
-    @raise_api_error
-    @get("cms/v2/{bucket}/episodes")
-    def get_episodes(
-            self,
-            authorization: Header("Authorization"),
-            bucket: Path(name="bucket", type=str),
-            season_id: Query(name="season_id", type=str),
-            locale: Query(name="locale", type=str) = "en-US"
-    ) -> EpisodeContainerSchema(unknown=EXCLUDE):
         pass
 
     @raise_api_error

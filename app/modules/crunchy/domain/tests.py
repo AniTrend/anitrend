@@ -7,7 +7,7 @@ from ..domain.entities import CrunchyIndexContainer
 
 class EntityDeserializationTestCase(unittest.TestCase):
     def test_crunchy_deserialization(self):
-        data = FileSystem.get_file_contents(".samples", "crunchy_sample.json")
+        data = FileSystem.get_file_contents(".samples", "crunchy_index_sample.json")
         entity = CrunchyIndexContainer.from_json(data)
         self.assertIsNotNone(entity)
 
