@@ -8,5 +8,5 @@ django-filter==2.4.0
 graphene-django==2.15.0
 graphene-django-extras==0.5.1
 django-enumfield==2.0.2
-dependency_injector==4.32.2
+dependency_injector==4.41.0
 serde==0.8.1
