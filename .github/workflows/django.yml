@@ -2,9 +2,14 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - feature/*
+      - refactor/*
+      - hotfix/*
   pull_request:
-    branches: [ "main" ]
+    branches: 
+      - main
+      - develop
 
 jobs:
   build:
@@ -27,4 +32,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python manage.py test
+        ./scripts/manage.py test
