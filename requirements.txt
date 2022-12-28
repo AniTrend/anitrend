@@ -5,7 +5,7 @@ requests==2.25.1
 graphene==2.1.8
 marshmallow==3.11.1
 django-filter==2.4.0
-graphene-django==2.15.0
+graphene-django==3.0.0
 graphene-django-extras==0.5.1
 django-enumfield==2.0.2
 dependency_injector==4.32.2
