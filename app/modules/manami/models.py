@@ -1,18 +1,17 @@
-from django.db import models
-from django.contrib.postgres.fields import ArrayField
+
 from django.utils import timezone
+from mongoengine import Document, IntField, StringField, URLField, ListField, DateTimeField, ReferenceField, CASCADE
 
 from .choices import SEASON_CHOICES, TYPE_CHOICES, STATUS_CHOICES
-from ..common.models import CommonModel
 
 
-class AnimeSource(CommonModel):
-    anidb = models.IntegerField(null=True)
-    anilist = models.IntegerField(null=True)
-    animeplanet = models.CharField(max_length=256, null=True)
-    kitsu = models.IntegerField(null=True)
-    mal = models.IntegerField(null=True)
-    notify = models.CharField(max_length=25, null=True)
+class AnimeSource(Document):
+    anidb = IntField(null=True)
+    anilist = IntField(null=True)
+    animeplanet = StringField(max_length=256, null=True)
+    kitsu = IntField(null=True)
+    mal = IntField(null=True)
+    notify = StringField(max_length=25, null=True)
 
     def __str__(self):
         if self.anilist is not None:
@@ -29,20 +28,20 @@ class AnimeSource(CommonModel):
             return f"notify: {str(self.notify)}"
 
 
-class Anime(CommonModel):
-    title = models.CharField(max_length=256)
-    source = models.OneToOneField(AnimeSource, on_delete=models.CASCADE)
-    year = models.IntegerField(null=True)
-    season = models.CharField(max_length=12, choices=SEASON_CHOICES)
-    type = models.CharField(max_length=12, choices=TYPE_CHOICES)
-    episodes = models.IntegerField()
-    status = models.CharField(max_length=12, choices=STATUS_CHOICES)
-    picture = models.URLField()
-    thumbnail = models.CharField(max_length=256,)
-    synonyms = ArrayField(models.CharField(max_length=256))
-    relations = ArrayField(models.URLField())
-    tags = ArrayField(models.CharField(max_length=256))
-    updated_at = models.DateTimeField(default=timezone.now)
+class Anime(Document):
+    title = StringField(max_length=256)
+    source = ReferenceField(document_type=AnimeSource, reverse_delete_rule=CASCADE)
+    year = IntField(null=True)
+    season = StringField(max_length=12, choices=SEASON_CHOICES)
+    type = StringField(max_length=12, choices=TYPE_CHOICES)
+    episodes = IntField()
+    status = StringField(max_length=12, choices=STATUS_CHOICES)
+    picture = URLField()
+    thumbnail = StringField(max_length=256,)
+    synonyms = ListField(StringField(max_length=256))
+    relations = ListField(URLField())
+    tags = ListField(StringField(max_length=256))
+    updated_at = DateTimeField(default=timezone.now().utcnow())
 
     def __str__(self):
         return self.title

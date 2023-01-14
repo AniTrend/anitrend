@@ -2,11 +2,11 @@ from json import JSONDecodeError
 from logging import Logger
 from typing import Optional, Any
 
-from django.db.models import QuerySet
+from mongoengine import QuerySetManager
 from uplink import Consumer
 
-from app.modules.common.errors import NoDataError
-from app.modules.common.repositories import DataRepository
+from core.errors import NoDataError
+from core.repositories import DataRepository
 
 from ..domain.entities import XemContainer
 from ..models import Xem
@@ -18,27 +18,23 @@ class Repository(DataRepository):
 
     def __init__(self, logger: Logger, remote_source: Consumer) -> None:
         super().__init__(logger, remote_source)
-        self.__xem: QuerySet = Xem.objects
+        self.__xem: QuerySetManager = Xem.objects
 
     def map_and_save_results(self, container: XemContainer) -> Any:
-        created_records: int = 0
-        updated_records: int = 0
+        changed_records: int = 0
         self._logger.info(f"Mapping and save results starting")
         for _id, _titles in container.data.items():
-            _xem, created = self.__xem.update_or_create(
+            _xem = self.__xem.modify(
+                upsert=True,
                 id=_id,
                 titles=_titles
             )
-            if created:
-                created_records += 1
-                self._logger.info(f"Added new entry -> {_xem.id}")
-            else:
-                updated_records += 1
-                self._logger.info(f"Updated entry -> {_xem.id}")
+            if _xem:
+                changed_records += 1
+                self._logger.info(f"Added/Updated entry -> {_xem.id}")
 
         return {
-            "created": created_records,
-            "updated": updated_records
+            "changed": changed_records
         }
 
     def __on_result(self, data: XemContainer):

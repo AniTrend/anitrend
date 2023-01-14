@@ -1,6 +1,6 @@
 from typing import Optional, Any
 
-from app.modules.common.usecases import CommonUseCase
+from core.usecases import CommonUseCase
 
 
 class XemUseCase(CommonUseCase):

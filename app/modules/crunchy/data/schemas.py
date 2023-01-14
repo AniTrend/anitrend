@@ -4,9 +4,8 @@ from itertools import chain
 from marshmallow import fields, EXCLUDE, post_load, RAISE
 from marshmallow.error_store import ErrorStore
 from marshmallow.fields import String, Integer, Float, Boolean, List
-from marshmallow.schema import _T
 
-from ...common.schemas import CommonSchema
+from core.schemas import CommonSchema
 from ..domain.entities import CrunchySigningPolicyContainer, CrunchyToken, CrunchyPanelCollection, \
     CrunchyEpisodeCollection, CrunchySeasonCollection, CrunchyMovie, CrunchySeries, CrunchyIndexContainer, \
     CrunchyBrowseContainer
@@ -23,7 +22,7 @@ class ResourceSchema(CommonSchema):
     ) -> typing.Union[typing.Mapping[str, typing.Any], typing.Iterable[typing.Mapping[str, typing.Any]]]:
         # Images seem to be nested lists which is redundant so we're going to flatten the list
         if "images" in data:
-            images = data["images"]
+            images: typing.Mapping[str, typing.Any] = data["images"]
             if "poster_tall" in images:
                 poster_tall = list(chain.from_iterable(images["poster_tall"]))
                 data["images"]["poster_tall"] = poster_tall
@@ -44,7 +43,7 @@ class ResourceSchema(CommonSchema):
             partial=False,
             unknown=RAISE,
             index=None
-    ) -> typing.Union[_T, typing.List[_T]]:
+    ) -> typing.Union[typing.Any, typing.List[typing.Any]]:
         return super()._deserialize(
             self.__modify_image_body(data),
             error_store=error_store,

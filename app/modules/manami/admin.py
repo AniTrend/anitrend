@@ -11,5 +11,5 @@ class AnimeSourceAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Anime, AnimeAdmin)
-admin.site.register(AnimeSource, AnimeSourceAdmin)
+admin.register(Anime, AnimeAdmin)
+admin.register(AnimeSource, AnimeSourceAdmin)

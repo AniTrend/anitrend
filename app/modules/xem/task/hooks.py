@@ -1,6 +1,6 @@
 from django_q.models import Task
 
-from app.dependencies import AppContainer
+from di import AppContainer
 
 
 def on_task_completed(task: Task):

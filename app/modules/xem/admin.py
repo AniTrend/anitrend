@@ -7,4 +7,4 @@ class XemAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Xem, XemAdmin)
+admin.register(Xem, XemAdmin)

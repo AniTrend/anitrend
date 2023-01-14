@@ -4,7 +4,7 @@ from django_q.tasks import schedule
 
 from dependency_injector.wiring import inject, Provide
 
-from app.modules.common import LoggingUtility
+from core import LoggingUtility
 
 
 @inject

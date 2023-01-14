@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os.path
 from pathlib import Path
 from decouple import config
+import mongoengine
 
 
 def __get_base_dir() -> str:
@@ -53,14 +54,11 @@ INSTALLED_APPS = [
     "graphene_django",
     "django_filters",
     "django_q",
-    "app.graphql",
+    "corsheaders",
     "app.modules.service",
-    "app.modules.series",
     "app.modules.manami",
-    "app.modules.crunchy",
-    "app.modules.trakt",
     "app.modules.xem",
-    "app.modules.skyhook",
+    "media",
 ]
 
 MIDDLEWARE = [
@@ -71,6 +69,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "app.urls"
@@ -97,13 +96,24 @@ WSGI_APPLICATION = "app.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # "default": {
+    #     "ENGINE": 'django.db.backends.postgresql_psycopg2',
+    #     "NAME": config("DJANGO_DATABASE_NAME", cast=str),
+    #     "USER": config("DJANGO_DATABASE_USER", cast=str),
+    #     "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
+    #     "HOST": config("DJANGO_DATABASE_HOST", cast=str),
+    #     "PORT": config("DJANGO_DATABASE_PORT", cast=int),
+    # },
     "default": {
-        "ENGINE": 'django.db.backends.postgresql_psycopg2',
-        "NAME": config("DJANGO_DATABASE_NAME", cast=str),
-        "USER": config("DJANGO_DATABASE_USER", cast=str),
-        "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
-        "HOST": config("DJANGO_DATABASE_HOST", cast=str),
-        "PORT": config("DJANGO_DATABASE_PORT", cast=int),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": config("DJANGO_REDIS_URI", cast=str),
     }
 }
 
@@ -114,8 +124,8 @@ Q_CLUSTER = {
 }
 
 GRAPHENE = {
-    "SCHEMA": "app.graphql.api.schema",
-    "SCHEMA_OUTPUT": "tmp/schema.json",
+    "SCHEMA": "app.graphql.schema.schema",
+    "SCHEMA_OUTPUT": "static/schema.json",
     "SCHEMA_INDENT": 2,
 }
 
@@ -161,3 +171,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CORS_ALLOW_METHODS = (
+    "GET",
+    "OPTIONS",
+    "POST",
+)
+
+mongoengine.connect(host=config("DJANGO_MONGODB_URI", cast=str))

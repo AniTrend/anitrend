@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from app.modules.common import FileSystem
+from core import FileSystem
 from .di import UseCaseContainer, RepositoryContainer, RemoteSourceContainer
 from .domain.entities import XemContainer
 from .models import Xem

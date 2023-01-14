@@ -2,7 +2,7 @@ from uplink import get, timeout, retry, ratelimit, Consumer, Path, Query
 from marshmallow import EXCLUDE
 from marshmallow.fields import List, Nested
 
-from app.modules.common.decorators import raise_api_error
+from core.decorators import raise_api_error
 from ..data.schemas import Show
 
 __TIME_OUT__: int = 180

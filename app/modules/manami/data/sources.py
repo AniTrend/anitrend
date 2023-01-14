@@ -1,7 +1,7 @@
 from uplink import get, timeout, retry, ratelimit, Consumer
 from marshmallow import EXCLUDE
 
-from app.modules.common.decorators import raise_api_error
+from core.decorators import raise_api_error
 from ..data.schemas import Container
 
 __TIME_OUT__: int = 180

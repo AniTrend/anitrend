@@ -2,7 +2,7 @@ import dependency_injector.containers as containers
 import dependency_injector.providers as providers
 from uplink.auth import ApiTokenHeader
 
-from app.dependencies import AppContainer
+from di import AppContainer
 from ..domain.usecases import CrunchyUseCase
 from ..data.sources import TokenEndpoint, SigningEndpoint, CmsEndpoint, BucketEndpoint
 from ..data.repositories import BucketRepository, CmsRepository, SingingRepository, AuthenticationRepository

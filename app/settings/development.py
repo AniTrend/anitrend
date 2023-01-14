@@ -13,10 +13,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from .common import *
 
 
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 1500
 
 Q_CLUSTER = {
-    "name": "relations-sync",
+    "name": "edge-sync",
     "orm": "default",
     'workers': 2,
     "recycle": 250,

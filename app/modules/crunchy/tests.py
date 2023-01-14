@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from app.modules.common import FileSystem
+from core.helpers import FileSystem
 from .di import UseCaseContainer, RepositoryContainer, RemoteSourceContainer
 from .domain.entities import CrunchyIndexContainer
 from .models import CrunchyPanel
@@ -41,7 +41,10 @@ class BucketRepositoryTestCase(TestCase):
 
     def setUp(self):
         self.repository = RepositoryContainer.bucket_repository()
-        data = FileSystem.get_file_contents(".samples", "crunchy_index_sample.json")
+        data = FileSystem.get_file_contents(
+            directory=".samples/crunchy",
+            file_name="index.json"
+        )
         self.container = CrunchyIndexContainer.from_json(data)
         self.assertIsNotNone(self.container)
 

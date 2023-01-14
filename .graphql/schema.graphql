@@ -4,7 +4,7 @@ schema {
     query: Query
 }
 
-"Series node with ID"
+"Media node with ID"
 interface SeriesNode {
     "The ID of the object"
     id: ID!
@@ -31,7 +31,7 @@ type Query {
         anilist: Int,
         "AnimePlanet Slug"
         animeplanet: String,
-        "Series Id"
+        "Media Id"
         id: ID,
         "Kitsu Id"
         kitsu: Int,
@@ -75,13 +75,13 @@ type Series implements SeriesNode {
     season: SeasonType!
     "Other sources"
     source: Source!
-    "Series type"
+    "Media type"
     status: StatusType!
     "Primary picture of the series"
     thumbnail: String
     "Title of the series"
     title: String!
-    "Series type"
+    "Media type"
     type: SeriesType!
     "Last updated time"
     updatedAt: Int!
@@ -96,7 +96,7 @@ type SeriesConnection {
     pageInfo: PageInfo!
 }
 
-"A Relay edge containing a `Series` and its cursor."
+"A Relay edge containing a `Media` and its cursor."
 type SeriesEdge {
     "A cursor for use in pagination"
     cursor: String!

@@ -1,25 +1,22 @@
 from json import JSONDecodeError
 from logging import Logger
-from typing import Optional, Any, List, Tuple, Dict
+from typing import Optional, Any, List, Tuple, Dict, Callable
 
 from django.db.models import QuerySet
 from pyxtension.streams import stream
 from uplink import Consumer
 
-from app.modules.common import AttributeDictionary, TimeUtility
-from app.modules.common.errors import NoDataError
-from app.modules.common.repositories import DataRepository
-from .schemas import IndexContainerSchema, SigningPolicySchema
+from core.utilities import TimeUtility
+from core.errors import NoDataError
+from core.repositories import DataRepository
+from .schemas import SigningPolicySchema
 
-from ..domain.entities import CrunchyToken as Token, CrunchySigningPolicyContainer as SigningPolicyContainer, \
-    CrunchyPanelCollection as PanelCollection, CrunchySeasonCollection as SeasonCollection, \
-    CrunchyEpisodeCollection as EpisodeCollection, CrunchySeries as Series, CrunchyMovieMeta as MovieMeta, \
+from ..domain.entities import CrunchyMovieMeta as MovieMeta, \
     CrunchySeriesMeta as SeriesMeta, CrunchyBrowseContainer as BrowseContainer, \
     CrunchyIndexContainer as IndexContainer, CrunchyIndex as Index, CrunchyPanel as Panel, \
     CrunchyImageContainer as ImageContainer
 from ..data.sources import TokenEndpoint, SigningEndpoint, CmsEndpoint, BucketEndpoint
-from ..models import CrunchyToken, CrunchySigningPolicy, CrunchySeries, CrunchySeason, CrunchyEpisode, \
-    CrunchyPanel, CrunchySeriesMeta, CrunchyMovieMeta, CrunchyIndex
+from ..models import CrunchyToken, CrunchySigningPolicy, CrunchySeries, CrunchyPanel, CrunchySeriesMeta, CrunchyMovieMeta, CrunchyIndex
 
 
 class AuthenticationRepository(DataRepository):
@@ -244,6 +241,9 @@ class CmsRepository(DataRepository):
         updated_records: int = 0
 
         self._logger.info(f"Mapping and save results starting")
+
+        func: Callable[[int], str] = lambda var: (str(var))
+        stream(container.items).map()
 
         for index in container.items:
             index: Index

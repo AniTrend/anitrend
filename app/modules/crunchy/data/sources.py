@@ -1,7 +1,7 @@
 from uplink import get, post, timeout, retry, ratelimit, Consumer, Query, Field, Header, Path
 from marshmallow import EXCLUDE
 
-from app.modules.common.decorators import raise_api_error
+from core.decorators import raise_api_error
 from ..data.schemas import TokenSchema, SigningPolicySchema, IndexContainerSchema, \
     BrowseContainerSchema, SeriesSchema, SeasonContainerSchema, EpisodeContainerSchema
 

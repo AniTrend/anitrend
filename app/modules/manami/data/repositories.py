@@ -5,10 +5,10 @@ from typing import Optional, Any, List
 from django.db.models import QuerySet
 from uplink import Consumer
 
-from app.modules.common import AttributeDictionary
-from app.modules.common.errors import NoDataError
-from app.modules.common.utilities import LinkUtility
-from app.modules.common.repositories import DataRepository
+from core import AttributeDictionary
+from core.errors import NoDataError
+from core.utilities import LinkUtility
+from core.repositories import DataRepository
 
 from ..domain.entities import AnimeContainer, AnimeData
 from ..data.sources import RemoteSource

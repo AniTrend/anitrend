@@ -1,7 +1,7 @@
 from uplink import get, timeout, retry, ratelimit, Consumer, Query
 from .schemas import Container
 from marshmallow import EXCLUDE
-from app.modules.common.decorators import raise_api_error
+from core.decorators import raise_api_error
 
 __TIME_OUT__: int = 120
 __MAX_ATTEMPTS__: int = 5
@@ -32,7 +32,7 @@ class RemoteSource(Consumer):
     ) -> Container(unknown=EXCLUDE):
         """
         Retrieve all the names and id mappings for this listing
-        :param origin: Non optional params: origin(an entity string like 'tvdb', 'anidb')
+        :param origin: origin(an entity string like 'tvdb', 'anidb')
         :param language: A language string like 'us' or 'jp' default is all
         :param default_names: 1(yes) or 0(no) should the default names be added to the list ? default is 0(no)
         :return: XemContainer

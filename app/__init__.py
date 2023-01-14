@@ -1,6 +1,6 @@
 """Main package"""
 
-from app.dependencies import AppContainer
+from di import AppContainer
 from . import settings
 
 container = AppContainer()

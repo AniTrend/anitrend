@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from app.dependencies import AppContainer
+from di import AppContainer
 from ..di import UseCaseContainer
 
 

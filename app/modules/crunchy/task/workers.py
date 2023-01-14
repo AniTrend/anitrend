@@ -1,7 +1,7 @@
 from time import sleep
 from typing import Any, Optional
 
-from app.dependencies import AppContainer
+from di import AppContainer
 
 
 def start_sync_poll(*args, **kwargs) -> Optional[Any]:

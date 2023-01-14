@@ -1,7 +1,7 @@
 import dependency_injector.containers as containers
 import dependency_injector.providers as providers
 
-from app.dependencies import AppContainer
+from di import AppContainer
 from ..data.sources import RemoteSource
 from ..domain.usecases import XemUseCase
 from ..data.repositories import Repository

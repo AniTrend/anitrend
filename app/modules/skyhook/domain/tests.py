@@ -1,6 +1,6 @@
 import unittest
 
-from app.modules.common import FileSystem
+from core import FileSystem
 
 from ..domain.entities import SkyhookShow
 

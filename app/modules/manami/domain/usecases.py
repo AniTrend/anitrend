@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from app.modules.common.usecases import CommonUseCase
+from core.usecases import CommonUseCase
 
 
 class ManAniUseCase(CommonUseCase):

@@ -1,6 +1,6 @@
 from marshmallow import fields, post_load, EXCLUDE
 
-from ...common.schemas import CommonSchema
+from core.schemas import CommonSchema
 from ..domain.entities import SkyhookShow
 
 
