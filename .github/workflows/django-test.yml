@@ -1,4 +1,4 @@
-name: Django CI
+name: "Django test"
 
 on:
   push:
@@ -12,8 +12,7 @@ on:
       - develop
 
 jobs:
-  build:
-
+  django-test:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4

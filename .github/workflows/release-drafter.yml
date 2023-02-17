@@ -1,4 +1,4 @@
-name: Release drafter
+name: "Release drafter"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - 'develop' 
 
 jobs:
-  update_draft_release:
+  release-drafter:
     runs-on: ubuntu-latest
     steps:
       - uses: release-drafter/release-drafter@v5
