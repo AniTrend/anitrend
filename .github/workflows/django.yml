@@ -35,4 +35,4 @@ jobs:
         poetry install --no-root
     - name: Run Tests
       run: |
-        ./scripts/manage.py test
+        ./manage.py test
