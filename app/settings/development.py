@@ -27,6 +27,17 @@ Q_CLUSTER = {
     "label": "worker",
 }
 
+DATABASES = {
+    "default": {
+        "ENGINE": 'django.db.backends.postgresql_psycopg2',
+        "NAME": config("DJANGO_DATABASE_NAME", cast=str),
+        "USER": config("DJANGO_DATABASE_USER", cast=str),
+        "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
+        "HOST": config("DJANGO_DATABASE_HOST", cast=str),
+        "PORT": config("DJANGO_DATABASE_PORT", cast=int),
+    },
+}
+
 LANGUAGE_CODE = "en-uk"
 
 TIME_ZONE = "Africa/Johannesburg"

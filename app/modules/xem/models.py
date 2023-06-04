@@ -1,18 +1,14 @@
-from mongoengine import Document, ObjectIdField
-from mongoengine.fields import (
-    IntField,
-    StringField,
-    ListField,
-    DateTimeField
-)
+from django.contrib.postgres.fields import ArrayField
+from django.db import models
 from django.utils import timezone
 
+from core.models import CommonModel
 
-class Xem(Document):
-    ID = ObjectIdField()
-    id = IntField(primary_key=True)
-    titles = ListField(StringField(max_length=256))
-    updated_at = DateTimeField(default=timezone.now().utcnow())
+
+class Xem(CommonModel):
+    id = models.IntegerField(primary_key=True)
+    titles = ArrayField(models.CharField(max_length=256))
+    updated_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.id} - {self.titles}"

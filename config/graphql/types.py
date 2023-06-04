@@ -1,8 +1,10 @@
 import graphene
 from graphene_django import DjangoObjectType
 
+from ..models import Settings, DefaultImage, Config
 
-class ImageResourceObjectType(DjangoObjectType):
+
+class DefaultImageObjectType(DjangoObjectType):
     banner = graphene.String(
         name="banner",
         description="Banner image URL"
@@ -31,52 +33,7 @@ class ImageResourceObjectType(DjangoObjectType):
     class Meta:
         name = "ImageResource"
         description = "Image resource properties"
-        exclude = ["id"]
-
-
-class GroupObjectType(DjangoObjectType):
-    id = graphene.Int(
-        name="id",
-        description="Group ID"
-    )
-    authenticated = graphene.Boolean(
-        name="authenticated",
-        description="Authenticated status"
-    )
-    i18n = graphene.String(
-        name="i18n",
-        description="Group internationalization"
-    )
-
-    class Meta:
-        name = "Group"
-        description = "Navigation group properties"
-        exclude = ["id"]
-
-
-class NavigationObjectType(DjangoObjectType):
-    id = graphene.Int(
-        name="id",
-        description="Navigation ID"
-    )
-    destination = graphene.String(
-        name="destination",
-        description="Navigation destination"
-    )
-    i18n = graphene.String(
-        name="i18n",
-        description="Navigation internationalization"
-    )
-    icon = graphene.String(
-        name="icon",
-        description="Navigation icon"
-    )
-    group = GroupObjectType()
-
-    class Meta:
-        name = "Navigation"
-        description = "Navigation items for clients"
-        exclude = ["id"]
+        model = DefaultImage
 
 
 class SettingsObjectType(DjangoObjectType):
@@ -87,33 +44,23 @@ class SettingsObjectType(DjangoObjectType):
 
     class Meta:
         name = "Settings"
-        description = "Client configuration properties"
-        exclude = ["id"]
-
-
-class GenreMappingObjectType(DjangoObjectType):
-    genre = graphene.String(
-        name="genre",
-        description="Genre"
-    )
-    mediaId = graphene.Int(
-        name="mediaId",
-        description="Media ID"
-    )
-
-    class Meta:
-        name = "GenreMapping"
-        description = "Genre and media ID relation"
-        exclude = ["id"]
+        description = "Client default settings"
+        model = Settings
 
 
 class ConfigurationObjectType(DjangoObjectType):
-    settings = SettingsObjectType()
-    image = ImageResourceObjectType()
-    navigation = graphene.List(NavigationObjectType)
-    genreMappings = graphene.List(GenreMappingObjectType)
+    settings = graphene.Field(
+        SettingsObjectType,
+        name="settings",
+        description="Configuration settings"
+    )
+    default_image = graphene.Field(
+        DefaultImageObjectType,
+        name="defaultImage",
+        description="Default image resources"
+    )
 
     class Meta:
         name = "Configuration"
-        description = "Client configuration properties"
-        exclude = ["id"]
+        description = "Client configuration"
+        model = Config

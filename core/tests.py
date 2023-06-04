@@ -3,7 +3,7 @@ import unittest
 from datetime import datetime
 from typing import Final
 
-from core.utilities import LinkUtility, TimeUtility, LoggingUtility
+from .utilities import LinkUtility, TimeUtility, LoggingUtility
 
 
 class RegexSearchTestCase(unittest.TestCase):

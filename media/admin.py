@@ -11,11 +11,11 @@ class SourceAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.register(Media, MediaAdmin)
-admin.register(Source, SourceAdmin)
-admin.register(Airing,)
-admin.register(Season,)
-admin.register(MetaData,)
-admin.register(Information,)
-admin.register(Episode,)
-admin.register(Image,)
+admin.site.register(Media, MediaAdmin)
+admin.site.register(Source, SourceAdmin)
+admin.site.register(Airing,)
+admin.site.register(Season,)
+admin.site.register(MetaData,)
+admin.site.register(Information,)
+admin.site.register(Episode,)
+admin.site.register(Image,)

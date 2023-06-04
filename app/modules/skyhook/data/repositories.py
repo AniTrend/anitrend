@@ -2,7 +2,7 @@ from json import JSONDecodeError
 from logging import Logger
 from typing import Optional, Any, List, Dict
 
-from mongoengine import QuerySetManager
+from django.db.models import QuerySet
 from uplink import Consumer
 
 from core.errors import NoDataError
@@ -19,10 +19,10 @@ class Repository(DataRepository):
 
     def __init__(self, logger: Logger, remote_source: Consumer) -> None:
         super().__init__(logger, remote_source)
-        self.__show: QuerySetManager = Show.objects
-        self.__image: QuerySetManager = Image.objects
-        self.__episode: QuerySetManager = Episode.objects
-        self.__season: QuerySetManager = Season.objects
+        self.__show: QuerySet = Show.objects
+        self.__image: QuerySet = Image.objects
+        self.__episode: QuerySet = Episode.objects
+        self.__season: QuerySet = Season.objects
 
     @staticmethod
     def __get_image_by_type(images: List[SkyhookImage], image_type: str) -> Optional[str]:
@@ -47,7 +47,7 @@ class Repository(DataRepository):
             fan_art=self.__get_image_by_type(show.images, "Fanart"),
         )
 
-        _show, _show_created = self.__show.save(
+        _show, _show_created = self.__show.update_or_create(
             tvdb_id=show.tvdbId,
             title=show.title,
             overview=show.overview,

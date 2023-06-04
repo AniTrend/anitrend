@@ -1,13 +1,13 @@
 import graphene
 from graphene import relay
-from graphene_mongo import MongoengineObjectType
+from graphene_django import DjangoObjectType
 
 from media.models import Media, Source, Airing, Season, MetaData, Information, Episode, Image
 from ..di import MediaRepositoryContainer as Container
 from .enums import StatusType, MediaType, SeasonType
 
 
-class SourceObjectType(MongoengineObjectType):
+class SourceObjectType(DjangoObjectType):
     anidb = graphene.Int(description="Identifier for anidb")
     anilist = graphene.Int(description="Identifier for anilist")
     animeplanet = graphene.String(description="Identifier for animeplanet")
@@ -25,7 +25,7 @@ class SourceObjectType(MongoengineObjectType):
         exclude = ["id", "media"]
 
 
-class AiringObjectType(MongoengineObjectType):
+class AiringObjectType(DjangoObjectType):
     airing_status = StatusType(
         name="status",
         description="Url of the related item of this media"
@@ -47,7 +47,7 @@ class AiringObjectType(MongoengineObjectType):
         exclude = ["id", "media"]
 
 
-class ImageObjectType(MongoengineObjectType):
+class ImageObjectType(DjangoObjectType):
     poster = graphene.String(
         name="poster",
         description="Highest quality of poster image"
@@ -68,7 +68,7 @@ class ImageObjectType(MongoengineObjectType):
         exclude = ["id", "media", "season", "episode"]
 
 
-class InformationObjectType(MongoengineObjectType):
+class InformationObjectType(DjangoObjectType):
     description = graphene.String(name="synopsis", description="Synopsis for the media")
     slug = graphene.String(description="Slug for the media, typically anime-planet or crunchyroll")
     alternative_titles = graphene.List(
@@ -89,7 +89,7 @@ class InformationObjectType(MongoengineObjectType):
         exclude = ["id", "media"]
 
 
-class MetaDataObjectType(MongoengineObjectType):
+class MetaDataObjectType(DjangoObjectType):
     season_number = graphene.Int(
         name="seasonNumber",
         description="The season number of this media entry"
@@ -114,7 +114,7 @@ class MetaDataObjectType(MongoengineObjectType):
         exclude = ["id", "media"]
 
 
-class MediaObjectType(MongoengineObjectType):
+class MediaObjectType(DjangoObjectType):
     title = graphene.String(
         description="Title of the media",
         required=True,
@@ -169,19 +169,10 @@ class MediaObjectType(MongoengineObjectType):
         name = "Media"
         description = "A representation of a media item"
         model = Media
-        interfaces = (relay.Node,)
         exclude = ["season"]
 
-    @classmethod
-    def get_node_from_param(cls, info, param, repository=Container.media_repository()):
-        try:
-            entity = repository.get_by_param(param)
-            return entity
-        except cls._meta.model.DoesNotExist:
-            return None
 
-
-class EpisodeObjectType(MongoengineObjectType):
+class EpisodeObjectType(DjangoObjectType):
     episode_id = graphene.ID(
         name="id",
         description="The ID of the object",
@@ -263,7 +254,7 @@ class EpisodeObjectType(MongoengineObjectType):
         exclude = ["season"]
 
 
-class MediaSeasonObjectType(MongoengineObjectType):
+class MediaSeasonObjectType(DjangoObjectType):
     media = graphene.Field(
         MediaObjectType,
         description="The parent media item for represented by this season",
@@ -304,13 +295,3 @@ class MediaSeasonObjectType(MongoengineObjectType):
         name = "Season"
         description = "A representation tv season style for a media item"
         model = Season
-        interfaces = (relay.Node,)
-        exclude = []
-
-    @classmethod
-    def get_node_from_param(cls, info, param, repository=Container.media_repository()):
-        try:
-            entity = repository.get_by_season_param(param)
-            return entity
-        except cls._meta.model.DoesNotExist:
-            return None

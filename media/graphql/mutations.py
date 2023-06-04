@@ -1,19 +1,19 @@
 from typing import Optional
 
-from graphene import Mutation, InputObjectType, ID, Boolean, Field
+import graphene
 
-from media.graphql.types import MediaObjectType
-
-
-class MediaInput(InputObjectType):
-    id = ID()
+from .types import MediaObjectType
 
 
-class CreateMediaMutation(Mutation):
+class MediaInput(graphene.InputObjectType):
+    id = graphene.ID()
+
+
+class CreateMediaMutation(graphene.Mutation):
     class Arguments:
         media_data = MediaInput(required=True)
 
-    media = Field(MediaObjectType)
+    media = graphene.Field(MediaObjectType)
 
     @classmethod
     def mutate(cls, info, media_data: Optional[MediaInput] = None):

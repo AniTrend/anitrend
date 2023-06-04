@@ -1,59 +1,60 @@
+from django.db import models
+from django.contrib.postgres.fields import ArrayField
 from django.utils import timezone
-from mongoengine import Document, IntField, StringField, ListField, BooleanField, ReferenceField, DateTimeField, \
-    FloatField, CASCADE
 
 from .choices import AIRING_STATUS_CHOICES, AIRING_SEASON_CHOICES, MEDIA_TYPE_CHOICES
+from core.models import CommonModel
 
 
-class Source(Document):
-    anidb = IntField(null=True)
-    anilist = IntField(null=True)
-    animeplanet = StringField(max_length=256, null=True)
-    kitsu = IntField(null=True)
-    mal = IntField(null=True)
-    notify = StringField(max_length=25, null=True)
-    trakt = IntField(null=True)
-    tvdb = IntField(null=True)
-    crunchy = StringField(max_length=25, null=True)
+class Source(CommonModel):
+    anidb = models.IntegerField(null=True)
+    anilist = models.IntegerField(null=True)
+    animeplanet = models.CharField(max_length=256, null=True)
+    kitsu = models.IntegerField(null=True)
+    mal = models.IntegerField(null=True)
+    notify = models.CharField(max_length=25, null=True)
+    trakt = models.IntegerField(null=True)
+    tvdb = models.IntegerField(null=True)
+    crunchy = models.CharField(max_length=25, null=True)
 
 
-class Airing(Document):
-    airing_status = StringField(max_length=16, choices=AIRING_STATUS_CHOICES, null=True)
-    airing_season = StringField(max_length=8, choices=AIRING_SEASON_CHOICES)
-    airing_year = IntField(null=True)
+class Airing(CommonModel):
+    airing_status = models.CharField(max_length=16, choices=AIRING_STATUS_CHOICES, null=True)
+    airing_season = models.CharField(max_length=8, choices=AIRING_SEASON_CHOICES)
+    airing_year = models.IntegerField(null=True)
 
 
-class Image(Document):
-    poster = StringField(max_length=128)
-    banner_extra_large = StringField(max_length=128)
-    banner_large = StringField(max_length=128)
+class Image(CommonModel):
+    poster = models.CharField(max_length=128)
+    banner_extra_large = models.CharField(max_length=128)
+    banner_large = models.CharField(max_length=128)
 
 
-class Information(Document):
-    description = StringField(null=True)
-    slug = StringField(max_length=128, null=True)
-    alternative_titles = ListField(StringField(max_length=128))
-    maturity_ratings = ListField(StringField(max_length=16))
+class Information(CommonModel):
+    description = models.TextField(null=True)
+    slug = models.CharField(max_length=128, null=True)
+    alternative_titles = ArrayField(models.CharField(max_length=128))
+    maturity_ratings = ArrayField(models.CharField(max_length=16))
 
 
-class MetaData(Document):
-    season_number = IntField(default=0)
-    episode_count = IntField(default=0)
-    content_provider = StringField(max_length=128)
-    is_mature = BooleanField(default=False)
+class MetaData(CommonModel):
+    season_number = models.IntegerField(default=0)
+    episode_count = models.IntegerField(default=0)
+    content_provider = models.CharField(max_length=128)
+    is_mature = models.BooleanField(default=False)
 
 
-class Media(Document):
-    title = StringField(max_length=256)
-    information = ReferenceField(document_type=Information, reverse_delete_rule=CASCADE)
-    airing = ReferenceField(document_type=Airing, reverse_delete_rule=CASCADE)
-    image = ReferenceField(document_type=Image, reverse_delete_rule=CASCADE)
-    source = ReferenceField(document_type=Source, reverse_delete_rule=CASCADE)
-    meta_data = ReferenceField(document_type=MetaData, reverse_delete_rule=CASCADE)
-    type = StringField(max_length=12, choices=MEDIA_TYPE_CHOICES)
-    related = ListField(StringField(max_length=256))
-    tags = ListField(StringField(max_length=128))
-    updated_at = DateTimeField(default=timezone.now().utcnow())
+class Media(CommonModel):
+    title = models.CharField(max_length=256)
+    information = models.OneToOneField(Information, on_delete=models.CASCADE)
+    airing = models.OneToOneField(Airing, on_delete=models.CASCADE)
+    image = models.OneToOneField(Image, on_delete=models.CASCADE)
+    source = models.OneToOneField(Source, on_delete=models.CASCADE)
+    meta_data = models.OneToOneField(MetaData, on_delete=models.CASCADE)
+    type = models.CharField(max_length=12, choices=MEDIA_TYPE_CHOICES)
+    related = ArrayField(models.CharField(max_length=256))
+    tags = ArrayField(models.CharField(max_length=128))
+    updated_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title
@@ -62,13 +63,13 @@ class Media(Document):
         ordering = ("title",)
 
 
-class Season(Document):
-    media = ReferenceField(document_type=Media, reverse_delete_rule=CASCADE)
-    season_id = StringField(max_length=25, primary_key=True)
-    title = StringField(max_length=256)
-    season_number = StringField(max_length=25)
-    description = StringField()
-    image = ReferenceField(document_type=Image, reverse_delete_rule=CASCADE)
+class Season(CommonModel):
+    media = models.OneToOneField(Media, on_delete=models.CASCADE)
+    season_id = models.CharField(max_length=25, primary_key=True)
+    title = models.CharField(max_length=256)
+    season_number = models.CharField(max_length=25)
+    description = models.TextField()
+    image = models.OneToOneField(Image, on_delete=models.CASCADE)
 
     def __str__(self):
         prefix = ""
@@ -80,23 +81,23 @@ class Season(Document):
         ordering = ("title", "season_number")
 
 
-class Episode(Document):
-    season = ReferenceField(document_type=Season, reverse_delete_rule=CASCADE)
-    episode_id = StringField(max_length=25, primary_key=True)
-    episode = StringField(max_length=25)
-    episode_number = IntField(null=True)
-    sequence_number = FloatField()
-    production_episode_id = StringField(max_length=25)
-    title = StringField(max_length=256)
-    description = StringField()
-    is_mature = BooleanField()
-    episode_air_date = DateTimeField()
-    media_type = StringField(max_length=25)
-    slug = StringField(max_length=25)
-    image = ReferenceField(document_type=Image, reverse_delete_rule=CASCADE)
-    duration_ms = IntField()
-    listing_id = StringField(max_length=25)
-    subtitle_locales = ListField(StringField(max_length=16))
+class Episode(CommonModel):
+    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    episode_id = models.CharField(max_length=25, primary_key=True)
+    episode = models.CharField(max_length=25)
+    episode_number = models.IntegerField(null=True)
+    sequence_number = models.FloatField()
+    production_episode_id = models.CharField(max_length=25)
+    title = models.CharField(max_length=256)
+    description = models.TextField()
+    is_mature = models.BooleanField()
+    episode_air_date = models.DateTimeField()
+    media_type = models.CharField(max_length=25)
+    slug = models.CharField(max_length=25)
+    image = models.OneToOneField(Image, on_delete=models.CASCADE)
+    duration_ms = models.IntegerField()
+    listing_id = models.CharField(max_length=25)
+    subtitle_locales = ArrayField(models.CharField(max_length=16))
 
     def __str__(self):
         prefix = ""

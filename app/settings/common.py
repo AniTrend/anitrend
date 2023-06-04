@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os.path
 from pathlib import Path
 from decouple import config
-import mongoengine
 
 
 def __get_base_dir() -> str:
@@ -59,6 +58,9 @@ INSTALLED_APPS = [
     "app.modules.manami",
     "app.modules.xem",
     "media",
+    "home",
+    "config",
+    "navigation",
 ]
 
 MIDDLEWARE = [
@@ -96,18 +98,7 @@ WSGI_APPLICATION = "app.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": 'django.db.backends.postgresql_psycopg2',
-    #     "NAME": config("DJANGO_DATABASE_NAME", cast=str),
-    #     "USER": config("DJANGO_DATABASE_USER", cast=str),
-    #     "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
-    #     "HOST": config("DJANGO_DATABASE_HOST", cast=str),
-    #     "PORT": config("DJANGO_DATABASE_PORT", cast=int),
-    # },
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    
 }
 
 CACHES = {
@@ -177,5 +168,3 @@ CORS_ALLOW_METHODS = (
     "OPTIONS",
     "POST",
 )
-
-mongoengine.connect(host=config("DJANGO_MONGODB_URI", cast=str))

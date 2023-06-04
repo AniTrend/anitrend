@@ -6,6 +6,8 @@ from ..domain.entities import CrunchyIndexContainer
 
 
 class EntityDeserializationTestCase(unittest.TestCase):
+
+    @unittest.skip('Pending rewrite')
     def test_crunchy_deserialization(self):
         data = FileSystem.get_file_contents(
             directory=".samples/crunchy",

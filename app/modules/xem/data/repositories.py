@@ -2,7 +2,7 @@ from json import JSONDecodeError
 from logging import Logger
 from typing import Optional, Any
 
-from mongoengine import QuerySetManager
+from django.db.models import QuerySet
 from uplink import Consumer
 
 from core.errors import NoDataError
@@ -18,23 +18,27 @@ class Repository(DataRepository):
 
     def __init__(self, logger: Logger, remote_source: Consumer) -> None:
         super().__init__(logger, remote_source)
-        self.__xem: QuerySetManager = Xem.objects
+        self.__xem: QuerySet = Xem.objects
 
     def map_and_save_results(self, container: XemContainer) -> Any:
-        changed_records: int = 0
+        created_records: int = 0
+        updated_records: int = 0
         self._logger.info(f"Mapping and save results starting")
         for _id, _titles in container.data.items():
-            _xem = self.__xem.modify(
-                upsert=True,
+            _xem, created = self.__xem.update_or_create(
                 id=_id,
                 titles=_titles
             )
-            if _xem:
-                changed_records += 1
-                self._logger.info(f"Added/Updated entry -> {_xem.id}")
+            if created:
+                created_records += 1
+                self._logger.info(f"Added new entry -> {_xem.id}")
+            else:
+                updated_records += 1
+                self._logger.info(f"Updated entry -> {_xem.id}")
 
         return {
-            "changed": changed_records
+            "created": created_records,
+            "updated": updated_records
         }
 
     def __on_result(self, data: XemContainer):

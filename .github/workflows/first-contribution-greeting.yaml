@@ -1,4 +1,4 @@
-name: First time contributor greeting
+name: first-time-contribution-greeting
 
 on: [pull_request_target, issues]
 
