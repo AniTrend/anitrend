@@ -9,6 +9,7 @@ from ..queries import ConfigQuery
 
 class ConfigQueryTestCase(unittest.TestCase):
     def setUp(self) -> None:
+        self.maxDiff = None
         init_fixtures()
 
     def test_config_query(self):
@@ -32,7 +33,19 @@ class ConfigQueryTestCase(unittest.TestCase):
 
         expected = {
             "data": {
-
+                "config": {
+                    "settings": {
+                        "analyticsEnabled": False
+                    },
+                    "defaultImage": {
+                        "banner": "https://anitrend.co/media/banner.png",
+                        "poster": "https://anitrend.co/media/poster.png",
+                        "loading": "https://anitrend.co/media/loading.png",
+                        "error": "https://anitrend.co/media/error.png",
+                        "info": "https://anitrend.co/media/info.png",
+                        "default": "https://anitrend.co/media/default.png"
+                    }
+                }
             }
         }
 

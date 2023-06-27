@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "app.modules.service",
     "app.modules.manami",
     "app.modules.xem",
+    "app.main",
     "media",
     "home",
     "config",
@@ -72,6 +73,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "app.main.middleware.HeaderMiddleware",
+    "app.main.middleware.FeatureFlagMiddleware",
 ]
 
 ROOT_URLCONF = "app.urls"
@@ -168,3 +171,43 @@ CORS_ALLOW_METHODS = (
     "OPTIONS",
     "POST",
 )
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{",
+        },
+    },
+    "filters": {
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "filters": ["require_debug_true"],
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "propagate": True,
+        },
+    },
+}
+
+GROWTH_BOOK = {
+    "host": config("GROWTH_BOOK_HOST", cast=str),
+    "key": config("GROWTH_BOOK_KEY", cast=str),
+    "ttl": config("GROWTH_BOOK_TTL", cast=int),
+}

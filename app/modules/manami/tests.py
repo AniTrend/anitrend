@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from core import FileSystem
+from core.helpers import FileSystem
 from .di import UseCaseContainer, RepositoryContainer, RemoteSourceContainer
 from .domain.entities import AnimeContainer
 from .models import Anime

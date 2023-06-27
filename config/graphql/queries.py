@@ -1,8 +1,8 @@
 from graphene import ObjectType, Field
+from graphql import GraphQLResolveInfo
 
 from .resolvers import resolve_config
 from .types import ConfigurationObjectType
-from ..models import Config
 
 
 class ConfigQuery(ObjectType):
@@ -13,5 +13,5 @@ class ConfigQuery(ObjectType):
     )
 
     @staticmethod
-    def resolve_config(info, **kwargs):
+    def resolve_config(root, info: GraphQLResolveInfo, **kwargs):
         return resolve_config(info)

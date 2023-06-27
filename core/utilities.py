@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 from logging import Logger
 from typing import Optional, List
 
-from .helpers import Logging
+from core.helpers import Logging
 
 
 class LoggingUtility:
@@ -19,7 +19,7 @@ class LoggingUtility:
         self.__log_level = cut_off_log_level
 
     def get_default_logger(self, name: str) -> Logger:
-        logging.setLoggerClass(Logging)
+        # logging.setLoggerClass(Logging)
         logger = logging.getLogger(name)
         logger.setLevel(self.__log_level)
         return logger

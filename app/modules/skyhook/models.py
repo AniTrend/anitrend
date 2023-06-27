@@ -1,41 +1,42 @@
-from mongoengine import Document, URLField, IntField, StringField, DateField, DateTimeField, ListField, FloatField, \
-    ReferenceField, CASCADE
+from django.contrib.postgres.fields import ArrayField
+from django.db import models
 
+from core.models import CommonModel
 from .choices import STATUS_CHOICES
 
 
-class Image(Document):
-    banner = URLField(null=True)
-    poster = URLField(null=True)
-    fan_art = URLField(null=True)
+class Image(CommonModel):
+    banner = models.URLField(null=True)
+    poster = models.URLField(null=True)
+    fan_art = models.URLField(null=True)
 
 
-class Show(Document):
-    tvdb_id = IntField(primary_key=True)
-    title = StringField(max_length=256)
-    overview = StringField(null=True)
-    slug = StringField(max_length=256)
-    first_aired = DateField()
-    tv_maze_id = IntField(unique=True)
-    added = DateTimeField()
-    last_updated = DateTimeField(null=True)
-    status = StringField(
+class Show(CommonModel):
+    tvdb_id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=256)
+    overview = models.TextField(null=True)
+    slug = models.CharField(max_length=256)
+    first_aired = models.DateField()
+    tv_maze_id = models.IntegerField(unique=True)
+    added = models.DateTimeField()
+    last_updated = models.DateTimeField(null=True)
+    status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES
     )
-    runtime = IntField()
-    time_of_day = DateTimeField()
-    network = StringField(max_length=128)
-    imdb_id = StringField(max_length=128, unique=True)
-    genres = ListField(
-        StringField(max_length=128)
+    runtime = models.IntegerField()
+    time_of_day = models.TimeField()
+    network = models.CharField(max_length=128)
+    imdb_id = models.CharField(max_length=128, unique=True)
+    genres = ArrayField(
+        models.CharField(max_length=128)
     )
-    content_rating = StringField(max_length=16)
-    rating = FloatField()
-    alternative_titles = ListField(
-        StringField(max_length=256)
+    content_rating = models.CharField(max_length=16)
+    rating = models.FloatField()
+    alternative_titles = ArrayField(
+        models.CharField(max_length=256)
     )
-    image = ReferenceField(document_type=Image, reverse_delete_rule=CASCADE)
+    image = models.OneToOneField(Image, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -44,10 +45,10 @@ class Show(Document):
         ordering = ("title", "last_updated", "rating", "added")
 
 
-class Season(Document):
-    season_number = IntField()
-    show = ReferenceField(document_type=Show, reverse_delete_rule=CASCADE)
-    image = ReferenceField(document_type=Image, reverse_delete_rule=CASCADE)
+class Season(CommonModel):
+    season_number = models.IntegerField()
+    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    image = models.OneToOneField(Image, on_delete=models.CASCADE)
 
     def __str__(self):
         prefix = ""
@@ -59,29 +60,30 @@ class Season(Document):
         ordering = ("season_number",)
 
 
-class Episode(Document):
-    tvdb_show_id = IntField(db_index=True)
-    tvdb_id = IntField(db_index=True)
-    season = ReferenceField(document_type=Season, on_delete=CASCADE)
-    episode_number = IntField()
-    aired_after_season = ReferenceField(
-        document_type=Season,
-        on_delete=CASCADE,
+class Episode(CommonModel):
+    tvdb_show_id = models.IntegerField(db_index=True)
+    tvdb_id = models.IntegerField(db_index=True)
+    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    episode_number = models.IntegerField()
+    aired_after_season = models.ForeignKey(
+        Season,
+        on_delete=models.CASCADE,
+        related_name="+",
         null=True
     )
-    title = StringField(max_length=256)
-    air_date = DateField()
-    air_date_utc = DateTimeField()
-    overview = StringField(null=True)
-    writers = ListField(
-        StringField(max_length=256),
+    title = models.CharField(max_length=256)
+    air_date = models.DateField()
+    air_date_utc = models.DateTimeField()
+    overview = models.TextField(null=True)
+    writers = ArrayField(
+        models.CharField(max_length=256),
         null=True
     )
-    directors = ListField(
-        StringField(max_length=256),
+    directors = ArrayField(
+        models.CharField(max_length=256),
         null=True
     )
-    image = URLField(null=True)
+    image = models.URLField(null=True)
 
     def __str__(self):
         prefix = ""

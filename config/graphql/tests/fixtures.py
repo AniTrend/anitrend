@@ -1,9 +1,9 @@
-from ...models import Configuration, Settings, DefaultImage
+from ...models import Config, Settings, DefaultImage
 
 
 def init_fixtures():
     settings = Settings.objects.create(
-        analyticsEnabled=False
+        analytics_enabled=False
     )
     default_image = DefaultImage.objects.create(
         banner="https://anitrend.co/media/banner.png",
@@ -13,7 +13,8 @@ def init_fixtures():
         info="https://anitrend.co/media/info.png",
         default="https://anitrend.co/media/default.png",
     )
-    Configuration.objects.create(
+    Config.objects.create(
+        id=1,
         settings=settings,
         default_image=default_image
     )

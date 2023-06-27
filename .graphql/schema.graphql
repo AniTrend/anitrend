@@ -1,30 +1,177 @@
-# This file was generated based on ".graphqlconfig". Do not edit manually.
+# This file was generated. Do not edit manually.
 
 schema {
     query: Query
+    mutation: Mutations
 }
 
-"Media node with ID"
-interface SeriesNode {
+"An object with an ID"
+interface Node {
     "The ID of the object"
     id: ID!
 }
 
-"The Relay compliant `PageInfo` type, containing data necessary to paginate this connection."
-type PageInfo {
-    "When paginating forwards, the cursor to continue."
-    endCursor: String
-    "When paginating forwards, are there more items?"
-    hasNextPage: Boolean!
-    "When paginating backwards, are there more items?"
-    hasPreviousPage: Boolean!
-    "When paginating backwards, the cursor to continue."
-    startCursor: String
+"Airing information about the media"
+type Airing {
+    "Season the media was aired"
+    season: SeasonType!
+    "Url of the related item of this media"
+    status: StatusType
+    "Year the media was aired"
+    year: Int
+}
+
+"Other non-standard information for the media"
+type Attribute {
+    "Platform / Studio that produced this media"
+    contentProvider: String
+    "The number of episodes for this season"
+    episodeCount: Int
+    "If this media is considered to be for an adult audience"
+    isMature: Boolean
+    "The season number of this media entry"
+    seasonNumber: Int
+}
+
+"Client configuration"
+type Configuration {
+    "Default image resources"
+    defaultImage: ImageResource
+    id: Int!
+    "Configuration settings"
+    settings: Settings
+}
+
+type CreateMediaMutation {
+    media: Media
+}
+
+"Navigation destination properties"
+type Destination {
+    "Navigation destination"
+    destination: String
+    id: ID!
+    navigation: Navigation
+    "Navigation destination"
+    type: String
+}
+
+"Genre and media ID relation"
+type Genre {
+    "Genre"
+    genre: String
+    "Image banners for relation"
+    image: String
+    "Media ID"
+    mediaId: Int
+}
+
+"Navigation group properties"
+type Group {
+    "Authenticated status"
+    authenticated: Boolean
+    "Group internationalization"
+    i18n: String
+    id: ID!
+    "Group ID"
+    identifier: Int
+    navigation: Navigation
+}
+
+"Home entries"
+type Home implements Node {
+    genres: [Genre]
+    "The ID of the object"
+    id: ID!
+}
+
+"Images for media items"
+type Image {
+    "Highest quality of banner image"
+    bannerExtraLarge: String
+    "Standard quality of banner image"
+    bannerLarge: String
+    "Highest quality of poster image"
+    poster: String
+}
+
+"Image resource properties"
+type ImageResource {
+    "Banner image URL"
+    banner: String
+    config: Configuration
+    "Default image URL"
+    default: String
+    "Error image URL"
+    error: String
+    id: ID!
+    "Info image URL"
+    info: String
+    "Loading image URL"
+    loading: String
+    "Poster image URL"
+    poster: String
+}
+
+"Additional information for the media"
+type Information {
+    "Other titles"
+    alternativeTitles: [String]!
+    "Age ratings"
+    maturityRatings: [String]!
+    "Slug for the media, typically anime-planet or crunchyroll"
+    slug: String
+    "Synopsis for the media"
+    synopsis: String
+}
+
+"A representation of a media item"
+type Media {
+    "Airing information for the media"
+    airing: Airing!
+    attribute: Attribute!
+    id: ID!
+    "Images available for the media"
+    image: Image!
+    "Additional information for the media"
+    information: Information!
+    "Related media urls"
+    related: [String]!
+    "Other sources"
+    source: Source!
+    "Tags"
+    tags: [String]!
+    "Title of the media"
+    title: String!
+    "Media type"
+    type: MediaType!
+    "Last updated time"
+    updatedAt: DateTime!
+}
+
+type Mutations {
+    "Create a media entry"
+    createMedia(mediaData: MediaInput!): CreateMediaMutation
+}
+
+"Navigation configuration"
+type Navigation {
+    destination: Destination
+    group: Group
+    "Navigation internationalization"
+    i18n: String
+    "Navigation icon"
+    icon: String
+    id: Int!
 }
 
 type Query {
-    "Find a series item by filtering with an id"
-    series(
+    "Client configuration"
+    config: Configuration
+    "Home entries"
+    home: Home
+    "Find a media item by filtering with an id"
+    media(
         "AniDB Id"
         anidb: Int,
         "AniList Id"
@@ -41,70 +188,19 @@ type Query {
         notify: String,
         "TVDB Id"
         tvdb: Int
-    ): Series
-    "Discover a from a paged list of items"
-    seriesPaged(
-        after: String,
-        before: String,
-        first: Int,
-        last: Int,
-        offset: Int,
-        "Ordering"
-        orderBy: String,
-        title: String
-    ): SeriesConnection
+    ): Media
+    navigation: [Navigation]
 }
 
-"Related media urls"
-type Relation {
-    "Url of the related item of this series"
-    url: String!
-}
-
-"A representation of a series item"
-type Series implements SeriesNode {
-    "Number of episodes"
-    episodes: Int!
-    "The ID of the object"
+"Client default settings"
+type Settings {
+    "Analytics enabled status"
+    analyticsEnabled: Boolean
+    config: Configuration
     id: ID!
-    "Primary picture of the series"
-    picture: String
-    "Related series urls"
-    relationSet: [Relation]!
-    "Release season"
-    season: SeasonType!
-    "Other sources"
-    source: Source!
-    "Media type"
-    status: StatusType!
-    "Primary picture of the series"
-    thumbnail: String
-    "Title of the series"
-    title: String!
-    "Media type"
-    type: SeriesType!
-    "Last updated time"
-    updatedAt: Int!
-    "Release year"
-    year: Int
 }
 
-type SeriesConnection {
-    "Contains the nodes in this connection."
-    edges: [SeriesEdge]!
-    "Pagination data for this connection."
-    pageInfo: PageInfo!
-}
-
-"A Relay edge containing a `Media` and its cursor."
-type SeriesEdge {
-    "A cursor for use in pagination"
-    cursor: String!
-    "The item at the end of the edge"
-    node: Series
-}
-
-"Other source ids of where this series can be found"
+"Other source ids of where this media can be found"
 type Source {
     "Identifier for anidb"
     anidb: Int
@@ -112,18 +208,27 @@ type Source {
     anilist: Int
     "Identifier for animeplanet"
     animeplanet: String
+    "Identifier for crunchyroll"
+    crunchy: String
     "Identifier for kitsu"
     kitsu: Int
     "Identifier for mal"
     mal: Int
     "Identifier for notify"
     notify: String
-    "Identifier for tmdb"
-    tmdb: Int
     "Identifier for trakt"
     trakt: Int
     "Identifier for tvdb"
     tvdb: Int
+}
+
+"An enumeration."
+enum MediaType {
+    MOVIE
+    ONA
+    OVA
+    SPECIAL
+    TV
 }
 
 "An enumeration."
@@ -135,18 +240,20 @@ enum SeasonType {
 }
 
 "An enumeration."
-enum SeriesType {
-    MOVIE
-    ONA
-    OVA
-    SPECIAL
-    TV
+enum StatusType {
+    FINISHED
+    NOT_YET_RELEASED
+    RELEASING
 }
 
-"An enumeration."
-enum StatusType {
-    CURRENTLY
-    FINISHED
-    UNKNOWN
-    UPCOMING
+"""
+
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+input MediaInput {
+    id: ID
 }

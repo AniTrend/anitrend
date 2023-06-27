@@ -1,30 +1,24 @@
-query Paged {
-  seriesPaged {
-      pageInfo {
-          ... PageInfo
-      }
-      edges {
-          cursor
-          node {
-              ... Series
-              source {
-                  anilist
-              }
-          }
-      }
-  }
+query ConfigQuery {
+    config {
+        settings {
+            analyticsEnabled
+        }
+        defaultImage {
+            banner,
+            default,
+            error,
+            info,
+            loading,
+            poster
+        }
+    }
 }
 
-query Single {
-  series(animeplanet: "death-note") {
-      ... Series
-    source {
-        mal
-        anilist
-        animeplanet
-        notify
-        anidb
-        kitsu
+query HomeQuery {
+    home {
+        genres {
+            image,
+            mediaId
+        }
     }
-  }
 }
