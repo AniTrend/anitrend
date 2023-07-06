@@ -1,10 +1,20 @@
-# [W.I.P] Anitrend Relations
+# [W.I.P] AniTrend Relations
 
-A python graphql API for [anime-offline-database](https://github.com/manami-project/anime-offline-database) which is updated every week: A JSON based offline anime database containing the most important meta-data as well as cross-references to various anime sites such as MAL, ANIDB, ANILIST, KITSU and more...
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAniTrend%2Fanitrend-relations-py.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FAniTrend%2Fanitrend-relations-py?ref=badge_large)
+A python graphql API for multiple data sources which works by polling for information and 
+building database records which can be consumed from the GraphQL service.
 
 ## Setup
+
+Create a `.env` file in the root directory of this project with the following contents:
+```shell
+DJANGO_DEBUG=True
+DJANGO_SECRET_KEY=CREATE_ANY_RANDOM_KEY
+DJANGO_DATABASE_NAME=POSTGRES_DB_NAME
+DJANGO_DATABASE_USER=POSTGRES_DB_USER
+DJANGO_DATABASE_PASSWORD=POSTGRES_DB_USER_PASSWORD
+DJANGO_DATABASE_HOST=POSTGRES_DB_HOST
+DJANGO_DATABASE_PORT=POSTGRES_DB_PORT
+```
 
 ### Virtual environment
 Make install a virtual environment for your OS if one is not already installed see: 
@@ -12,7 +22,7 @@ https://docs.python.org/3/tutorial/venv.html for more information
 
 #### Create virtual environment
 ```shell 
-python3 -m venv venv
+python3 -m virtualenv venv
 ```
 
 #### Install requirements
