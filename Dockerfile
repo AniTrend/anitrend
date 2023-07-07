@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM python:3.9 AS builder
+FROM python:3.11 AS builder
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
