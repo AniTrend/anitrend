@@ -1,1 +1,1 @@
-from .containers import AppContainer
+from .containers import CoreContainer

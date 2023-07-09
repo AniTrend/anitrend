@@ -1,9 +1,7 @@
 import graphene
-from graphene import relay
 from graphene_django import DjangoObjectType
 
 from media.models import Media, Source, Airing, Season, MetaData, Information, Episode, Image
-from ..di import MediaRepositoryContainer as Container
 from .enums import StatusType, MediaType, SeasonType
 
 

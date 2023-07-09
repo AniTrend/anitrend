@@ -1,1 +1,0 @@
-from serde import Model, fields

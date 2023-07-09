@@ -1,19 +1,16 @@
-from logging import Logger
 from typing import Optional
 
 from django.db.models import QuerySet
 
-from core.repositories import CommonRepository
 from core.errors import NoArgumentError
-
+from core.repositories import RepositoryMixin
 from . import MediaParams, SeasonParams
 from ..models import Media, Season
 
 
-class MediaRepository(CommonRepository):
+class MediaRepository(RepositoryMixin):
 
-    def __init__(self, logger: Logger) -> None:
-        super().__init__(logger)
+    def __init__(self) -> None:
         self.__media = Media.objects
         self.__season = Season.objects
 

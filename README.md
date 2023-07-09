@@ -1,58 +1,51 @@
-# [W.I.P] AniTrend Relations
+# [W.I.P] anitrend-relations-py
 
-A python graphql API for multiple data sources which works by polling for information and 
-building database records which can be consumed from the GraphQL service.
+A python graphql API for multiple data sources with caching capabilities consumed from the GraphQL service.
 
 ## Setup
 
-Create a `.env` file in the root directory of this project with the following contents:
+To get started you need to run the following:
+
 ```shell
-DJANGO_DEBUG=True
-DJANGO_SECRET_KEY=CREATE_ANY_RANDOM_KEY
-DJANGO_DATABASE_NAME=POSTGRES_DB_NAME
-DJANGO_DATABASE_USER=POSTGRES_DB_USER
-DJANGO_DATABASE_PASSWORD=POSTGRES_DB_USER_PASSWORD
-DJANGO_DATABASE_HOST=POSTGRES_DB_HOST
-DJANGO_DATABASE_PORT=POSTGRES_DB_PORT
+cp .env.default .env
 ```
 
 ### Virtual environment
-Make install a virtual environment for your OS if one is not already installed see: 
-https://docs.python.org/3/tutorial/venv.html for more information
 
-#### Create virtual environment
-```shell 
-python3 -m virtualenv venv
-```
+This project primarily uses [poetry](https://python-poetry.org/docs/) to manage dependency, after installing run:
 
-#### Install requirements
 ```shell
-source venv/bin/activate
-pip install -r requirements.txt
+poetry init
+poetry install
 ```
-
 
 ### Migrations
+
+If you are not using something like PyCharm your virtual environment may not be automatically activated, all the python
+commands for this case would need to be run using `poetry run python` see: https://python-poetry.org/docs/basic-usage/#using-poetry-run
+
 #### Create migrations and migrate
+
 ```shell
-./scripts/manage.py makemigrations
-./scripts/manage.py migrate
+poetry run python manage.py makemigrations
+poetry run python manage.py migrate
 ```
 
 ## Starting the server
 
 ```shell
-./scripts/manage.py runserver
+poetry run python manage.py runserver
 ```
-See `http://localhost:8000/graphql/` for the graphql editor in debug mode
+
+See `http://localhost:8000/playground/` for the graphql editor in debug mode
 
 > Schedule tasks using:
 > http://localhost:8000/admin/django_q/schedule/add/
-> 
+>
 > or
-> 
+>
 > ```python
-> ./scripts/manage.py shell
+> poetry run python manage.py shell
 > from django_q.models import Schedule
 > Schedule.objects.create(
 >     func='module.tasks.method_name',
@@ -62,18 +55,20 @@ See `http://localhost:8000/graphql/` for the graphql editor in debug mode
 > ```
 
 If you wish to exporting graphql schema use:
+
 ```shell
-./scripts/manage.py graphql_schema
+poetry run python manage.py graphql_schema
 ```
+
 The result will be saved in `./tmp`
 
 ## Starting process workers
 
 ```shell
-./scripts/manage.py qcluster
+poetry run python manage.py qcluster
 ```
-See `/admin/django_q/` for tasks updates
 
+See `/admin/django_q/` for tasks updates
 
 ## License
 

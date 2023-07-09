@@ -7,7 +7,9 @@
     "dependencies"
   ],
   "branchPrefix": "dependencies/",
-  "reviewers": ["wax911"],
+  "reviewers": [
+    "wax911"
+  ],
   "baseBranches": [
     "develop"
   ]

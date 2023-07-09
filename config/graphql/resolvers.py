@@ -1,4 +1,6 @@
 from typing import Any
+
+# noinspection PyPackageRequirements
 from graphql import GraphQLResolveInfo
 
 from ..models import Config

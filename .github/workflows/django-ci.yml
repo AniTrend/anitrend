@@ -4,9 +4,9 @@ on:
   workflow_call:
   workflow_dispatch:
   push:
-     branches: [ "*" ]
+    branches: [ "*" ]
   pull_request:
-      branches: [ "*" ]
+    branches: [ "*" ]
 
 jobs:
   test:
@@ -33,22 +33,25 @@ jobs:
           --health-timeout 5s 
           --health-retries 5
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10.6
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10.6'
-    - name: Setup sample .env
-      run: cp .env.defaults .env
-    - name: Install pip and poetry dependencies
-      run: |
-        pip install --upgrade pip
-        pip install poetry
-        poetry config virtualenvs.create true
-        poetry install --no-root
-    - name: Run Django Tests
-      env:
-        DJANGO_SETTINGS_MODULE: "app.settings.development"
-        PYTHONUNBUFFERED: 1
-      run: |
-        poetry run python manage.py test
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10.6
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10.6'
+      - name: Setup sample .env
+        run: cp .env.defaults .env
+      - name: Install pip and poetry dependencies
+        run: |
+          pip install --upgrade pip
+          pip install poetry
+          poetry config virtualenvs.create true
+          poetry install --no-root
+      - name: Create directories
+        run: |
+          mkdir tmp
+      - name: Run Django Tests
+        env:
+          DJANGO_SETTINGS_MODULE: "app.settings.development"
+          PYTHONUNBUFFERED: 1
+        run: |
+          poetry run python manage.py test

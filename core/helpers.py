@@ -1,12 +1,6 @@
 import os
-import sys
-import logging
-
-from typing import Union
 
 from pathlib import Path
-from logging import Formatter, StreamHandler, Logger
-from logging.handlers import TimedRotatingFileHandler
 
 
 class FileSystem:
@@ -44,42 +38,3 @@ class FileSystem:
         with open(os.path.join(creation_path, filename), "a+") as writer:
             writer.write(contents)
         return os.path.join(directory_path, filename)
-
-
-class Logging(Logger):
-    __FORMATTER = "%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s"
-
-    def __init__(
-            self,
-            name: str,
-            log_file_name: str = 'anitrend-relations',
-            log_format: str = __FORMATTER,
-            level: Union[int, str] = logging.DEBUG,
-            *args,
-            **kwargs
-     ) -> None:
-        super().__init__(name, level)
-        self.formatter = Formatter(log_format)
-        self.file_name = log_file_name
-        self.addHandler(self.__get_stream_handler())
-        self.addHandler(self.__get_file_handler())
-
-    def __get_log_file(self) -> str:
-        file_name = f'{self.file_name}.log'
-        current_directory = os.path.abspath(os.path.dirname(__file__))
-        directory_path = os.path.join(current_directory, '..', 'tmp')
-        return FileSystem.create_file(directory_path, file_name, '')
-
-    def __get_file_handler(self) -> TimedRotatingFileHandler:
-        handler = TimedRotatingFileHandler(
-            filename=self.__get_log_file(),
-            when='midnight',
-            backupCount=5
-        )
-        handler.setFormatter(self.formatter)
-        return handler
-
-    def __get_stream_handler(self) -> StreamHandler:
-        handler = StreamHandler(sys.stdout)
-        handler.setFormatter(self.formatter)
-        return handler

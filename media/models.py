@@ -1,9 +1,9 @@
-from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.db import models
 from django.utils import timezone
 
-from .choices import AIRING_STATUS_CHOICES, AIRING_SEASON_CHOICES, MEDIA_TYPE_CHOICES
 from core.models import CommonModel
+from .choices import AIRING_STATUS_CHOICES, AIRING_SEASON_CHOICES, MEDIA_TYPE_CHOICES
 
 
 class Source(CommonModel):
