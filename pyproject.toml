@@ -29,7 +29,7 @@ gunicorn = "20.1.0"
 psycopg2-binary = "2.9.6"
 reactivex = "4.0.4"
 pyxtension = "1.16.1"
-ua-parser = "0.16.1"
+ua-parser = "0.18.0"
 growthbook = "1.0.0"
 
 [build-system]
