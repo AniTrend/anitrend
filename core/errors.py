@@ -1,4 +1,3 @@
-
 class NoArgumentError(RuntimeError):
     """
     Missing argument error

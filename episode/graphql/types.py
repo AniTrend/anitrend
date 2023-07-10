@@ -38,4 +38,3 @@ class NewsObjectType(graphene.ObjectType):
     class Meta:
         name = "News"
         description = "Industry news and announcements"
-

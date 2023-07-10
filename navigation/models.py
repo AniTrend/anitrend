@@ -1,6 +1,7 @@
+from django.db import models
+
 from core.models import CommonModel
 from .choices import DESTINATION_TYPES
-from django.db import models
 
 
 class Group(CommonModel):

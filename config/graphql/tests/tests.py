@@ -1,9 +1,9 @@
 import unittest
 
-from graphene.test import Client
 from graphene import Schema
-from .fixtures import init_fixtures
+from graphene.test import Client
 
+from .fixtures import init_fixtures
 from ..queries import ConfigQuery
 
 

@@ -1,3 +1,4 @@
+import logging
 from abc import ABC
 from logging import Logger
 from typing import Any, Optional
@@ -5,18 +6,13 @@ from typing import Any, Optional
 from uplink import Consumer
 
 
-class CommonRepository(ABC):
-    _logger: Logger
-
-    def __init__(self, logger: Logger) -> None:
-        super().__init__()
-        self._logger = logger
+class RepositoryMixin(ABC):
+    _logger: Logger = logging.getLogger('django')
 
 
-class DataRepository(CommonRepository):
+class DataRepository(RepositoryMixin):
 
-    def __init__(self, logger: Logger, remote_source: Consumer) -> None:
-        super().__init__(logger)
+    def __init__(self, remote_source: Consumer) -> None:
         self._remote_source = remote_source
 
     def invoke(self, **kwargs) -> Optional[Any]:

@@ -1,7 +1,7 @@
 """Main package"""
 
-from di import AppContainer
+from di import CoreContainer
 from . import settings
 
-container = AppContainer()
+container = CoreContainer()
 container.config.from_dict(settings.__dict__)

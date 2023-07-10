@@ -1,28 +1,9 @@
 import logging
-import pytz
-
 from datetime import datetime, tzinfo
-from urllib.parse import urlparse
-from logging import Logger
 from typing import Optional, List
+from urllib.parse import urlparse
 
-from core.helpers import Logging
-
-
-class LoggingUtility:
-
-    def __init__(self, is_debug: bool) -> None:
-        super().__init__()
-        cut_off_log_level = "DEBUG"
-        if not is_debug:
-            cut_off_log_level = "INFO"
-        self.__log_level = cut_off_log_level
-
-    def get_default_logger(self, name: str) -> Logger:
-        # logging.setLoggerClass(Logging)
-        logger = logging.getLogger(name)
-        logger.setLevel(self.__log_level)
-        return logger
+import pytz
 
 
 class LinkUtility:
@@ -39,9 +20,10 @@ class LinkUtility:
 class TimeUtility:
     TIME_FORMAT_TEMPLATE = '%Y-%m-%dT%H:%M:%S%z'
 
-    def __init__(self, logger: Logger, time_zone) -> None:
+    _logger = logging.getLogger('django')
+
+    def __init__(self, time_zone) -> None:
         super().__init__()
-        self._logger = logger
         self._time_zone = time_zone
 
     def __get_current_tz(self) -> tzinfo:

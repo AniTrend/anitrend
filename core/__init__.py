@@ -1,6 +1,6 @@
 """Core graphql package"""
-from .utilities import LoggingUtility, TimeUtility
 from .entities import AttributeDictionary
+from .utilities import TimeUtility
 
 
 def str_to_enum(name):

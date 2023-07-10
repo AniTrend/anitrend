@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os.path
 from pathlib import Path
+
 from decouple import config
 
 
@@ -55,9 +56,10 @@ INSTALLED_APPS = [
     "django_q",
     "corsheaders",
     "app.modules.service",
-    "app.modules.manami",
-    "app.modules.xem",
-    "app.main",
+    "core",
+    "crunchy",
+    "manami",
+    "xem",
     "media",
     "home",
     "config",
@@ -73,8 +75,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "app.main.middleware.HeaderMiddleware",
-    "app.main.middleware.FeatureFlagMiddleware",
+    "core.middleware.HeaderMiddleware",
+    "core.middleware.FeatureFlagMiddleware",
+    'core.middleware.CustomRollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = "app.urls"
@@ -101,7 +104,7 @@ WSGI_APPLICATION = "app.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    
+
 }
 
 CACHES = {
@@ -122,7 +125,6 @@ GRAPHENE = {
     "SCHEMA_OUTPUT": "static/schema.json",
     "SCHEMA_INDENT": 2,
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -174,20 +176,23 @@ CORS_ALLOW_METHODS = (
 
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,
+    "disable_existing_loggers": True,
     "formatters": {
-        "verbose": {
-            "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
-            "style": "{",
+        "standard": {
+            "format": "%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
+            "style": "%",
         },
         "simple": {
-            "format": "{levelname} {message}",
-            "style": "{",
+            "format": "{name} at {asctime} ({levelname}) :: {message}",
+            "style": "{"
         },
     },
     "filters": {
         "require_debug_true": {
             "()": "django.utils.log.RequireDebugTrue",
+        },
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
         },
     },
     "handlers": {
@@ -195,12 +200,36 @@ LOGGING = {
             "level": "INFO",
             "filters": ["require_debug_true"],
             "class": "logging.StreamHandler",
+            "formatter": "standard",
+        },
+        "file": {
+            "level": "ERROR",
+            "filters": ["require_debug_true"],
+            "class": "logging.FileHandler",
             "formatter": "simple",
+            "filename": "tmp/django-logs.log",
+        },
+        "rollbar": {
+            "level": "WARNING",
+            "filters": ["require_debug_false"],
+            "access_token": config('ROLLBAR_TOKEN', cast=str),
+            "environment": "development" if DEBUG else "production",
+            "class": "rollbar.logger.RollbarHandler"
+        },
+        "logtail": {
+            "level": "INFO",
+            "class": "logtail.LogtailHandler",
+            "formatter": "simple",
+            "source_token": config("LOGTAIL_SOURCE_TOKEN", cast=str)
         },
     },
     "loggers": {
         "django": {
-            "handlers": ["console"],
+            "handlers": ["console", "file", "logtail"],
+            "propagate": True,
+        },
+        "root": {
+            "handlers": ["rollbar", "logtail"],
             "propagate": True,
         },
     },
@@ -210,4 +239,11 @@ GROWTH_BOOK = {
     "host": config("GROWTH_BOOK_HOST", cast=str),
     "key": config("GROWTH_BOOK_KEY", cast=str),
     "ttl": config("GROWTH_BOOK_TTL", cast=int),
+}
+
+ROLLBAR = {
+    'access_token': config("ROLLBAR_TOKEN", cast=str),
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
 }

@@ -1,4 +1,4 @@
-# Pull Request Template
+# AniTrend Pull Request
 
 <<<<<<< Updated upstream
 Thank you for contributing! Please take a moment to review our [**contributing guidelines**](https://github.com/AniTrend/anitrend-relations-py/blob/master/CONTRIBUTING.md)
@@ -11,8 +11,7 @@ to make the process easy and effective for everyone involved.
 add a new library or change existing tests, otherwise you risk spending a lot of time working
 on something that might not end up being merged into the project.
 
-Before opening a pull request, please ensure:
-<!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
+Before opening a pull request, please ensure you've done the following:
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
 <<<<<<< Updated upstream
@@ -21,9 +20,7 @@ Before opening a pull request, please ensure:
 - [ ] Code is well-commented, linted and follows project conventions
 - [ ] Description explains the issue/use-case resolved
 
-
 ## Description
-<!--- Describe your changes in detail -->
 
 =======
 - You have followed our [**contributing guidelines**](https://github.com/AniTrend/anitrend-relations-py/blob/develop/CONTRIBUTING.md)
@@ -37,12 +34,15 @@ Before opening a pull request, please ensure:
 >>>>>>> Stashed changes
 
 ## Types of changes
+
 <!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
+
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Enhancement (Improves existing functionality)
 
-<!--- Be kind to code reviewers, please try to keep pull requests as small and focused as possible :) -->
+<!--- Be kind to code reviewers, and please try to keep pull requests as small and focused as possible :) -->
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project
-owners to license your work under the terms of the [Apache License](https://github.com/AniTrend/anitrend-relations-py/blob/master/LICENSE).
+owners to license your work under the terms of
+the [Apache License](https://github.com/AniTrend/anitrend-relations-py/blob/master/LICENSE).

@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from .common import *
 
-
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "10.0.2.2"]
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 1500

@@ -1,12 +1,12 @@
 import graphene
 from graphene import ObjectType
 
-from home.graphql.queries import HomeQuery
 from config.graphql.queries import ConfigQuery
-from media.graphql.queries import MediaQuery
-from navigation.graphql.queries import NavigationQuery
+from home.graphql.queries import HomeQuery
 from media.graphql.mutations import CreateMediaMutation
+from media.graphql.queries import MediaQuery
 from media.graphql.types import MediaObjectType
+from navigation.graphql.queries import NavigationQuery
 
 
 class Mutations(ObjectType):

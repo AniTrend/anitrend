@@ -17,4 +17,3 @@ SeasonType = graphene.Enum(
     "SeasonType",
     [(str_to_enum(choice[0]), choice[0]) for choice in SeasonTypes.CHOICES]
 )
-
