@@ -15,26 +15,35 @@ cp .env.default .env
 This project primarily uses [poetry](https://python-poetry.org/docs/) to manage dependency, after installing run:
 
 ```shell
+# initialize poetry inside the directory
 poetry init
+
+# if you wish to include the venv inside the project remember to execute
+poetry config virtualenvs.in-project true
+
+# install dependencies
 poetry install
 ```
 
 ### Migrations
 
-If you are not using something like PyCharm your virtual environment may not be automatically activated, all the python
-commands for this case would need to be run using `poetry run python` see: https://python-poetry.org/docs/basic-usage/#using-poetry-run
+If you are not using something like PyCharm your virtual environment may not be automatically activated, all the python commands for this case would need to be run using `poetry run python` see: https://python-poetry.org/docs/basic-usage/#using-poetry-run or alternatively activate your virtual environment by running:
+
+```shell
+poetry shell
+```
 
 #### Create migrations and migrate
 
 ```shell
-poetry run python manage.py makemigrations
-poetry run python manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 ## Starting the server
 
 ```shell
-poetry run python manage.py runserver
+python manage.py runserver
 ```
 
 See `http://localhost:8000/playground/` for the graphql editor in debug mode
@@ -45,7 +54,7 @@ See `http://localhost:8000/playground/` for the graphql editor in debug mode
 > or
 >
 > ```python
-> poetry run python manage.py shell
+> python manage.py shell
 > from django_q.models import Schedule
 > Schedule.objects.create(
 >     func='module.tasks.method_name',
@@ -57,7 +66,7 @@ See `http://localhost:8000/playground/` for the graphql editor in debug mode
 If you wish to exporting graphql schema use:
 
 ```shell
-poetry run python manage.py graphql_schema
+python manage.py graphql_schema
 ```
 
 The result will be saved in `./tmp`
@@ -65,7 +74,7 @@ The result will be saved in `./tmp`
 ## Starting process workers
 
 ```shell
-poetry run python manage.py qcluster
+python manage.py qcluster
 ```
 
 See `/admin/django_q/` for tasks updates
