@@ -11,7 +11,7 @@ packages = [{ include = "anitrend_relations_py" }]
 python = "^3.10"
 uplink = "0.9.7"
 requests = "2.31.0"
-marshmallow = "3.19.0"
+marshmallow = "3.20.1"
 python-decouple = "3.8"
 django-filter = "23.2"
 graphene-django = "3.1.3"
