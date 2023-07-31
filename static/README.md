@@ -1,1 +1,1 @@
-# Static resources
+# Site static resources

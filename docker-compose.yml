@@ -1,0 +1,45 @@
+version: '3'
+services:
+  django-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8800:8800
+    networks:
+      - traefik-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.django-server.rule=Host(`${DOMAIN}`) && PathPrefix(`/`)"
+      - "traefik.http.routers.django-server.entrypoints=web"
+      - "traefik.http.routers.django-server.middlewares=django-server-stripprefix"
+      - "traefik.http.services.django-server.loadbalancer.server.port=8800"
+    depends_on:
+      - db
+
+  django-q-cluster:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - traefik-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.django-q-cluster.rule=Host(`${DOMAIN}`) && Path(`/q/`)"
+      - "traefik.http.routers.django-q-cluster.entrypoints=web"
+      - "traefik.http.services.django-q-cluster.loadbalancer.server.port=8800"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    networks:
+      - traefik-network
+
+networks:
+  traefik-network:
+    external: true
