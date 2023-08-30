@@ -29,7 +29,7 @@ class RemoteSource(Consumer):
     def get_show_by_tvdb(
             self,
             tvdb_id: Path(name="tvdb_id", type=int)
-    ) -> Show(unknown=EXCLUDE):
+    ) -> Show:
         """
         Retrieve a snapshot of relations
         :return: AnimeContainer
@@ -41,7 +41,7 @@ class RemoteSource(Consumer):
     def find_show_by_term(
             self,
             term: Query(name="term", type=str)
-    ) -> List(Nested(Show(unknown=EXCLUDE))):
+    ) -> List(Nested(Show)):
         """
         Retrieve a snapshot of relations
         :return: AnimeContainer

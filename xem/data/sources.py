@@ -30,7 +30,7 @@ class RemoteSource(Consumer):
             origin: Query(name='origin', type=str),
             language: Query(name='language', type=str),
             default_names: Query(name='defaultNames', type=int)
-    ) -> Container(unknown=EXCLUDE):
+    ) -> Container:
         """
         Retrieve all the names and id mappings for this listing
         :param origin: origin(an entity string like 'tvdb', 'anidb')

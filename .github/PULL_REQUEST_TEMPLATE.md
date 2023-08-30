@@ -1,9 +1,9 @@
 # AniTrend Pull Request
 
 <<<<<<< Updated upstream
-Thank you for contributing! Please take a moment to review our [**contributing guidelines**](https://github.com/AniTrend/anitrend-relations-py/blob/master/CONTRIBUTING.md)
+Thank you for contributing! Please take a moment to review our [**contributing guidelines**](https://github.com/AniTrend/anitrend/blob/master/CONTRIBUTING.md)
 =======
-Thank you for contributing! Please take a moment to review our [**contributing guidelines**](https://github.com/AniTrend/anitrend-relations-py/blob/develop/CONTRIBUTING.md)
+Thank you for contributing! Please take a moment to review our [**contributing guidelines**](https://github.com/AniTrend/anitrend/blob/develop/CONTRIBUTING.md)
 >>>>>>> Stashed changes
 to make the process easy and effective for everyone involved.
 
@@ -15,7 +15,7 @@ Before opening a pull request, please ensure you've done the following:
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
 <<<<<<< Updated upstream
-- [ ] You have followed our [**contributing guidelines**](https://github.com/AniTrend/anitrend-relations-py/blob/master/CONTRIBUTING.md)
+- [ ] You have followed our [**contributing guidelines**](https://github.com/AniTrend/anitrend/blob/master/CONTRIBUTING.md)
 - [ ] Pull request has tests (If applicable)
 - [ ] Code is well-commented, linted and follows project conventions
 - [ ] Description explains the issue/use-case resolved
@@ -23,7 +23,7 @@ Before opening a pull request, please ensure you've done the following:
 ## Description
 
 =======
-- You have followed our [**contributing guidelines**](https://github.com/AniTrend/anitrend-relations-py/blob/develop/CONTRIBUTING.md)
+- You have followed our [**contributing guidelines**](https://github.com/AniTrend/anitrend/blob/develop/CONTRIBUTING.md)
 - Check that your branch is based on `develop` and targets `develop` (where applicable)
 - Pull request has tests (if applicable)
 - Documentation is updated (if necessary)
@@ -45,4 +45,4 @@ Before opening a pull request, please ensure you've done the following:
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project
 owners to license your work under the terms of
-the [Apache License](https://github.com/AniTrend/anitrend-relations-py/blob/master/LICENSE).
+the [Apache License](https://github.com/AniTrend/anitrend/blob/master/LICENSE).

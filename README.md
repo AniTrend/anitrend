@@ -1,4 +1,4 @@
-# [W.I.P] anitrend-relations-py
+# [W.I.P] anitrend
 
 A python graphql API for multiple data sources with caching capabilities consumed from the GraphQL service.
 

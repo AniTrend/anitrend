@@ -95,7 +95,7 @@ class SingingRepository(DataRepository):
         )
         return signing_policy
 
-    def __map_and_save(self, signing_policy) -> Optional[CrunchySigningPolicy]:
+    def __map_and_save(self, signing_policy: SigningPolicySchema) -> Optional[CrunchySigningPolicy]:
         _model, _created = self.__signing_policy.update_or_create(
             bucket=signing_policy.bucket,
             policy=signing_policy.policy,

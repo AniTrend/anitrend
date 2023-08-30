@@ -6,10 +6,10 @@ about: Report any issues regarding the project and help us identify bugs quicker
 
 # Issue Guidelines
 
-Before opening a new issue, please take a moment to review our [**community guidelines**](https://github.com/AniTrend/anitrend-relations-py/blob/master/CONTRIBUTING.md) to make the contribution process easy and effective for everyone involved.
+Before opening a new issue, please take a moment to review our [**community guidelines**](https://github.com/AniTrend/anitrend/blob/master/CONTRIBUTING.md) to make the contribution process easy and effective for everyone involved.
 
 **You may find an answer in already closed issues**:
-https://github.com/AniTrend/anitrend-relations-py/issues?q=is%3Aissue+is%3Aclosed
+https://github.com/AniTrend/anitrend/issues?q=is%3Aissue+is%3Aclosed
 
 
 ## Description Of Bug

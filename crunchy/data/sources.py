@@ -1,27 +1,12 @@
 from marshmallow import EXCLUDE
 from uplink import get, post, timeout, retry, ratelimit, Consumer, Query, Field, Header, Path
 
-from core.decorators import raise_api_error
+from core.decorators import raise_api_error, retry_and_ratelimit_strategy
 from ..data.schemas import TokenSchema, SigningPolicySchema, IndexContainerSchema, \
     BrowseContainerSchema, SeriesSchema, SeasonContainerSchema, EpisodeContainerSchema
 
-__TIME_OUT__: int = 180
-__MAX_ATTEMPTS__: int = 5
-__RATE_LIMIT_CALLS__: int = 5
-__RATE_LIMIT_PERIOD_CALLS__: int = 10
 
-
-@timeout(seconds=__TIME_OUT__)
-@retry(
-    max_attempts=__MAX_ATTEMPTS__,
-    when=retry.when.raises(Exception),
-    stop=retry.stop.after_attempt(__MAX_ATTEMPTS__) | retry.stop.after_delay(__RATE_LIMIT_PERIOD_CALLS__),
-    backoff=retry.backoff.jittered(multiplier=0.5)
-)
-@ratelimit(
-    calls=__RATE_LIMIT_CALLS__,
-    period=__RATE_LIMIT_PERIOD_CALLS__
-)
+@retry_and_ratelimit_strategy
 class TokenEndpoint(Consumer):
 
     @raise_api_error
@@ -29,21 +14,11 @@ class TokenEndpoint(Consumer):
     def get_authorization_token(
             self,
             grand_type: Field(name="grant_type", type=str) = "client_id"
-    ) -> TokenSchema(unknown=EXCLUDE):
+    ) -> TokenSchema:
         pass
 
 
-@timeout(seconds=__TIME_OUT__)
-@retry(
-    max_attempts=__MAX_ATTEMPTS__,
-    when=retry.when.raises(Exception),
-    stop=retry.stop.after_attempt(__MAX_ATTEMPTS__) | retry.stop.after_delay(__RATE_LIMIT_PERIOD_CALLS__),
-    backoff=retry.backoff.jittered(multiplier=0.5)
-)
-@ratelimit(
-    calls=__RATE_LIMIT_CALLS__,
-    period=__RATE_LIMIT_PERIOD_CALLS__
-)
+@retry_and_ratelimit_strategy
 class SigningEndpoint(Consumer):
 
     @raise_api_error
@@ -52,21 +27,11 @@ class SigningEndpoint(Consumer):
             self,
             authorization: Header(name="Authorization"),
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> SigningPolicySchema(unknown=EXCLUDE):
+    ) -> SigningPolicySchema:
         pass
 
 
-@timeout(seconds=__TIME_OUT__)
-@retry(
-    max_attempts=__MAX_ATTEMPTS__,
-    when=retry.when.raises(Exception),
-    stop=retry.stop.after_attempt(__MAX_ATTEMPTS__) | retry.stop.after_delay(__RATE_LIMIT_PERIOD_CALLS__),
-    backoff=retry.backoff.jittered(multiplier=0.5)
-)
-@ratelimit(
-    calls=__RATE_LIMIT_CALLS__,
-    period=__RATE_LIMIT_PERIOD_CALLS__
-)
+@retry_and_ratelimit_strategy
 class CmsEndpoint(Consumer):
 
     @raise_api_error
@@ -75,7 +40,7 @@ class CmsEndpoint(Consumer):
             self,
             authorization: Header("Authorization"),
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> IndexContainerSchema(unknown=EXCLUDE):
+    ) -> IndexContainerSchema:
         pass
 
     @raise_api_error
@@ -87,21 +52,11 @@ class CmsEndpoint(Consumer):
             sort_by: Query(name="sort_by", type=str) = "alphabetical",
             n: Query(name="n", type=int) = 100,
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> BrowseContainerSchema(unknown=EXCLUDE):
+    ) -> BrowseContainerSchema:
         pass
 
 
-@timeout(seconds=__TIME_OUT__)
-@retry(
-    max_attempts=__MAX_ATTEMPTS__,
-    when=retry.when.raises(Exception),
-    stop=retry.stop.after_attempt(__MAX_ATTEMPTS__) | retry.stop.after_delay(__RATE_LIMIT_PERIOD_CALLS__),
-    backoff=retry.backoff.jittered(multiplier=0.5)
-)
-@ratelimit(
-    calls=__RATE_LIMIT_CALLS__,
-    period=__RATE_LIMIT_PERIOD_CALLS__
-)
+@retry_and_ratelimit_strategy
 class BucketEndpoint(Consumer):
 
     @raise_api_error
@@ -112,7 +67,7 @@ class BucketEndpoint(Consumer):
             bucket: Path(name="bucket", type=str),
             series_id: Path(name="series_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> SeriesSchema(unknown=EXCLUDE):
+    ) -> SeriesSchema:
         pass
 
     @raise_api_error
@@ -123,7 +78,7 @@ class BucketEndpoint(Consumer):
             bucket: Path(name="bucket", type=str),
             series_id: Query(name="series_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> SeasonContainerSchema(unknown=EXCLUDE):
+    ) -> SeasonContainerSchema:
         pass
 
     @raise_api_error
@@ -134,5 +89,5 @@ class BucketEndpoint(Consumer):
             bucket: Path(name="bucket", type=str),
             season_id: Query(name="season_id", type=str),
             locale: Query(name="locale", type=str) = "en-US"
-    ) -> EpisodeContainerSchema(unknown=EXCLUDE):
+    ) -> EpisodeContainerSchema:
         pass

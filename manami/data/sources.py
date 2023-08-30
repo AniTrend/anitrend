@@ -25,7 +25,7 @@ class RemoteSource(Consumer):
 
     @raise_api_error
     @get("master/anime-offline-database.json")
-    def get_anime_entries(self) -> Container(unknown=EXCLUDE):
+    def get_anime_entries(self) -> Container:
         """
         Retrieve a snapshot of relations
         :return: AnimeContainer

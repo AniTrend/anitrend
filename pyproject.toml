@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "anitrend-relations-py"
+name = "anitrend"
 version = "0.1.0"
 description = ""
 authors = ["Maxwell <mxt.developer@gmail.com>"]
