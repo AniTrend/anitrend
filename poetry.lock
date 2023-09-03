@@ -458,13 +458,13 @@ tests = ["tox"]
 
 [[package]]
 name = "django-q2"
-version = "1.5.4"
+version = "1.5.5"
 description = "A multiprocessing distributed task queue for Django"
 optional = false
 python-versions = ">=3.8,<4"
 files = [
-    {file = "django_q2-1.5.4-py3-none-any.whl", hash = "sha256:29a9742284817bd907cf562d1dedba98baaa9666838dd26ca7d723dc3d638d49"},
-    {file = "django_q2-1.5.4.tar.gz", hash = "sha256:e45b484a72ddec734009432db39db6eeb192acc183244604dcfeec03f19a3e00"},
+    {file = "django_q2-1.5.5-py3-none-any.whl", hash = "sha256:22c3e3c6133563790944bf1e5fc81b4cf9e5ff62fe415ea479bfcb9608305327"},
+    {file = "django_q2-1.5.5.tar.gz", hash = "sha256:536327e36f47b723270a6624fa6a2ffaba522a6a8eebc51ab6e258257a4c93d8"},
 ]
 
 [package.dependencies]
@@ -1289,4 +1289,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "c3469b88190e2e0865d4a5a93241bd3f9d15678331df5e90ae21c28a707488e4"
+content-hash = "ef4d85d7894123abf76d3217c22f0f3edd5a766a3ab5e06db7de366487aadaa6"
