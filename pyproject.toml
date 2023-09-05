@@ -5,7 +5,7 @@ description = ""
 authors = ["Maxwell <mxt.developer@gmail.com>"]
 license = "GPL"
 readme = "README.md"
-packages = [{ include = "anitrend_relations_py" }]
+packages = []
 
 [tool.poetry.dependencies]
 python = "^3.10"
