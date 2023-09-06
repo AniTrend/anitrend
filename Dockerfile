@@ -26,6 +26,8 @@ RUN poetry config virtualenvs.create false \
 # Copy the rest of the project code
 COPY . /usr/src/app/
 
+RUN mkdir tmp
+
 # Stage 2: Django Server stage
 FROM builder AS django-server
 
