@@ -20,7 +20,7 @@ jobs:
       DJANGO_SECRET_KEY: test-key
     services:
       postgres_main:
-        image: postgres:15
+        image: postgres:16
         env:
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
