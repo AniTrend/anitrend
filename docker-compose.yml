@@ -23,11 +23,6 @@ services:
       dockerfile: Dockerfile
     networks:
       - traefik-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.django-q-cluster.rule=Host(`${DOMAIN}`) && Path(`/q/`)"
-      - "traefik.http.routers.django-q-cluster.entrypoints=web"
-      - "traefik.http.services.django-q-cluster.loadbalancer.server.port=8800"
     depends_on:
       - db
 
