@@ -31,17 +31,14 @@ RUN mkdir tmp
 # Stage 2: Django Server stage
 FROM builder AS django-server
 
-# Run Django's migrations
-RUN python manage.py migrate
-
 # Expose the port your Django app will run on
 EXPOSE 8800
 
 # Start Django server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8800"]
+CMD /usr/src/app/start-server.sh
 
 # Stage 3: Django Q Cluster stage
 FROM builder AS django-q-cluster
 
 # Start Django Q scheduler and worker
-CMD ["python", "manage.py", "qcluster"]
+CMD /usr/src/app/start-q.sh

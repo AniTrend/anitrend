@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from .common import *
 
-ALLOWED_HOSTS = ["anitrend.co"]
+ALLOWED_HOSTS = ["graphql.anitrend.co"]
 
 DATABASES = {
     "default": {
