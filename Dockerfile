@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM python:3.11 AS builder
+FROM python:3.12 AS builder
 
 ENV PYTHONUNBUFFERED 1
 
