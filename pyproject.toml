@@ -32,7 +32,7 @@ pyxtension = "1.16.1"
 ua-parser = "0.18.0"
 growthbook = "1.0.0"
 rollbar = "0.16.3"
-logtail-python = "0.2.6"
+logtail-python = "0.2.7"
 
 [build-system]
 requires = ["poetry-core"]
