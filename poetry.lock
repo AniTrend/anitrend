@@ -458,23 +458,23 @@ tests = ["tox"]
 
 [[package]]
 name = "django-q2"
-version = "1.5.5"
+version = "1.6.1"
 description = "A multiprocessing distributed task queue for Django"
 optional = false
 python-versions = ">=3.8,<4"
 files = [
-    {file = "django_q2-1.5.5-py3-none-any.whl", hash = "sha256:22c3e3c6133563790944bf1e5fc81b4cf9e5ff62fe415ea479bfcb9608305327"},
-    {file = "django_q2-1.5.5.tar.gz", hash = "sha256:536327e36f47b723270a6624fa6a2ffaba522a6a8eebc51ab6e258257a4c93d8"},
+    {file = "django_q2-1.6.1-py3-none-any.whl", hash = "sha256:0944b6cbb73671d471fa970a3807e294d750a224764986cff5bff0fe6daa7f7d"},
+    {file = "django_q2-1.6.1.tar.gz", hash = "sha256:38fa67e5f75d172ef59a1edcc891cb5f8f0fb863f95a6ada4c44dd3f2d5bda53"},
 ]
 
 [package.dependencies]
-django = ">=3.2"
+django = ">=3.2,<6"
 django-picklefield = ">=3.1,<4.0"
 
 [package.extras]
 rollbar = ["django-q-rollbar (>=0.1)"]
 sentry = ["django-q-sentry (>=0.1)"]
-testing = ["blessed (>=1.19.1,<2.0.0)", "boto3 (>=1.24.92,<2.0.0)", "croniter (>=1.3.7,<2.0.0)", "django-redis (>=5.2.0,<6.0.0)", "hiredis (>=2.0.0,<3.0.0)", "iron-mq (>=0.9,<0.10)", "psutil (>=5.9.2,<6.0.0)", "pymongo (>=4.2.0,<5.0.0)", "redis (>=4.3.4,<5.0.0)", "setproctitle (>=1.3.2,<2.0.0)"]
+testing = ["blessed (>=1.19.1,<2.0.0)", "boto3 (>=1.24.92,<2.0.0)", "croniter (>=2.0.1,<3.0.0)", "django-redis (>=5.2.0,<6.0.0)", "hiredis (>=2.0.0,<3.0.0)", "iron-mq (>=0.9,<0.10)", "psutil (>=5.9.2,<6.0.0)", "pymongo (>=4.2.0,<5.0.0)", "redis (>=4.3.4,<5.0.0)", "setproctitle (>=1.3.2,<2.0.0)"]
 
 [[package]]
 name = "djangorestframework"
@@ -1298,4 +1298,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "73a5e0b4e391c40f4229407480646675fcdf0f988b5c3d1d751f89f762276e7d"
+content-hash = "386b15dee36995c6491b74713bf4a8a5e72147d540503524b8bede2dc44a2809"
