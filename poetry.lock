@@ -1034,12 +1034,12 @@ files = [
 
 [[package]]
 name = "pyxtension"
-version = "1.16.1"
+version = "1.16.5"
 description = "Extension library for Python"
 optional = false
 python-versions = ">=3.6, <4"
 files = [
-    {file = "pyxtension-1.16.1-py3-none-any.whl", hash = "sha256:1277bd6e8089560c1ca5e5474ee7ddbc76f8d8909ea04bf4a3efbfa04a2c48bb"},
+    {file = "pyxtension-1.16.5-py3-none-any.whl", hash = "sha256:f9fd1353db7da00807f3eae40a2e9f5842e85cb3addc477dfd8430008e668bcb"},
 ]
 
 [package.dependencies]
@@ -1051,8 +1051,8 @@ throttlex = ">=1.0.0"
 tqdm = {version = ">=4.62.0", markers = "python_version >= \"3\""}
 
 [package.extras]
-dev = ["tsx (>=0.0.1)", "twine (>=4.0.1)"]
-test = ["tsx (>=0.0.1)", "twine (>=4.0.1)"]
+dev = ["pandas (>=1.0.3)", "tsx (>=0.0.1)", "twine (>=4.0.1)"]
+test = ["pandas (>=1.0.3)", "tsx (>=0.0.1)", "twine (>=4.0.1)"]
 
 [[package]]
 name = "reactivex"
@@ -1301,4 +1301,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "1d8c3c88325bd9130a47991ad1f983de0975cd0a0f084067d9e9248543ccbcff"
+content-hash = "031bdfba7e9aecd9f208d16a8f9206535198b417de1bed4e3bace850149e0ccc"
