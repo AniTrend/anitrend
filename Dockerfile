@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM python:3.10.12-slim AS builder
+FROM python:3.12.0-slim AS builder
 
 # set env variables
 ENV PYTHONDONTWRITEBYTECODE 1
