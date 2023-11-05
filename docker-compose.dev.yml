@@ -18,7 +18,7 @@ services:
       - db
 
   django-q-cluster:
-    image: anitrend:0.1
+    image: ghcr.io/anitrend/anitrend:latest
     networks:
       - traefik-network
     environment:
