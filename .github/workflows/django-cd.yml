@@ -1,0 +1,43 @@
+name: django-cd
+
+on:
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to build against'
+        required: true
+        default: 'latest'
+  push:
+    tags: "*"
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Tag
+        id: set-tag
+        run: |
+          if [[ -n "${{ github.event.inputs.tag }}" ]]; then
+            echo "::set-output name=tag::${{ github.event.inputs.tag }}"
+          else
+            echo "::set-output name=tag::${{ github.event.ref_name }}"
+          fi
+
+      - name: Build Docker Image
+        run: docker build . --tag ghcr.io/anitrend/anitrend:${{ steps.set-tag.outputs.tag }}
+        working-directory: .
+
+      - name: Push Docker Image to GitHub Packages
+        run: docker push ghcr.io/anitrend/anitrend:${{ steps.set-tag.outputs.tag }}
+

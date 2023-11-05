@@ -1,0 +1,31 @@
+version: '3'
+services:
+  django-server:
+    image: ghcr.io/anitrend/anitrend:latest
+    ports:
+      - 8800:8800
+    networks:
+      - traefik-network
+    environment:
+      DJANGO_SETTINGS_MODULE: "app.settings.development"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.django-server.rule=Host(`anitrend.localhost`)"
+      - "traefik.http.routers.django-server.entrypoints=web"
+      - "traefik.http.routers.django-server.middlewares=django-server-stripprefix"
+      - "traefik.http.services.django-server.loadbalancer.server.port=8800"
+    depends_on:
+      - db
+
+  django-q-cluster:
+    image: anitrend:0.1
+    networks:
+      - traefik-network
+    environment:
+      DJANGO_SETTINGS_MODULE: "app.settings.development"
+  
+
+networks:
+  default:
+    name: traefik
+    external: true

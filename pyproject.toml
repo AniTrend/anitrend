@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "anitrend-relations-py"
+name = "anitrend"
 version = "0.1.0"
 description = ""
-authors = ["Maxwell <mxt.developer@gmail.com>"]
+authors = ["Maxwell <wax911@users.noreply.github.com>"]
 license = "GPL"
 readme = "README.md"
 packages = []
@@ -35,5 +35,5 @@ rollbar = "0.16.3"
 logtail-python = "0.2.7"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

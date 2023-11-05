@@ -1,6 +1,8 @@
 # Stage 1: Build stage
-FROM python:3.12 AS builder
+FROM python:3.10.12-slim AS builder
 
+# set env variables
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set the working directory in the container
@@ -13,8 +15,11 @@ RUN apt-get update \
         libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Upgrade pip
+RUN pip install --upgrade pip
+
 # Install Poetry
-RUN pip install poetry
+RUN pip install poetry==1.5.0
 
 # Copy the poetry.lock and pyproject.toml files to the container
 COPY poetry.lock pyproject.toml /usr/src/app/
@@ -27,18 +32,3 @@ RUN poetry config virtualenvs.create false \
 COPY . /usr/src/app/
 
 RUN mkdir tmp
-
-# Stage 2: Django Server stage
-FROM builder AS django-server
-
-# Expose the port your Django app will run on
-EXPOSE 8800
-
-# Start Django server
-CMD /usr/src/app/start-server.sh
-
-# Stage 3: Django Q Cluster stage
-FROM builder AS django-q-cluster
-
-# Start Django Q scheduler and worker
-CMD /usr/src/app/start-q.sh
