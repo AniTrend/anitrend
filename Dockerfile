@@ -28,17 +28,5 @@ COPY . /usr/src/app/
 
 RUN mkdir tmp
 
-# Stage 2: Django Server stage
-FROM builder AS django-server
-
 # Expose the port your Django app will run on
 EXPOSE 8800
-
-# Start Django server
-CMD /usr/src/app/start-server.sh
-
-# Stage 3: Django Q Cluster stage
-FROM builder AS django-q-cluster
-
-# Start Django Q scheduler and worker
-CMD /usr/src/app/start-q.sh

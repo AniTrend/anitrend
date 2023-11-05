@@ -3,7 +3,7 @@ services:
   django-server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     ports:
       - 8800:8800
     networks:
