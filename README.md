@@ -1,6 +1,6 @@
-# [W.I.P] anitrend-relations-py
+# anitrend
 
-A python graphql API for multiple data sources with caching capabilities consumed from the GraphQL service.
+A GraphQL API for multiple data sources with caching capabilities.
 
 ## Setup
 
@@ -36,23 +36,6 @@ poetry run python manage.py migrate
 ```shell
 poetry run python manage.py runserver
 ```
-
-See `http://localhost:8000/playground/` for the graphql editor in debug mode
-
-> Schedule tasks using:
-> http://localhost:8000/admin/django_q/schedule/add/
->
-> or
->
-> ```python
-> poetry run python manage.py shell
-> from django_q.models import Schedule
-> Schedule.objects.create(
->     func='module.tasks.method_name',
->     minutes=1,
->     repeats=-1
-> )
-> ```
 
 If you wish to exporting graphql schema use:
 
