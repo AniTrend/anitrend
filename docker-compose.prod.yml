@@ -2,39 +2,31 @@ version: '3'
 services:
   django-server:
     image: ghcr.io/anitrend/anitrend:latest
-    ports:
-      - 8800:8800
+    command:
+      - /usr/src/start-server.sh
+    container_name: django-server
     networks:
-      - traefik-network
-    environment:
-      DJANGO_SETTINGS_MODULE: "app.settings.production"
+      - default
+    env_file: .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.django-server.rule=Host(`${DOMAIN}`) && PathPrefix(`/`)"
-      - "traefik.http.routers.django-server.entrypoints=web"
-      - "traefik.http.routers.django-server.middlewares=django-server-stripprefix"
-      - "traefik.http.services.django-server.loadbalancer.server.port=8800"
-    depends_on:
-      - db
+      - "traefik.http.routers.anitrend.rule=Host(`anitrend.localhost`)"
+      - "traefik.http.routers.anitrend.entrypoints=web,websecure"
+      - "traefik.http.routers.anitrend.service=anitrend"
+      - "traefik.http.routers.anitrend.tls=true"
+      - "traefik.http.routers.anitrend.tls.certresolver=production"
+      - "traefik.http.services.anitrend.loadbalancer.server.port=8800"
 
-  django-q-cluster:
+  django-q:
     image: ghcr.io/anitrend/anitrend:latest
+    command:
+      - /usr/src/start-q.sh
+    container_name: django-q
     networks:
-      - traefik-network
-    environment:
-      DJANGO_SETTINGS_MODULE: "app.settings.production"
-    depends_on:
-      - db
-
-  db:
-    image: postgres:16
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
-    networks:
-      - traefik-network
+      - default
+    env_file: .env
 
 networks:
-  traefik-network:
+  default:
+    name: traefik
     external: true

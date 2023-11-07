@@ -3,11 +3,14 @@
 .github
 .gitignore
 
-# Other
+# General Directories
 .graphql
 fixtures
-
-*.md
-
 docs
 tmp
+
+# General files
+*.md
+.env
+.env.defaults
+renovate.json

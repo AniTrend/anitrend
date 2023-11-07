@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os.path
 from pathlib import Path
 
-from decouple import config
+from decouple import config, Csv
 
 
 def __get_base_dir() -> str:
@@ -38,7 +38,7 @@ CRUNCHY_TOKEN = config("DJANGO_CRUNCHY_TOKEN", cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
 
 # Application definition
 
@@ -100,11 +100,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "app.wsgi.application"
 
-# Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
+    "default": {
+        "ENGINE": 'django.db.backends.postgresql_psycopg2',
+        "NAME": config("DJANGO_DATABASE_NAME", cast=str),
+        "USER": config("DJANGO_DATABASE_USER", cast=str),
+        "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
+        "HOST": config("DJANGO_DATABASE_HOST", cast=str),
+        "PORT": config("DJANGO_DATABASE_PORT", cast=int),
+    },
+}
 
+# https://django-q.readthedocs.io/en/latest/configure.html
+Q_CLUSTER = {
+    "name": config("DJANGO_Q_NAME", cast=str),
+    "orm": config("DJANGO_Q_ORM", cast=str),
+    "workers": config("DJANGO_Q_WORKERS", cast=int),
+    "recycle": config("DJANGO_Q_RECYCLE", cast=int),
+    "timeout": config("DJANGO_Q_TIMEOUT", cast=int),
+    "retry": config("DJANGO_Q_RETRY", cast=int),
+    "label": config("DJANGO_Q_LABEL", cast=str),
 }
 
 CACHES = {
@@ -112,12 +128,6 @@ CACHES = {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
         "LOCATION": config("DJANGO_REDIS_URI", cast=str),
     }
-}
-
-# django-q
-# https://django-q.readthedocs.io/en/latest/configure.html
-Q_CLUSTER = {
-
 }
 
 GRAPHENE = {
@@ -147,9 +157,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = config("DJANGO_LANGUAGE_CODE", default="en-us", cast=str)
 
-TIME_ZONE = "UTC"
+TIME_ZONE = config("DJANGO_TIME_ZONE", default="UTC", cast=str)
 
 USE_I18N = True
 

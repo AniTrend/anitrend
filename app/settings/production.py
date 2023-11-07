@@ -12,24 +12,4 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from .common import *
 
-ALLOWED_HOSTS = ["graphql.anitrend.co", "0.0.0.0"]
-
-DATABASES = {
-    "default": {
-        "ENGINE": 'django.db.backends.postgresql_psycopg2',
-        "NAME": config("DJANGO_DATABASE_NAME", cast=str),
-        "USER": config("DJANGO_DATABASE_USER", cast=str),
-        "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
-        "HOST": config("DJANGO_DATABASE_HOST", cast=str),
-        "PORT": config("DJANGO_DATABASE_PORT", cast=int),
-    },
-}
-
-Q_CLUSTER = {
-    "name": "edge-sync",
-    "orm": "default",
-    "recycle": 250,
-    "timeout": 1800,
-    "retry": 3600,
-    "label": "worker",
-}
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 500

@@ -10,6 +10,7 @@ on:
         default: 'latest'
   push:
     tags: "*"
+    branches: ["develop"]
 
 jobs:
   build-image:
