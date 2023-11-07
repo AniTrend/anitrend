@@ -1,34 +1,31 @@
 # Stage 1: Build stage
 FROM python:3.10.12-slim AS builder
 
-# set env variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
-# Install system dependencies
+# Install system dependencies and upgrade pip
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
         libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --upgrade pip
 
-# Upgrade pip
-RUN pip install --upgrade pip
-
-# Install Poetry
-RUN pip install poetry==1.5.0
-
-# Copy the poetry.lock and pyproject.toml files to the container
-COPY poetry.lock pyproject.toml /usr/src/app/
+# Copy only the dependency files to leverage caching
+COPY pyproject.toml poetry.lock /usr/src/
 
 # Install project dependencies
-RUN poetry config virtualenvs.create false \
+RUN pip install poetry==1.5.0 \
+    && poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi
 
 # Copy the rest of the project code
-COPY . /usr/src/app/
+COPY . /usr/src/
 
-RUN mkdir tmp
+# Stage 2: Final image
+FROM builder AS final
+
+# Define your environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1

@@ -1,0 +1,13 @@
+# Github stuff
+.git
+.github
+.gitignore
+
+# Other
+.graphql
+fixtures
+
+*.md
+
+docs
+tmp
