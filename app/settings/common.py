@@ -212,13 +212,6 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "standard",
         },
-        "file": {
-            "level": "ERROR",
-            "filters": ["require_debug_true"],
-            "class": "logging.FileHandler",
-            "formatter": "simple",
-            "filename": "tmp/django-logs.log",
-        },
         "rollbar": {
             "level": "WARNING",
             "filters": ["require_debug_false"],
