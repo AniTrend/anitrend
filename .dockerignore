@@ -4,6 +4,7 @@
 .gitignore
 
 # General Directories
+.idea
 .graphql
 fixtures
 docs
@@ -14,3 +15,8 @@ tmp
 .env
 .env.defaults
 renovate.json
+pytest.ini
+
+# Docker files
+docker-compose.*
+Dockerfile

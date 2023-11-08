@@ -12,4 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from .common import *
 
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 500
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1500
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
