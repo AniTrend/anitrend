@@ -4,16 +4,16 @@ from graphene import relay, ObjectType
 
 class GenreObjectType(ObjectType):
     genre = graphene.String(
-        name="genre",
-        description="Genre"
+        name="name",
+        description="Genre title"
     )
     mediaId = graphene.Int(
         name="mediaId",
-        description="Media ID"
+        description="Related media ID"
     )
     image = graphene.String(
         name="image",
-        description="Image banners for relation"
+        description="Image banner for relation"
     )
 
     class Meta:

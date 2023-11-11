@@ -19,97 +19,97 @@ class HomeQuery(ObjectType):
         return {
             'genres': [
                 {
-                    "genre": "Action",
+                    "name": "Action",
                     "mediaId": 101922,
                     "image": "https://img.anili.st/media/101922"
                 },
                 {
-                    "genre": "Adventure",
+                    "name": "Adventure",
                     "mediaId": 108465,
                     "image": "https://img.anili.st/media/108465"
                 },
                 {
-                    "genre": "Comedy",
+                    "name": "Comedy",
                     "mediaId": 21087,
                     "image": "https://img.anili.st/media/21087"
                 },
                 {
-                    "genre": "Drama",
+                    "name": "Drama",
                     "mediaId": 20605,
                     "image": "https://img.anili.st/media/20605"
                 },
                 {
-                    "genre": "Ecchi",
+                    "name": "Ecchi",
                     "mediaId": 20923,
                     "image": "https://img.anili.st/media/20923"
                 },
                 {
-                    "genre": "Fantasy",
+                    "name": "Fantasy",
                     "mediaId": 101759,
                     "image": "https://img.anili.st/media/101759"
                 },
                 {
-                    "genre": "Hentai",
+                    "name": "Hentai",
                     "mediaId": 20807,
                     "image": "https://img.anili.st/media/20807"
                 },
                 {
-                    "genre": "Horror",
+                    "name": "Horror",
                     "mediaId": 11111,
                     "image": "https://img.anili.st/media/11111"
                 },
                 {
-                    "genre": "Mahou Shoujo",
+                    "name": "Mahou Shoujo",
                     "mediaId": 104051,
                     "image": "https://img.anili.st/media/104051"
                 },
                 {
-                    "genre": "Mecha",
+                    "name": "Mecha",
                     "mediaId": 99423,
                     "image": "https://img.anili.st/media/99423"
                 },
                 {
-                    "genre": "Music",
+                    "name": "Music",
                     "mediaId": 20665,
                     "image": "https://img.anili.st/media/20665"
                 },
                 {
-                    "genre": "Mystery",
+                    "name": "Mystery",
                     "mediaId": 1535,
                     "image": "https://img.anili.st/media/1535"
                 },
                 {
-                    "genre": "Psychological",
+                    "name": "Psychological",
                     "mediaId": 21355,
                     "image": "https://img.anili.st/media/21355"
                 },
                 {
-                    "genre": "Romance",
+                    "name": "Romance",
                     "mediaId": 21519,
                     "image": "https://img.anili.st/media/21519"
                 },
                 {
-                    "genre": "Sci-Fi",
+                    "name": "Sci-Fi",
                     "mediaId": 6880,
                     "image": "https://img.anili.st/media/6880"
                 },
                 {
-                    "genre": "Slice of Life",
+                    "name": "Slice of Life",
                     "mediaId": 21827,
                     "image": "https://img.anili.st/media/21827"
                 },
                 {
-                    "genre": "Sports",
+                    "name": "Sports",
                     "mediaId": 20464,
                     "image": "https://img.anili.st/media/20464"
                 },
                 {
-                    "genre": "Supernatural",
+                    "name": "Supernatural",
                     "mediaId": 21234,
                     "image": "https://img.anili.st/media/21234"
                 },
                 {
-                    "genre": "Thriller",
+                    "name": "Thriller",
                     "mediaId": 129201,
                     "image": "https://img.anili.st/media/129201"
                 }

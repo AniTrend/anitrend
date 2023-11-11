@@ -3,9 +3,18 @@
 .github
 .gitignore
 
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+*.sqlite3-journal
+__pycache__/
+
 # General Directories
 .idea
 .graphql
+media-content
 fixtures
 docs
 tmp
