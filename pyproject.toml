@@ -16,7 +16,7 @@ python-decouple = "3.8"
 django-filter = "23.3"
 graphene-django = "3.1.5"
 graphene-django-extras = { git = "https://github.com/wax911/graphene-django-extras.git", tag = "0.1.0" }
-django-cors-headers = "4.3.0"
+django-cors-headers = "4.3.1"
 graphene = "3.3"
 django-enumfield = "3.1"
 django-graphql-playground = "1.0"
