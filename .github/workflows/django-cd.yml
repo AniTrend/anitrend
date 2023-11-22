@@ -35,8 +35,13 @@ jobs:
           if [[ -z "${{ github.event.inputs.tag }}" && -z "${GITHUB_REF#refs/tags/}" ]]; then
             echo "::set-output name=tag::latest"
           else
-            echo "::set-output name=tag::${{ github.event.inputs.tag or GITHUB_REF#refs/tags/ }}"
+            if [ -z "${{ github.event.inputs.tag }}" ]; then
+              echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
+            else
+              echo "::set-output name=tag::${{ github.event.inputs.tag }}"
+            fi
           fi
+
       - name: Build and Push Docker Image
         run: |
           docker buildx create --use
