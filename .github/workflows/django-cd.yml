@@ -9,6 +9,8 @@ on:
         required: true
         default: 'latest'
   push:
+    branches:
+      - develop
     tags: "*"
 
 jobs:
@@ -30,10 +32,10 @@ jobs:
       - name: Set Tag
         id: set-tag
         run: |
-          if [[ -n "${{ github.event.inputs.tag }}" ]]; then
-            echo "::set-output name=tag::${{ github.event.inputs.tag }}"
+          if [[ -z "${{ github.event.inputs.tag }}" && -z "${GITHUB_REF#refs/tags/}" ]]; then
+            echo "::set-output name=tag::latest"
           else
-            echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
+            echo "::set-output name=tag::${{ github.event.inputs.tag or GITHUB_REF#refs/tags/ }}"
           fi
       - name: Build and Push Docker Image
         run: |

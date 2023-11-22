@@ -2,8 +2,7 @@ version: '3'
 services:
   django-server:
     image: ghcr.io/anitrend/anitrend:latest
-    command:
-      - /usr/src/start-server.sh
+    command: ["/usr/src/start-server.sh", "--debug"]
     container_name: django-server
     networks:
       - default
