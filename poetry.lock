@@ -1232,18 +1232,17 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "rollbar"
-version = "0.16.3"
+version = "1.0.0"
 description = "Easy and powerful exception tracking with Rollbar. Send messages and exceptions with arbitrary context, get back aggregates, and debug production issues quickly."
 optional = false
 python-versions = "*"
 files = [
-    {file = "rollbar-0.16.3-py3-none-any.whl", hash = "sha256:f06e23b36d7d1b547f32f287da9367b9bf53319f611da0ec9e891859507ac94e"},
-    {file = "rollbar-0.16.3.tar.gz", hash = "sha256:02313dfc60710ec736ab033d0f8c969d857a8b991cd67e0c1a91620e8a04ede2"},
+    {file = "rollbar-1.0.0-py3-none-any.whl", hash = "sha256:b7831cd8f2d2384e5922cdfb18897890c4ac4609fddfd2a821efe17b92cf1e58"},
+    {file = "rollbar-1.0.0.tar.gz", hash = "sha256:6347b7e49f22f0296fc287a6aea75d642cf64494d2ee127042a7a593c97df3af"},
 ]
 
 [package.dependencies]
-requests = {version = ">=0.12.1", markers = "python_version >= \"3.6\""}
-six = ">=1.9.0"
+requests = ">=0.12.1"
 
 [[package]]
 name = "serde"
@@ -1529,4 +1528,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "21d13ccdbeeae6485eaaedd390b6b1bc5a9a784e2fd96abdc6ed7c8b7e0d4549"
+content-hash = "1e78c5767bd1ea3b6f6d50841e1dbcaeb86e7eee6015c3907a8e3711fc94e312"
