@@ -1,7 +1,9 @@
 version: '3'
 services:
   django-server:
-    image: ghcr.io/anitrend/anitrend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: ["/usr/src/start-server.sh", "--debug"]
     container_name: django-server
     networks:
@@ -9,17 +11,18 @@ services:
     env_file: .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.anitrend.rule=Host(`anitrend.localhost`)"
+      - "traefik.http.routers.anitrend.rule=Host(`${HOST}`)"
       - "traefik.http.routers.anitrend.entrypoints=web,websecure"
       - "traefik.http.routers.anitrend.service=anitrend"
       - "traefik.http.routers.anitrend.tls=true"
       - "traefik.http.routers.anitrend.tls.certresolver=staging"
-      - "traefik.http.services.anitrend.loadbalancer.server.port=8800"
+      - "traefik.http.services.anitrend.loadbalancer.server.port=${PORT}"
 
   django-q:
-    image: ghcr.io/anitrend/anitrend:latest
-    command:
-      - /usr/src/start-q.sh
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["/usr/src/start-q.sh"]
     container_name: django-q
     networks:
       - default
