@@ -9,12 +9,12 @@ services:
     env_file: .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.anitrend.rule=Host(`anitrend.localhost`)"
+      - "traefik.http.routers.anitrend.rule=Host(`${HOST}`)"
       - "traefik.http.routers.anitrend.entrypoints=web,websecure"
       - "traefik.http.routers.anitrend.service=anitrend"
       - "traefik.http.routers.anitrend.tls=true"
       - "traefik.http.routers.anitrend.tls.certresolver=production"
-      - "traefik.http.services.anitrend.loadbalancer.server.port=8800"
+      - "traefik.http.services.anitrend.loadbalancer.server.port=${PORT}"
 
   django-q:
     image: ghcr.io/anitrend/anitrend:latest
