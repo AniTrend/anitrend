@@ -1183,12 +1183,12 @@ files = [
 
 [[package]]
 name = "pyxtension"
-version = "1.16.9"
+version = "1.16.10"
 description = "Extension library for Python"
 optional = false
-python-versions = ">=3.6, <4"
+python-versions = "<4,>=3.6"
 files = [
-    {file = "pyxtension-1.16.9-py3-none-any.whl", hash = "sha256:5822749956e433a229b571a2dcf94350cebb9e18955e3c5c8f4de60a836bd0f3"},
+    {file = "pyxtension-1.16.10-py3-none-any.whl", hash = "sha256:23b5ca9e30b9994b3512343aa48ce0a7a4189000aa366f9c09ef71f566a3b911"},
 ]
 
 [package.dependencies]
@@ -1536,4 +1536,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "79ea3d34657b6ebaa23a7dbc6b39f3067d81c5fce7839946aab646c40ae139ba"
+content-hash = "cee7cb50a6921a5e3b9ea09411d7f60ef7347d24bc4d290dbe358c9e40fac22e"
