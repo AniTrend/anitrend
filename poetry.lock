@@ -735,13 +735,13 @@ test = ["objgraph", "psutil"]
 
 [[package]]
 name = "growthbook"
-version = "1.0.0"
+version = "1.1.0"
 description = "Powerful Feature flagging and A/B testing for Python apps"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "growthbook-1.0.0-py2.py3-none-any.whl", hash = "sha256:919acf8b543bd0f7696626006d2bc2aeb818bfa7b63953e6fb6b597cd2b46a43"},
-    {file = "growthbook-1.0.0.tar.gz", hash = "sha256:465b9dd370a3a6dbad75b12558646d6c51e7926f311b7ad74fb3dfc76e1eb4ca"},
+    {file = "growthbook-1.1.0-py2.py3-none-any.whl", hash = "sha256:4e74345d81172ea58d0a5e348218fbb4c6a2f218144ee139efbec444c18a6fc2"},
+    {file = "growthbook-1.1.0.tar.gz", hash = "sha256:56cc27df0f241491c27efe18b510833bb8d44e8004038ebc30db2bd5c598e879"},
 ]
 
 [package.dependencies]
@@ -1536,4 +1536,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "eb35a69d4ba963ae49e2c747671eccdff55276de9aabdec935ac8536773637f5"
+content-hash = "6288e010bfa2862261cfbd1fa738edb5dade95c653e4f4c5295c8640d9f08127"
