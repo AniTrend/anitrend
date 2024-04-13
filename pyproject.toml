@@ -30,7 +30,7 @@ psycopg2-binary = "2.9.9"
 reactivex = "4.0.4"
 pyxtension = "1.16.10"
 ua-parser = "0.18.0"
-growthbook = "1.0.0"
+growthbook = "1.1.0"
 rollbar = "1.0.0"
 logtail-python = "0.2.10"
 
