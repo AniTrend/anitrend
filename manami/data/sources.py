@@ -2,12 +2,8 @@ from marshmallow import EXCLUDE
 from uplink import get, timeout, retry, ratelimit, Consumer
 
 from core.decorators import raise_api_error
+from core import __TIME_OUT__, __MAX_ATTEMPTS__, __RATE_LIMIT_CALLS__, __RATE_LIMIT_PERIOD_CALLS__
 from ..data.schemas import Container
-
-__TIME_OUT__: int = 180
-__MAX_ATTEMPTS__: int = 5
-__RATE_LIMIT_CALLS__: int = 5
-__RATE_LIMIT_PERIOD_CALLS__: int = 10
 
 
 @timeout(seconds=__TIME_OUT__)

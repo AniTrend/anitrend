@@ -5,6 +5,7 @@ from typing import Final
 from django.http import JsonResponse
 from django.test import RequestFactory
 
+from .models import ContextHeader
 from .middleware import HeaderMiddleware
 from .utilities import LinkUtility, TimeUtility
 

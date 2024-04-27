@@ -1,0 +1,196 @@
+{
+    "settings": {
+        "analyticsEnabled": false,
+        "platformSource": "http://api.kubernetes.localhost"
+    },
+    "navigation": [
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/updates",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_catalogs"
+            },
+            "icon": "ic_updates_24",
+            "i18n": "navigation_updates"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/community",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_catalogs"
+            },
+            "icon": "ic_community_24",
+            "i18n": "navigation_community"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/podcasts",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_catalogs"
+            },
+            "icon": "ic_podcasts_24dp",
+            "i18n": "navigation_podcasts"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "https://www.patreon.com/example",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_support"
+            },
+            "icon": "ic_patreon_24dp",
+            "i18n": "navigation_support"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "https://discord.gg/example",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_support"
+            },
+            "icon": "ic_discord_24dp",
+            "i18n": "navigation_discord"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "https://docs.example.com/project/faq",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_support"
+            },
+            "icon": "ic_help_24dp",
+            "i18n": "navigation_faq"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/dashboard",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_general"
+            },
+            "icon": "ic_dashboard_24dp",
+            "i18n": "navigation_dashboard"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/explore",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_general"
+            },
+            "icon": "ic_explore_24dp",
+            "i18n": "navigation_explore"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/connections",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_general"
+            },
+            "icon": "ic_connections_24dp",
+            "i18n": "navigation_connections"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/ratings",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_general"
+            },
+            "icon": "ic_ratings_24dp",
+            "i18n": "navigation_ratings"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/wishlist",
+            "group": {
+                "authenticated": false,
+                "i18n": "navigation_header_general"
+            },
+            "icon": "ic_wishlist_24dp",
+            "i18n": "navigation_wishlist"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/watchlist",
+            "group": {
+                "authenticated": true,
+                "i18n": "navigation_header_manage"
+            },
+            "icon": "ic_watchlist_24dp",
+            "i18n": "navigation_watchlist"
+        },
+        {
+            "criteria": "{\"version\": \">=3.0.0\"}",
+            "destination": "/readlist",
+            "group": {
+                "authenticated": true,
+                "i18n": "navigation_header_manage"
+            },
+            "icon": "ic_readlist_24dp",
+            "i18n": "navigation_readlist"
+        }
+    ],
+    "genres": [
+        {
+            "name": "Thriller",
+            "mediaId": 129945
+        },
+        {
+            "name": "Crime",
+            "mediaId": 100870
+        },
+        {
+            "name": "Documentary",
+            "mediaId": 121221
+        },
+        {
+            "name": "Family",
+            "mediaId": 20789
+        },
+        {
+            "name": "Fantasy",
+            "mediaId": 102999
+        },
+        {
+            "name": "History",
+            "mediaId": 1598
+        },
+        {
+            "name": "Music",
+            "mediaId": 20775
+        },
+        {
+            "name": "Science Fiction",
+            "mediaId": 6900
+        },
+        {
+            "name": "Reality",
+            "mediaId": 21342
+        },
+        {
+            "name": "Romance",
+            "mediaId": 21845
+        },
+        {
+            "name": "War",
+            "mediaId": 20776
+        },
+        {
+            "name": "Western",
+            "mediaId": 21876
+        }
+    ],
+    "image": {
+        "banner": "storage/v2/",
+        "poster": "storage/v2/",
+        "loading": "storage/v2/",
+        "error": "storage/v2/",
+        "info": "storage/v2/",
+        "default": "storage/v2/"
+    }
+}
