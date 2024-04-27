@@ -3,7 +3,7 @@ from uplink import get, timeout, retry, ratelimit, Consumer
 
 from core.decorators import raise_api_error
 from core import __TIME_OUT__, __MAX_ATTEMPTS__, __RATE_LIMIT_CALLS__, __RATE_LIMIT_PERIOD_CALLS__
-from ..data.schemas import Container
+from ..data.schemas import ConfigurationSchema
 
 
 @timeout(seconds=__TIME_OUT__)
@@ -20,10 +20,9 @@ from ..data.schemas import Container
 class RemoteSource(Consumer):
 
     @raise_api_error
-    @get("master/anime-offline-database.json")
-    def get_anime_entries(self) -> Container(unknown=EXCLUDE):
+    @get("config")
+    def get_config(self) -> ConfigurationSchema(unknown=EXCLUDE):
         """
-        Retrieve a snapshot of relations
-        :return: AnimeContainer
+        :return: ConfigurationSchema
         """
         pass

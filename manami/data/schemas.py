@@ -19,7 +19,7 @@ class Data(CommonSchema):
     episodes = fields.Int(allow_none=True)
     status = fields.Str()
     animeSeason = fields.Nested(
-        nested=Season,
+        nested=Season(),
         allow_none=True,
         unknown=EXCLUDE
     )
@@ -42,7 +42,7 @@ class Data(CommonSchema):
 class Container(CommonSchema):
     data = fields.List(
         fields.Nested(
-            nested=Data,
+            nested=Data(),
             allow_none=False,
             unknown=EXCLUDE
         )

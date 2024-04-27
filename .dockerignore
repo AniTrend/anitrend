@@ -10,6 +10,7 @@
 *.sqlite3
 *.sqlite3-journal
 __pycache__/
+migrations/
 
 # General Directories
 .idea
@@ -29,3 +30,7 @@ pytest.ini
 # Docker files
 docker-compose.*
 Dockerfile
+
+# Test files
+tests.py
+tests/

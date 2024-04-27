@@ -64,9 +64,7 @@ INSTALLED_APPS = [
     "manami",
     "xem",
     "media",
-    "home",
     "config",
-    "navigation",
 ]
 
 MIDDLEWARE = [
@@ -223,4 +221,8 @@ ROLLBAR = {
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
+}
+
+ON_THE_EDGE = {
+    "host": config("EDGE_HOST", cast=str)
 }
