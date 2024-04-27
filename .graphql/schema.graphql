@@ -5,12 +5,6 @@ schema {
     mutation: Mutations
 }
 
-"An object with an ID"
-interface Node {
-    "The ID of the object"
-    id: ID!
-}
-
 "Airing information about the media"
 type Airing {
     "Season the media was aired"
@@ -35,9 +29,12 @@ type Attribute {
 
 "Client configuration"
 type Configuration {
+    "Genre and media connections"
+    genres: [Genre]
     "Default image resources"
-    defaultImage: ImageResource
-    id: Int!
+    image: ImageResource
+    "Navigation configurations"
+    navigation: [Navigation]
     "Configuration settings"
     settings: Settings
 }
@@ -46,43 +43,12 @@ type CreateMediaMutation {
     media: Media
 }
 
-"Navigation destination properties"
-type Destination {
-    "Navigation destination"
-    destination: String
-    id: ID!
-    navigation: Navigation
-    "Navigation destination"
-    type: String
-}
-
 "Genre and media ID relation"
 type Genre {
-    "Genre"
-    genre: String
-    "Image banners for relation"
-    image: String
-    "Media ID"
+    "Related media ID"
     mediaId: Int
-}
-
-"Navigation group properties"
-type Group {
-    "Authenticated status"
-    authenticated: Boolean
-    "Group internationalization"
-    i18n: String
-    id: ID!
-    "Group ID"
-    identifier: Int
-    navigation: Navigation
-}
-
-"Home entries"
-type Home implements Node {
-    genres: [Genre]
-    "The ID of the object"
-    id: ID!
+    "Genre title"
+    name: String
 }
 
 "Images for media items"
@@ -99,12 +65,10 @@ type Image {
 type ImageResource {
     "Banner image URL"
     banner: String
-    config: Configuration
     "Default image URL"
     default: String
     "Error image URL"
     error: String
-    id: ID!
     "Info image URL"
     info: String
     "Loading image URL"
@@ -154,22 +118,31 @@ type Mutations {
     createMedia(mediaData: MediaInput!): CreateMediaMutation
 }
 
-"Navigation configuration"
+"Navigation configuration for an entry"
 type Navigation {
-    destination: Destination
-    group: Group
-    "Navigation internationalization"
+    "Display criteria as semver"
+    criteria: String
+    "Target destination"
+    destination: String
+    "Associated group for this navigation item"
+    group: NavigationGroup
+    "Language resource associated with grouping"
     i18n: String
-    "Navigation icon"
+    "Image resource associated with the navigation item"
     icon: String
-    id: Int!
+}
+
+"Category for a navigation item"
+type NavigationGroup {
+    "Should only display when viewer is authenticated"
+    authenticated: Boolean
+    "Language resource associated with grouping"
+    i18n: String
 }
 
 type Query {
     "Client configuration"
     config: Configuration
-    "Home entries"
-    home: Home
     "Find a media item by filtering with an id"
     media(
         "AniDB Id"
@@ -189,15 +162,14 @@ type Query {
         "TVDB Id"
         tvdb: Int
     ): Media
-    navigation: [Navigation]
 }
 
 "Client default settings"
 type Settings {
     "Analytics enabled status"
     analyticsEnabled: Boolean
-    config: Configuration
-    id: ID!
+    "Upstream platform for additional services"
+    platformSource: String
 }
 
 "Other source ids of where this media can be found"

@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["/usr/src/start-server.sh", "--debug"]
+    command: ["/usr/src/start.sh"]
     container_name: django-server
     networks:
       - default
@@ -17,16 +17,10 @@ services:
       - "traefik.http.routers.anitrend.tls=true"
       - "traefik.http.routers.anitrend.tls.certresolver=staging"
       - "traefik.http.services.anitrend.loadbalancer.server.port=${PORT}"
-
-  django-q:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: ["/usr/src/start-q.sh"]
-    container_name: django-q
-    networks:
-      - default
-    env_file: .env
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   default:

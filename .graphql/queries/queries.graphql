@@ -2,23 +2,15 @@ query ConfigQuery {
     config {
         settings {
             analyticsEnabled
+            platformSource
         }
-        defaultImage {
+        image {
             banner,
             default,
             error,
             info,
             loading,
             poster
-        }
-    }
-}
-
-query HomeQuery {
-    home {
-        genres {
-            image,
-            mediaId
         }
     }
 }
