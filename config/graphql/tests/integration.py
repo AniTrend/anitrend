@@ -19,7 +19,7 @@ class ConfigQueryTestCase(unittest.TestCase):
                 settings {
                     analyticsEnabled
                 }
-                defaultImage {
+                image {
                     banner
                     poster
                     loading
@@ -37,7 +37,7 @@ class ConfigQueryTestCase(unittest.TestCase):
                     "settings": {
                         "analyticsEnabled": False
                     },
-                    "defaultImage": {
+                    "image": {
                         "banner": "https://anitrend.co/media/banner.png",
                         "poster": "https://anitrend.co/media/poster.png",
                         "loading": "https://anitrend.co/media/loading.png",
