@@ -13,7 +13,7 @@ uplink = "0.9.7"
 requests = "2.31.0"
 marshmallow = "3.21.1"
 python-decouple = "3.8"
-django-filter = "23.5"
+django-filter = "24.2"
 graphene-django = "3.2.1"
 graphene-django-extras = { git = "https://github.com/wax911/graphene-django-extras.git", tag = "0.1.0" }
 django-cors-headers = "4.3.1"
