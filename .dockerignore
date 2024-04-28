@@ -2,6 +2,8 @@
 .git
 .github
 .gitignore
+renovate.json
+README.md
 
 # Django
 *.log
@@ -9,22 +11,21 @@
 *.pyc
 *.sqlite3
 *.sqlite3-journal
-__pycache__/
-migrations/
 
-# General Directories
+# General directories
 .idea
 .graphql
 media-content
 fixtures
 docs
 tmp
+__pycache__
+migrations
 
 # General files
 *.md
 .env
 .env.defaults
-renovate.json
 pytest.ini
 
 # Docker files

@@ -8,12 +8,12 @@ services:
       - default
     env_file: .env
     labels:
-      - "traefik.enable=true"
+      - "traefik.enable=${TRAEFIK_ENABLE}"
       - "traefik.http.routers.anitrend.rule=Host(`${HOST}`)"
       - "traefik.http.routers.anitrend.entrypoints=web,websecure"
       - "traefik.http.routers.anitrend.service=anitrend"
       - "traefik.http.routers.anitrend.tls=true"
-      - "traefik.http.routers.anitrend.tls.certresolver=production"
+      - "traefik.http.routers.anitrend.tls.certresolver=${CERT_RESOLVER}"
       - "traefik.http.services.anitrend.loadbalancer.server.port=${PORT}"
     logging:
       options:
