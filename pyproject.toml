@@ -15,7 +15,7 @@ marshmallow = "3.21.1"
 python-decouple = "3.8"
 django-filter = "23.5"
 graphene-django = "3.2.1"
-graphene-django-extras = { git = "https://github.com/anitrend/graphene-django-extras.git", tag = "0.1.0" }
+graphene-django-extras = { git = "https://github.com/anitrend/graphene-django-extras.git", tag = "0.1.1" }
 django-cors-headers = "4.3.1"
 graphene = "3.3"
 django-enumfield = "3.1"
