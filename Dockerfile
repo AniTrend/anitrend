@@ -18,3 +18,4 @@ RUN pip install poetry==1.5.0 \
 FROM dependencies AS final
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+RUN chmod +x start.sh
