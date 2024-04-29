@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-echo "Starting migrations"
-python manage.py makemigrations migrate
+echo "Checking and starting migrations"
+python manage.py makemigrations
+python manage.py migrate
 
-echo 'Collecting static files...'
-python manage.py collectstatic --no-input
+if [ "$1" = "--debug" ]; then
+  echo 'Collecting static files...'
+  python manage.py collectstatic --no-input
+fi
 
 echo "Starting qcluster"
 python manage.py qcluster &
