@@ -38,11 +38,11 @@ def build_url_patterns() -> List[RoutePattern]:
             path("", include('web.urls')),
             path('admin/', admin.site.urls),
             path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=False))),
-            path("playground/", csrf_exempt(GraphQLPlaygroundView.as_view(endpoint="http://localhost:8000/graphql/"))),
+            path("playground/", csrf_exempt(GraphQLPlaygroundView.as_view(endpoint="/graphql/"))),
         ] + static_routes
     return [
         path("", include('web.urls')),
-        path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+        path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=False))),
     ]
 
 
