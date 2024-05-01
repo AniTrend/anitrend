@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["/usr/src/start.sh"]
+    command: ["/usr/src/start.sh", "-d", "$PORT"]
     container_name: django-server
     networks:
       - default
