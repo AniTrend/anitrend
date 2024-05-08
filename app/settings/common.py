@@ -226,3 +226,5 @@ ROLLBAR = {
 ON_THE_EDGE = {
     "host": config("EDGE_HOST", cast=str)
 }
+
+APPEND_SLASH = config("APPEND_SLASH", cast=bool, default=False)
