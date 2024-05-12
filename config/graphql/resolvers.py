@@ -1,8 +1,9 @@
-from typing import Optional
+from typing import Optional, Dict
 
 # noinspection PyPackageRequirements
 from graphql import GraphQLResolveInfo
 
+from core.utils import get_forwarded_headers
 from ..di.containers import UseCaseContainer
 from ..domain.entities import ConfigurationModel
 from ..domain.usecases import ConfigUseCase
@@ -19,5 +20,6 @@ def resolve_config(
     :return: Instance of Config
     """
     use_case: ConfigUseCase = use_case_provider()
-    result = use_case.fetch_configuration()
+    forwarded_headers = get_forwarded_headers(info.context)
+    result = use_case.fetch_configuration(forwarded_headers)
     return result

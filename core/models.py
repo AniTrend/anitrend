@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 from django.db import models
@@ -13,12 +13,50 @@ class CommonModel(models.Model):
 
 
 @dataclass
+class UserAgent:
+    family: Optional[str] = None
+    major: Optional[str] = None
+    minor: Optional[str] = None
+    patch: Optional[str] = None
+
+    @property
+    def version(self):
+        return f'{self.major}{self.minor}{self.patch}'
+
+
+@dataclass
+class CPU:
+    architecture: Optional[str] = None
+
+
+@dataclass
 class Device:
-    browser: Optional[str]
-    cpu: Optional[str]
-    device: Optional[str]
-    engine: Optional[str]
-    os: Optional[str]
+    family: Optional[str] = None
+    brand: Optional[str] = None
+    model: Optional[str] = None
+
+
+@dataclass
+class OS:
+    family: Optional[str] = None
+    major: Optional[str] = None
+    minor: Optional[str] = None
+    patch: Optional[str] = None
+    patch_minor: Optional[str] = None
+
+    @property
+    def version(self):
+        return f'{self.major}{self.minor}{self.patch}${self.patch_minor}'
+
+
+@dataclass
+class UserAgentInfo:
+    raw: str
+    user_agent: UserAgent = field(default_factory=UserAgent)
+    cpu: CPU = field(default_factory=CPU)
+    device: Device = field(default_factory=Device)
+    engine: UserAgent = field(default_factory=UserAgent)
+    os: OS = field(default_factory=OS)
 
 
 @dataclass
@@ -35,8 +73,7 @@ class Application:
 class ContextHeader:
     authorization: Optional[str]
     accepts: Optional[str]
-    agent: str
-    contentType: Optional[str]
-    acceptEncoding: Optional[str]
-    language: Optional[str]
+    content_type: Optional[str]
+    accept_encoding: Optional[str]
     application: Application
+    user_agent_info: UserAgentInfo

@@ -78,7 +78,6 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "core.middleware.HeaderMiddleware",
     "core.middleware.FeatureFlagMiddleware",
-    'core.middleware.CustomRollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = "app.urls"
@@ -184,15 +183,9 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "standard",
         },
-        "rollbar": {
-            "level": "WARNING",
-            "filters": ["require_debug_false"],
-            "access_token": config('ROLLBAR_TOKEN', cast=str),
-            "environment": "development" if DEBUG else "production",
-            "class": "rollbar.logger.RollbarHandler"
-        },
         "logtail": {
             "level": "INFO",
+            "filters": ["require_debug_false"],
             "class": "logtail.LogtailHandler",
             "formatter": "simple",
             "source_token": config("LOGTAIL_SOURCE_TOKEN", cast=str)
@@ -204,7 +197,7 @@ LOGGING = {
             "propagate": True,
         },
         "root": {
-            "handlers": ["rollbar", "logtail"],
+            "handlers": ["logtail"],
             "propagate": True,
         },
     },
@@ -214,13 +207,6 @@ GROWTH_BOOK = {
     "host": config("GROWTH_BOOK_HOST", cast=str),
     "key": config("GROWTH_BOOK_KEY", cast=str),
     "ttl": config("GROWTH_BOOK_TTL", cast=int),
-}
-
-ROLLBAR = {
-    'access_token': config("ROLLBAR_TOKEN", cast=str),
-    'environment': 'development' if DEBUG else 'production',
-    'code_version': '1.0',
-    'root': BASE_DIR,
 }
 
 ON_THE_EDGE = {
