@@ -19,6 +19,5 @@ def resolve_config(
     :return: Instance of Config
     """
     use_case: ConfigUseCase = use_case_provider()
-    enabled_analytics = info.context.feature.isOn("enable-analytics")
     result = use_case.fetch_configuration()
     return result

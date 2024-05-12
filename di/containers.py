@@ -30,5 +30,5 @@ class CoreContainer(containers.DeclarativeContainer):
         api_host=settings.GROWTH_BOOK["host"],
         client_key=settings.GROWTH_BOOK["key"],
         cache_ttl=settings.GROWTH_BOOK["ttl"],
-        trackingCallback=on_experiment_viewed
+        on_experiment_viewed=on_experiment_viewed
     )

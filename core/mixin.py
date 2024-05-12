@@ -26,4 +26,3 @@ class GrowthBookMixin:
     ) -> NoReturn:
         request.feature = self.__growth_book
         request.feature.load_features()
-        request.feature.destroy()
