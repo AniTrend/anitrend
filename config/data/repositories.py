@@ -1,15 +1,10 @@
 from json import JSONDecodeError
-from typing import Optional, Any
 
 from uplink import Consumer
 
-from core.errors import NoDataError
 from core.repositories import DataRepository
-from .schemas import ConfigurationSchema
 from ..data.sources import RemoteSource
-from ..domain.entities import (ConfigurationModel, SettingsModel, ImageModel, NavigationModel,
-                               NavigationGroupModel, GenreModel)
-from pyxtension.streams import stream
+from ..domain.entities import (ConfigurationModel)
 
 
 class Repository(DataRepository):
@@ -20,7 +15,8 @@ class Repository(DataRepository):
 
     def invoke(self, **kwargs) -> ConfigurationModel:
         try:
-            data = self._remote_source.get_config()
+            headers = kwargs.get('headers')
+            data = self._remote_source.get_config(headers)
             return data
         except JSONDecodeError as e:
             self._logger.error(f"Malformed response with error message `{e.doc}`", exc_info=e)

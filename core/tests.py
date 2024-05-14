@@ -68,8 +68,8 @@ class HeaderMiddlewareTest(unittest.TestCase):
         headers = {
             'HTTP_AUTHORIZATION': 'Bearer token',
             'HTTP_ACCEPT': 'application/json',
-            'HTTP_USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
-                               '(KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            'HTTP_USER_AGENT': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, '
+                               'like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36',
             'CONTENT_TYPE': 'application/json',
             'HTTP_ACCEPT_ENCODING': 'gzip, deflate',
             'HTTP_ACCEPT_LANGUAGE': 'en-US,en;q=0.9',
@@ -87,16 +87,25 @@ class HeaderMiddlewareTest(unittest.TestCase):
 
         self.assertEqual(context_header.authorization, 'Bearer token')
         self.assertEqual(context_header.accepts, 'application/json')
-        self.assertEqual(context_header.agent, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                                               ' (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3')
-        self.assertEqual(context_header.contentType, 'application/json')
-        self.assertEqual(context_header.acceptEncoding, 'gzip, deflate')
-        self.assertEqual(context_header.language, 'en-US,en;q=0.9')
-        # self.assertEqual(context_header.device.browser, 'Chrome')
-        # self.assertEqual(context_header.device.cpu, None)
-        # self.assertEqual(context_header.device.device, None)
-        # self.assertEqual(context_header.device.engine, 'Chrome')
-        # self.assertEqual(context_header.device.os, 'Windows NT 10.0')
+        self.assertEqual(context_header.user_agent_info.raw, 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) '
+                                                             'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0'
+                                                             ' Mobile Safari/537.36')
+        self.assertEqual(context_header.content_type, 'application/json')
+        self.assertEqual(context_header.accept_encoding, 'gzip, deflate')
+        self.assertEqual(context_header.user_agent_info.user_agent.family, 'Chrome Mobile')
+        self.assertEqual(context_header.user_agent_info.user_agent.major, '124')
+        self.assertEqual(context_header.user_agent_info.user_agent.minor, '0')
+        self.assertEqual(context_header.user_agent_info.user_agent.patch, '0')
+        self.assertIsNone(context_header.user_agent_info.cpu.architecture)
+        self.assertEqual(context_header.user_agent_info.device.family, 'Nexus 5')
+        self.assertEqual(context_header.user_agent_info.device.brand, 'LG')
+        self.assertEqual(context_header.user_agent_info.device.model, 'Nexus 5')
+        self.assertIsNone(context_header.user_agent_info.engine.family)
+        self.assertEqual(context_header.user_agent_info.os.family, 'Android')
+        self.assertEqual(context_header.user_agent_info.os.major, '6')
+        self.assertEqual(context_header.user_agent_info.os.minor, '0')
+        self.assertIsNone(context_header.user_agent_info.os.patch)
+        self.assertIsNone(context_header.user_agent_info.os.patch_minor)
         self.assertEqual(context_header.application.locale, 'en-US')
         self.assertEqual(context_header.application.version, '1.0')
         self.assertEqual(context_header.application.source, 'web')

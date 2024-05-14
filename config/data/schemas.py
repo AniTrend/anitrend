@@ -1,5 +1,3 @@
-from typing import Any
-
 from marshmallow import fields, post_load
 
 from config.domain.entities import ConfigurationModel
