@@ -178,13 +178,13 @@ LOGGING = {
     },
     "handlers": {
         "console": {
-            "level": "INFO",
+            "level": config("GUNICORN_LOG_LEVEL", cast=str),
             "filters": ["require_debug_true"],
             "class": "logging.StreamHandler",
             "formatter": "standard",
         },
         "logtail": {
-            "level": "INFO",
+            "level": config("GUNICORN_LOG_LEVEL", cast=str),
             "filters": ["require_debug_false"],
             "class": "logtail.LogtailHandler",
             "formatter": "simple",
