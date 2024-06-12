@@ -687,13 +687,13 @@ test = ["coveralls (>=3.3,<4)", "iso8601 (>=1,<2)", "mock (>=4,<5)", "pytest (>=
 
 [[package]]
 name = "graphene-django"
-version = "3.2.1"
+version = "3.2.2"
 description = "Graphene Django integration"
 optional = false
 python-versions = "*"
 files = [
-    {file = "graphene-django-3.2.1.tar.gz", hash = "sha256:52145037872d2575974c4bb2be224756ffeafe5a4e20f9c4367519622965812b"},
-    {file = "graphene_django-3.2.1-py2.py3-none-any.whl", hash = "sha256:3fbdd8d4990ecec326c59d68edfcaf9a7bc9c4dbdcbf88b11ac46dfc10240e49"},
+    {file = "graphene-django-3.2.2.tar.gz", hash = "sha256:059ccf25d9a5159f28d7ebf1a648c993ab34deb064e80b70ca096aa22a609556"},
+    {file = "graphene_django-3.2.2-py2.py3-none-any.whl", hash = "sha256:0fd95c8c1cbe77ae2a5940045ce276803c3acbf200a156731e0c730f2776ae2c"},
 ]
 
 [package.dependencies]
@@ -1614,4 +1614,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5e585c36f196ed9b8f3124abf6955c62d074bccebce2d013e53f7a4de5b8d275"
+content-hash = "29467069e1d1d86bfa7b18bb1ca0d6479ccc221d67994ed30b2a481c259d7da3"
