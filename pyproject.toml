@@ -31,7 +31,7 @@ reactivex = "4.0.4"
 pyxtension = "1.16.10"
 ua-parser = "0.18.0"
 growthbook = "1.1.0"
-logtail-python = "0.2.10"
+logtail-python = "0.3.0"
 brotli = "1.1.0"
 
 [build-system]

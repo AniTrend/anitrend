@@ -885,13 +885,13 @@ files = [
 
 [[package]]
 name = "logtail-python"
-version = "0.2.10"
+version = "0.3.0"
 description = "Logtail.com client library"
 optional = false
 python-versions = "*"
 files = [
-    {file = "logtail-python-0.2.10.tar.gz", hash = "sha256:e0eae5840ea019fb49f8b180fe8d4af33e4d9792230b3ee999034c1cb35d80ed"},
-    {file = "logtail_python-0.2.10-py2.py3-none-any.whl", hash = "sha256:e1a521d1c59e54d5cfd0635d351b4895df779d023bbfab5031c416f6887ccd5d"},
+    {file = "logtail_python-0.3.0-py2.py3-none-any.whl", hash = "sha256:a56727236c044eb5f6e7ad073bc618a37f20d495c2009f555606fc430b2067b7"},
+    {file = "logtail_python-0.3.0.tar.gz", hash = "sha256:587733db22395a32d3bb9c2230a93b6dafc609aa9afc20e68f4cf8435c1b8abe"},
 ]
 
 [package.dependencies]
@@ -1614,4 +1614,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "29467069e1d1d86bfa7b18bb1ca0d6479ccc221d67994ed30b2a481c259d7da3"
+content-hash = "ce488ad3f45e6facc6a34a1e43a25b234f6b3e1faf3554ac36784b7e1f8868b1"
