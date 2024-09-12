@@ -562,17 +562,17 @@ tests = ["tox"]
 
 [[package]]
 name = "django-q2"
-version = "1.6.2"
+version = "1.7.2"
 description = "A multiprocessing distributed task queue for Django"
 optional = false
-python-versions = ">=3.8,<4"
+python-versions = "<4,>=3.8"
 files = [
-    {file = "django_q2-1.6.2-py3-none-any.whl", hash = "sha256:c2d75552c80b83ca0d8c0b0db7db4f17e9f43ee131a46d0ddd514c5f5fc603cb"},
-    {file = "django_q2-1.6.2.tar.gz", hash = "sha256:cd83c16b5791cd99f83a8d106d2447305d73c6c8ed8ec22c7cb954fe0e814284"},
+    {file = "django_q2-1.7.2-py3-none-any.whl", hash = "sha256:3c480d8afd90a87006404b208a49766d370d5fc864a8dd1d3a0221ec22b12bc0"},
+    {file = "django_q2-1.7.2.tar.gz", hash = "sha256:ab30bbf597cc8ade99ed4deeea37c3ade1c4e5976a61be6452930d14d9ebcd1c"},
 ]
 
 [package.dependencies]
-django = ">=3.2,<6"
+django = ">=4.2,<6"
 django-picklefield = ">=3.1,<4.0"
 
 [package.extras]
@@ -1608,4 +1608,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b1378f55859257404e925868842df219300480df0e3f703ba33e4296deab8659"
+content-hash = "90d5db46d0c595020128c667c4a7e678cc31450a2d363cfac3bf41ff03a78ef5"
