@@ -17,7 +17,7 @@ django-filter = "24.3"
 graphene-django = "3.2.2"
 graphene-django-extras = { git = "https://github.com/anitrend/graphene-django-extras.git", tag = "0.1.1" }
 django-cors-headers = "4.5.0"
-graphene = "3.3"
+graphene = "3.4"
 django-enumfield = "3.1"
 django-graphql-playground = "1.0"
 django-extensions = "3.2.3"
