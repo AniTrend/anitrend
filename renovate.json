@@ -12,5 +12,8 @@
   ],
   "baseBranches": [
     "develop"
-  ]
+  ],
+  "automerge": true,
+  "automergeType": "pr",
+  "automergeStrategy": "rebase"
 }
