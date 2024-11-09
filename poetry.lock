@@ -710,13 +710,13 @@ test = ["cffi (>=1.12.2)", "coverage (>=5.0)", "dnspython (>=1.16.0,<2.0)", "idn
 
 [[package]]
 name = "graphene"
-version = "3.4.2"
+version = "3.4.3"
 description = "GraphQL Framework for Python"
 optional = false
 python-versions = "*"
 files = [
-    {file = "graphene-3.4.2-py2.py3-none-any.whl", hash = "sha256:2b5e9f2087856a9a6e2278783c02ac949ebdfe950cce37c6608e6c58f8f08088"},
-    {file = "graphene-3.4.2.tar.gz", hash = "sha256:3c0b3a545de1a47d753a2147efd94db7f3df47482845d376d5bfa5a4315e50eb"},
+    {file = "graphene-3.4.3-py2.py3-none-any.whl", hash = "sha256:820db6289754c181007a150db1f7fff544b94142b556d12e3ebc777a7bf36c71"},
+    {file = "graphene-3.4.3.tar.gz", hash = "sha256:2a3786948ce75fe7e078443d37f609cbe5bb36ad8d6b828740ad3b95ed1a0aaa"},
 ]
 
 [package.dependencies]
@@ -1652,4 +1652,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "3d377a05589e127543dfbebbcf3c63a778f03f5858dadaa982d40b85073ae938"
+content-hash = "3eca344b91cce821af59a2979feb9032131a7c2929f98296de8fdbdd1c664e3d"
