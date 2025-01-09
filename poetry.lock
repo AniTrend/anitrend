@@ -961,13 +961,13 @@ requests = ">=2.18.4"
 
 [[package]]
 name = "marshmallow"
-version = "3.24.2"
+version = "3.25.0"
 description = "A lightweight library for converting complex datatypes to and from native Python datatypes."
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "marshmallow-3.24.2-py3-none-any.whl", hash = "sha256:bf3c56db473bb160e5191f1c5e32e3fc8bfb58998eb2b35d6747de023e31f9e7"},
-    {file = "marshmallow-3.24.2.tar.gz", hash = "sha256:0822c3701de396b51d3f8ac97319aea5493998ba4e7d0e4c05f6fce7777bf3a2"},
+    {file = "marshmallow-3.25.0-py3-none-any.whl", hash = "sha256:50894cd57c6b097a6c6ed2bf216af47d10146990a54db52d03e32edb0448c905"},
+    {file = "marshmallow-3.25.0.tar.gz", hash = "sha256:5ba94a4eb68894ad6761a505eb225daf7e5cb7b4c32af62d4a45e9d42665bc31"},
 ]
 
 [package.dependencies]
@@ -1699,4 +1699,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "56af7825a542c0860b298304d8bd2d83cc9b7d8a087a62fc2d6f364aeb60ee64"
+content-hash = "d0b14f81f6c7079c2c7ae0219180065b8a82c4a2d05469f413803162baa7d371"
