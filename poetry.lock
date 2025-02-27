@@ -765,16 +765,16 @@ files = []
 develop = false
 
 [package.dependencies]
-django-filter = "^24.0"
+django-filter = "^24.3"
 djangorestframework = "^3"
-graphene-django = "^3.2.1"
+graphene-django = "^3.2"
 python-dateutil = "^2.8.0"
 
 [package.source]
 type = "git"
 url = "https://github.com/anitrend/graphene-django-extras.git"
-reference = "0.1.1"
-resolved_reference = "5d00cfdba90199777d3000da2c4d26405d4f994b"
+reference = "0.1.2"
+resolved_reference = "20c0142af99ef2db6f8bfdda012c5cbdf1240ee0"
 
 [[package]]
 name = "graphql-core"
@@ -1703,4 +1703,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "644341049022df60768d1e97187888c11d18e136041b34aab089cd36e7a37a89"
+content-hash = "154fe18932655650435c3e55e3b37345fcab2727d0c636a770eaaaf1c9b097fc"
