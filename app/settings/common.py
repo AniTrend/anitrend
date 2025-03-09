@@ -47,23 +47,14 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = config("DATA_UPLOAD_MAX_NUMBER_FIELDS", default=
 # Application definition
 
 INSTALLED_APPS = [
-    "django_extensions",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "graphene_django",
-    "django_filters",
-    "django_q",
     "corsheaders",
-    "app.modules.service",
     "core",
-    "crunchy",
-    "manami",
-    "xem",
-    "media",
     "config",
 ]
 
@@ -94,17 +85,6 @@ DATABASES = {
         "HOST": config("DJANGO_DATABASE_HOST", cast=str),
         "PORT": config("DJANGO_DATABASE_PORT", cast=int),
     },
-}
-
-# https://django-q.readthedocs.io/en/latest/configure.html
-Q_CLUSTER = {
-    "name": config("DJANGO_Q_NAME", cast=str),
-    "orm": config("DJANGO_Q_ORM", cast=str),
-    "workers": config("DJANGO_Q_WORKERS", cast=int),
-    "recycle": config("DJANGO_Q_RECYCLE", cast=int),
-    "timeout": config("DJANGO_Q_TIMEOUT", cast=int),
-    "retry": config("DJANGO_Q_RETRY", cast=int),
-    "label": config("DJANGO_Q_LABEL", cast=str),
 }
 
 GRAPHENE = {
