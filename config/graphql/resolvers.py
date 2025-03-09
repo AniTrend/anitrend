@@ -2,7 +2,7 @@ from typing import Optional
 
 from strawberry.types import Info
 
-from core.utils import get_forwarded_headers
+from core.utilities import get_forwarded_headers
 from ..di.containers import UseCaseContainer
 from ..domain.entities import ConfigurationModel
 from ..domain.usecases import ConfigUseCase
