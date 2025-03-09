@@ -3,7 +3,6 @@
 set -e
 
 DEBUG_MODE=false
-Q_CLUSTER=false
 PORT=""
 
 usage() {
@@ -12,18 +11,12 @@ usage() {
  echo "Options:"
  echo " -h    Display this help message"
  echo " -d    Run server in debug mode"
- echo " -w    Start work scheduler"
 }
 
 migrations() {
   echo "Checking and starting migrations"
   python manage.py makemigrations
   python manage.py migrate
-}
-
-cluster() {
-  echo "Starting qcluster"
-  python manage.py qcluster &
 }
 
 collect_static() {
@@ -46,10 +39,6 @@ start_prod_server() {
 start_service() {
   migrations
 
-  if $Q_CLUSTER; then
-    cluster
-  fi
-
   echo "Starting server"
   if $DEBUG_MODE; then
     collect_static
@@ -59,7 +48,7 @@ start_service() {
   fi
 }
 
-while getopts ":wd:h" opt; do
+while getopts ":d:h" opt; do
   case ${opt} in
     w)
       Q_CLUSTER=true

@@ -5,7 +5,7 @@ from django.conf import settings
 from growthbook import GrowthBook
 from requests import Session
 
-from core import TimeUtility
+from core.utilities import TimeUtility
 
 
 def on_experiment_viewed(experiment, result):

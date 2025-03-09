@@ -30,6 +30,10 @@ uvicorn = "^0.34.0"
 starlette = "^0.46.1"
 setuptools = "^76.0.0"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+pytest-django = "^4.10.0"
+
 [build-system]
 requires = ["poetry>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

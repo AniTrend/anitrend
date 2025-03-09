@@ -3,10 +3,26 @@ from typing import Optional, Dict
 
 from django.http import HttpRequest, JsonResponse, HttpResponse
 from django.utils.deprecation import MiddlewareMixin
+from ua_parser import user_agent_parser
+
+from core.utilities import safe_get
 
 from .mixin import GrowthBookMixin, LoggerMixin
-from .models import ContextHeader, Application
-from .utils import UAParser
+from .entities import ContextHeader, Application, UserAgentInfo, UserAgent, CPU, Device, OS
+
+class UAParser:
+    def __init__(self, user_agent: Optional[str] = None):
+        self.ua = user_agent_parser.Parse(user_agent or '')
+
+    def get_result(self) -> UserAgentInfo:
+        return UserAgentInfo(
+            raw=safe_get(self.ua, 'string'),
+            user_agent=UserAgent(**safe_get(self.ua, 'user_agent')),
+            cpu=CPU(**safe_get(self.ua, 'cpu')),
+            device=Device(**safe_get(self.ua, 'device')),
+            engine=UserAgent(**safe_get(self.ua, 'engine')),
+            os=OS(**safe_get(self.ua, 'os'))
+        )
 
 
 class FeatureFlagMiddleware(MiddlewareMixin, GrowthBookMixin):

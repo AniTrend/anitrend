@@ -5,10 +5,7 @@ from typing import Optional, List, Dict, Mapping
 from urllib.parse import urlparse
 from django.http.request import HttpHeaders
 from django.http.request import HttpHeaders
-from ua_parser import user_agent_parser
 from strawberry.django.context import StrawberryDjangoContext
-
-from .models import UserAgentInfo, UserAgent, CPU, Device, OS
 
 
 class LinkUtility:
@@ -102,18 +99,3 @@ def safe_get(dictionary: Dict[str, any], keys: str, default: Optional[any] = Non
         else:
             return default if default is not None else {}
     return dictionary
-
-
-class UAParser:
-    def __init__(self, user_agent: Optional[str] = None):
-        self.ua = user_agent_parser.Parse(user_agent or '')
-
-    def get_result(self) -> UserAgentInfo:
-        return UserAgentInfo(
-            raw=safe_get(self.ua, 'string'),
-            user_agent=UserAgent(**safe_get(self.ua, 'user_agent')),
-            cpu=CPU(**safe_get(self.ua, 'cpu')),
-            device=Device(**safe_get(self.ua, 'device')),
-            engine=UserAgent(**safe_get(self.ua, 'engine')),
-            os=OS(**safe_get(self.ua, 'os'))
-        )

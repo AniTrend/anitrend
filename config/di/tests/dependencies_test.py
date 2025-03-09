@@ -1,7 +1,6 @@
 from django.test import TestCase
 
-from core.helpers import FileSystem
-from .. import UseCaseContainer, RepositoryContainer, RemoteSourceContainer
+from config.di import UseCaseContainer, RepositoryContainer, RemoteSourceContainer
 
 
 class DependenciesTestCase(TestCase):
