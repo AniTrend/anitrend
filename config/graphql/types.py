@@ -1,133 +1,74 @@
-import graphene
-from graphene import ObjectType
+import strawberry
+from typing import Optional, List
 
-
-class NavigationGroupObjectType(ObjectType):
-    authenticated = graphene.Boolean(
-        name="authenticated",
+@strawberry.type
+class NavigationGroup:
+    authenticated: bool = strawberry.field(
         description="Should only display when viewer is authenticated"
     )
-    i18n = graphene.String(
-        name="i18n",
+    i18n: str = strawberry.field(
         description="Language resource associated with grouping"
     )
 
-    class Meta:
-        name = "NavigationGroup"
-        description = "Category for a navigation item"
-
-
-class NavigationObjectType(ObjectType):
-    criteria = graphene.String(
-        name="criteria",
+@strawberry.type
+class Navigation:
+    criteria: str = strawberry.field(
         description="Display criteria as semver"
     )
-    destination = graphene.String(
-        name="destination",
+    destination: str = strawberry.field(
         description="Target destination"
     )
-    i18n = graphene.String(
-        name="i18n",
+    i18n: str = strawberry.field(
         description="Language resource associated with grouping"
     )
-    icon = graphene.String(
-        name="icon",
+    icon: str = strawberry.field(
         description="Image resource associated with the navigation item"
     )
-    group = graphene.Field(
-        NavigationGroupObjectType,
-        name="group",
+    group: NavigationGroup = strawberry.field(
         description="Associated group for this navigation item"
     )
 
-    class Meta:
-        name = "Navigation"
-        description = "Navigation configuration for an entry"
-
-
-class GenreObjectType(ObjectType):
-    name = graphene.String(
-        name="name",
+@strawberry.type
+class Genre:
+    name: str = strawberry.field(
         description="Genre title"
     )
-    mediaId = graphene.Int(
+    media_id: int = strawberry.field(
         name="mediaId",
         description="Related media ID"
     )
 
-    class Meta:
-        name = "Genre"
-        description = "Genre and media ID relation"
+@strawberry.type
+class ImageResource:
+    banner: Optional[str] = strawberry.field(description="Banner image URL")
+    poster: Optional[str] = strawberry.field(description="Poster image URL")
+    loading: Optional[str] = strawberry.field(description="Loading image URL")
+    error: Optional[str] = strawberry.field(description="Error image URL")
+    info: Optional[str] = strawberry.field(description="Info image URL")
+    default: Optional[str] = strawberry.field(description="Default image URL")
 
-
-class DefaultImageObjectType(ObjectType):
-    banner = graphene.String(
-        name="banner",
-        description="Banner image URL"
-    )
-    poster = graphene.String(
-        name="poster",
-        description="Poster image URL"
-    )
-    loading = graphene.String(
-        name="loading",
-        description="Loading image URL"
-    )
-    error = graphene.String(
-        name="error",
-        description="Error image URL"
-    )
-    info = graphene.String(
-        name="info",
-        description="Info image URL"
-    )
-    default = graphene.String(
-        name="default",
-        description="Default image URL"
-    )
-
-    class Meta:
-        name = "ImageResource"
-        description = "Image resource properties"
-
-
-class SettingsObjectType(ObjectType):
-    analyticsEnabled = graphene.Boolean(
+@strawberry.type
+class Settings:
+    analytics_enabled: bool = strawberry.field(
         name="analyticsEnabled",
         description="Analytics enabled status"
     )
-    platformSource = graphene.String(
+    platform_source: str = strawberry.field(
         name="platformSource",
         description="Upstream platform for additional services"
     )
 
-    class Meta:
-        name = "Settings"
-        description = "Client default settings"
-
-
-class ConfigurationObjectType(ObjectType):
-    settings = graphene.Field(
-        SettingsObjectType,
-        name="settings",
+@strawberry.type
+class Configuration:
+    settings: Settings = strawberry.field(
         description="Configuration settings"
     )
-    image = graphene.Field(
-        DefaultImageObjectType,
-        name="image",
+    image: ImageResource = strawberry.field(
         description="Default image resources"
     )
-    navigation = graphene.List(
-        NavigationObjectType,
-        name="navigation",
+    navigation: List[Navigation] = strawberry.field(
         description="Navigation configurations"
     )
-    genres = graphene.List(
-        GenreObjectType,
-        name="genres",
+    genres: List[Genre] = strawberry.field(
         description="Genre and media connections"
     )
-
-    class Meta:
-        name = "Configuration"
-        description = "Client configuration"
