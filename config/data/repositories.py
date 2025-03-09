@@ -16,7 +16,7 @@ class Repository(DataRepository):
     def invoke(self, **kwargs) -> ConfigurationModel:
         try:
             headers = kwargs.get('headers')
-            data = self._remote_source.get_config(headers)
+            data = self._remote_source.get_config(headers=headers)
             return data
         except JSONDecodeError as e:
             self._logger.error(f"Malformed response with error message `{e.doc}`", exc_info=e)

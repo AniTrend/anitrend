@@ -23,10 +23,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media-content")
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-INSTALLED_APPS += [
-    "graphql_playground",
-]
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",

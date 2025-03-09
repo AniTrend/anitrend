@@ -1,40 +1,30 @@
-import graphene
+import strawberry
 
 
-class NewsObjectType(graphene.ObjectType):
-    id = graphene.String(
-        name="id",
+@strawberry.type
+class NewsObjectType:
+    id: str = strawberry.field(
         description="News ID"
     )
-    title = graphene.String(
-        name="title",
+    title: str = strawberry.field(
         description="News title"
     )
-    image = graphene.String(
-        name="image",
+    image: str = strawberry.field(
         description="News image URL"
     )
-    author = graphene.String(
-        name="author",
+    author: str = strawberry.field(
         description="News author"
     )
-    description = graphene.String(
-        name="description",
+    description: str = strawberry.field(
         description="News description"
     )
-    content = graphene.String(
-        name="content",
+    content: str = strawberry.field(
         description="News content"
     )
-    link = graphene.String(
-        name="link",
+    link: str = strawberry.field(
         description="News link"
     )
-    publishedOn = graphene.Int(
+    published_on: int = strawberry.field(
         name="publishedOn",
         description="Published timestamp"
     )
-
-    class Meta:
-        name = "News"
-        description = "Industry news and announcements"

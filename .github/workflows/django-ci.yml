@@ -18,6 +18,7 @@ jobs:
       POSTGRES_DB: djtesting
       POSTGRES_PORT: 5432
       DJANGO_SECRET_KEY: test-key
+
     services:
       postgres_main:
         image: postgres:17
@@ -32,26 +33,48 @@ jobs:
           --health-interval 10s 
           --health-timeout 5s 
           --health-retries 5
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up Python 3.13.1
         uses: actions/setup-python@v5
         with:
           python-version: '3.13.1'
-      - name: Setup sample .env
+
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
+      - name: Setup environment
         run: cp .env.defaults .env
-      - name: Install pip and poetry dependencies
+
+      - name: Install Poetry
         run: |
           pip install --upgrade pip
           pip install poetry
-          poetry config virtualenvs.create true
-          poetry install --no-root
-      - name: Create directories
-        run: |
-          mkdir tmp
+
+      - name: Configure Poetry
+        run: poetry config virtualenvs.create true
+
+      - name: Install dependencies
+        run: poetry install --no-root
+
+      - name: Create temporary directories
+        run: mkdir -p tmp
+        
+      - name: Run Unit Tests
+        env:
+          PYTHONUNBUFFERED: 1
+        run: poetry run pytest -v
+
       - name: Run Django Tests
         env:
           DJANGO_SETTINGS_MODULE: "app.settings.development"
           PYTHONUNBUFFERED: 1
-        run: |
-          poetry run python manage.py test
+        run: poetry run python manage.py test

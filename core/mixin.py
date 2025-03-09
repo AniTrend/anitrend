@@ -5,7 +5,7 @@ from dependency_injector.wiring import Provide, inject
 from django.http import HttpRequest, HttpResponse
 from growthbook import GrowthBook
 
-from core.models import ContextHeader
+from core.entities import ContextHeader
 from di import CoreContainer
 
 

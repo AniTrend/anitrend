@@ -1,25 +1,17 @@
-from typing import Optional, Dict
+from typing import Optional
 
-# noinspection PyPackageRequirements
-from graphql import GraphQLResolveInfo
+from strawberry.types.info import ContextType
 
-from core.utils import get_forwarded_headers
-from ..di.containers import UseCaseContainer
-from ..domain.entities import ConfigurationModel
-from ..domain.usecases import ConfigUseCase
+from config.di.containers import UseCaseContainer
+from core.utilities import get_forwarded_headers
+from .types import Configuration
 
 
 def resolve_config(
-        info: GraphQLResolveInfo,
-        use_case_provider=UseCaseContainer.use_case
-) -> Optional[ConfigurationModel]:
-    """
-    Configuration resolver
-    :param info:
-    :param use_case_provider:
-    :return: Instance of Config
-    """
-    use_case: ConfigUseCase = use_case_provider()
-    forwarded_headers = get_forwarded_headers(info.context)
+    context: ContextType,
+    use_case_provider=UseCaseContainer.use_case
+) -> Optional[Configuration]:
+    use_case = use_case_provider()
+    forwarded_headers = get_forwarded_headers(context)
     result = use_case.fetch_configuration(forwarded_headers)
     return result

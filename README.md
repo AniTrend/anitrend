@@ -45,14 +45,6 @@ poetry run python manage.py graphql_schema
 
 The result will be saved in `./tmp`
 
-## Starting process workers
-
-```shell
-poetry run python manage.py qcluster
-```
-
-See `/admin/django_q/` for tasks updates
-
 ## License
 
 ```

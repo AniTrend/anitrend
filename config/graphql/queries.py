@@ -1,17 +1,14 @@
-from graphene import ObjectType, Field
-from graphql import GraphQLResolveInfo
+import strawberry
+from typing import Optional
+from strawberry.types import Info
 
 from .resolvers import resolve_config
-from .types import ConfigurationObjectType
+from .types import Configuration
 
 
-class ConfigQuery(ObjectType):
-    config = Field(
-        ConfigurationObjectType,
-        name="config",
-        description="Client configuration",
-    )
+@strawberry.type
+class ConfigQuery:
 
-    @staticmethod
-    def resolve_config(root, info: GraphQLResolveInfo, **kwargs):
-        return resolve_config(info)
+    @strawberry.field(description="Client configuration")
+    def config(self, info: Info) -> Optional[Configuration]:
+        return resolve_config(context = info.context)
