@@ -1,7 +1,6 @@
-from typing import Optional, Dict
+from typing import Optional
 
-# noinspection PyPackageRequirements
-from graphql import GraphQLResolveInfo
+from strawberry.types import Info
 
 from core.utils import get_forwarded_headers
 from ..di.containers import UseCaseContainer
@@ -10,7 +9,7 @@ from ..domain.usecases import ConfigUseCase
 
 
 def resolve_config(
-        info: GraphQLResolveInfo,
+        info: Info,
         use_case_provider=UseCaseContainer.use_case
 ) -> Optional[ConfigurationModel]:
     """

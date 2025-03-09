@@ -32,7 +32,7 @@ collect_static() {
 }
 
 start_dev_server() {
-  python manage.py runserver "0.0.0.0:$PORT"
+  python asgi_server.py
 }
 
 start_prod_server() {

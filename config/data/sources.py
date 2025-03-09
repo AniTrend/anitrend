@@ -21,7 +21,7 @@ class RemoteSource(Consumer):
 
     @raise_api_error
     @get("config")
-    def get_config(self, headers: HeaderMap) -> ConfigurationSchema(unknown=EXCLUDE):
+    async def get_config(self, headers: HeaderMap) -> ConfigurationSchema(unknown=EXCLUDE):
         """
         :return: ConfigurationSchema
         """

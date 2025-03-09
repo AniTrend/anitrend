@@ -1,11 +1,14 @@
-from typing import Optional, Dict, Any, Mapping
+from typing import Optional, Dict, Mapping
 
 from ua_parser import user_agent_parser
+from django.http.request import HttpHeaders
+from strawberry.django.context import StrawberryDjangoContext
 
 from .models import UserAgentInfo, UserAgent, CPU, Device, OS
 
 
-def get_forwarded_headers(context) -> Optional[Mapping]:
+
+def get_forwarded_headers(context: StrawberryDjangoContext) -> Optional[Mapping]:
     keys_to_pick = [
         'host',
         'accept',
@@ -21,8 +24,8 @@ def get_forwarded_headers(context) -> Optional[Mapping]:
         'x-app-build-type'
     ]
     headers: Optional[Mapping] = None
-    if hasattr(context, 'headers'):
-        request_headers: Mapping = context.headers
+    if context.request.headers:
+        request_headers: HttpHeaders = context.request.headers
         headers = {key: request_headers[key] for key in keys_to_pick if key in request_headers}
     return headers
 
