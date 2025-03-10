@@ -1,6 +1,7 @@
 from marshmallow import EXCLUDE
-from uplink import get, timeout, retry, ratelimit, Consumer, HeaderMap
+from uplink import get, returns , timeout, retry, ratelimit, Consumer, HeaderMap
 
+from config.domain.entities import ConfigurationModel
 from core.decorators import raise_api_error
 from core import __TIME_OUT__, __MAX_ATTEMPTS__, __RATE_LIMIT_CALLS__, __RATE_LIMIT_PERIOD_CALLS__
 from ..data.schemas import ConfigurationSchema
@@ -19,9 +20,10 @@ from ..data.schemas import ConfigurationSchema
 )
 class RemoteSource(Consumer):
 
+    @returns(ConfigurationSchema(unknown=EXCLUDE))
     @raise_api_error
     @get("config")
-    async def get_config(self, headers: HeaderMap) -> ConfigurationSchema(unknown=EXCLUDE):
+    async def get_config(self, headers: HeaderMap) -> ConfigurationModel:
         """
         :return: ConfigurationSchema
         """
