@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "core",
     "config",
+    'news',
 ]
 
 MIDDLEWARE = [

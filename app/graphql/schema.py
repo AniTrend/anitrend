@@ -2,6 +2,7 @@ import strawberry
 from strawberry_django.optimizer import DjangoOptimizerExtension
 
 from config.graphql.queries import ConfigQuery
+from news.graphql.queries import NewsQuery
 
 
 @strawberry.type
@@ -10,7 +11,7 @@ class Mutations:
 
 
 @strawberry.type
-class Query(ConfigQuery):
+class Query(ConfigQuery, NewsQuery):
     pass
 
 
