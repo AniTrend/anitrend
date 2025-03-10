@@ -2,7 +2,7 @@ import strawberry
 from typing import Annotated, Optional
 from strawberry.types import Info
 
-from .resolvers import resolve_news
+from .resolvers import resolve_news_connection
 from .types import NewsConnection
 
 
@@ -18,7 +18,7 @@ class NewsQuery:
         limit: Annotated[Optional[int], strawberry.argument(description="The size of the list, default is 10")],
     ) -> Optional[NewsConnection]:
         try:
-            return resolve_news(
+            return resolve_news_connection(
                 context=info.context,
                 after=after,
                 before=before,

@@ -5,7 +5,7 @@ from .entities import NewsConnectionModel
 
 
 class NewsUseCase(CommonUseCase):
-    def fetch_news(
+    def fetch_news_connection(
         self,
         headers: Dict[str, str],
         after: Optional[str] = None,
