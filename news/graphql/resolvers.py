@@ -7,7 +7,7 @@ from core.utilities import get_forwarded_headers
 from .types import NewsConnection
 
 
-def resolve_news(
+def resolve_news_connection(
     context: ContextType,
     after: Optional[str] = None,
     before: Optional[str] = None,
@@ -22,7 +22,7 @@ def resolve_news(
     """
     use_case = use_case_provider()
     forwarded_headers = get_forwarded_headers(context)
-    result = use_case.fetch_news(
+    result = use_case.fetch_news_connection(
         headers=forwarded_headers, 
         after=after,
         before=before,
