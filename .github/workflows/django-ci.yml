@@ -38,26 +38,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.13.1
+      - name: Install poetry
+        run: pipx install poetry
+
+      - name: Setup python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13.1'
-
-      - name: Cache Poetry dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pypoetry
-          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-poetry-
+          python-version-file: 'pyproject.toml'
+          cache: 'poetry'
 
       - name: Setup environment
         run: cp .env.defaults .env
-
-      - name: Install Poetry
-        run: |
-          pip install --upgrade pip
-          pip install poetry
 
       - name: Configure Poetry
         run: poetry config virtualenvs.create true
