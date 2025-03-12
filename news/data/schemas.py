@@ -1,22 +1,22 @@
-from marshmallow import Schema, fields, post_load
-
-from core.decorators import to_model
-from news.domain.entities import NewsConnectionModel
+from typing import List
+from dataclasses import dataclass
 
 
-class NewsSchema(Schema):
-    id = fields.String(required=True)
-    title = fields.String(required=True)
-    author = fields.String(required=True)
-    description = fields.String(required=True)
-    content = fields.String(required=True)
-    image = fields.String(allow_none=True)
-    published_on = fields.Integer(required=True, data_key="publishedOn")
-    link = fields.String(required=True)
+@dataclass
+class NewsSchema:
+    id: str
+    title: str
+    author: str
+    description: str
+    content: str
+    image: str
+    publishedOn: int
+    link: str
 
-@to_model(NewsConnectionModel)
-class NewsConnectionSchema(Schema):
-    count = fields.Integer(required=True)
-    first = fields.String(required=True)
-    last = fields.String(required=True)
-    data = fields.List(fields.Nested(NewsSchema), required=True)
+
+@dataclass
+class NewsConnectionSchema:
+    count: int
+    first: str
+    last: str
+    data: List[NewsSchema]

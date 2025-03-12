@@ -1,7 +1,7 @@
 from typing import Optional, Dict
 
 from core.usecases import CommonUseCase
-from .entities import NewsConnectionModel
+from news.data.schemas import NewsConnectionSchema
 
 
 class NewsUseCase(CommonUseCase):
@@ -11,12 +11,12 @@ class NewsUseCase(CommonUseCase):
         after: Optional[str] = None,
         before: Optional[str] = None,
         limit: Optional[int] = None,
-    ) -> Optional[NewsConnectionModel]:
+    ) -> Optional[NewsConnectionSchema]:
         """Fetch paginated news using cursor-based pagination
         :param headers: Request headers
         :param after: Cursor for next page
         :param before: Cursor for previous page
-        :return: NewsConnectionModel object
+        :return: NewsConnectionSchema object
         """
         try:
             data = self._repository.invoke(

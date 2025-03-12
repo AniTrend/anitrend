@@ -1,3 +1,5 @@
-"""Dependency injection package"""
+"""
+Config dependency injection package
+"""
 
-from .containers import RemoteSourceContainer, RepositoryContainer, UseCaseContainer
+from .containers import ConfigContainer

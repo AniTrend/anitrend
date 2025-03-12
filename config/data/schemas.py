@@ -1,44 +1,48 @@
-from marshmallow import fields, post_load
-
-from config.domain.entities import ConfigurationModel
-from core.decorators import to_model
-from core.schemas import CommonSchema
+from typing import List, Optional
+from dataclasses import dataclass
 
 
-class SettingsSchema(CommonSchema):
-    analyticsEnabled = fields.Boolean(required=True)
-    platformSource = fields.String(allow_none=True)
+@dataclass
+class SettingsSchema:
+    analyticsEnabled: bool
+    platformSource: Optional[str]
 
 
-class ImageSchema(CommonSchema):
-    banner = fields.String(required=True)
-    poster = fields.String(required=True)
-    loading = fields.String(required=True)
-    error = fields.String(required=True)
-    info = fields.String(required=True)
-    default = fields.String(required=True)
+@dataclass
+class ImageSchema:
+    banner: str
+    poster: str
+    loading: str
+    error: str
+    info: str
+    default: str
 
 
-class NavigationGroupSchema(CommonSchema):
-    authenticated = fields.Boolean(required=True)
-    i18n = fields.String(required=True)
+@dataclass
+class NavigationGroupSchema:
+    authenticated: bool
+    i18n: str
 
 
-class NavigationSchema(CommonSchema):
-    criteria = fields.String(required=True)
-    destination = fields.String(required=True)
-    i18n = fields.String(required=True)
-    icon = fields.String(required=True)
-    group = fields.Nested(NavigationGroupSchema(), required=True)
+@dataclass
+class NavigationSchema:
+    criteria: str
+    destination: str
+    i18n: str
+    icon: str
+    group: NavigationGroupSchema
 
 
-class GenreSchema(CommonSchema):
-    name = fields.String(required=True)
-    mediaId = fields.Integer(required=True)
+@dataclass
+class GenreSchema:
+    name: str
+    mediaId: int
 
-@to_model(ConfigurationModel)
-class ConfigurationSchema(CommonSchema):
-    settings = fields.Nested(SettingsSchema(), required=True)
-    image = fields.Nested(ImageSchema(), allow_none=True)
-    navigation = fields.List(fields.Nested(nested=NavigationSchema(), allow_none=True))
-    genres = fields.List(fields.Nested(nested=GenreSchema(), allow_none=True))
+
+@dataclass
+class ConfigurationSchema:
+    id: str
+    settings: SettingsSchema
+    image: Optional[ImageSchema]
+    navigation: Optional[List[NavigationSchema]]
+    genres: Optional[List[GenreSchema]]

@@ -1,196 +1,224 @@
 {
-    "settings": {
-        "analyticsEnabled": false,
-        "platformSource": "http://api.kubernetes.localhost"
+  "id": "6564d9d144fe8e468015b5f2",
+  "settings": {
+    "analyticsEnabled": false
+  },
+  "genres": [
+    {
+      "name": "Action",
+      "mediaId": 101922
     },
-    "navigation": [
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/updates",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_catalogs"
-            },
-            "icon": "ic_updates_24",
-            "i18n": "navigation_updates"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/community",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_catalogs"
-            },
-            "icon": "ic_community_24",
-            "i18n": "navigation_community"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/podcasts",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_catalogs"
-            },
-            "icon": "ic_podcasts_24dp",
-            "i18n": "navigation_podcasts"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "https://www.patreon.com/example",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_support"
-            },
-            "icon": "ic_patreon_24dp",
-            "i18n": "navigation_support"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "https://discord.gg/example",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_support"
-            },
-            "icon": "ic_discord_24dp",
-            "i18n": "navigation_discord"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "https://docs.example.com/project/faq",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_support"
-            },
-            "icon": "ic_help_24dp",
-            "i18n": "navigation_faq"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/dashboard",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_general"
-            },
-            "icon": "ic_dashboard_24dp",
-            "i18n": "navigation_dashboard"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/explore",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_general"
-            },
-            "icon": "ic_explore_24dp",
-            "i18n": "navigation_explore"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/connections",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_general"
-            },
-            "icon": "ic_connections_24dp",
-            "i18n": "navigation_connections"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/ratings",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_general"
-            },
-            "icon": "ic_ratings_24dp",
-            "i18n": "navigation_ratings"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/wishlist",
-            "group": {
-                "authenticated": false,
-                "i18n": "navigation_header_general"
-            },
-            "icon": "ic_wishlist_24dp",
-            "i18n": "navigation_wishlist"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/watchlist",
-            "group": {
-                "authenticated": true,
-                "i18n": "navigation_header_manage"
-            },
-            "icon": "ic_watchlist_24dp",
-            "i18n": "navigation_watchlist"
-        },
-        {
-            "criteria": "{\"version\": \">=3.0.0\"}",
-            "destination": "/readlist",
-            "group": {
-                "authenticated": true,
-                "i18n": "navigation_header_manage"
-            },
-            "icon": "ic_readlist_24dp",
-            "i18n": "navigation_readlist"
-        }
-    ],
-    "genres": [
-        {
-            "name": "Thriller",
-            "mediaId": 129945
-        },
-        {
-            "name": "Crime",
-            "mediaId": 100870
-        },
-        {
-            "name": "Documentary",
-            "mediaId": 121221
-        },
-        {
-            "name": "Family",
-            "mediaId": 20789
-        },
-        {
-            "name": "Fantasy",
-            "mediaId": 102999
-        },
-        {
-            "name": "History",
-            "mediaId": 1598
-        },
-        {
-            "name": "Music",
-            "mediaId": 20775
-        },
-        {
-            "name": "Science Fiction",
-            "mediaId": 6900
-        },
-        {
-            "name": "Reality",
-            "mediaId": 21342
-        },
-        {
-            "name": "Romance",
-            "mediaId": 21845
-        },
-        {
-            "name": "War",
-            "mediaId": 20776
-        },
-        {
-            "name": "Western",
-            "mediaId": 21876
-        }
-    ],
-    "image": {
-        "banner": "storage/v2/",
-        "poster": "storage/v2/",
-        "loading": "storage/v2/",
-        "error": "storage/v2/",
-        "info": "storage/v2/",
-        "default": "storage/v2/"
+    {
+      "name": "Adventure",
+      "mediaId": 108465
+    },
+    {
+      "name": "Comedy",
+      "mediaId": 21087
+    },
+    {
+      "name": "Drama",
+      "mediaId": 20605
+    },
+    {
+      "name": "Ecchi",
+      "mediaId": 20923
+    },
+    {
+      "name": "Fantasy",
+      "mediaId": 101759
+    },
+    {
+      "name": "Hentai",
+      "mediaId": 20807
+    },
+    {
+      "name": "Horror",
+      "mediaId": 11111
+    },
+    {
+      "name": "Mahou Shoujo",
+      "mediaId": 104051
+    },
+    {
+      "name": "Mecha",
+      "mediaId": 99423
+    },
+    {
+      "name": "Music",
+      "mediaId": 20665
+    },
+    {
+      "name": "Mystery",
+      "mediaId": 1535
+    },
+    {
+      "name": "Psychological",
+      "mediaId": 21355
+    },
+    {
+      "name": "Romance",
+      "mediaId": 21519
+    },
+    {
+      "name": "Sci-Fi",
+      "mediaId": 6880
+    },
+    {
+      "name": "Slice of Life",
+      "mediaId": 21827
+    },
+    {
+      "name": "Sports",
+      "mediaId": 20464
+    },
+    {
+      "name": "Supernatural",
+      "mediaId": 21234
+    },
+    {
+      "name": "Thriller",
+      "mediaId": 129201
     }
+  ],
+  "image": {
+    "banner": "/storage/v1/object/public/app/android/media/banner/156cc9127eb16c7fd645a9ba0fb3a4e21678353995_main.jpg",
+    "poster": "/storage/v1/object/public/app/android/media/poster/112222c7-331a-2a3f-d2ba-a8c68aa201b3.jpg",
+    "loading": "/storage/v1/object/public/app/android/media/resources/b4e30f09-4682-4a96-a181-dc86844508c9.svg",
+    "error": "/storage/v1/object/public/app/android/media/resources/36407dc5-ff61-4a18-a0bb-8b164831ce73.svg",
+    "info": "/storage/v1/object/public/app/android/media/resources/1f762f59-331a-44b3-abd3-f49711820eb5.svg",
+    "default": "/storage/v1/object/public/app/android/media/resources/112222c7-3a30-4c54-9ee3-28fd04099ab7.svg"
+  },
+  "navigation": [
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/news",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_catalogs"
+      },
+      "icon": "ic_news_24",
+      "i18n": "navigation_news"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/forum/recent",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_catalogs"
+      },
+      "icon": "ic_forum_24",
+      "i18n": "navigation_forums"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/episodes",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_catalogs"
+      },
+      "icon": "ic_tv_24dp",
+      "i18n": "navigation_episodes"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "https://patreon",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_support"
+      },
+      "icon": "ic_patreon_24dp",
+      "i18n": "navigation_support"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "https://discord",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_support"
+      },
+      "icon": "ic_discord_24dp",
+      "i18n": "navigation_discord"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "https://docs",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_support"
+      },
+      "icon": "ic_help_24dp",
+      "i18n": "navigation_faq"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/home",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_general"
+      },
+      "icon": "ic_deck_24dp",
+      "i18n": "navigation_home"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/discover",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_general"
+      },
+      "icon": "ic_discover_24dp",
+      "i18n": "navigation_discover"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/social",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_general"
+      },
+      "icon": "ic_social_24",
+      "i18n": "navigation_social"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/reviews",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_general"
+      },
+      "icon": "ic_review_24",
+      "i18n": "navigation_review"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/suggestions",
+      "group": {
+        "authenticated": false,
+        "i18n": "navigation_header_general"
+      },
+      "icon": "ic_suggestions_24",
+      "i18n": "navigation_suggestions"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/animelist",
+      "group": {
+        "authenticated": true,
+        "i18n": "navigation_header_manage"
+      },
+      "icon": "ic_anime_24",
+      "i18n": "navigation_anime_list"
+    },
+    {
+      "criteria": ">=2.0.0",
+      "destination": "/mangalist",
+      "group": {
+        "authenticated": true,
+        "i18n": "navigation_header_manage"
+      },
+      "icon": "ic_manga_24",
+      "i18n": "navigation_manga_list"
+    }
+  ]
 }
