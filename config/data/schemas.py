@@ -1,6 +1,7 @@
 from marshmallow import fields, post_load
 
 from config.domain.entities import ConfigurationModel
+from core.decorators import to_model
 from core.schemas import CommonSchema
 
 
@@ -35,18 +36,9 @@ class GenreSchema(CommonSchema):
     name = fields.String(required=True)
     mediaId = fields.Integer(required=True)
 
-
+@to_model(ConfigurationModel)
 class ConfigurationSchema(CommonSchema):
     settings = fields.Nested(SettingsSchema(), required=True)
     image = fields.Nested(ImageSchema(), allow_none=True)
     navigation = fields.List(fields.Nested(nested=NavigationSchema(), allow_none=True))
     genres = fields.List(fields.Nested(nested=GenreSchema(), allow_none=True))
-
-    @post_load()
-    def __on_post_load(self, data, many, **kwargs) -> ConfigurationModel:
-        try:
-            model = ConfigurationModel.from_dict(data)
-            return model
-        except Exception as e:
-            self._logger.error(f"Conversion from dictionary failed", exc_info=e)
-            raise e

@@ -3,7 +3,7 @@ import logging
 from logging import Logger
 from typing import Any, Optional, Dict, Union, cast
 
-from marshmallow import Schema
+from marshmallow import Schema, post_load
 from marshmallow.schema import SchemaMeta
 from marshmallow.types import StrSequenceOrSet
 
@@ -18,6 +18,7 @@ class CommonSchema(Schema):
         super().__init__(only=only, exclude=exclude, many=many, context=context, load_only=load_only,
                          dump_only=dump_only, partial=partial, unknown=unknown)
 
+    @post_load()
     def _on_post_load(self, data, many, **kwargs) -> Any:
         pass
 

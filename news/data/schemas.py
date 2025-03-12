@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields, post_load
 
+from core.decorators import to_model
 from news.domain.entities import NewsConnectionModel
 
 
@@ -13,17 +14,9 @@ class NewsSchema(Schema):
     published_on = fields.Integer(required=True, data_key="publishedOn")
     link = fields.String(required=True)
 
+@to_model(NewsConnectionModel)
 class NewsConnectionSchema(Schema):
     count = fields.Integer(required=True)
     first = fields.String(required=True)
     last = fields.String(required=True)
     data = fields.List(fields.Nested(NewsSchema), required=True)
-
-    @post_load()
-    def __on_post_load(self, data, many, **kwargs) -> NewsConnectionModel:
-        try:
-            model = NewsConnectionModel.from_dict(data)
-            return model
-        except Exception as e:
-            self._logger.error(f"Conversion from dictionary failed", exc_info=e)
-            raise e
