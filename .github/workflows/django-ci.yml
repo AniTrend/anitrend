@@ -18,6 +18,8 @@ jobs:
       POSTGRES_DB: djtesting
       POSTGRES_PORT: 5432
       DJANGO_SECRET_KEY: test-key
+      PYTHONUNBUFFERED: 1
+      DJANGO_SETTINGS_MODULE: "app.settings.development"
 
     services:
       postgres_main:
@@ -59,13 +61,8 @@ jobs:
       - name: Create temporary directories
         run: mkdir -p tmp
         
-      - name: Run Unit Tests
-        env:
-          PYTHONUNBUFFERED: 1
+      - name: Run PyTest
         run: poetry run pytest -v
 
       - name: Run Django Tests
-        env:
-          DJANGO_SETTINGS_MODULE: "app.settings.development"
-          PYTHONUNBUFFERED: 1
         run: poetry run python manage.py test

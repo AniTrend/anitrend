@@ -6,7 +6,7 @@ from news.graphql.queries import NewsQuery
 
 
 @strawberry.type
-class Mutations:
+class Mutation:
     pass
 
 
@@ -17,7 +17,7 @@ class Query(ConfigQuery, NewsQuery):
 
 schema = strawberry.Schema(
     query=Query,
-    #mutation=Mutations,
-    types=[],
+    # mutation=Mutations,
+    # types=[],
     extensions=[DjangoOptimizerExtension],
 )

@@ -8,8 +8,8 @@ from ..data.sources import RemoteSource
 from ..domain.usecases import ConfigUseCase
 
 
-class RemoteSourceContainer(containers.DeclarativeContainer):
-    """IoC container of remote sources providers"""
+class ConfigContainer(containers.DeclarativeContainer):
+    """IoC container of config providers"""
 
     remote_source = providers.Singleton(
         RemoteSource,
@@ -17,20 +17,9 @@ class RemoteSourceContainer(containers.DeclarativeContainer):
         client=CoreContainer.session,
     )
 
-
-class RepositoryContainer(containers.DeclarativeContainer):
-    """IoC container of repository providers"""
-
     repository = providers.Singleton(
         Repository,
-        remote_source=RemoteSourceContainer.remote_source(),
+        remote_source=remote_source,
     )
 
-
-class UseCaseContainer(containers.DeclarativeContainer):
-    """IoC container for use-cases"""
-
-    use_case = providers.Factory(
-        ConfigUseCase,
-        repository=RepositoryContainer.repository()
-    )
+    use_case = providers.Factory(ConfigUseCase, repository=repository)

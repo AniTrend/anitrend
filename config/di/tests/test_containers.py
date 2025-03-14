@@ -2,15 +2,15 @@ import unittest
 from django.conf import settings
 import pytest
 
-from news.di.containers import NewsContainer
-from news.data.sources import RemoteSource
-from news.data.repositories import NewsRepository
-from news.domain.usecases import NewsUseCase
+from config.di.containers import ConfigContainer
+from config.data.sources import RemoteSource
+from config.data.repositories import Repository
+from config.domain.usecases import ConfigUseCase
 
 
-class TestNewsContainer(unittest.TestCase):
+class TestConfigContainer(unittest.TestCase):
     def setUp(self):
-        self.container = NewsContainer()
+        self.container = ConfigContainer()
         self.container.init_resources()
 
     @pytest.mark.integration
@@ -21,11 +21,11 @@ class TestNewsContainer(unittest.TestCase):
     @pytest.mark.integration
     def test_repository_provider(self):
         repository = self.container.repository()
-        self.assertIsInstance(repository, NewsRepository)
+        self.assertIsInstance(repository, Repository)
         self.assertIsInstance(repository._remote_source, RemoteSource)
 
     @pytest.mark.integration
     def test_use_case_provider(self):
         use_case = self.container.use_case()
-        self.assertIsInstance(use_case, NewsUseCase)
-        self.assertIsInstance(use_case._repository, NewsRepository)
+        self.assertIsInstance(use_case, ConfigUseCase)
+        self.assertIsInstance(use_case._repository, Repository)

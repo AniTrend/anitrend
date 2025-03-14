@@ -1,11 +1,14 @@
 import unittest
 from typing import Final
 
+import pytest
+
 from core.utilities import LinkUtility
 
 
 class RegexSearchTestCase(unittest.TestCase):
 
+    @pytest.mark.unit
     def test_find_anilist_source_ids(self):
         anilist: Final[str] = "https://anilist.co/anime/1535"
         _id = LinkUtility.extract_id_if_matches([anilist], "anilist.co")
@@ -35,4 +38,3 @@ class RegexSearchTestCase(unittest.TestCase):
         notify: Final[str] = "https://notify.moe/anime/0-A-5Fimg"
         _id = LinkUtility.extract_id_if_matches([notify], "notify.moe")
         self.assertEqual(_id, "0-A-5Fimg")
-
