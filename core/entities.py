@@ -21,7 +21,7 @@ class UserAgent:
 
     @property
     def version(self):
-        return f'{self.major}{self.minor}{self.patch}'
+        return f"{self.major}{self.minor}{self.patch}"
 
 
 @dataclass
@@ -46,7 +46,7 @@ class OS:
 
     @property
     def version(self):
-        return f'{self.major}{self.minor}{self.patch}${self.patch_minor}'
+        return f"{self.major}{self.minor}{self.patch}${self.patch_minor}"
 
 
 @dataclass
@@ -71,6 +71,7 @@ class Application:
 
 @dataclass
 class ContextHeader:
+    request_id: Optional[str]
     authorization: Optional[str]
     accepts: Optional[str]
     content_type: Optional[str]

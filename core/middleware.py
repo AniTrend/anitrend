@@ -8,20 +8,29 @@ from ua_parser import user_agent_parser
 from core.utilities import safe_get
 
 from .mixin import GrowthBookMixin, LoggerMixin
-from .entities import ContextHeader, Application, UserAgentInfo, UserAgent, CPU, Device, OS
+from .entities import (
+    ContextHeader,
+    Application,
+    UserAgentInfo,
+    UserAgent,
+    CPU,
+    Device,
+    OS,
+)
+
 
 class UAParser:
     def __init__(self, user_agent: Optional[str] = None):
-        self.ua = user_agent_parser.Parse(user_agent or '')
+        self.ua = user_agent_parser.Parse(user_agent or "")
 
     def get_result(self) -> UserAgentInfo:
         return UserAgentInfo(
-            raw=safe_get(self.ua, 'string'),
-            user_agent=UserAgent(**safe_get(self.ua, 'user_agent')),
-            cpu=CPU(**safe_get(self.ua, 'cpu')),
-            device=Device(**safe_get(self.ua, 'device')),
-            engine=UserAgent(**safe_get(self.ua, 'engine')),
-            os=OS(**safe_get(self.ua, 'os'))
+            raw=safe_get(self.ua, "string"),
+            user_agent=UserAgent(**safe_get(self.ua, "user_agent")),
+            cpu=CPU(**safe_get(self.ua, "cpu")),
+            device=Device(**safe_get(self.ua, "device")),
+            engine=UserAgent(**safe_get(self.ua, "engine")),
+            os=OS(**safe_get(self.ua, "os")),
         )
 
 
@@ -32,45 +41,40 @@ class FeatureFlagMiddleware(MiddlewareMixin, GrowthBookMixin):
 class HeaderMiddleware(MiddlewareMixin, LoggerMixin):
 
     def __fail(self, header: str) -> JsonResponse:
-        response = JsonResponse(
-            {
-                'errors': [
-                    {'message': 'Missing required header'}
-                ]
-            }
-        )
+        response = JsonResponse({"errors": [{"message": "Missing required header"}]})
         response.status_code = 400
         self._logger.error(f"Required header is missing from request: {header}")
         return response
 
     def process_request(
-            self,
-            request: HttpRequest,
+        self,
+        request: HttpRequest,
     ) -> Optional[HttpResponse]:
         headers = request.META
-        ua_parser = UAParser(user_agent=headers.get('HTTP_USER_AGENT'))
+        ua_parser = UAParser(user_agent=headers.get("HTTP_USER_AGENT"))
 
         request.context_header = ContextHeader(
-            authorization=headers.get('HTTP_AUTHORIZATION'),
-            accepts=headers.get('HTTP_ACCEPT'),
-            content_type=headers.get('CONTENT_TYPE'),
-            accept_encoding=headers.get('HTTP_ACCEPT_ENCODING'),
+            request_id=headers.get("HTTP_X_REQUEST_ID"),
+            authorization=headers.get("HTTP_AUTHORIZATION"),
+            accepts=headers.get("HTTP_ACCEPT"),
+            content_type=headers.get("CONTENT_TYPE"),
+            accept_encoding=headers.get("HTTP_ACCEPT_ENCODING"),
             application=Application(
-                locale=headers.get('HTTP_X_APP_LOCALE'),
-                version=headers.get('HTTP_X_APP_VERSION'),
-                source=headers.get('HTTP_X_APP_SOURCE'),
-                code=headers.get('HTTP_X_APP_CODE'),
-                label=headers.get('HTTP_X_APP_NAME'),
-                buildType=headers.get('HTTP_X_APP_BUILD_TYPE'),
+                locale=headers.get("HTTP_X_APP_LOCALE"),
+                version=headers.get("HTTP_X_APP_VERSION"),
+                source=headers.get("HTTP_X_APP_SOURCE"),
+                code=headers.get("HTTP_X_APP_CODE"),
+                label=headers.get("HTTP_X_APP_NAME"),
+                buildType=headers.get("HTTP_X_APP_BUILD_TYPE"),
             ),
             user_agent_info=ua_parser.get_result(),
         )
 
         enforced = [
-            'HTTP_HOST',
-            'HTTP_ACCEPT',
-            'HTTP_ACCEPT_ENCODING',
-            'HTTP_USER_AGENT',
+            "HTTP_HOST",
+            "HTTP_ACCEPT",
+            "HTTP_ACCEPT_ENCODING",
+            "HTTP_USER_AGENT",
         ]
 
         for header in enforced:
