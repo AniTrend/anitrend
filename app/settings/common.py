@@ -22,7 +22,7 @@ def __get_base_dir() -> str:
     :return:
     """
     current_path = os.path.abspath(os.path.dirname(__file__))
-    return os.path.join(current_path, '..', '..')
+    return os.path.join(current_path, "..", "..")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,11 +38,13 @@ CRUNCHY_TOKEN = config("DJANGO_CRUNCHY_TOKEN", cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="127.0.0.1", cast=Csv())
 
 CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=Csv())
 
-DATA_UPLOAD_MAX_NUMBER_FIELDS = config("DATA_UPLOAD_MAX_NUMBER_FIELDS", default=1500, cast=int)
+DATA_UPLOAD_MAX_NUMBER_FIELDS = config(
+    "DATA_UPLOAD_MAX_NUMBER_FIELDS", default=1500, cast=int
+)
 
 # Application definition
 
@@ -56,7 +58,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "core",
     "config",
-    'news',
+    "news",
 ]
 
 MIDDLEWARE = [
@@ -79,7 +81,7 @@ WSGI_APPLICATION = "app.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": 'django.db.backends.postgresql_psycopg2',
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": config("DJANGO_DATABASE_NAME", cast=str),
         "USER": config("DJANGO_DATABASE_USER", cast=str),
         "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
@@ -132,6 +134,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_METHODS = (
     "GET",
+    "HEAD",
     "OPTIONS",
     "POST",
 )
@@ -146,7 +149,7 @@ LOGGING = {
         },
         "simple": {
             "format": "{name} at {asctime} ({levelname}) :: {message}",
-            "style": "{"
+            "style": "{",
         },
     },
     "filters": {
@@ -169,7 +172,7 @@ LOGGING = {
             "filters": ["require_debug_false"],
             "class": "logtail.LogtailHandler",
             "formatter": "simple",
-            "source_token": config("LOGTAIL_SOURCE_TOKEN", cast=str)
+            "source_token": config("LOGTAIL_SOURCE_TOKEN", cast=str),
         },
     },
     "loggers": {
@@ -190,8 +193,6 @@ GROWTH_BOOK = {
     "ttl": config("GROWTH_BOOK_TTL", cast=int),
 }
 
-ON_THE_EDGE = {
-    "host": config("EDGE_HOST", cast=str)
-}
+ON_THE_EDGE = {"host": config("EDGE_HOST", cast=str)}
 
 APPEND_SLASH = config("APPEND_SLASH", cast=bool, default=False)

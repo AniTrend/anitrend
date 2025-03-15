@@ -30,14 +30,14 @@ from app.graphql import schema
 
 urlpatterns: List[RoutePattern] = [
     path("", include("web.urls")),
-    path('graphqlws', websocket_view(schema=schema)),
+    path("graphqlws", websocket_view(schema=schema)),
     path(
         "graphql",
         AsyncPatchedGraphQLView.as_view(
             schema=schema,
             graphql_ide=None,
             allow_queries_via_get=False,
-            multipart_uploads_enabled=True
+            multipart_uploads_enabled=True,
         ),
     ),
 ]
@@ -54,7 +54,7 @@ if settings.DEBUG:
                         schema=schema,
                         graphql_ide="apollo-sandbox",
                         multipart_uploads_enabled=True,
-                    )
+                    ),
                 ),
             ),
         ]
