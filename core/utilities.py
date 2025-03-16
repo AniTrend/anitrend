@@ -20,9 +20,9 @@ class LinkUtility:
 
 
 class TimeUtility:
-    TIME_FORMAT_TEMPLATE = '%Y-%m-%dT%H:%M:%S%z'
+    TIME_FORMAT_TEMPLATE = "%Y-%m-%dT%H:%M:%S%z"
 
-    _logger = logging.getLogger('django')
+    _logger = logging.getLogger("django")
 
     def __init__(self, time_zone) -> None:
         super().__init__()
@@ -32,16 +32,20 @@ class TimeUtility:
         timezone = self._time_zone
         return pytz.timezone(timezone)
 
-    def as_local_time(self, time_unit: str, time_unit_format: str = TIME_FORMAT_TEMPLATE) -> datetime:
+    def as_local_time(
+        self, time_unit: str, time_unit_format: str = TIME_FORMAT_TEMPLATE
+    ) -> datetime:
         tz = self.__get_current_tz()
         current_time_unit = datetime.strptime(time_unit, time_unit_format)
         local_time = current_time_unit.astimezone(tz)
         self._logger.debug(
-            f'Converted `{time_unit}` to local time of `{local_time}` using time format: `{time_unit_format}`'
+            f"Converted `{time_unit}` to local time of `{local_time}` using time format: `{time_unit_format}`"
         )
         return local_time
 
-    def get_current_time_formatted(self, time_format: str = TIME_FORMAT_TEMPLATE) -> str:
+    def get_current_time_formatted(
+        self, time_format: str = TIME_FORMAT_TEMPLATE
+    ) -> str:
         current_time = datetime.now(tz=self.__get_current_tz())
         return current_time.strftime(time_format)
 
@@ -61,26 +65,32 @@ class TimeUtility:
 
 def get_forwarded_headers(context: StrawberryDjangoContext) -> Optional[Mapping]:
     keys_to_pick = [
-        'host',
-        'accept',
-        'accept-encoding',
-        'accept-language',
-        'user-agent',
-        'content-type',
-        'x-app-name',
-        'x-app-version',
-        'x-app-code',
-        'x-app-source',
-        'x-app-locale',
-        'x-app-build-type'
+        "host",
+        "accept",
+        "accept-encoding",
+        "accept-language",
+        "user-agent",
+        "content-type",
+        "x-app-name",
+        "x-app-version",
+        "x-app-code",
+        "x-app-source",
+        "x-app-locale",
+        "x-app-build-type",
+        "x-request-id",
     ]
     headers: Optional[Mapping] = None
     if context.request.headers:
         request_headers: HttpHeaders = context.request.headers
-        headers = {key: request_headers[key] for key in keys_to_pick if key in request_headers}
+        headers = {
+            key: request_headers[key] for key in keys_to_pick if key in request_headers
+        }
     return headers
 
-def safe_get(dictionary: Dict[str, any], keys: str, default: Optional[any] = None) -> any:
+
+def safe_get(
+    dictionary: Dict[str, any], keys: str, default: Optional[any] = None
+) -> any:
     """
     Safely get a nested value from a dictionary.
 
@@ -92,7 +102,7 @@ def safe_get(dictionary: Dict[str, any], keys: str, default: Optional[any] = Non
     Returns:
         any: The value found at the specified keys, or the default value if not found.
     """
-    keys_list = keys.split('.')
+    keys_list = keys.split(".")
     for key in keys_list:
         if isinstance(dictionary, dict) and key in dictionary:
             dictionary = dictionary[key]
