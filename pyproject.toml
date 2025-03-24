@@ -27,7 +27,7 @@ strawberry-graphql-django = "^0.57.0"
 django-choices-field = "^2.3.0"
 uvicorn = "^0.34.0"
 starlette = "^0.46.1"
-setuptools = "^77.0.0"
+setuptools = "^78.0.0"
 marshmallow-dataclass = "^8.7.1"
 
 [tool.poetry.group.dev.dependencies]
