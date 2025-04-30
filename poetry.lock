@@ -1599,18 +1599,19 @@ full = ["httpx (>=0.27.0,<0.29.0)", "itsdangerous", "jinja2", "python-multipart 
 
 [[package]]
 name = "strawberry-graphql"
-version = "0.262.1"
+version = "0.266.0"
 description = "A library for creating GraphQL APIs"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql-0.262.1-py3-none-any.whl", hash = "sha256:94683e7778e61e67c5d47897f69a5d4af6a39ff61075364351d1aedd01db77a3"},
-    {file = "strawberry_graphql-0.262.1.tar.gz", hash = "sha256:e1884aa50c345d22e2f9722a830593f340bc0b71b4514137ef089eadead187c8"},
+    {file = "strawberry_graphql-0.266.0-py3-none-any.whl", hash = "sha256:d3ec2c96070aee33408148dfb3f34d676c2f263b68160d1bff2b32a41f053801"},
+    {file = "strawberry_graphql-0.266.0.tar.gz", hash = "sha256:93c221a1d19454b2d1303135733871a3a8b4f9a0cfeea3b7764cf615faf74b72"},
 ]
 
 [package.dependencies]
 graphql-core = {version = ">=3.2.0,<3.4.0", markers = "python_version >= \"3.9\" and python_version < \"4.0\""}
+packaging = ">=23"
 python-dateutil = ">=2.7.0,<3.0.0"
 typing-extensions = ">=4.5.0"
 
@@ -1634,20 +1635,20 @@ sanic = ["sanic (>=20.12.2)"]
 
 [[package]]
 name = "strawberry-graphql-django"
-version = "0.58.0"
+version = "0.59.0"
 description = "Strawberry GraphQL Django extension"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql_django-0.58.0-py3-none-any.whl", hash = "sha256:103dc281d337037a939b079c2cdc748ef7ebdc01a6fa1eb822285aef317c6830"},
-    {file = "strawberry_graphql_django-0.58.0.tar.gz", hash = "sha256:cc5e07e0da122e267715384dd049e4e77de53143b8f0222f35035a4138a24f9c"},
+    {file = "strawberry_graphql_django-0.59.0-py3-none-any.whl", hash = "sha256:5fae7441de9a40a5603cf8d2582937206d5c294fd303bc787a2fc7a93011073a"},
+    {file = "strawberry_graphql_django-0.59.0.tar.gz", hash = "sha256:fb92cf4b09df47d59245eb2a5e7414c5bb9b4e32af06966598e02576d03fede0"},
 ]
 
 [package.dependencies]
 asgiref = ">=3.8"
 django = ">=4.2"
-strawberry-graphql = ">=0.258.0"
+strawberry-graphql = ">=0.264.0"
 
 [package.extras]
 debug-toolbar = ["django-debug-toolbar (>=3.4)"]
@@ -1918,4 +1919,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "a28966472562fc516c94014be03a9b33c5388fc32adeb1e71f657b7ea8803127"
+content-hash = "d4b7606efcb95bcf90a38c7605b5bcb041e28128c1a09e89e80e23e6c9f46b32"
