@@ -6,7 +6,9 @@ from core.usecases import CommonUseCase
 
 class MediaUseCase(CommonUseCase):
 
-    def fetch_series_by_id(self, series_id: int, headers: Mapping) -> Optional[Media]:
+    def fetch_series_by_id(
+        self, series_id: int, headers: Optional[Mapping[str, str]]
+    ) -> Optional[Media]:
         try:
             data = self._repository.invoke(series_id=series_id, headers=headers)
             return data

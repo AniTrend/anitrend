@@ -1,25 +1,19 @@
-from typing import Optional
-import strawberry
-from strawberry.types import Info
+from typing import Optional, cast
 
-from ..di.containers import MediaContainer
+from strawberry.types.info import ContextType
+
+from core.utilities import get_forwarded_headers
+
+from media.di.containers import MediaContainer
 from .types import MediaType
 
-# Placeholder for media GraphQL resolvers
 
-
-def resolve_media_by_id(info: Info, id: int) -> Optional[MediaType]:
-    """Resolver function to fetch a media entity by its unique ID."""
-    # Ensure MediaContainer is available in context
-    media_container: MediaContainer = info.context.media_container  # type: ignore
-    use_case = media_container.use_case()
-
-    # Extract headers if your use case or repository needs them
-    headers = info.context.request.headers
-
-    media_entity = use_case.fetch_series_by_id(series_id=id, headers=headers)
-
-    if media_entity:
-        # Strawberry handles the mapping from dataclass to Strawberry type
-        return media_entity  # type: ignore
-    return None
+def resolve_media_by_id(
+    context: ContextType, series_id: int, use_case_provider=MediaContainer.use_case
+) -> Optional[MediaType]:
+    use_case = use_case_provider()
+    forwarded_headers = get_forwarded_headers(context)
+    media_entity = use_case.fetch_series_by_id(
+        series_id=series_id, headers=forwarded_headers
+    )
+    return cast(MediaType, media_entity)

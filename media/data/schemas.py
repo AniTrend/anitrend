@@ -42,20 +42,20 @@ class SeriesScheduleEpisode:
     id: int
     name: str
     overview: str
-    airDate: str  # Assuming Instant maps to ISO string or similar
+    airDate: int
     episodeNumber: int
     productionCode: str
-    runtime: int
     seasonNumber: int
     tmdbId: int
+    runtime: Optional[int] = None
     image: Optional[str] = None
 
 
 # Corresponds to SeriesSchedule in types.ts
 @dataclass
 class SeriesSchedule:
-    firstAirDate: str  # Assuming Instant maps to ISO string or similar
-    lastAirDate: str  # Assuming Instant maps to ISO string or similar
+    firstAirDate: int
+    lastAirDate: int
     lastAiredEpisode: Optional[SeriesScheduleEpisode] = None
     nextEpisodeToAir: Optional[SeriesScheduleEpisode] = None
 
@@ -76,9 +76,9 @@ class SeriesNetwork:
 # Corresponds to SeriesImageBackdrop in types.ts
 @dataclass
 class SeriesImageBackdrop:
-    height: int
-    width: int
-    url: str
+    height: Optional[int] = None
+    width: Optional[int] = None
+    url: Optional[str] = None
     locale: Optional[str] = None
 
 
@@ -115,7 +115,7 @@ class SeriesEpisode:
     tvdbId: int
     seasonNumber: int
     episodeNumber: int
-    airDate: str  # Assuming Date maps to ISO string or similar
+    airDate: int
     crew: List[SeriesEpisodeCrew] = field(default_factory=list)
     guests: List[SeriesEpisodeCrew] = field(
         default_factory=list
@@ -137,7 +137,7 @@ class SeriesEpisode:
 @dataclass
 class SeriesSeason:
     tmdbId: int
-    airDate: str  # Assuming Instant maps to ISO string or similar
+    airDate: int
     episodeCount: int
     name: str
     overview: str
@@ -167,7 +167,7 @@ class SeriesCoverImage:
 # Corresponds to AnimeTheme meta in types.ts
 @dataclass
 class AnimeThemeMeta:
-    type: Literal["OPENING", "ENDING"]  # ThemeType -> OPENING | ENDING
+    type: Literal["OP", "ED"]  # ThemeType -> OPENING | ENDING
     number: int
     version: int
 
@@ -190,7 +190,7 @@ class Media:
     cover: SeriesCoverImage
     title: SeriesTitle
     image: SeriesImage  # This holds backdrops, logos, posters
-    updatedAt: int  # Assuming Instant maps to ISO string or similar
+    updatedAt: int
     banner: Optional[str] = None
     fanart: Optional[str] = None
     format: Optional[Literal["TV", "MOVIE", "SPECIAL", "OVA", "ONA"]] = None

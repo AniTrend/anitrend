@@ -33,7 +33,7 @@ def load_model_from_json(
     # This assumes the JSON keys match the dataclass field names
     schema = class_schema(model_type)()
     result = schema.load(json, unknown=EXCLUDE)  # EXCLUDE unknown fields
-    return result
+    return result  # type: ignore
 
 
 @timeout(seconds=__TIME_OUT__)
@@ -52,7 +52,7 @@ class RemoteSource(Consumer):
     @get("series")
     def get_series_by_id(
         self, series_id: Query(name="id", type=int), headers: HeaderMap  # type: ignore
-    ) -> MediaApiResponse:
+    ) -> MediaApiResponse:  # type: ignore
         """
         Fetches a series by its ID from the on-the-edge API.
         :param series_id: The ID of the series to fetch.
