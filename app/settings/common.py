@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "core",
     "config",
     "news",
+    "media",
 ]
 
 MIDDLEWARE = [
