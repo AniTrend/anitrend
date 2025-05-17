@@ -2,10 +2,10 @@ import dependency_injector.containers as containers
 import dependency_injector.providers as providers
 from django.conf import settings
 
-from di import CoreContainer  # Assuming CoreContainer is in the global di module
-from ..data.repositories import Repository
-from ..data.sources import RemoteSource
-from ..domain.usecases import MediaUseCase  # Placeholder for when use cases are defined
+from di import CoreContainer
+from media.data.repositories import Repository
+from media.data.sources import RemoteSource
+from media.domain.usecases import MediaUseCase
 
 
 class MediaContainer(containers.DeclarativeContainer):
@@ -24,7 +24,6 @@ class MediaContainer(containers.DeclarativeContainer):
         remote_source=remote_source,
     )
 
-    # Placeholder for use case provider
     use_case = providers.Factory(
         MediaUseCase,
         repository=repository,

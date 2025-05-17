@@ -12,7 +12,6 @@ from uplink import (
     HeaderMap,
     install,
     loads,
-    Path,
 )
 
 from core.decorators import raise_api_error
@@ -22,7 +21,7 @@ from core import (
     __RATE_LIMIT_CALLS__,
     __RATE_LIMIT_PERIOD_CALLS__,
 )
-from ..data.schemas import MediaApiResponse
+from media.data.schemas import MediaApiResponse
 
 
 @install

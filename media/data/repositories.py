@@ -1,16 +1,17 @@
 from json import JSONDecodeError
 from uplink import HeaderMap
-from ..data.schemas import Media, MediaApiResponse
 from core.repositories import DataRepository
-from ..data.sources import RemoteSource
+from media.data.schemas import Media, MediaApiResponse
+from media.data.sources import RemoteSource
 
 
 class Repository(DataRepository):
     _remote_source: RemoteSource
 
-    def get_series_by_id(self, series_id: int, **kwargs) -> Media:
+    def invoke(self, **kwargs) -> Media:
         try:
             headers: HeaderMap = kwargs.get("headers")
+            series_id: int = kwargs.get("series_id")
             response: MediaApiResponse = self._remote_source.get_series_by_id(
                 series_id=series_id, headers=headers
             )

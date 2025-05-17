@@ -1,5 +1,4 @@
 import unittest
-from django.conf import settings
 import pytest
 
 from config.di.containers import ConfigContainer
@@ -12,6 +11,9 @@ class TestConfigContainer(unittest.TestCase):
     def setUp(self):
         self.container = ConfigContainer()
         self.container.init_resources()
+
+    def tearDown(self):
+        self.container.shutdown_resources()
 
     @pytest.mark.integration
     def test_remote_source_provider(self):
