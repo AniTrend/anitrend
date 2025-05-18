@@ -1,4 +1,4 @@
-from typing import Mapping, Type
+from typing import Mapping, Type, cast
 from marshmallow import EXCLUDE
 from marshmallow_dataclass import class_schema
 from uplink import (
@@ -26,11 +26,11 @@ from ..data.schemas import ConfigurationSchema
 @install
 @loads.from_json(ConfigurationSchema)
 def load_model_from_json(
-    model_type: Type[ConfigurationSchema], json: Mapping[str, any]
+    model_type: Type[ConfigurationSchema], json: Mapping[str, object]
 ) -> ConfigurationSchema:
     schema = class_schema(model_type)()
     result = schema.load(json, unknown=EXCLUDE)
-    return result
+    return cast(ConfigurationSchema, result)
 
 
 @timeout(seconds=5)
@@ -46,7 +46,7 @@ class RemoteSource(Consumer):
     @returns.from_json
     @raise_api_error
     @get("config")
-    def get_config(self, headers: HeaderMap) -> ConfigurationSchema:
+    def get_config(self, headers: HeaderMap) -> ConfigurationSchema:  # type: ignore
         """
         :return: ConfigurationSchema
         """

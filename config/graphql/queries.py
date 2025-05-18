@@ -11,4 +11,4 @@ class ConfigQuery:
 
     @strawberry.field(description="Client configuration")
     def config(self, info: Info) -> Optional[Configuration]:
-        return resolve_config(context = info.context)
+        return resolve_config(context=info.context)

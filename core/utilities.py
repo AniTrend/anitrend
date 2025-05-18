@@ -63,7 +63,9 @@ class TimeUtility:
         return current_time_stamp
 
 
-def get_forwarded_headers(context: StrawberryDjangoContext) -> Optional[Mapping]:
+def get_forwarded_headers(
+    context: StrawberryDjangoContext,
+) -> Optional[Mapping[str, str]]:
     keys_to_pick = [
         "host",
         "accept",

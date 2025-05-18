@@ -3,10 +3,10 @@ from django.apps import AppConfig
 from app import container
 
 
-class Config(AppConfig):
+class MediaConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "config"
-    verbose_name = "config"
+    name = "media"
+    verbose_name = "media"
 
     def ready(self):
         super().ready()
