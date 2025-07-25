@@ -168,21 +168,14 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "standard",
         },
-        "logtail": {
-            "level": config("GUNICORN_LOG_LEVEL", cast=str),
-            "filters": ["require_debug_false"],
-            "class": "logtail.LogtailHandler",
-            "formatter": "simple",
-            "source_token": config("LOGTAIL_SOURCE_TOKEN", cast=str),
-        },
     },
     "loggers": {
         "django": {
-            "handlers": ["console", "logtail"],
+            "handlers": ["console"],
             "propagate": True,
         },
         "root": {
-            "handlers": ["logtail"],
+            "handlers": ["console"],
             "propagate": True,
         },
     },
