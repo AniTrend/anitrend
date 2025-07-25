@@ -1,5 +1,7 @@
 import logging
 import os
+import sys
+import django
 
 from opentelemetry import trace
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -29,8 +31,9 @@ def setup_otel(app_name: str):
     resource = Resource(
         attributes={
             "service.name": app_name,
-            "service.version": os.environ.get("PYTHON_VERSION", "unknown"),
+            "service.version": os.environ.get("PYTHON_VERSION", sys.version),
             "deployment.environment": os.environ.get("DJANGO_SETTINGS_MODULE", "unknown").split(".")[-1],
+            "django.version": django.get_version(),
         }
     )
 
