@@ -6,6 +6,7 @@ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExport
 from opentelemetry.instrumentation.django import DjangoInstrumentor
 from opentelemetry.instrumentation.logging import LoggingInstrumentor
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.instrumentation.psycopg2 import Psycopg2Instrumentor
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
@@ -28,6 +29,8 @@ def setup_otel(app_name: str):
     resource = Resource(
         attributes={
             "service.name": app_name,
+            "service.version": os.environ.get("PYTHON_VERSION", "unknown"),
+            "deployment.environment": os.environ.get("DJANGO_SETTINGS_MODULE", "unknown").split(".")[-1],
         }
     )
 
@@ -39,6 +42,7 @@ def setup_otel(app_name: str):
     # Choose trace endpoint (use specific or fallback)
     trace_endpoint = os.environ.get(
         "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT",
+        os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT"),
     )
     if trace_endpoint:
         otlp_exporter = OTLPSpanExporter(endpoint=trace_endpoint, insecure=True)
@@ -55,6 +59,7 @@ def setup_otel(app_name: str):
     set_logger_provider(log_provider)
     logs_endpoint = os.environ.get(
         "OTEL_EXPORTER_OTLP_LOGS_ENDPOINT",
+        os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT"),
     )
     if logs_endpoint:
         log_exporter = OTLPLogExporter(endpoint=logs_endpoint, insecure=True)
@@ -68,6 +73,7 @@ def setup_otel(app_name: str):
     # --- metrics provider setup ---
     metrics_endpoint = os.environ.get(
         "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT",
+        os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT"),
     )
     if metrics_endpoint:
         metric_exporter = OTLPMetricExporter(
@@ -91,6 +97,9 @@ def setup_otel(app_name: str):
     # Instrument Django framework
     DjangoInstrumentor().instrument()
 
+    # Instrument PostgreSQL database calls
+    Psycopg2Instrumentor().instrument()
+
     # Instrument HTTP calls (requests)
     RequestsInstrumentor().instrument()
 
@@ -98,3 +107,14 @@ def setup_otel(app_name: str):
     LoggingInstrumentor().instrument(set_logging_format=True)
 
     logging.info(f"OpenTelemetry configured for {app_name}")
+
+
+def get_tracer(name: str = "anitrend"):
+    """Get a tracer instance for creating custom spans."""
+    return trace.get_tracer(name)
+
+
+def get_meter(name: str = "anitrend"):
+    """Get a meter instance for creating custom metrics."""
+    from opentelemetry import metrics
+    return metrics.get_meter(name)
