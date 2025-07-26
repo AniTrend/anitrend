@@ -14,7 +14,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
 # Add imports for log exporter
-from opentelemetry.sdk._logs import LoggerProvider
+from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
 from opentelemetry._logs import set_logger_provider
 from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
 from opentelemetry.exporter.otlp.proto.grpc._log_exporter import OTLPLogExporter
@@ -51,6 +51,7 @@ def setup_otel(app_name: str):
         otlp_exporter = OTLPSpanExporter(endpoint=trace_endpoint, insecure=True)
         processor = BatchSpanProcessor(otlp_exporter)
         provider.add_span_processor(processor)
+        logging.info(f"OTEL trace exporter configured with endpoint: {trace_endpoint}")
     else:
         logging.error(
             "Tracing endpoint not set (OTEL_EXPORTER_OTLP_TRACES_ENDPOINT or OTEL_EXPORTER_OTLP_ENDPOINT)."
@@ -60,14 +61,28 @@ def setup_otel(app_name: str):
     # Setup log exporter (specific or fallback)
     log_provider = LoggerProvider(resource=resource)
     set_logger_provider(log_provider)
+    
     logs_endpoint = os.environ.get(
         "OTEL_EXPORTER_OTLP_LOGS_ENDPOINT",
         os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT"),
     )
+    logging.info(f"OTEL logs endpoint configured: {logs_endpoint}")
+    
     if logs_endpoint:
         log_exporter = OTLPLogExporter(endpoint=logs_endpoint, insecure=True)
         log_processor = BatchLogRecordProcessor(log_exporter)
         log_provider.add_log_record_processor(log_processor)
+        
+        # Create OTEL logging handler and add it to loggers
+        log_level: int = getattr(logging, os.environ.get("GUNICORN_LOG_LEVEL", "INFO").upper())
+        otel_handler = LoggingHandler(level=log_level, logger_provider=log_provider)
+        
+        # Add OTEL handler to key loggers
+        logging.getLogger().addHandler(otel_handler)
+        logging.getLogger("django").addHandler(otel_handler)
+        logging.getLogger("root").addHandler(otel_handler)
+        
+        logging.info("OTEL log exporter configured successfully with LoggingHandler")
     else:
         logging.error(
             "Logs endpoint not set (OTEL_EXPORTER_OTLP_LOGS_ENDPOINT or OTEL_EXPORTER_OTLP_ENDPOINT)."
@@ -92,6 +107,7 @@ def setup_otel(app_name: str):
         from opentelemetry import metrics
 
         metrics.set_meter_provider(meter_provider)
+        logging.info(f"OTEL metrics exporter configured with endpoint: {metrics_endpoint}")
     else:
         logging.error(
             "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT not set. Metrics will not be exported."
