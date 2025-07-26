@@ -1892,14 +1892,14 @@ sanic = ["sanic (>=20.12.2)"]
 
 [[package]]
 name = "strawberry-graphql-django"
-version = "0.65.0"
+version = "0.65.1"
 description = "Strawberry GraphQL Django extension"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql_django-0.65.0-py3-none-any.whl", hash = "sha256:fe5bef71c9d8fdde6dafe011689b33a08b77af191fd19d26dcb0e8fe3b56b7b0"},
-    {file = "strawberry_graphql_django-0.65.0.tar.gz", hash = "sha256:2267ea0ed1bef6f60099381ca9d91ada530a4a5dbacb881bd6e49717ad0abf96"},
+    {file = "strawberry_graphql_django-0.65.1-py3-none-any.whl", hash = "sha256:e0a69af97c50deb07197641cd0b7320e25b5a3148a05ae6006d1bf5103530e85"},
+    {file = "strawberry_graphql_django-0.65.1.tar.gz", hash = "sha256:de312b77d83ab475b875f76f44161e8c5d9d284f349df61cebc83b4362b57a17"},
 ]
 
 [package.dependencies]
