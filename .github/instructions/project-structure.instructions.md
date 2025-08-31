@@ -1,4 +1,7 @@
-# GitHub Copilot Instructions for AniTrend Project
+---
+applyTo: **
+description: Instructions for GitHub Copilot to understand the project structure and conventions.
+---
 
 These instructions will help GitHub Copilot understand the AniTrend project structure and conventions to provide better code suggestions.
 
