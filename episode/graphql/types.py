@@ -1,11 +1,11 @@
 from typing import Optional, List
 import strawberry
 
-from core.graphql.types import Instant
+from core.graphql import EdgeImage, Instant
 
 
 @strawberry.type
-class EpisodeCrewType:
+class EdgeStaff:
     creditId: str = strawberry.field(description="Credit ID for the crew member")
     id: int = strawberry.field(description="Unique ID for the crew member")
     knownFor: str = strawberry.field(
@@ -24,6 +24,9 @@ class EpisodeCrewType:
         description="Department of the crew member (e.g., Directing, Writing)",
         default=None,
     )
+    role: str = strawberry.field(
+        description="Role of the crew member (e.g., CREW or GUEST)"
+    )
     adult: Optional[bool] = strawberry.field(
         description="Indicates if the crew member is associated with adult content",
         default=None,
@@ -41,7 +44,7 @@ class EpisodeCrewType:
 
 
 @strawberry.type
-class EpisodeType:
+class EdgeEpisode:
     id: int = strawberry.field(description="Unique ID for the episode")
     tvdbShowId: int = strawberry.field(
         description="TheTVDB Show ID this episode belongs to"
@@ -54,11 +57,9 @@ class EpisodeType:
         description="Episode number within the season"
     )
     airDate: Instant = strawberry.field(description="Air date and time of the episode")
-    crew: List[EpisodeCrewType] = strawberry.field(
-        description="List of crew members for this episode", default_factory=list
-    )
-    guests: List[EpisodeCrewType] = strawberry.field(
-        description="List of guest stars for this episode", default_factory=list
+    staff: List[EdgeStaff] = strawberry.field(
+        description="List of crew or guest members for this episode",
+        default_factory=list,
     )
     absoluteEpisodeNumber: Optional[int] = strawberry.field(
         description="Absolute episode number across all seasons", default=None
@@ -99,7 +100,33 @@ class EpisodeType:
 
 
 @strawberry.type
-class EpisodeObjectType:
-    data: List[EpisodeType] = strawberry.field(
+class EdgeSeason:
+    tmdbId: int = strawberry.field(description="TheMovieDB ID for the season")
+    airDate: Instant = strawberry.field(
+        description="Air date of the first episode of the season"
+    )
+    episodeCount: int = strawberry.field(
+        description="Number of episodes in this season"
+    )
+    name: str = strawberry.field(description="Name of the season")
+    overview: str = strawberry.field(
+        description="Brief overview or summary of the season"
+    )
+    number: int = strawberry.field(description="Season number")
+    images: List[EdgeImage] = strawberry.field(
+        description="Images associated with the season (posters, backdrops)"
+    )
+    cover: Optional[str] = strawberry.field(
+        description="URL to a cover image for the season", default=None
+    )
+    episodes: List[EdgeEpisode] = strawberry.field(
         description="List of episodes in this season", default_factory=list
+    )
+
+
+@strawberry.type
+class EpisodeObjectType:
+    seasons: Optional[List[EdgeSeason]] = strawberry.field(
+        description="List of seasons for the media, if applicable.",
+        default_factory=list,
     )

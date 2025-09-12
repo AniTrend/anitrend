@@ -1,13 +1,11 @@
 import strawberry
 from typing import List, Optional
 
-from core.graphql.types import Instant
-
-# Based on media/data/schemas.py which is based on on-the-edge/src/series/types.ts
+from core.graphql import EdgeImage, Instant
 
 
 @strawberry.type
-class SeriesIdType:
+class EdgeMediaId:
     anidb: Optional[int] = strawberry.field(description="AniDB ID", default=None)
     anilist: Optional[int] = strawberry.field(description="Anilist ID", default=None)
     animePlanet: Optional[str] = strawberry.field(
@@ -39,7 +37,7 @@ class SeriesIdType:
 
 
 @strawberry.type
-class SeriesTitleType:
+class EdgeMediaTitle:
     english: Optional[str] = strawberry.field(description="English title", default=None)
     canonical: Optional[str] = strawberry.field(
         description="Canonical title", default=None
@@ -58,7 +56,7 @@ class SeriesTitleType:
 
 
 @strawberry.type
-class SeriesScheduleEpisodeType:
+class EdgeMediaEpisode:
     id: int = strawberry.field(description="Unique ID for the scheduled episode")
     name: str = strawberry.field(description="Name or title of the episode")
     overview: str = strawberry.field(
@@ -78,19 +76,19 @@ class SeriesScheduleEpisodeType:
 
 
 @strawberry.type
-class SeriesScheduleType:
+class EdgeAiringSchedule:
     firstAirDate: Instant = strawberry.field(description="First air date of the series")
     lastAirDate: Instant = strawberry.field(description="Last air date of the series")
-    lastAiredEpisode: Optional[SeriesScheduleEpisodeType] = strawberry.field(
+    lastAiredEpisode: Optional[EdgeMediaEpisode] = strawberry.field(
         description="Details of the last aired episode", default=None
     )
-    nextEpisodeToAir: Optional[SeriesScheduleEpisodeType] = strawberry.field(
+    nextEpisodeToAir: Optional[EdgeMediaEpisode] = strawberry.field(
         description="Details of the next episode to air", default=None
     )
 
 
 @strawberry.type
-class SeriesNetworkType:
+class EdgeMediaNetwork:
     id: int = strawberry.field(description="Unique ID for the network")
     isPrimary: bool = strawberry.field(
         description="Indicates if this is the primary network"
@@ -106,42 +104,7 @@ class SeriesNetworkType:
 
 
 @strawberry.type
-class SeriesImageType:
-    height: int = strawberry.field(description="Height of the image in pixels")
-    width: int = strawberry.field(description="Width of the image in pixels")
-    url: str = strawberry.field(description="URL to the image")
-    locale: Optional[str] = strawberry.field(
-        description="Locale of the image (e.g., en, ja)", default=None
-    )
-    type: str = strawberry.field(
-        description="Type of the image (e.g., BACKDROP, LOGO, POSTER)"
-    )
-
-
-@strawberry.type
-class SeriesSeasonType:
-    tmdbId: int = strawberry.field(description="TheMovieDB ID for the season")
-    airDate: Instant = strawberry.field(
-        description="Air date of the first episode of the season"
-    )
-    episodeCount: int = strawberry.field(
-        description="Number of episodes in this season"
-    )
-    name: str = strawberry.field(description="Name of the season")
-    overview: str = strawberry.field(
-        description="Brief overview or summary of the season"
-    )
-    number: int = strawberry.field(description="Season number")
-    images: List[SeriesImageType] = strawberry.field(
-        description="Images associated with the season (posters, backdrops)"
-    )
-    cover: Optional[str] = strawberry.field(
-        description="URL to a cover image for the season", default=None
-    )
-
-
-@strawberry.type
-class SeriesTrailerType:
+class EdgeMediaTrailer:
     id: str = strawberry.field(
         description="Unique ID for the trailer (e.g., YouTube video ID)"
     )
@@ -154,7 +117,7 @@ class SeriesTrailerType:
 
 
 @strawberry.type
-class SeriesCoverImageType:
+class EdgeCoverImage:
     extraLarge: Optional[str] = strawberry.field(
         description="URL to an extra large cover image", default=None
     )
@@ -170,7 +133,10 @@ class SeriesCoverImageType:
 
 
 @strawberry.type
-class AnimeThemeMetaType:
+class EdgeMediaTheme:
+    id: str = strawberry.field(description="Unique ID for the anime theme song")
+    name: str = strawberry.field(description="Name or title of the theme song")
+    video: str = strawberry.field(description="URL to the video of the theme song")
     type: str = strawberry.field(
         description="Type of the theme song (e.g., OPENING, ENDING)"
     )
@@ -183,33 +149,20 @@ class AnimeThemeMetaType:
 
 
 @strawberry.type
-class AnimeThemeType:
-    id: str = strawberry.field(description="Unique ID for the anime theme song")
-    name: str = strawberry.field(description="Name or title of the theme song")
-    video: str = strawberry.field(description="URL to the video of the theme song")
-    meta: AnimeThemeMetaType = strawberry.field(
-        description="Metadata about the theme song (type, number, version)"
-    )
-    audio: Optional[str] = strawberry.field(
-        description="URL to the audio of the theme song", default=None
-    )
-
-
-@strawberry.type
 class MediaType:  # Corresponds to Media dataclass from schemas.py
     id: str = strawberry.field(
         description="The unique identifier for the media entity (often corresponds to 'notify' ID or a combined key)."
     )
-    mediaId: SeriesIdType = strawberry.field(
+    mediaId: EdgeMediaId = strawberry.field(
         description="A collection of alternative identifiers for the media from various sources."
     )
-    cover: SeriesCoverImageType = strawberry.field(
+    cover: EdgeCoverImage = strawberry.field(
         description="Cover images for the media (extraLarge, large, medium, color)."
     )
-    title: SeriesTitleType = strawberry.field(
+    title: EdgeMediaTitle = strawberry.field(
         description="Titles of the media in various languages (english, romaji, native, etc.)."
     )
-    image: SeriesImageType = strawberry.field(
+    image: EdgeImage = strawberry.field(
         description="Collection of images for the media (backdrops, logos, posters)."
     )
     updatedAt: Instant = strawberry.field(
@@ -233,10 +186,10 @@ class MediaType:  # Corresponds to Media dataclass from schemas.py
         description="Source material of the media (e.g., ORIGINAL, MANGA, LIGHT_NOVEL, GAME).",
         default=None,
     )
-    themeSongs: List[AnimeThemeType] = strawberry.field(
+    themes: List[EdgeMediaTheme] = strawberry.field(
         description="List of theme songs (openings and endings).", default_factory=list
     )
-    schedule: Optional[SeriesScheduleType] = strawberry.field(
+    schedule: Optional[EdgeAiringSchedule] = strawberry.field(
         description="Airing schedule information for the media.", default=None
     )
     ageRating: Optional[str] = strawberry.field(
@@ -245,10 +198,10 @@ class MediaType:  # Corresponds to Media dataclass from schemas.py
     isAdult: Optional[bool] = strawberry.field(
         description="Indicates if the media is considered adult content.", default=None
     )
-    trailers: List[SeriesTrailerType] = strawberry.field(
+    trailers: List[EdgeMediaTrailer] = strawberry.field(
         description="List of trailers for the media.", default_factory=list
     )
-    networks: List[SeriesNetworkType] = strawberry.field(
+    networks: List[EdgeMediaNetwork] = strawberry.field(
         description="List of networks associated with the media.", default_factory=list
     )
     homepage: Optional[str] = strawberry.field(
@@ -259,8 +212,4 @@ class MediaType:  # Corresponds to Media dataclass from schemas.py
     )
     airedEpisodes: Optional[int] = strawberry.field(
         description="Total number of aired episodes.", default=None
-    )
-    seasons: Optional[List[SeriesSeasonType]] = strawberry.field(
-        description="List of seasons for the media, if applicable.",
-        default_factory=list,
     )

@@ -1,3 +1,4 @@
+from typing import Optional
 import strawberry
 
 
@@ -11,3 +12,16 @@ InstantScalar = strawberry.scalar(
     name="Instant",
     description="Represents a point in time, typically as an Epoch timestamp (seconds since Unix epoch).",
 )
+
+
+@strawberry.type
+class EdgeImage:
+    height: int = strawberry.field(description="Height of the image in pixels")
+    width: int = strawberry.field(description="Width of the image in pixels")
+    url: str = strawberry.field(description="URL to the image")
+    locale: Optional[str] = strawberry.field(
+        description="Locale of the image (e.g., en, ja)", default=None
+    )
+    type: str = strawberry.field(
+        description="Type of the image (e.g., BACKDROP, LOGO, POSTER)"
+    )
