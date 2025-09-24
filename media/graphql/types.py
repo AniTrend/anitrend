@@ -58,18 +58,30 @@ class EdgeMediaTitle:
 @strawberry.type
 class EdgeMediaEpisode:
     id: int = strawberry.field(description="Unique ID for the scheduled episode")
-    name: str = strawberry.field(description="Name or title of the episode")
-    overview: str = strawberry.field(
-        description="Brief overview or summary of the episode"
+    name: Optional[str] = strawberry.field(
+        description="Name or title of the episode", default=None
     )
-    airDate: Instant = strawberry.field(description="Air date and time of the episode")
-    episodeNumber: int = strawberry.field(description="Episode number in the season")
-    productionCode: str = strawberry.field(description="Production code of the episode")
-    runtime: int = strawberry.field(description="Runtime of the episode in minutes")
-    seasonNumber: int = strawberry.field(
-        description="Season number this episode belongs to"
+    overview: Optional[str] = strawberry.field(
+        description="Brief overview or summary of the episode", default=None
     )
-    tmdbId: int = strawberry.field(description="TheMovieDB ID for the episode")
+    airDate: Optional[Instant] = strawberry.field(
+        description="Air date and time of the episode", default=None
+    )
+    episodeNumber: Optional[int] = strawberry.field(
+        description="Episode number in the season", default=None
+    )
+    productionCode: Optional[str] = strawberry.field(
+        description="Production code of the episode", default=None
+    )
+    runtime: Optional[int] = strawberry.field(
+        description="Runtime of the episode in minutes", default=None
+    )
+    seasonNumber: Optional[int] = strawberry.field(
+        description="Season number this episode belongs to", default=None
+    )
+    tmdbId: Optional[int] = strawberry.field(
+        description="TheMovieDB ID for the episode", default=None
+    )
     image: Optional[str] = strawberry.field(
         description="URL to an image for the episode", default=None
     )
@@ -77,8 +89,12 @@ class EdgeMediaEpisode:
 
 @strawberry.type
 class EdgeAiringSchedule:
-    firstAirDate: Instant = strawberry.field(description="First air date of the series")
-    lastAirDate: Instant = strawberry.field(description="Last air date of the series")
+    firstAirDate: Optional[Instant] = strawberry.field(
+        description="First air date of the series", default=None
+    )
+    lastAirDate: Optional[Instant] = strawberry.field(
+        description="Last air date of the series", default=None
+    )
     lastAiredEpisode: Optional[EdgeMediaEpisode] = strawberry.field(
         description="Details of the last aired episode", default=None
     )
@@ -90,8 +106,8 @@ class EdgeAiringSchedule:
 @strawberry.type
 class EdgeMediaNetwork:
     id: int = strawberry.field(description="Unique ID for the network")
-    isPrimary: bool = strawberry.field(
-        description="Indicates if this is the primary network"
+    isPrimary: Optional[bool] = strawberry.field(
+        description="Indicates if this is the primary network", default=None
     )
     name: str = strawberry.field(description="Name of the network")
     originCountry: str = strawberry.field(description="Origin country of the network")
@@ -137,8 +153,19 @@ class EdgeMediaTheme:
     id: str = strawberry.field(description="Unique ID for the anime theme song")
     name: str = strawberry.field(description="Name or title of the theme song")
     video: str = strawberry.field(description="URL to the video of the theme song")
+    meta: Optional["EdgeMediaThemeMeta"] = strawberry.field(
+        description="Metadata about the theme song, including type, number, and version.",
+        default=None,
+    )
+    audio: Optional[str] = strawberry.field(
+        description="URL to the audio track of the theme song", default=None
+    )
+
+
+@strawberry.type
+class EdgeMediaThemeMeta:
     type: str = strawberry.field(
-        description="Type of the theme song (e.g., OPENING, ENDING)"
+        description="Type of the theme song (e.g., OP for opening, ED for ending)"
     )
     number: int = strawberry.field(
         description="Sequence number of the theme (e.g., 1 for OP1, 2 for OP2)"
@@ -149,9 +176,12 @@ class EdgeMediaTheme:
 
 
 @strawberry.type
-class MediaType:  # Corresponds to Media dataclass from schemas.py
+class MediaType:
     id: str = strawberry.field(
-        description="The unique identifier for the media entity (often corresponds to 'notify' ID or a combined key)."
+        description="The unique identifier for the media entity (often corresponds to the Notify.moe edge ID)."
+    )
+    kind: str = strawberry.field(
+        description="The kind of media entity (e.g., ANIME, MANGA)."
     )
     mediaId: EdgeMediaId = strawberry.field(
         description="A collection of alternative identifiers for the media from various sources."
@@ -162,11 +192,12 @@ class MediaType:  # Corresponds to Media dataclass from schemas.py
     title: EdgeMediaTitle = strawberry.field(
         description="Titles of the media in various languages (english, romaji, native, etc.)."
     )
-    image: EdgeImage = strawberry.field(
-        description="Collection of images for the media (backdrops, logos, posters)."
-    )
     updatedAt: Instant = strawberry.field(
         description="Timestamp of when the media information was last updated."
+    )
+    images: List[EdgeImage] = strawberry.field(
+        description="Gallery of images related to the media (posters, backdrops, logos).",
+        default_factory=list,
     )
     banner: Optional[str] = strawberry.field(
         description="URL to a banner image for the media.", default=None
@@ -179,24 +210,27 @@ class MediaType:  # Corresponds to Media dataclass from schemas.py
         default=None,
     )
     status: Optional[str] = strawberry.field(
-        description="Current status of the media (e.g., RELEASING, FINISHED, NOT_YET_RELEASED, CANCELLED).",
+        description="Current status of the media (e.g., RELEASING, FINISHED, NOT_YET_RELEASED).",
         default=None,
     )
     source: Optional[str] = strawberry.field(
         description="Source material of the media (e.g., ORIGINAL, MANGA, LIGHT_NOVEL, GAME).",
         default=None,
     )
-    themes: List[EdgeMediaTheme] = strawberry.field(
+    ageRating: Optional[str] = strawberry.field(
+        description="Age rating of the media (e.g., G, PG, R17).", default=None
+    )
+    description: Optional[str] = strawberry.field(
+        description="Synopsis or description of the media.", default=None
+    )
+    moreInfo: Optional[str] = strawberry.field(
+        description="Link to additional information about the media.", default=None
+    )
+    themeSongs: List[EdgeMediaTheme] = strawberry.field(
         description="List of theme songs (openings and endings).", default_factory=list
     )
     schedule: Optional[EdgeAiringSchedule] = strawberry.field(
         description="Airing schedule information for the media.", default=None
-    )
-    ageRating: Optional[str] = strawberry.field(
-        description="Age rating of the media (e.g., G, PG, R17).", default=None
-    )
-    isAdult: Optional[bool] = strawberry.field(
-        description="Indicates if the media is considered adult content.", default=None
     )
     trailers: List[EdgeMediaTrailer] = strawberry.field(
         description="List of trailers for the media.", default_factory=list
@@ -204,12 +238,28 @@ class MediaType:  # Corresponds to Media dataclass from schemas.py
     networks: List[EdgeMediaNetwork] = strawberry.field(
         description="List of networks associated with the media.", default_factory=list
     )
+    airedEpisodes: Optional[int] = strawberry.field(
+        description="Total number of aired episodes.", default=None
+    )
+    broadcast: Optional[str] = strawberry.field(
+        description="Broadcast schedule information (e.g., day and time).",
+        default=None,
+    )
+    isAdult: Optional[bool] = strawberry.field(
+        description="Indicates if the media is considered adult content.", default=None
+    )
     homepage: Optional[str] = strawberry.field(
         description="URL to the official homepage of the media.", default=None
     )
-    description: Optional[str] = strawberry.field(
-        description="Synopsis or description of the media.", default=None
+    chapters: Optional[int] = strawberry.field(
+        description="Total number of chapters (for manga).", default=None
     )
-    airedEpisodes: Optional[int] = strawberry.field(
-        description="Total number of aired episodes.", default=None
+    volumes: Optional[int] = strawberry.field(
+        description="Total number of volumes (for manga).", default=None
+    )
+    publishedFrom: Optional[Instant] = strawberry.field(
+        description="Publication start date (for manga).", default=None
+    )
+    publishedTo: Optional[Instant] = strawberry.field(
+        description="Publication end date (for manga).", default=None
     )

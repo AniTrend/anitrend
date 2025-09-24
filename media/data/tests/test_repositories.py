@@ -8,14 +8,7 @@ from marshmallow_dataclass import class_schema
 import pytest
 
 from media.data.repositories import Repository
-from media.data.schemas import (
-    Media,
-    MediaApiResponse,
-    SeriesId,
-    SeriesCoverImage,
-    SeriesTitle,
-    SeriesImage,
-)
+from media.data.schemas import MediaApiResponse, MediaEntity
 from media.data.sources import RemoteSource
 from core.helpers import FileSystem
 
@@ -32,9 +25,9 @@ class TestMediaRepository(unittest.TestCase):
 
         media_data_from_fixture = self.raw_fixture_data.get("data", {})
         try:
-            MediaEntitySchema = class_schema(Media)()
+            MediaEntitySchema = class_schema(MediaEntity)()
             self.sample_media = cast(
-                Media, MediaEntitySchema.load(media_data_from_fixture)
+                MediaEntity, MediaEntitySchema.load(media_data_from_fixture)
             )
         except Exception as e:
             self.fail(f"Failed to load Media from prepared fixture data: {e}")
@@ -87,7 +80,7 @@ class TestMediaRepository(unittest.TestCase):
         wrong_type_response = MediaApiResponse(data="not a Media object")  # type: ignore
         self.mock_remote_source.get_series_by_id.return_value = wrong_type_response
 
-        expected_error_message = f"Expected Media type but got {type(str())} for series_id {self.test_series_id}"
+        expected_error_message = f"Expected MediaEntity type but got {type(str())} for series_id {self.test_series_id}"
 
         with self.assertRaisesRegex(TypeError, expected_error_message):
             self.repository.invoke(

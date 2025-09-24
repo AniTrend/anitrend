@@ -7,7 +7,7 @@ import pytest
 from marshmallow_dataclass import class_schema
 
 from media.data.repositories import Repository
-from media.data.schemas import Media, MediaApiResponse
+from media.data.schemas import MediaApiResponse, MediaEntity
 from media.domain.usecases import MediaUseCase
 from core.helpers import FileSystem
 
@@ -24,9 +24,9 @@ class TestMediaUseCase(unittest.TestCase):
         media_data_from_fixture = raw_fixture_data.get("data", {})
 
         try:
-            MediaEntitySchema = class_schema(Media)()
+            MediaEntitySchema = class_schema(MediaEntity)()
             self.sample_media = cast(
-                Media, MediaEntitySchema.load(media_data_from_fixture)
+                MediaEntity, MediaEntitySchema.load(media_data_from_fixture)
             )
         except Exception as e:
             self.fail(f"Failed to load Media from fixture data in setUp: {e}")
