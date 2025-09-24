@@ -16,9 +16,14 @@ class Query(ConfigQuery, NewsQuery, MediaQuery):
     pass
 
 
+from core.graphql.types import Instant, InstantScalar
+
 schema = strawberry.Schema(
     query=Query,
     # mutation=Mutations,
     # types=[],
     extensions=[DjangoOptimizerExtension],
+    scalar_overrides={
+        Instant: InstantScalar,
+    },
 )
