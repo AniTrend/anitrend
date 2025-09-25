@@ -4,7 +4,7 @@
     "config:base"
   ],
   "addLabels": [
-    "dependencies"
+    ":dagger: dependencies"
   ],
   "branchPrefix": "dependencies/",
   "reviewers": [
