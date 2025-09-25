@@ -5,13 +5,14 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag to build against'
+        description: "Tag to build against"
         required: true
-        default: 'latest'
+        default: "latest"
   push:
     branches:
       - develop
-    tags: "*"
+    tags:
+      - "*"
 
 jobs:
   build-image:
