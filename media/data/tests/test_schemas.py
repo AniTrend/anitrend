@@ -8,16 +8,13 @@ from core.helpers import FileSystem
 from media.data.schemas import (
     AnimeTheme,
     AnimeThemeMeta,
-    Media,
+    MediaEntity,
     SeriesCoverImage,
-    SeriesEpisode,
     SeriesId,
-    SeriesImage,
-    SeriesImageBackdrop,
+    SeriesImageAttributes,
     SeriesNetwork,
     SeriesSchedule,
     SeriesScheduleEpisode,
-    SeriesSeason,
     SeriesTitle,
     SeriesTrailer,
 )
@@ -31,51 +28,18 @@ class TestMediaSchemas(unittest.TestCase):
         self.data = full_fixture.get("data", {})
         if not self.data:
             raise ValueError(
-                "Could not find 'mediaId' in media.json fixture data. Please check fixture structure."
+                "Could not find 'data' in media.json fixture data. Please check fixture structure."
             )
 
     @pytest.mark.unit
     def test_media_loading_from_fixture(self):
-        MediaEntitySchema = class_schema(Media)()
+        MediaEntitySchema = class_schema(MediaEntity)()
         try:
             media_instance = MediaEntitySchema.load(self.data)
         except Exception as e:
             self.fail(f"Failed to load Media from prepared fixture data: {e}")
 
-        self.assertIsInstance(media_instance, Media)
-
-    @pytest.mark.unit
-    def test_individual_episode_schema(self):
-        EpisodeSchema = class_schema(SeriesEpisode)()
-        result = cast(
-            SeriesEpisode, EpisodeSchema.load(self.data["seasons"][0]["episodes"][0])
-        )
-        self.assertEqual(result.id, 1174618)
-        self.assertEqual(result.tvdbShowId, 303867)
-        self.assertEqual(result.tvdbId, 5463421)
-        self.assertEqual(result.seasonNumber, 0)
-        self.assertEqual(result.episodeNumber, 3)
-        self.assertEqual(
-            result.title,
-            "God's Blessings on This Wonderful Choker!",
-        )
-        self.assertEqual(result.airDate, 1466778600)
-        self.assertGreater(len(result.crew), 0)
-        self.assertGreater(len(result.guests), 0)
-
-    @pytest.mark.unit
-    def test_individual_season_schema(self):
-        SeasonSchema = class_schema(SeriesSeason)()
-        result = cast(SeriesSeason, SeasonSchema.load(self.data["seasons"][0]))
-        self.assertEqual(result.tmdbId, 75215)
-        self.assertEqual(result.airDate, 1466726400)
-        self.assertEqual(result.name, "Specials")
-        self.assertEqual(result.episodeCount, 4)
-        self.assertEqual(result.number, 0)
-        self.assertEqual(
-            result.cover,
-            "https://image.tmdb.org/t/p/original/gfzUCmPA5PRhZtFV6FuHIF6eNTH.jpg",
-        )
+        self.assertIsInstance(media_instance, MediaEntity)
 
     @pytest.mark.unit
     def test_individual_series_id_schema(self):
@@ -144,35 +108,17 @@ class TestMediaSchemas(unittest.TestCase):
 
     @pytest.mark.unit
     def test_individual_image_schema(self):
-        ImageSchema = class_schema(SeriesImage)()
-        image_data = self.data["image"]
-        result = cast(SeriesImage, ImageSchema.load(image_data))
-        self.assertIsInstance(result.backdrops, list)
-        self.assertIsInstance(result.posters, list)
-        self.assertIsInstance(result.logos, list)
-        if result.backdrops:
-            self.assertIsInstance(result.backdrops[0], SeriesImageBackdrop)
-            self.assertEqual(result.backdrops[0].height, 2160)  # Example assertion
-        if result.posters:
-            self.assertIsInstance(result.posters[0], SeriesImageBackdrop)
-            self.assertEqual(result.posters[0].width, 2000)  # Example assertion
-        if result.logos:
-            self.assertIsInstance(result.logos[0], SeriesImageBackdrop)
-            self.assertEqual(result.logos[0].height, 189)  # Example assertion
-
-    @pytest.mark.unit
-    def test_individual_image_backdrop_schema(self):
-        ImageBackdropSchema = class_schema(SeriesImageBackdrop)()
-        # Test with the first backdrop in the fixture
-        backdrop_data = self.data["image"]["backdrops"][0]
-        result = cast(SeriesImageBackdrop, ImageBackdropSchema.load(backdrop_data))
-        self.assertEqual(result.height, 2160)
-        self.assertEqual(result.width, 3840)
+        ImageAttributeSchema = class_schema(SeriesImageAttributes)()
+        first_image = cast(
+            SeriesImageAttributes, ImageAttributeSchema.load(self.data["images"][0])
+        )
         self.assertEqual(
-            result.url,
+            first_image.url,
             "https://image.tmdb.org/t/p/original/rvZJxD36tKoglL8fXoMMWKGQfM.jpg",
         )
-        self.assertIsNone(result.locale)  # As per fixture
+        self.assertEqual(first_image.type, "BACKDROP")
+        self.assertEqual(first_image.height, 2160)
+        self.assertEqual(first_image.width, 3840)
 
     @pytest.mark.unit
     def test_individual_schedule_schema(self):
@@ -205,7 +151,9 @@ class TestMediaSchemas(unittest.TestCase):
         self.assertEqual(result.firstAirDate, 1452729600)
         self.assertEqual(result.lastAirDate, 1746576000)
         self.assertIsInstance(result.lastAiredEpisode, SeriesScheduleEpisode)
-        self.assertIsNone(result.nextEpisodeToAir)
+        self.assertIsNotNone(result.nextEpisodeToAir)
+        if result.nextEpisodeToAir:
+            self.assertEqual(result.nextEpisodeToAir.episodeNumber, 14)
 
     @pytest.mark.unit
     def test_individual_schedule_episode_schema(self):

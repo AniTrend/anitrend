@@ -1,6 +1,6 @@
 from typing import Optional, Mapping
 
-from media.data.schemas import Media
+from media.data.schemas import MediaEntity
 from core.usecases import CommonUseCase
 
 
@@ -8,7 +8,7 @@ class MediaUseCase(CommonUseCase):
 
     def fetch_series_by_id(
         self, series_id: int, headers: Optional[Mapping[str, str]]
-    ) -> Optional[Media]:
+    ) -> Optional[MediaEntity]:
         try:
             data = self._repository.invoke(series_id=series_id, headers=headers)
             return data
