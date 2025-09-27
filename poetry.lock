@@ -673,14 +673,14 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-choices-field"
-version = "3.0.1"
+version = "3.1.0"
 description = "Django field that set/get django's new TextChoices/IntegerChoices enum."
 optional = false
 python-versions = "<4.0,>=3.8"
 groups = ["main"]
 files = [
-    {file = "django_choices_field-3.0.1-py3-none-any.whl", hash = "sha256:3e99b832c6d2af93a7ffaf1b95c197278fef0b35673377bf853f73576510b9ee"},
-    {file = "django_choices_field-3.0.1.tar.gz", hash = "sha256:5b45f5d3aa2ef3c30a7ff296ac7acc743097fb3185c78f8c4256c6a73854ab20"},
+    {file = "django_choices_field-3.1.0-py3-none-any.whl", hash = "sha256:b7527fd3afab4216165636d2aa5cb830612f1c0e2530c807ee06fc17abbdacb5"},
+    {file = "django_choices_field-3.1.0.tar.gz", hash = "sha256:865c81f3e494771f98fdc6bae3f1b5537212d08a26a3da9ecc8113010e73c8e7"},
 ]
 
 [package.dependencies]
