@@ -1,8 +1,10 @@
 import json
 import unittest
-import pytest
-from marshmallow_dataclass import class_schema
 from typing import cast
+
+import pytest
+from marshmallow import ValidationError
+from marshmallow_dataclass import class_schema
 
 from core.helpers import FileSystem
 from media.data.schemas import (
@@ -179,6 +181,16 @@ class TestMediaSchemas(unittest.TestCase):
         self.assertEqual(result.tmdbId, 65844)
 
     @pytest.mark.unit
+    def test_schedule_episode_missing_required_field_raises(self):
+        ScheduleEpisodeSchema = class_schema(SeriesScheduleEpisode)()
+        invalid_payload = json.loads(
+            json.dumps(self.data["schedule"]["lastAiredEpisode"])
+        )
+        invalid_payload.pop("name", None)
+        with pytest.raises(ValidationError):
+            ScheduleEpisodeSchema.load(invalid_payload)
+
+    @pytest.mark.unit
     def test_individual_anime_theme_schema(self):
         if not self.data.get("themeSongs"):
             self.skipTest("No theme songs data in fixture")
@@ -190,3 +202,11 @@ class TestMediaSchemas(unittest.TestCase):
         self.assertEqual(result.meta.number, 1)
         self.assertEqual(result.meta.type, "OP")
         self.assertEqual(result.meta.version, 1)
+
+    @pytest.mark.unit
+    def test_media_entity_enforces_anime_metadata_presence(self):
+        MediaEntitySchema = class_schema(MediaEntity)()
+        invalid_payload = json.loads(json.dumps(self.data))
+        invalid_payload["themeSongs"] = None
+        with pytest.raises((ValidationError, ValueError)):
+            MediaEntitySchema.load(invalid_payload)

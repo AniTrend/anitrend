@@ -16,17 +16,12 @@ InstantScalar = strawberry.scalar(
 
 @strawberry.type
 class EdgeImage:
-    height: Optional[int] = strawberry.field(
-        description="Height of the image in pixels", default=None
-    )
-    width: Optional[int] = strawberry.field(
-        description="Width of the image in pixels", default=None
-    )
+    height: int = strawberry.field(description="Height of the image in pixels")
+    width: int = strawberry.field(description="Width of the image in pixels")
     url: str = strawberry.field(description="URL to the image")
+    type: str = strawberry.field(
+        description="Type of the image (e.g., BACKDROP, LOGO, POSTER)"
+    )
     locale: Optional[str] = strawberry.field(
         description="Locale of the image (e.g., en, ja)", default=None
-    )
-    type: Optional[str] = strawberry.field(
-        description="Type of the image (e.g., BACKDROP, LOGO, POSTER)",
-        default=None,
     )
