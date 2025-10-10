@@ -204,9 +204,17 @@ class TestMediaSchemas(unittest.TestCase):
         self.assertEqual(result.meta.version, 1)
 
     @pytest.mark.unit
-    def test_media_entity_enforces_anime_metadata_presence(self):
+    def test_media_entity_normalizes_optional_lists(self):
         MediaEntitySchema = class_schema(MediaEntity)()
-        invalid_payload = json.loads(json.dumps(self.data))
-        invalid_payload["themeSongs"] = None
-        with pytest.raises((ValidationError, ValueError)):
-            MediaEntitySchema.load(invalid_payload)
+        payload = json.loads(json.dumps(self.data))
+        payload["images"] = None
+        payload["themeSongs"] = None
+        payload["trailers"] = None
+        payload["networks"] = None
+
+        media_instance = MediaEntitySchema.load(payload)
+
+        self.assertEqual(media_instance.images, [])
+        self.assertEqual(media_instance.themeSongs, [])
+        self.assertEqual(media_instance.trailers, [])
+        self.assertEqual(media_instance.networks, [])
