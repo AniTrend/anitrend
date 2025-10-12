@@ -1003,6 +1003,21 @@ files = [
 ]
 
 [[package]]
+name = "lia-web"
+version = "0.2.3"
+description = "A library for working with web frameworks"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "lia_web-0.2.3-py3-none-any.whl", hash = "sha256:237c779c943cd4341527fc0adfcc3d8068f992ee051f4ef059b8474ee087f641"},
+    {file = "lia_web-0.2.3.tar.gz", hash = "sha256:ccc9d24cdc200806ea96a20b22fb68f4759e6becdb901bd36024df7921e848d7"},
+]
+
+[package.dependencies]
+typing-extensions = ">=4.14.0"
+
+[[package]]
 name = "marshmallow"
 version = "4.0.1"
 description = "A lightweight library for converting complex datatypes to and from native Python datatypes."
@@ -1857,18 +1872,19 @@ full = ["httpx (>=0.27.0,<0.29.0)", "itsdangerous", "jinja2", "python-multipart 
 
 [[package]]
 name = "strawberry-graphql"
-version = "0.278.0"
+version = "0.283.3"
 description = "A library for creating GraphQL APIs"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql-0.278.0-py3-none-any.whl", hash = "sha256:2815faee18156c079d91ac0092a34d18bbc67434b65ea7d34c1f97259e486f3b"},
-    {file = "strawberry_graphql-0.278.0.tar.gz", hash = "sha256:e3fee9cd107b5b8ca69dd534c1dca6f82e4a9cf44cf46a4d338f42938896521a"},
+    {file = "strawberry_graphql-0.283.3-py3-none-any.whl", hash = "sha256:3751d86a219d81a16a13f335bb7d2fa3f57a85fab83d7d284b8ea88e2261d68b"},
+    {file = "strawberry_graphql-0.283.3.tar.gz", hash = "sha256:375e545856b7587debd4e0f1e2a6fca19d09cc126238a07b9e5164e5eb09342a"},
 ]
 
 [package.dependencies]
 graphql-core = ">=3.2.0,<3.4.0"
+lia-web = ">=0.2.1"
 packaging = ">=23"
 python-dateutil = ">=2.7,<3.0"
 typing-extensions = ">=4.5.0"
@@ -1878,7 +1894,7 @@ aiohttp = ["aiohttp (>=3.7.4.post0,<4)"]
 asgi = ["python-multipart (>=0.0.7)", "starlette (>=0.18.0)"]
 chalice = ["chalice (>=1.22,<2.0)"]
 channels = ["asgiref (>=3.2,<4.0)", "channels (>=3.0.5)"]
-cli = ["libcst", "pygments (>=2.3,<3.0)", "rich (>=12.0.0)", "typer (>=0.7.0)"]
+cli = ["libcst", "pygments (>=2.3,<3.0)", "python-multipart (>=0.0.7)", "rich (>=12.0.0)", "starlette (>=0.18.0)", "typer (>=0.7.0)", "uvicorn (>=0.11.6)", "websockets (>=15.0.1,<16)"]
 debug = ["libcst", "rich (>=12.0.0)"]
 debug-server = ["libcst", "pygments (>=2.3,<3.0)", "python-multipart (>=0.0.7)", "rich (>=12.0.0)", "starlette (>=0.18.0)", "typer (>=0.7.0)", "uvicorn (>=0.11.6)", "websockets (>=15.0.1,<16)"]
 django = ["Django (>=3.2)", "asgiref (>=3.2,<4.0)"]
@@ -1893,23 +1909,23 @@ sanic = ["sanic (>=20.12.2)"]
 
 [[package]]
 name = "strawberry-graphql-django"
-version = "0.65.1"
+version = "0.66.0"
 description = "Strawberry GraphQL Django extension"
 optional = false
-python-versions = "<4.0,>=3.9"
+python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql_django-0.65.1-py3-none-any.whl", hash = "sha256:e0a69af97c50deb07197641cd0b7320e25b5a3148a05ae6006d1bf5103530e85"},
-    {file = "strawberry_graphql_django-0.65.1.tar.gz", hash = "sha256:de312b77d83ab475b875f76f44161e8c5d9d284f349df61cebc83b4362b57a17"},
+    {file = "strawberry_graphql_django-0.66.0-py3-none-any.whl", hash = "sha256:67de63780dd82e7c3d050ad5377817d3e0d68befc17ee158ea124373237cfbfd"},
+    {file = "strawberry_graphql_django-0.66.0.tar.gz", hash = "sha256:8332b0f55fa3d4d795b6da2a8e4cd3dae2073bac0fc39783f5015ab57aa01618"},
 ]
 
 [package.dependencies]
 asgiref = ">=3.8"
 django = ">=4.2"
-strawberry-graphql = ">=0.276.2"
+strawberry-graphql = ">=0.283.2"
 
 [package.extras]
-debug-toolbar = ["django-debug-toolbar (>=3.4)"]
+debug-toolbar = ["django-debug-toolbar (>=6.0.0)"]
 enum = ["django-choices-field (>=2.2.2)"]
 
 [[package]]
@@ -1933,14 +1949,14 @@ test = ["coverage[toml] (>=7)", "mypy (>=1.2.0) ; platform_python_implementation
 
 [[package]]
 name = "typing-extensions"
-version = "4.12.2"
-description = "Backported and Experimental Type Hints for Python 3.8+"
+version = "4.15.0"
+description = "Backported and Experimental Type Hints for Python 3.9+"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
-    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
+    {file = "typing_extensions-4.15.0-py3-none-any.whl", hash = "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"},
+    {file = "typing_extensions-4.15.0.tar.gz", hash = "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466"},
 ]
 
 [[package]]
@@ -2284,4 +2300,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "9001ad03988191ff797e31235c53af4a3ea6d955b1a0bbfdc33fbad0e3d59161"
+content-hash = "a99cb5a44416f45f56cc5a628f48045608c81f71712c8662b785e4a74d3efc51"
