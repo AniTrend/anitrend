@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout Repository"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: "Dependency Review"
         uses: actions/dependency-review-action@v4
         with:
@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -101,7 +101,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install poetry
         run: pipx install poetry
