@@ -648,18 +648,18 @@ bcrypt = ["bcrypt (>=4.1.1)"]
 
 [[package]]
 name = "django-choices-field"
-version = "3.1.1"
+version = "4.0.0"
 description = "Django field that set/get django's new TextChoices/IntegerChoices enum."
 optional = false
-python-versions = "<4.0,>=3.8"
+python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "django_choices_field-3.1.1-py3-none-any.whl", hash = "sha256:409d691b3b4bd3982e9a8af499fe28fce4ee19a83b2a93ea69c5d98797f4897d"},
-    {file = "django_choices_field-3.1.1.tar.gz", hash = "sha256:93d851766ebcd87095d19e56f78164c1015935bfb8fce4f3be27ef689c10efc5"},
+    {file = "django_choices_field-4.0.0-py3-none-any.whl", hash = "sha256:dfa59033685af989f5bc49d95a586e8de692999d3179bf1cb14ef99879e6ff45"},
+    {file = "django_choices_field-4.0.0.tar.gz", hash = "sha256:7b07aacb2ad2b3ee3c8be78be98302ebbcb606285d20547a4163287819364954"},
 ]
 
 [package.dependencies]
-django = ">=3.2"
+django = ">=4.2"
 typing_extensions = ">=4.0.0"
 
 [[package]]
@@ -2287,4 +2287,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "26a85f3994df199df0629b12a86be2f6bbf581d5812acac35f5c34c20dbf4086"
+content-hash = "c8a4e7d4794e2ab1312fdb5db9b193b2206acdd20dde4227ef8221e817e4a262"
