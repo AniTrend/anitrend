@@ -525,6 +525,21 @@ files = [
 markers = {main = "platform_system == \"Windows\"", dev = "sys_platform == \"win32\""}
 
 [[package]]
+name = "cross-web"
+version = "0.4.0"
+description = "A library for working with web frameworks"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "cross_web-0.4.0-py3-none-any.whl", hash = "sha256:0c675bd26e91428cab31e3e927929b42da94aa96da92974e57c78f9a732d0e9b"},
+    {file = "cross_web-0.4.0.tar.gz", hash = "sha256:4ae65619ddfcd06d6803432c0366342d7e8aeba10194b4e144d73a662e75370c"},
+]
+
+[package.dependencies]
+typing-extensions = ">=4.14.0"
+
+[[package]]
 name = "cryptography"
 version = "44.0.1"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
@@ -976,21 +991,6 @@ files = [
     {file = "iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374"},
     {file = "iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3"},
 ]
-
-[[package]]
-name = "lia-web"
-version = "0.2.3"
-description = "A library for working with web frameworks"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "lia_web-0.2.3-py3-none-any.whl", hash = "sha256:237c779c943cd4341527fc0adfcc3d8068f992ee051f4ef059b8474ee087f641"},
-    {file = "lia_web-0.2.3.tar.gz", hash = "sha256:ccc9d24cdc200806ea96a20b22fb68f4759e6becdb901bd36024df7921e848d7"},
-]
-
-[package.dependencies]
-typing-extensions = ">=4.14.0"
 
 [[package]]
 name = "marshmallow"
@@ -1859,19 +1859,19 @@ full = ["httpx (>=0.27.0,<0.29.0)", "itsdangerous", "jinja2", "python-multipart 
 
 [[package]]
 name = "strawberry-graphql"
-version = "0.287.3"
+version = "0.288.0"
 description = "A library for creating GraphQL APIs"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql-0.287.3-py3-none-any.whl", hash = "sha256:2bb1f9b122ef1213f82f01cf27a095eb0776fda78e12af9e60c54de6e543797c"},
-    {file = "strawberry_graphql-0.287.3.tar.gz", hash = "sha256:c81126cc75102aa32417048f074429d6c5c8d096424aa939fdb8827b8c5f84a9"},
+    {file = "strawberry_graphql-0.288.0-py3-none-any.whl", hash = "sha256:19b07b3201f23a68880f63883d3e47d699b5ac4de93ccdad35c76fd93ba2392d"},
+    {file = "strawberry_graphql-0.288.0.tar.gz", hash = "sha256:10fd113fe595a477ded8f8a39bcd49e8ec84f1cda70dac1369590692c028b09e"},
 ]
 
 [package.dependencies]
+cross-web = ">=0.4.0"
 graphql-core = ">=3.2.0,<3.4.0"
-lia-web = ">=0.2.1"
 packaging = ">=23"
 python-dateutil = ">=2.7"
 typing-extensions = ">=4.5.0"
@@ -1896,20 +1896,20 @@ sanic = ["sanic (>=20.12.2)"]
 
 [[package]]
 name = "strawberry-graphql-django"
-version = "0.71.0"
+version = "0.72.0"
 description = "Strawberry GraphQL Django extension"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql_django-0.71.0-py3-none-any.whl", hash = "sha256:ed6ae7d62c263e6bbcb631bd4e9b86429ec273ad1f20535b74be3ddbacc7f341"},
-    {file = "strawberry_graphql_django-0.71.0.tar.gz", hash = "sha256:dbb23895185e5155c1a57be4668e9a8ed7166fa42d6c945f0f0b71f0d53fa566"},
+    {file = "strawberry_graphql_django-0.72.0-py3-none-any.whl", hash = "sha256:b8e9e408d46142bf34635179ba7db16b396f6afb0d320feff37eb195bb592368"},
+    {file = "strawberry_graphql_django-0.72.0.tar.gz", hash = "sha256:5c7c221b8e9fbb80a7f99d489407e8ad7eb872360ebf8873242be9d151c5f685"},
 ]
 
 [package.dependencies]
 asgiref = ">=3.8"
 django = ">=4.2"
-strawberry-graphql = ">=0.286.0"
+strawberry-graphql = ">=0.288.0"
 
 [package.extras]
 debug-toolbar = ["django-debug-toolbar (>=6.0.0)"]
@@ -2287,4 +2287,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "c8a4e7d4794e2ab1312fdb5db9b193b2206acdd20dde4227ef8221e817e4a262"
+content-hash = "481f6ecf1c1fc4c77efe321f4cd9fbc54035fd4ed60d59efb93cf3e32175da1e"
