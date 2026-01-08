@@ -12,7 +12,6 @@ from uplink import (
     HeaderMap,
     Query,
     loads,
-    install,
 )
 
 from core.decorators import raise_api_error
@@ -47,7 +46,7 @@ class RemoteSource(Consumer):
 
     @returns.from_json
     @raise_api_error
-    @get("news")
+    @get("/v1/news")
     def get_news(
         self,
         headers: HeaderMap,
@@ -62,4 +61,13 @@ class RemoteSource(Consumer):
         :param limit: Limit of results to fetch
         :return: NewsConnectionSchema
         """
+        pass
+
+    @returns.json
+    @raise_api_error
+    @get("/v1/news/feed")
+    def get_news_feed(
+        self, headers: HeaderMap, locale: Query(name="locale", type=str)
+    ) -> object:
+        """Fetch localized news feed items"""
         pass

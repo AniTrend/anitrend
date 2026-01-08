@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "id": 101,
+      "number": 1,
+      "title": {
+        "english": "Season Premiere",
+        "romanji": "Season Premiere",
+        "native": "Season Premiere"
+      },
+      "synopsis": "The party meets again.",
+      "aired": 1688208000,
+      "score": 8.7,
+      "kind": "main",
+      "duration": 24,
+      "url": "https://example.com/episode/1",
+      "tvdbShowId": 12345,
+      "tvdbId": 54321,
+      "tmdbId": 67890,
+      "seasonNumber": 1,
+      "episodeNumber": 1,
+      "absoluteEpisodeNumber": 1,
+      "airedBeforeSeasonNumber": 2,
+      "airedBeforeEpisodeNumber": 0,
+      "airedAfterSeasonNumber": 1,
+      "airedAfterEpisodeNumber": 0,
+      "image": "https://cdn.example.com/episode1.jpg",
+      "poster": "https://cdn.example.com/episode1-poster.jpg",
+      "themes": {
+        "openings": ["Song of Beginnings"],
+        "endings": ["Song of Endings"]
+      }
+    },
+    {
+      "id": 102,
+      "number": 2,
+      "title": {
+        "english": "A Quiet Interlude",
+        "romanji": "A Quiet Interlude",
+        "native": "A Quiet Interlude"
+      },
+      "synopsis": null,
+      "aired": null,
+      "score": null,
+      "kind": "special",
+      "duration": 12,
+      "url": "https://example.com/episode/2",
+      "tvdbShowId": null,
+      "tvdbId": null,
+      "tmdbId": null,
+      "seasonNumber": 1,
+      "episodeNumber": 2,
+      "absoluteEpisodeNumber": 2,
+      "airedBeforeSeasonNumber": null,
+      "airedBeforeEpisodeNumber": null,
+      "airedAfterSeasonNumber": null,
+      "airedAfterEpisodeNumber": null,
+      "image": null,
+      "poster": null,
+      "themes": {
+        "openings": [],
+        "endings": ["Quiet Ending"]
+      }
+    }
+  ],
+  "first": "cursor_1",
+  "last": "cursor_2",
+  "count": 2,
+  "total": 50,
+  "message": null,
+  "errors": null
+}

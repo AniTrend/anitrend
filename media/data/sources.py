@@ -49,14 +49,18 @@ class RemoteSource(Consumer):
 
     @returns.from_json  # Expecting JSON response, will be processed by load_model_from_json
     @raise_api_error
-    @get("series")
+    @get("/v1/series")
     def get_series_by_id(
-        self, series_id: Query(name="id", type=int), headers: HeaderMap  # type: ignore
+        self,
+        series_id: Query(name="seriesId", type=int) = None,
+        anilist: Query(name="anilist", type=int) = None,
+        mal: Query(name="mal", type=int) = None,
+        trakt: Query(name="trakt", type=int) = None,
+        slug: Query(name="slug", type=str) = None,
+        tvdb: Query(name="tvdb", type=int) = None,
+        tmdb: Query(name="tmdb", type=int) = None,
+        notify: Query(name="notify", type=str) = None,
+        headers: HeaderMap = None,  # type: ignore
     ) -> MediaApiResponse:  # type: ignore
-        """
-        Fetches a series by its ID from the on-the-edge API.
-        :param series_id: The ID of the series to fetch.
-        :param headers: Request headers.
-        :return: MediaEntity
-        """
+        """Fetch series by any supported identifier"""
         pass

@@ -1,9 +1,9 @@
 import strawberry
-from typing import Annotated, Optional
+from typing import Annotated, Optional, List
 from strawberry.types import Info
 
-from .resolvers import resolve_news_connection
-from .types import NewsConnection
+from .resolvers import resolve_news_connection, resolve_news_feed
+from .types import NewsConnection, News
 
 
 @strawberry.type
@@ -36,3 +36,13 @@ class NewsQuery:
             )
         except Exception as e:
             raise Exception(f"An error occurred while fetching news")
+
+    @strawberry.field(description="Localized news feed")
+    def newsFeed(
+        self,
+        info: Info,
+        locale: Optional[
+            Annotated[str, strawberry.argument(description="Locale code, e.g. en-US")]
+        ] = None,
+    ) -> List[News]:
+        return resolve_news_feed(context=info.context, locale=locale)

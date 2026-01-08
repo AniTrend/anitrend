@@ -4,6 +4,7 @@ from strawberry_django.optimizer import DjangoOptimizerExtension
 from config.graphql.queries import ConfigQuery
 from news.graphql.queries import NewsQuery
 from media.graphql.queries import MediaQuery
+from episode.graphql.queries import EpisodeQuery
 
 
 @strawberry.type
@@ -12,7 +13,7 @@ class Mutation:
 
 
 @strawberry.type
-class Query(ConfigQuery, NewsQuery, MediaQuery):
+class Query(ConfigQuery, NewsQuery, MediaQuery, EpisodeQuery):
     pass
 
 

@@ -26,6 +26,10 @@ class TestSchemas(unittest.TestCase):
         self.assertEqual(result.image, self.data["data"][0]["image"])
         self.assertEqual(result.publishedOn, self.data["data"][0]["publishedOn"])
         self.assertEqual(result.link, self.data["data"][0]["link"])
+        self.assertIsNone(result.category)
+        self.assertIsNone(result.genre)
+        self.assertIsNone(result.area)
+        self.assertIsNone(result.lang)
 
     @pytest.mark.unit
     def test_news_connection_schema(self):

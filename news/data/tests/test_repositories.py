@@ -74,3 +74,44 @@ class TestNewsRepository(unittest.TestCase):
             before=self.test_before,
             limit=self.test_limit,
         )
+
+    @pytest.mark.integration
+    def test_fetch_feed_success(self):
+        feed_payload = [
+            {
+                "id": "feed_id",
+                "title": "Feed Title",
+                "author": "Feed Author",
+                "description": "Feed Description",
+                "content": "Feed Content",
+                "image": "feed.jpg",
+                "publishedOn": 1234567890,
+                "link": "https://feed.test",
+                "category": "Category",
+                "genre": "Genre",
+                "area": "Area",
+                "lang": "en",
+            }
+        ]
+
+        self.mock_remote_source.get_news_feed.return_value = feed_payload
+
+        result = self.repository.fetch_feed(headers=self.test_headers, locale="en-US")
+
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].id, feed_payload[0]["id"])
+        self.mock_remote_source.get_news_feed.assert_called_once_with(
+            headers=self.test_headers, locale="en-US"
+        )
+
+    @pytest.mark.integration
+    def test_fetch_feed_handles_error(self):
+        test_error = Exception("feed failure")
+        self.mock_remote_source.get_news_feed.side_effect = test_error
+
+        with self.assertRaises(Exception):
+            self.repository.fetch_feed(headers=self.test_headers, locale=None)
+
+        self.mock_remote_source.get_news_feed.assert_called_once_with(
+            headers=self.test_headers, locale=None
+        )

@@ -1,5 +1,8 @@
-[tool.poetry]
+[project]
 name = "anitrend"
+dynamic = [ "version" ]
+
+[tool.poetry]
 version = "0.2.1"
 description = ""
 authors = ["Maxwell <wax911@users.noreply.github.com>"]

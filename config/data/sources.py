@@ -45,7 +45,7 @@ class RemoteSource(Consumer):
 
     @returns.from_json
     @raise_api_error
-    @get("config")
+    @get("/v1/config")
     def get_config(self, headers: HeaderMap) -> ConfigurationSchema:  # type: ignore
         """
         :return: ConfigurationSchema

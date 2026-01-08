@@ -1,132 +1,164 @@
-from typing import Optional, List
+from enum import Enum
+from typing import List, Optional
+
 import strawberry
 
-from core.graphql import EdgeImage, Instant
+from core.graphql import Instant
+from episode.data.schemas import Episode as EpisodeModel
+from episode.data.schemas import EpisodeThemes as EpisodeThemesModel
+from episode.data.schemas import EpisodeTitle as EpisodeTitleModel
+from episode.data.schemas import EpisodesResponse
+
+
+@strawberry.enum
+class EpisodeKindEnum(str, Enum):
+    main = "main"
+    ova = "ova"
+    ona = "ona"
+    recap = "recap"
+    filler = "filler"
+    special = "special"
 
 
 @strawberry.type
-class EdgeStaff:
-    creditId: str = strawberry.field(description="Credit ID for the crew member")
-    id: int = strawberry.field(description="Unique ID for the crew member")
-    knownFor: str = strawberry.field(
-        description="Department the crew member is known for"
-    )
-    name: str = strawberry.field(description="Name of the crew member")
-    originalName: str = strawberry.field(description="Original name of the crew member")
-    popularity: float = strawberry.field(
-        description="Popularity score of the crew member"
-    )
-    job: Optional[str] = strawberry.field(
-        description="Job title of the crew member for this episode (e.g., Director, Writer)",
-        default=None,
-    )
-    department: Optional[str] = strawberry.field(
-        description="Department of the crew member (e.g., Directing, Writing)",
-        default=None,
-    )
-    role: str = strawberry.field(
-        description="Role of the crew member (e.g., CREW or GUEST)"
-    )
-    adult: Optional[bool] = strawberry.field(
-        description="Indicates if the crew member is associated with adult content",
-        default=None,
-    )
-    image: Optional[str] = strawberry.field(
-        description="URL to an image of the crew member", default=None
-    )
-    character: Optional[str] = strawberry.field(
-        description="Character name if the crew member is a voice actor/actress for this episode",
-        default=None,
-    )
-    order: Optional[int] = strawberry.field(
-        description="Order of appearance or importance", default=None
-    )
+class EpisodeTitle:
+    english: Optional[str] = strawberry.field(description="English title", default=None)
+    romanji: Optional[str] = strawberry.field(description="Romanji title", default=None)
+    native: Optional[str] = strawberry.field(description="Native title", default=None)
+
+    @classmethod
+    def from_model(cls, model: EpisodeTitleModel) -> "EpisodeTitle":
+        return cls(english=model.english, romanji=model.romanji, native=model.native)
 
 
 @strawberry.type
-class EdgeEpisode:
+class EpisodeThemes:
+    openings: List[str] = strawberry.field(
+        description="Opening themes", default_factory=list
+    )
+    endings: List[str] = strawberry.field(
+        description="Ending themes", default_factory=list
+    )
+
+    @classmethod
+    def from_model(cls, model: EpisodeThemesModel) -> "EpisodeThemes":
+        return cls(openings=model.openings, endings=model.endings)
+
+
+@strawberry.type
+class EpisodeType:
     id: int = strawberry.field(description="Unique ID for the episode")
-    tvdbShowId: int = strawberry.field(
-        description="TheTVDB Show ID this episode belongs to"
+    number: Optional[int] = strawberry.field(
+        description="Episode number in listing", default=None
     )
-    tvdbId: int = strawberry.field(description="TheTVDB Episode ID")
-    seasonNumber: int = strawberry.field(
-        description="Season number this episode belongs to"
+    title: Optional[EpisodeTitle] = strawberry.field(
+        description="Titles for the episode", default=None
     )
-    episodeNumber: int = strawberry.field(
-        description="Episode number within the season"
+    synopsis: Optional[str] = strawberry.field(
+        description="Episode synopsis", default=None
     )
-    airDate: Instant = strawberry.field(description="Air date and time of the episode")
-    staff: List[EdgeStaff] = strawberry.field(
-        description="List of crew or guest members for this episode",
-        default_factory=list,
+    aired: Optional[Instant] = strawberry.field(
+        description="Aired timestamp", default=None
+    )
+    score: Optional[float] = strawberry.field(description="Episode score", default=None)
+    kind: Optional[EpisodeKindEnum] = strawberry.field(
+        description="Episode type", default=None
+    )
+    duration: Optional[int] = strawberry.field(
+        description="Runtime in minutes", default=None
+    )
+    url: Optional[str] = strawberry.field(description="Reference URL", default=None)
+    tvdbShowId: Optional[int] = strawberry.field(
+        description="TVDB show identifier", default=None
+    )
+    tvdbId: Optional[int] = strawberry.field(
+        description="TVDB episode identifier", default=None
+    )
+    tmdbId: Optional[int] = strawberry.field(
+        description="TMDB episode identifier", default=None
+    )
+    seasonNumber: Optional[int] = strawberry.field(
+        description="Season number", default=None
+    )
+    episodeNumber: Optional[int] = strawberry.field(
+        description="Episode number within season", default=None
     )
     absoluteEpisodeNumber: Optional[int] = strawberry.field(
-        description="Absolute episode number across all seasons", default=None
+        description="Absolute episode number", default=None
     )
     airedBeforeSeasonNumber: Optional[int] = strawberry.field(
-        description="If this episode aired before a specific season number",
-        default=None,
+        description="Season number the episode aired before", default=None
     )
     airedBeforeEpisodeNumber: Optional[int] = strawberry.field(
-        description="If this episode aired before a specific episode number (within airedBeforeSeasonNumber)",
-        default=None,
+        description="Episode number the episode aired before", default=None
     )
     airedAfterSeasonNumber: Optional[int] = strawberry.field(
-        description="If this episode aired after a specific season number", default=None
+        description="Season number the episode aired after", default=None
     )
     airedAfterEpisodeNumber: Optional[int] = strawberry.field(
-        description="If this episode aired after a specific episode number (within airedAfterSeasonNumber)",
-        default=None,
+        description="Episode number the episode aired after", default=None
     )
-    title: Optional[str] = strawberry.field(
-        description="Title of the episode", default=None
+    image: Optional[str] = strawberry.field(description="Episode image", default=None)
+    poster: Optional[str] = strawberry.field(description="Episode poster", default=None)
+    themes: EpisodeThemes = strawberry.field(
+        description="Episode theme songs", default_factory=EpisodeThemes
     )
-    runtime: Optional[int] = strawberry.field(
-        description="Runtime of the episode in minutes", default=None
-    )
-    overview: Optional[str] = strawberry.field(
-        description="Brief overview or summary of the episode", default=None
-    )
-    image: Optional[str] = strawberry.field(
-        description="URL to an image for the episode", default=None
-    )
-    name: Optional[str] = strawberry.field(
-        description="Name of the episode (often same as title)", default=None
-    )
-    poster: Optional[str] = strawberry.field(
-        description="URL to a poster image for the episode", default=None
-    )
+
+    @classmethod
+    def from_model(cls, model: EpisodeModel) -> "EpisodeType":
+        title = (
+            EpisodeTitle.from_model(model.title) if model.title is not None else None
+        )
+        themes = (
+            EpisodeThemes.from_model(model.themes)
+            if model.themes is not None
+            else EpisodeThemes()
+        )
+        return cls(
+            id=model.id,
+            number=model.number,
+            title=title,
+            synopsis=model.synopsis,
+            aired=Instant(model.aired) if model.aired is not None else None,
+            score=model.score,
+            kind=EpisodeKindEnum(model.kind) if model.kind is not None else None,
+            duration=model.duration,
+            url=model.url,
+            tvdbShowId=model.tvdbShowId,
+            tvdbId=model.tvdbId,
+            tmdbId=model.tmdbId,
+            seasonNumber=model.seasonNumber,
+            episodeNumber=model.episodeNumber,
+            absoluteEpisodeNumber=model.absoluteEpisodeNumber,
+            airedBeforeSeasonNumber=model.airedBeforeSeasonNumber,
+            airedBeforeEpisodeNumber=model.airedBeforeEpisodeNumber,
+            airedAfterSeasonNumber=model.airedAfterSeasonNumber,
+            airedAfterEpisodeNumber=model.airedAfterEpisodeNumber,
+            image=model.image,
+            poster=model.poster,
+            themes=themes,
+        )
 
 
 @strawberry.type
-class EdgeSeason:
-    tmdbId: int = strawberry.field(description="TheMovieDB ID for the season")
-    airDate: Instant = strawberry.field(
-        description="Air date of the first episode of the season"
+class EpisodeConnection:
+    count: int = strawberry.field(description="Number of items returned")
+    total: int = strawberry.field(description="Total items available")
+    first: Optional[str] = strawberry.field(
+        description="Cursor of first item", default=None
     )
-    episodeCount: int = strawberry.field(
-        description="Number of episodes in this season"
+    last: Optional[str] = strawberry.field(
+        description="Cursor of last item", default=None
     )
-    name: str = strawberry.field(description="Name of the season")
-    overview: str = strawberry.field(
-        description="Brief overview or summary of the season"
-    )
-    number: int = strawberry.field(description="Season number")
-    images: List[EdgeImage] = strawberry.field(
-        description="Images associated with the season (posters, backdrops)"
-    )
-    cover: Optional[str] = strawberry.field(
-        description="URL to a cover image for the season", default=None
-    )
-    episodes: List[EdgeEpisode] = strawberry.field(
-        description="List of episodes in this season", default_factory=list
-    )
+    data: List[EpisodeType] = strawberry.field(description="Episode nodes")
 
-
-@strawberry.type
-class EpisodeObjectType:
-    seasons: Optional[List[EdgeSeason]] = strawberry.field(
-        description="List of seasons for the media, if applicable.",
-        default_factory=list,
-    )
+    @classmethod
+    def from_model(cls, model: EpisodesResponse) -> "EpisodeConnection":
+        episodes = [EpisodeType.from_model(item) for item in model.data]
+        return cls(
+            count=model.count,
+            total=model.total,
+            first=model.first,
+            last=model.last,
+            data=episodes,
+        )

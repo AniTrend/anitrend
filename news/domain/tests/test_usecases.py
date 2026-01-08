@@ -34,6 +34,7 @@ class TestNewsUseCase(unittest.TestCase):
                 )
             ],
         )
+        self.sample_feed = [self.sample_news.data[0]]
 
     @pytest.mark.integration
     def test_fetch_news_success(self):
@@ -73,4 +74,30 @@ class TestNewsUseCase(unittest.TestCase):
             after=self.test_after,
             before=self.test_before,
             limit=self.test_limit,
+        )
+
+    @pytest.mark.integration
+    def test_fetch_news_feed_success(self):
+        self.mock_repository.fetch_feed.return_value = self.sample_feed
+
+        result = self.use_case.fetch_news_feed(
+            headers=self.test_headers, locale="en-US"
+        )
+
+        self.assertEqual(result, self.sample_feed)
+        self.mock_repository.fetch_feed.assert_called_once_with(
+            headers=self.test_headers, locale="en-US"
+        )
+
+    @pytest.mark.integration
+    def test_fetch_news_feed_handles_error(self):
+        test_error = Exception("feed error")
+        self.mock_repository.fetch_feed.side_effect = test_error
+
+        with self.assertRaises(Exception) as context:
+            self.use_case.fetch_news_feed(headers=self.test_headers, locale=None)
+
+        self.assertEqual(str(context.exception), "feed error")
+        self.mock_repository.fetch_feed.assert_called_once_with(
+            headers=self.test_headers, locale=None
         )
