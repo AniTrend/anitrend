@@ -5,13 +5,14 @@ FROM base AS scaffold
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
+        libffi-dev \
         libpq-dev \
     && rm -rf /var/lib/apt/lists/* \
     && pip install --upgrade pip
 
 FROM scaffold AS dependencies
 COPY pyproject.toml poetry.lock ./
-RUN pip install poetry==2.0.1 \
+RUN pip install poetry==2.2 \
     && poetry config virtualenvs.create false \
     && poetry install --no-root --no-interaction --no-ansi
 
