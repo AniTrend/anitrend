@@ -150,3 +150,6 @@ GROWTH_BOOK = {
 ON_THE_EDGE = {"host": config("EDGE_HOST", cast=str)}
 
 APPEND_SLASH = config("APPEND_SLASH", cast=bool, default=False)
+
+# CSRF protection uses cookie-based tokens (no session storage required)
+CSRF_USE_SESSIONS = False

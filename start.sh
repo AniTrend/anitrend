@@ -13,11 +13,6 @@ usage() {
  echo " -d    Run server in debug mode"
 }
 
-collect_static() {
-    echo 'Collecting static files...'
-    python manage.py collectstatic --no-input
-}
-
 start_dev_server() {
   python asgi_server.py
 }
@@ -33,7 +28,6 @@ start_prod_server() {
 start_service() {
   echo "Starting server"
   if $DEBUG_MODE; then
-    collect_static
     start_dev_server
   else
     start_prod_server
