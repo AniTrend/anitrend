@@ -1,19 +1,10 @@
 FROM python:3.14.2-slim AS base
 WORKDIR /usr/src
+RUN pip install --upgrade pip poetry==2.2
 
-FROM base AS scaffold
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        build-essential \
-        libffi-dev \
-        libpq-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && pip install --upgrade pip
-
-FROM scaffold AS dependencies
+FROM base AS dependencies
 COPY pyproject.toml poetry.lock ./
-RUN pip install poetry==2.2 \
-    && poetry config virtualenvs.create false \
+RUN poetry config virtualenvs.create false \
     && poetry install --no-root --no-interaction --no-ansi
 
 FROM dependencies AS final
