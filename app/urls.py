@@ -18,7 +18,6 @@ from typing import List
 
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
 from django.urls import path, include
 from django.urls.resolvers import RoutePattern
 from django.views.decorators.csrf import csrf_exempt
@@ -46,7 +45,6 @@ urlpatterns: List[RoutePattern] = [
 if settings.DEBUG:
     urlpatterns += (
         [
-            path("admin", admin.site.urls),
             path(
                 "playground",
                 csrf_exempt(
