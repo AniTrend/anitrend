@@ -18,8 +18,7 @@ from typing import List
 
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from django.urls.resolvers import RoutePattern
 from django.views.decorators.csrf import csrf_exempt
 
@@ -29,7 +28,6 @@ from app.graphql import schema
 
 
 urlpatterns: List[RoutePattern] = [
-    path("", include("web.urls")),
     path("graphqlws", websocket_view(schema=schema)),
     path(
         "graphql",
@@ -44,20 +42,15 @@ urlpatterns: List[RoutePattern] = [
 
 
 if settings.DEBUG:
-    urlpatterns += (
-        [
-            path("admin", admin.site.urls),
-            path(
-                "playground",
-                csrf_exempt(
-                    AsyncPatchedGraphQLView.as_view(
-                        schema=schema,
-                        graphql_ide="apollo-sandbox",
-                        multipart_uploads_enabled=True,
-                    ),
+    urlpatterns += [
+        path(
+            "playground",
+            csrf_exempt(
+                AsyncPatchedGraphQLView.as_view(
+                    schema=schema,
+                    graphql_ide="apollo-sandbox",
+                    multipart_uploads_enabled=True,
                 ),
             ),
-        ]
-        + static(prefix=settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-        + static(prefix=settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    )
+        ),
+    ]

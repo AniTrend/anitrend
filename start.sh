@@ -13,17 +13,6 @@ usage() {
  echo " -d    Run server in debug mode"
 }
 
-migrations() {
-  echo "Checking and starting migrations"
-  python manage.py makemigrations
-  python manage.py migrate
-}
-
-collect_static() {
-    echo 'Collecting static files...'
-    python manage.py collectstatic --no-input
-}
-
 start_dev_server() {
   python asgi_server.py
 }
@@ -37,11 +26,8 @@ start_prod_server() {
 }
 
 start_service() {
-  migrations
-
   echo "Starting server"
   if $DEBUG_MODE; then
-    collect_static
     start_dev_server
   else
     start_prod_server

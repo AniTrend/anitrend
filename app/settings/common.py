@@ -49,11 +49,6 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = config(
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
     "core",
@@ -64,11 +59,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "core.middleware.HeaderMiddleware",
@@ -79,41 +71,14 @@ ROOT_URLCONF = "app.urls"
 
 WSGI_APPLICATION = "app.wsgi.application"
 
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": config("DJANGO_DATABASE_NAME", cast=str),
-        "USER": config("DJANGO_DATABASE_USER", cast=str),
-        "PASSWORD": config("DJANGO_DATABASE_PASSWORD", cast=str),
-        "HOST": config("DJANGO_DATABASE_HOST", cast=str),
-        "PORT": config("DJANGO_DATABASE_PORT", cast=int),
-    },
-}
+# Database configuration removed - this is now a stateless translation layer
+DATABASES = {}
 
 GRAPHENE = {
     "SCHEMA": "app.graphql.schema.schema",
     "SCHEMA_OUTPUT": "static/schema.json",
     "SCHEMA_INDENT": 2,
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -127,11 +92,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_METHODS = (
     "GET",
@@ -190,3 +150,6 @@ GROWTH_BOOK = {
 ON_THE_EDGE = {"host": config("EDGE_HOST", cast=str)}
 
 APPEND_SLASH = config("APPEND_SLASH", cast=bool, default=False)
+
+# CSRF protection uses cookie-based tokens (no session storage required)
+CSRF_USE_SESSIONS = False

@@ -8,7 +8,6 @@ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExport
 from opentelemetry.instrumentation.django import DjangoInstrumentor
 from opentelemetry.instrumentation.logging import LoggingInstrumentor
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry.instrumentation.psycopg2 import Psycopg2Instrumentor
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
@@ -115,9 +114,6 @@ def setup_otel(app_name: str):
 
     # Instrument Django framework
     DjangoInstrumentor().instrument()
-
-    # Instrument PostgreSQL database calls
-    Psycopg2Instrumentor().instrument()
 
     # Instrument HTTP calls (requests)
     RequestsInstrumentor().instrument()
