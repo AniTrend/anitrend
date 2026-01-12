@@ -8,7 +8,7 @@ if __name__ == "__main__":
     sys.path.append(os.path.normpath(os.path.join(root_path, "apps")))
     uvicorn.run(
         "app.asgi:application",
-        host=os.getenv("HOST", "0.0.0.0"),
+        host="0.0.0.0",
         port=int(os.getenv("PORT", "8000")),
         lifespan="off",
         loop="asyncio",
