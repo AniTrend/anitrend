@@ -1,18 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-  "addLabels": [
-    ":dagger: dependencies"
-  ],
+  "extends": ["config:base"],
+  "addLabels": [":dagger: dependencies"],
   "branchPrefix": "dependencies/",
-  "reviewers": [
-    "wax911"
-  ],
-  "baseBranches": [
-    "develop"
-  ],
+  "reviewers": ["wax911"],
+  "baseBranches": ["develop"],
+  "constraints": {
+    "python": "==3.13.7"
+  },
   "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "rebase"
