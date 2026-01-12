@@ -42,17 +42,15 @@ urlpatterns: List[RoutePattern] = [
 
 
 if settings.DEBUG:
-    urlpatterns += (
-        [
-            path(
-                "playground",
-                csrf_exempt(
-                    AsyncPatchedGraphQLView.as_view(
-                        schema=schema,
-                        graphql_ide="apollo-sandbox",
-                        multipart_uploads_enabled=True,
-                    ),
+    urlpatterns += [
+        path(
+            "playground",
+            csrf_exempt(
+                AsyncPatchedGraphQLView.as_view(
+                    schema=schema,
+                    graphql_ide="apollo-sandbox",
+                    multipart_uploads_enabled=True,
                 ),
             ),
-        ]
-    )
+        ),
+    ]
