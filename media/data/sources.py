@@ -21,14 +21,14 @@ from core import (
     __RATE_LIMIT_CALLS__,
     __RATE_LIMIT_PERIOD_CALLS__,
 )
-from media.data.schemas import MediaApiResponse
+from media.data.schemas import MediaEntity
 
 
 @install
-@loads.from_json(MediaApiResponse)  # Adjusted for MediaApiResponse
+@loads.from_json(MediaEntity)
 def load_model_from_json(
-    model_type: Type[MediaApiResponse], json: Mapping[str, any]
-) -> MediaApiResponse:
+    model_type: Type[MediaEntity], json: Mapping[str, any]
+) -> MediaEntity:
     # Using marshmallow_dataclass to load directly into dataclass
     # This assumes the JSON keys match the dataclass field names
     schema = class_schema(model_type)()
@@ -49,14 +49,28 @@ class RemoteSource(Consumer):
 
     @returns.from_json  # Expecting JSON response, will be processed by load_model_from_json
     @raise_api_error
-    @get("series")
-    def get_series_by_id(
-        self, series_id: Query(name="id", type=int), headers: HeaderMap  # type: ignore
-    ) -> MediaApiResponse:  # type: ignore
+    @get("v1/series")
+    def get_series(
+        self,
+        headers: HeaderMap,
+        anilist: Query(name="anilist", type=int) = None,
+        trakt: Query(name="trakt", type=int) = None,
+        tvdb: Query(name="tvdb", type=int) = None,
+        tmdb: Query(name="tmdb", type=int) = None,
+        mal: Query(name="mal", type=int) = None,
+        notify: Query(name="notify", type=str) = None,
+        slug: Query(name="slug", type=str) = None,
+    ) -> MediaEntity:  # type: ignore
         """
-        Fetches a series by its ID from the on-the-edge API.
-        :param series_id: The ID of the series to fetch.
-        :param headers: Request headers.
+        Fetch aggregated series metadata using upstream identifiers.
+        :param headers: Request headers
+        :param anilist: AniList series identifier (required by upstream service)
+        :param trakt: Trakt identifier
+        :param tvdb: TVDB identifier
+        :param tmdb: TMDB identifier
+        :param mal: MyAnimeList identifier
+        :param notify: notify.moe identifier
+        :param slug: Slug identifier
         :return: MediaEntity
         """
         pass

@@ -12,7 +12,6 @@ from uplink import (
     HeaderMap,
     Query,
     loads,
-    install,
 )
 
 from core.decorators import raise_api_error
@@ -35,11 +34,11 @@ def load_model_from_json(
     return result
 
 
-@timeout(seconds=5)
+@timeout(seconds=__TIME_OUT__)
 @retry(
-    max_attempts=3,
+    max_attempts=__MAX_ATTEMPTS__,
     when=retry.when.raises(Exception),
-    stop=retry.stop.after_attempt(3) | retry.stop.after_delay(2),
+    stop=retry.stop.after_attempt(__MAX_ATTEMPTS__) | retry.stop.after_delay(10),
     backoff=retry.backoff.jittered(multiplier=2),
 )
 @ratelimit(calls=__RATE_LIMIT_CALLS__, period=__RATE_LIMIT_PERIOD_CALLS__)
@@ -47,13 +46,13 @@ class RemoteSource(Consumer):
 
     @returns.from_json
     @raise_api_error
-    @get("news")
+    @get("v1/news")
     def get_news(
         self,
         headers: HeaderMap,
-        after: Query,
-        before: Query,
-        limit: Query,
+        after: Query(name="after", type=str) = None,
+        before: Query(name="before", type=str) = None,
+        limit: Query(name="limit", type=int) = None,
     ) -> NewsConnectionSchema:
         """Fetch paginated news items using cursor-based pagination
         :param headers: Request headers

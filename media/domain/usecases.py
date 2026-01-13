@@ -10,7 +10,7 @@ class MediaUseCase(CommonUseCase):
         self, series_id: int, headers: Optional[Mapping[str, str]]
     ) -> Optional[MediaEntity]:
         try:
-            data = self._repository.invoke(series_id=series_id, headers=headers)
+            data = self._repository.invoke(anilist=series_id, headers=headers)
             return data
         except Exception as e:
             self._logger.error(

@@ -7,7 +7,7 @@ import pytest
 from marshmallow_dataclass import class_schema
 
 from media.data.repositories import Repository
-from media.data.schemas import MediaApiResponse, MediaEntity
+from media.data.schemas import MediaEntity
 from media.domain.usecases import MediaUseCase
 from core.helpers import FileSystem
 
@@ -21,12 +21,11 @@ class TestMediaUseCase(unittest.TestCase):
 
         fixture_content = FileSystem.get_file_contents("fixtures/edge", "media.json")
         raw_fixture_data = json.loads(fixture_content)
-        media_data_from_fixture = raw_fixture_data.get("data", {})
 
         try:
             MediaEntitySchema = class_schema(MediaEntity)()
             self.sample_media = cast(
-                MediaEntity, MediaEntitySchema.load(media_data_from_fixture)
+                MediaEntity, MediaEntitySchema.load(raw_fixture_data)
             )
         except Exception as e:
             self.fail(f"Failed to load Media from fixture data in setUp: {e}")
@@ -41,7 +40,7 @@ class TestMediaUseCase(unittest.TestCase):
 
         self.assertEqual(result, self.sample_media)
         self.mock_repository.invoke.assert_called_once_with(
-            series_id=self.test_series_id, headers=self.test_headers
+            anilist=self.test_series_id, headers=self.test_headers
         )
 
     @pytest.mark.unit
@@ -57,7 +56,7 @@ class TestMediaUseCase(unittest.TestCase):
 
         self.assertEqual(str(context.exception), "Repository error")
         self.mock_repository.invoke.assert_called_once_with(
-            series_id=self.test_series_id, headers=self.test_headers
+            anilist=self.test_series_id, headers=self.test_headers
         )
         mock_logger.error.assert_called_once_with(
             f"Uncaught exception while fetching series_id {self.test_series_id}",

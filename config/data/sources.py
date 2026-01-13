@@ -33,11 +33,11 @@ def load_model_from_json(
     return cast(ConfigurationSchema, result)
 
 
-@timeout(seconds=5)
+@timeout(seconds=__TIME_OUT__)
 @retry(
-    max_attempts=3,
+    max_attempts=__MAX_ATTEMPTS__,
     when=retry.when.raises(Exception),
-    stop=retry.stop.after_attempt(3) | retry.stop.after_delay(2),
+    stop=retry.stop.after_attempt(__MAX_ATTEMPTS__) | retry.stop.after_delay(10),
     backoff=retry.backoff.jittered(multiplier=2),
 )
 @ratelimit(calls=__RATE_LIMIT_CALLS__, period=__RATE_LIMIT_PERIOD_CALLS__)
@@ -45,7 +45,7 @@ class RemoteSource(Consumer):
 
     @returns.from_json
     @raise_api_error
-    @get("config")
+    @get("v1/config")
     def get_config(self, headers: HeaderMap) -> ConfigurationSchema:  # type: ignore
         """
         :return: ConfigurationSchema

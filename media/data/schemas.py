@@ -43,13 +43,13 @@ class SeriesTitle:
 class SeriesScheduleEpisode:
     id: int
     name: str
-    overview: str
-    airDate: int
-    episodeNumber: int
-    productionCode: str
-    runtime: int
-    seasonNumber: int
-    tmdbId: int
+    overview: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    airDate: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    episodeNumber: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    productionCode: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    runtime: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    seasonNumber: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    tmdbId: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
     image: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
 
 
@@ -131,6 +131,7 @@ class MediaEntity:
     cover: SeriesCoverImage
     title: SeriesTitle
     updatedAt: int
+    classification: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
     images: List[SeriesImageAttributes] = field(
         default_factory=list, metadata={"required": True}
     )
@@ -142,6 +143,7 @@ class MediaEntity:
     ageRating: Optional[str] = None
     description: Optional[str] = None
     moreInfo: Optional[str] = None
+    duration: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
     themeSongs: List[AnimeTheme] = field(
         default_factory=list, metadata={"required": True}
     )
@@ -162,14 +164,5 @@ class MediaEntity:
     volumes: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
     publishedFrom: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
     publishedTo: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-
-
-@dataclass
-class MediaApiResponse:
-    data: Optional[MediaEntity] = None
-    message: Optional[str] = None
-    errors: Optional[List[str]] = None
-
-
 # Backwards compatibility: existing imports expecting `Media` should continue to work.
 Media = MediaEntity

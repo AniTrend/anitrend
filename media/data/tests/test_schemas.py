@@ -24,14 +24,9 @@ from media.data.schemas import (
 
 class TestMediaSchemas(unittest.TestCase):
     def setUp(self):
-        full_fixture = json.loads(
+        self.data = json.loads(
             FileSystem.get_file_contents("fixtures/edge", "media.json")
         )
-        self.data = full_fixture.get("data", {})
-        if not self.data:
-            raise ValueError(
-                "Could not find 'data' in media.json fixture data. Please check fixture structure."
-            )
 
     @pytest.mark.unit
     def test_media_loading_from_fixture(self):

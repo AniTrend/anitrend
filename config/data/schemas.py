@@ -1,5 +1,5 @@
 from typing import List, Optional
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -43,6 +43,6 @@ class GenreSchema:
 class ConfigurationSchema:
     id: str
     settings: SettingsSchema
-    image: Optional[ImageSchema]
-    navigation: Optional[List[NavigationSchema]]
-    genres: Optional[List[GenreSchema]]
+    image: ImageSchema
+    navigation: List[NavigationSchema] = field(default_factory=list)
+    genres: List[GenreSchema] = field(default_factory=list)
