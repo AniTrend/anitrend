@@ -26,7 +26,7 @@ class Repository(DataRepository):
 
         if not any(identifiers.values()):
             raise ValueError(
-                "At least one identifier (anilist/trakt/tvdb/tmdb/mal/notify/slug) is required"
+                "At least one identifier anilist/trakt/tvdb/tmdb/mal/notify/slug is required"
             )
 
         # Normalize numeric identifiers to int where provided

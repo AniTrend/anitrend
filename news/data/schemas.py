@@ -10,6 +10,7 @@ class NewsSchema:
     description: str
     content: str
     publishedOn: int
+    author: Optional[str] = None
     category: Optional[str] = None
     genre: Optional[str] = None
     area: Optional[str] = None
