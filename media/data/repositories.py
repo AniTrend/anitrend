@@ -13,44 +13,62 @@ class Repository(DataRepository):
     def invoke(self, **kwargs) -> MediaEntity:
         headers_value = kwargs.get("headers") or {}
         headers = cast(HeaderMap, headers_value)
-        anilist_id_value = kwargs.get("anilist") or kwargs.get("series_id")
-        if anilist_id_value is None:
-            raise ValueError("anilist id is required")
-        anilist_id = int(anilist_id_value)
+        identifiers = {
+            "anilist": kwargs.get("anilist") or kwargs.get("series_id"),
+            "trakt": kwargs.get("trakt"),
+            "tvdb": kwargs.get("tvdb"),
+            "tmdb": kwargs.get("tmdb"),
+            "mal": kwargs.get("mal"),
+            "notify": kwargs.get("notify"),
+            "slug": kwargs.get("slug"),
+        }
+
+        if not any(identifiers.values()):
+            raise ValueError(
+                "At least one identifier (anilist/trakt/tvdb/tmdb/mal/notify/slug) is required"
+            )
+
+        # Normalize numeric identifiers to int where provided
+        if identifiers["anilist"] is not None:
+            identifiers["anilist"] = int(identifiers["anilist"])
+        if identifiers["trakt"] is not None:
+            identifiers["trakt"] = int(identifiers["trakt"])
+        if identifiers["tvdb"] is not None:
+            identifiers["tvdb"] = int(identifiers["tvdb"])
+        if identifiers["tmdb"] is not None:
+            identifiers["tmdb"] = int(identifiers["tmdb"])
+        if identifiers["mal"] is not None:
+            identifiers["mal"] = int(identifiers["mal"])
         try:
             response: MediaEntity = self._remote_source.get_series(
                 headers=headers,
-                anilist=anilist_id,
-                trakt=kwargs.get("trakt"),
-                tvdb=kwargs.get("tvdb"),
-                tmdb=kwargs.get("tmdb"),
-                mal=kwargs.get("mal"),
-                notify=kwargs.get("notify"),
-                slug=kwargs.get("slug"),
+                **identifiers,
             )
             if not response:
                 self._logger.error(
-                    f"No data found for anilist id {anilist_id}. Response: {response}"
+                    f"No data found for identifiers {identifiers}. Response: {response}"
                 )
-                raise ValueError(f"No data found for anilist id {anilist_id}")
+                raise ValueError("No data found for provided identifiers")
             if not isinstance(response, MediaEntity):
                 self._logger.error(
-                    f"Expected MediaEntity type but got {type(response)} for anilist id {anilist_id}"
+                    f"Expected MediaEntity type but got {type(response)} for identifiers {identifiers}"
                 )
                 raise TypeError(
-                    f"Expected MediaEntity type but got {type(response)} for anilist id {anilist_id}"
+                    f"Expected MediaEntity type but got {type(response)} for provided identifiers"
                 )
-            self._logger.info(f"Successfully fetched anilist id {anilist_id}")
+            self._logger.info(
+                f"Successfully fetched media with identifiers {identifiers}"
+            )
             return response
         except JSONDecodeError as e:
             self._logger.error(
-                f"Malformed response while fetching anilist id {anilist_id} with error message `{e.doc}`",
+                f"Malformed response while fetching identifiers {identifiers} with error message `{e.doc}`",
                 exc_info=e,
             )
             raise e
         except Exception as e:
             self._logger.error(
-                f"An unexpected error occurred while fetching anilist id {anilist_id}",
+                f"An unexpected error occurred while fetching identifiers {identifiers}",
                 exc_info=e,
             )
             raise e

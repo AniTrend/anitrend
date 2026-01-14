@@ -51,6 +51,33 @@ class TestMediaRepository(unittest.TestCase):
         )
 
     @pytest.mark.integration
+    def test_invoke_supports_multiple_identifiers(self):
+        self.mock_remote_source.get_series.return_value = self.sample_media
+
+        result = self.repository.invoke(
+            anilist=self.test_series_id,
+            trakt=123,
+            tvdb=456,
+            tmdb=789,
+            mal=321,
+            notify="notifier",
+            slug="media-slug",
+            headers=self.test_headers,
+        )
+
+        self.assertEqual(result, self.sample_media)
+        self.mock_remote_source.get_series.assert_called_once_with(
+            headers=self.test_headers,
+            anilist=self.test_series_id,
+            trakt=123,
+            tvdb=456,
+            tmdb=789,
+            mal=321,
+            notify="notifier",
+            slug="media-slug",
+        )
+
+    @pytest.mark.integration
     def test_invoke_handles_json_decode_error(self):
         json_error = JSONDecodeError("Invalid JSON", "test", 0)
         self.mock_remote_source.get_series.side_effect = json_error
@@ -76,7 +103,7 @@ class TestMediaRepository(unittest.TestCase):
         self.mock_remote_source.get_series.return_value = None
 
         with self.assertRaisesRegex(
-            ValueError, f"No data found for anilist id {self.test_series_id}"
+            ValueError, "No data found for provided identifiers"
         ):
             self.repository.invoke(
                 anilist=self.test_series_id, headers=self.test_headers
@@ -98,7 +125,7 @@ class TestMediaRepository(unittest.TestCase):
         self.mock_remote_source.get_series.return_value = wrong_type_response
 
         expected_error_message = (
-            f"Expected MediaEntity type but got {type(str())} for anilist id {self.test_series_id}"
+            f"Expected MediaEntity type but got {type(str())} for provided identifiers"
         )
 
         with self.assertRaisesRegex(TypeError, expected_error_message):
@@ -139,6 +166,13 @@ class TestMediaRepository(unittest.TestCase):
         )
 
         mock_logger.error.assert_any_call(
-            f"An unexpected error occurred while fetching anilist id {self.test_series_id}",
+            f"An unexpected error occurred while fetching identifiers {{'anilist': {self.test_series_id}, 'trakt': None, 'tvdb': None, 'tmdb': None, 'mal': None, 'notify': None, 'slug': None}}",
             exc_info=generic_exception,
         )
+
+    def test_invoke_requires_at_least_one_identifier(self):
+        with self.assertRaisesRegex(
+            ValueError,
+            "At least one identifier (anilist/trakt/tvdb/tmdb/mal/notify/slug) is required",
+        ):
+            self.repository.invoke(headers=self.test_headers)
