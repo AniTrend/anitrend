@@ -1,6 +1,7 @@
 from json import JSONDecodeError
 from typing import cast
 
+from marshmallow import ValidationError
 from uplink import HeaderMap
 from core.repositories import DataRepository
 from media.data.schemas import MediaEntity
@@ -60,6 +61,14 @@ class Repository(DataRepository):
                 f"Successfully fetched media with identifiers {identifiers}"
             )
             return response
+        except ValidationError as e:
+            self._logger.error(
+                f"Upstream media response could not be parsed for identifiers {identifiers}",
+                exc_info=e,
+            )
+            raise ValueError(
+                "Upstream media service returned an invalid payload"
+            ) from e
         except JSONDecodeError as e:
             self._logger.error(
                 f"Malformed response while fetching identifiers {identifiers} with error message `{e.doc}`",

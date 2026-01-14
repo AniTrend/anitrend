@@ -4,6 +4,7 @@ from unittest.mock import Mock, patch
 from json import JSONDecodeError
 import json
 
+from marshmallow import ValidationError
 from marshmallow_dataclass import class_schema
 import pytest
 
@@ -168,6 +169,29 @@ class TestMediaRepository(unittest.TestCase):
         mock_logger.error.assert_any_call(
             f"An unexpected error occurred while fetching identifiers {{'anilist': {self.test_series_id}, 'trakt': None, 'tvdb': None, 'tmdb': None, 'mal': None, 'notify': None, 'slug': None}}",
             exc_info=generic_exception,
+        )
+
+    @pytest.mark.integration
+    def test_invoke_wraps_validation_error(self):
+        validation_error = ValidationError({"id": ["Missing data for required field"]})
+        self.mock_remote_source.get_series.side_effect = validation_error
+
+        with self.assertRaisesRegex(
+            ValueError, "Upstream media service returned an invalid payload"
+        ):
+            self.repository.invoke(
+                anilist=self.test_series_id, headers=self.test_headers
+            )
+
+        self.mock_remote_source.get_series.assert_called_once_with(
+            headers=self.test_headers,
+            anilist=self.test_series_id,
+            trakt=None,
+            tvdb=None,
+            tmdb=None,
+            mal=None,
+            notify=None,
+            slug=None,
         )
 
     def test_invoke_requires_at_least_one_identifier(self):
