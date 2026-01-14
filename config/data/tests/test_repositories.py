@@ -5,7 +5,14 @@ from json import JSONDecodeError
 import pytest
 
 from config.data.repositories import Repository
-from config.data.schemas import ConfigurationSchema, SettingsSchema
+from config.data.schemas import (
+    ConfigurationSchema,
+    GenreSchema,
+    ImageSchema,
+    NavigationGroupSchema,
+    NavigationSchema,
+    SettingsSchema,
+)
 from config.data.sources import RemoteSource
 
 
@@ -16,11 +23,26 @@ class TestConfigRepository(unittest.TestCase):
         self.test_headers = {"Authorization": "Bearer test"}
 
         self.sample_config = ConfigurationSchema(
-            id="test",
-            settings=SettingsSchema(analyticsEnabled=True, platformSource="test"),
-            image=None,
-            navigation=None,
-            genres=None,
+            id="c5f575b4-4f7e-4fbe-8c87-4b7cfb3c7d1c",
+            settings=SettingsSchema(analyticsEnabled=True, platformSource="https://example.com"),
+            image=ImageSchema(
+                banner="https://example.com/banner.jpg",
+                poster="https://example.com/poster.jpg",
+                loading="https://example.com/loading.jpg",
+                error="https://example.com/error.jpg",
+                info="https://example.com/info.jpg",
+                default="https://example.com/default.jpg",
+            ),
+            navigation=[
+                NavigationSchema(
+                    criteria="home",
+                    destination="/home",
+                    i18n="home.label",
+                    icon="home",
+                    group=NavigationGroupSchema(authenticated=False, i18n="group.public"),
+                )
+            ],
+            genres=[GenreSchema(name="Action", mediaId=1)],
         )
 
     @pytest.mark.integration

@@ -123,17 +123,27 @@ class EdgeMediaTitle:
 class EdgeMediaEpisode:
     id: int = strawberry.field(description="Unique ID for the scheduled episode")
     name: str = strawberry.field(description="Name or title of the episode")
-    overview: str = strawberry.field(
-        description="Brief overview or summary of the episode"
+    overview: Optional[str] = strawberry.field(
+        description="Brief overview or summary of the episode", default=None
     )
-    airDate: Instant = strawberry.field(description="Air date and time of the episode")
-    episodeNumber: int = strawberry.field(description="Episode number in the season")
-    productionCode: str = strawberry.field(description="Production code of the episode")
-    runtime: int = strawberry.field(description="Runtime of the episode in minutes")
-    seasonNumber: int = strawberry.field(
-        description="Season number this episode belongs to"
+    airDate: Optional[Instant] = strawberry.field(
+        description="Air date and time of the episode", default=None
     )
-    tmdbId: int = strawberry.field(description="TheMovieDB ID for the episode")
+    episodeNumber: Optional[int] = strawberry.field(
+        description="Episode number in the season", default=None
+    )
+    productionCode: Optional[str] = strawberry.field(
+        description="Production code of the episode", default=None
+    )
+    runtime: Optional[int] = strawberry.field(
+        description="Runtime of the episode in minutes", default=None
+    )
+    seasonNumber: Optional[int] = strawberry.field(
+        description="Season number this episode belongs to", default=None
+    )
+    tmdbId: Optional[int] = strawberry.field(
+        description="TheMovieDB ID for the episode", default=None
+    )
     image: Optional[str] = strawberry.field(
         description="URL to an image for the episode", default=None
     )
@@ -144,7 +154,7 @@ class EdgeMediaEpisode:
             id=model.id,
             name=model.name,
             overview=model.overview,
-            airDate=Instant(model.airDate),
+            airDate=(Instant(model.airDate) if model.airDate is not None else None),
             episodeNumber=model.episodeNumber,
             productionCode=model.productionCode,
             runtime=model.runtime,
@@ -355,6 +365,12 @@ class MediaType:
     moreInfo: Optional[str] = strawberry.field(
         description="Link to additional information about the media.", default=None
     )
+    classification: Optional[str] = strawberry.field(
+        description="Content classification where available.", default=None
+    )
+    duration: Optional[int] = strawberry.field(
+        description="Episode or chapter duration in minutes, when provided.", default=None
+    )
     themeSongs: List[EdgeMediaTheme] = strawberry.field(
         description="List of theme songs (openings and endings).", default_factory=list
     )
@@ -426,6 +442,8 @@ class MediaType:
             ageRating=entity.ageRating,
             description=entity.description,
             moreInfo=entity.moreInfo,
+            classification=entity.classification,
+            duration=entity.duration,
             themeSongs=theme_songs,
             schedule=(
                 EdgeAiringSchedule.from_model(entity.schedule)

@@ -26,12 +26,15 @@ class TestNewsRepository(unittest.TestCase):
                 NewsSchema(
                     id="test_id",
                     title="Test Title",
-                    author="Test Author",
+                    link="https://test.com",
                     description="Test Description",
                     content="Test Content",
-                    image="test.jpg",
                     publishedOn=1234567890,
-                    link="https://test.com",
+                    category="general",
+                    genre="anime",
+                    area="JP",
+                    lang="en-US",
+                    image="https://test.com/image.jpg",
                 )
             ],
         )

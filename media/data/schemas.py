@@ -7,26 +7,27 @@ NetworkCategory = Literal["DISTRIBUTION", "PRODUCTION"]
 
 ANIME_MEDIA_KIND: MediaKind = "ANIME"
 ALLOW_NONE_REQUIRED = {"required": True, "allow_none": True}
+ALLOW_NONE_OPTIONAL = {"required": False, "allow_none": True}
 
 
 @dataclass
 class SeriesId:
-    anidb: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    anilist: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    animePlanet: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    anisearch: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    imdb: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    kitsu: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    livechart: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    notify: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    themoviedb: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    tvdb: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    myanimelist: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    tvMazeId: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    tvrage: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    slug: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    shoboi: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    trakt: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    anidb: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    anilist: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    animePlanet: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    anisearch: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    imdb: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    kitsu: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    livechart: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    notify: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    themoviedb: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    tvdb: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    myanimelist: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    tvMazeId: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    tvrage: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    slug: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    shoboi: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    trakt: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 @dataclass
@@ -43,25 +44,25 @@ class SeriesTitle:
 class SeriesScheduleEpisode:
     id: int
     name: str
-    overview: str
-    airDate: int
-    episodeNumber: int
-    productionCode: str
-    runtime: int
-    seasonNumber: int
-    tmdbId: int
-    image: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    overview: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    airDate: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    episodeNumber: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    productionCode: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    runtime: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    seasonNumber: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    tmdbId: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    image: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 @dataclass
 class SeriesSchedule:
-    firstAirDate: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    lastAirDate: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    firstAirDate: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    lastAirDate: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
     lastAiredEpisode: Optional[SeriesScheduleEpisode] = field(
-        default=None, metadata=ALLOW_NONE_REQUIRED
+        default=None, metadata=ALLOW_NONE_OPTIONAL
     )
     nextEpisodeToAir: Optional[SeriesScheduleEpisode] = field(
-        default=None, metadata=ALLOW_NONE_REQUIRED
+        default=None, metadata=ALLOW_NONE_OPTIONAL
     )
 
 
@@ -72,7 +73,7 @@ class SeriesNetwork:
     originCountry: str
     category: NetworkCategory
     isPrimary: bool
-    logoPath: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    logoPath: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 @dataclass
@@ -81,14 +82,14 @@ class SeriesImageAttributes:
     height: int
     width: int
     type: ImageType
-    locale: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    locale: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 @dataclass
 class SeriesTrailer:
     id: str
     site: str
-    thumbnail: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    thumbnail: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 @dataclass
@@ -112,15 +113,15 @@ class AnimeTheme:
     name: str
     video: str
     meta: AnimeThemeMeta
-    audio: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    audio: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 @dataclass
 class MangaMetadata:
-    chapters: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    volumes: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    publishedFrom: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    publishedTo: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
+    chapters: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    volumes: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    publishedFrom: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    publishedTo: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 @dataclass
@@ -131,6 +132,7 @@ class MediaEntity:
     cover: SeriesCoverImage
     title: SeriesTitle
     updatedAt: int
+    classification: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
     images: List[SeriesImageAttributes] = field(
         default_factory=list, metadata={"required": True}
     )
@@ -142,11 +144,12 @@ class MediaEntity:
     ageRating: Optional[str] = None
     description: Optional[str] = None
     moreInfo: Optional[str] = None
+    duration: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
     themeSongs: List[AnimeTheme] = field(
         default_factory=list, metadata={"required": True}
     )
     schedule: Optional[SeriesSchedule] = field(
-        default=None, metadata=ALLOW_NONE_REQUIRED
+        default=None, metadata=ALLOW_NONE_OPTIONAL
     )
     trailers: List[SeriesTrailer] = field(
         default_factory=list, metadata={"required": True}
@@ -154,21 +157,14 @@ class MediaEntity:
     networks: List[SeriesNetwork] = field(
         default_factory=list, metadata={"required": True}
     )
-    airedEpisodes: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    broadcast: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    isAdult: Optional[bool] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    homepage: Optional[str] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    chapters: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    volumes: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    publishedFrom: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-    publishedTo: Optional[int] = field(default=None, metadata=ALLOW_NONE_REQUIRED)
-
-
-@dataclass
-class MediaApiResponse:
-    data: Optional[MediaEntity] = None
-    message: Optional[str] = None
-    errors: Optional[List[str]] = None
+    airedEpisodes: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    broadcast: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    isAdult: Optional[bool] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    homepage: Optional[str] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    chapters: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    volumes: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    publishedFrom: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
+    publishedTo: Optional[int] = field(default=None, metadata=ALLOW_NONE_OPTIONAL)
 
 
 # Backwards compatibility: existing imports expecting `Media` should continue to work.

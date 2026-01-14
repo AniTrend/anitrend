@@ -1,157 +1,153 @@
 {
-  "data": {
-    "id": "edge-entity-123",
-    "kind": "ANIME",
-    "mediaId": {
-      "anidb": 11992,
-      "anilist": 21699,
-      "animePlanet": "konosuba-gods-blessing",
-      "anisearch": 11210,
-      "imdb": "tt5370118",
-      "kitsu": 11937,
-      "livechart": 2077,
-      "notify": "vVO6tFmig",
-      "themoviedb": 65844,
-      "tvdb": 303867,
-      "myanimelist": 32937,
-      "tvMazeId": 10772,
-      "tvrage": null,
-      "slug": "konosuba-gods-blessing-on-this-wonderful-world-2",
-      "shoboi": 4401,
-      "trakt": null
-    },
-    "cover": {
-      "color": "#020202",
-      "extraLarge": "https://cdn.myanimelist.net/images/anime/2/83188l.jpg",
-      "large": "https://cdn.myanimelist.net/images/anime/2/83188l.jpg",
-      "medium": "https://cdn.myanimelist.net/images/anime/2/83188t.jpg"
-    },
-    "banner": "KonoSuba adapts volumes 3 and 4 of Natsume Akatsuki's light novel series of the same name.",
-    "fanart": "https://artworks.thetvdb.com/banners/fanart/original/303867-1.jpg",
-    "format": "TV",
-    "status": "RELEASING",
-    "source": "LIGHT_NOVEL",
-    "title": {
-      "english": "KonoSuba: God's Blessing on This Wonderful World! 2",
-      "canonical": "Kono Subarashii Sekai ni Shukufuku wo! 2",
-      "harigana": "このすばらしいせかいにしゅくふくを！ 2",
-      "japanese": "この素晴らしい世界に祝福を！ 2",
-      "romaji": "Kono Subarashii Sekai ni Shukufuku wo! 2",
-      "synonyms": ["Give Blessings to This Wonderful World! 2"]
-    },
-    "ageRating": "PG-13 - Teens 13 or older",
-    "images": [
-      {
-        "url": "https://image.tmdb.org/t/p/original/rvZJxD36tKoglL8fXoMMWKGQfM.jpg",
-        "height": 2160,
-        "width": 3840,
-        "locale": null,
-        "type": "BACKDROP"
-      },
-      {
-        "url": "https://image.tmdb.org/t/p/original/oRaOeQlwktbGSd2T31FYAcgHZlh.jpg",
-        "height": 3000,
-        "width": 2000,
-        "locale": "en",
-        "type": "POSTER"
-      },
-      {
-        "url": "https://image.tmdb.org/t/p/original/8lOQYXFIthj28EDehbdos0pZUTw.jpg",
-        "height": 512,
-        "width": 512,
-        "locale": "en",
-        "type": "LOGO"
-      }
-    ],
-    "description": "Kazuma Satou is sent to a fantasy world...",
-    "updatedAt": 1715904000,
-    "moreInfo": "https://notify.moe/edge/series/vVO6tFmig",
-    "themeSongs": [
-      {
-        "id": "OP",
-        "name": "TOMORROW",
-        "video": "https://animethemes.moe/video/KonosubaS2-OP1.webm",
-        "audio": "https://themes.moe/api/themes/32937/OP/audio",
-        "meta": {
-          "type": "OP",
-          "number": 1,
-          "version": 1
-        }
-      },
-      {
-        "id": "ED",
-        "name": "Ouchi ni Kaeritai",
-        "video": "https://animethemes.moe/video/KonosubaS2-ED1.webm",
-        "audio": "https://themes.moe/api/themes/32937/ED/audio",
-        "meta": {
-          "type": "ED",
-          "number": 1,
-          "version": 1
-        }
-      }
-    ],
-    "schedule": {
-      "firstAirDate": 1452729600,
-      "lastAirDate": 1746576000,
-      "lastAiredEpisode": {
-        "id": 6243441,
-        "name": "Episode 13",
-        "overview": "Kazuma faces his greatest challenge yet.",
-        "airDate": 1746576000,
-        "episodeNumber": 13,
-        "productionCode": "S03E13",
-        "runtime": 26,
-        "seasonNumber": 3,
-        "tmdbId": 65844,
-        "image": null
-      },
-      "nextEpisodeToAir": {
-        "id": 6243442,
-        "name": "Episode 14",
-        "overview": "The party prepares for a new adventure.",
-        "airDate": 1747180800,
-        "episodeNumber": 14,
-        "productionCode": "S03E14",
-        "runtime": 26,
-        "seasonNumber": 3,
-        "tmdbId": 65844,
-        "image": "https://image.tmdb.org/t/p/original/example.jpg"
-      }
-    },
-    "trailers": [
-      {
-        "id": "https://www.youtube.com/watch?v=9jVxMt845AY",
-        "site": "youtube",
-        "thumbnail": "https://img.youtube.com/vi/9jVxMt845AY/maxresdefault.jpg"
-      }
-    ],
-    "networks": [
-      {
-        "id": 614,
-        "name": "Tokyo MX",
-        "originCountry": "JP",
-        "category": "DISTRIBUTION",
-        "isPrimary": true,
-        "logoPath": "https://image.tmdb.org/t/p/original/hSdroyVthq3CynxTIIY7lnS8w1.png"
-      },
-      {
-        "id": 6075,
-        "name": "Studio Deen",
-        "originCountry": "JP",
-        "category": "PRODUCTION",
-        "isPrimary": false,
-        "logoPath": "https://image.tmdb.org/t/p/original/vlfJrLVL1TeNrCeeLBAwJXNv65M.png"
-      }
-    ],
-    "airedEpisodes": 13,
-    "broadcast": "Mondays at 21:00 JST",
-    "isAdult": false,
-    "homepage": "https://konosuba.com",
-    "chapters": null,
-    "volumes": null,
-    "publishedFrom": null,
-    "publishedTo": null
+  "id": "edge-entity-123",
+  "kind": "ANIME",
+  "mediaId": {
+    "anidb": 11992,
+    "anilist": 21699,
+    "animePlanet": "konosuba-gods-blessing",
+    "anisearch": 11210,
+    "imdb": "tt5370118",
+    "kitsu": 11937,
+    "livechart": 2077,
+    "notify": "vVO6tFmig",
+    "themoviedb": 65844,
+    "tvdb": 303867,
+    "myanimelist": 32937,
+    "tvMazeId": 10772,
+    "tvrage": null,
+    "slug": "konosuba-gods-blessing-on-this-wonderful-world-2",
+    "shoboi": 4401,
+    "trakt": null
   },
-  "message": null,
-  "errors": null
+  "cover": {
+    "color": "#020202",
+    "extraLarge": "https://cdn.myanimelist.net/images/anime/2/83188l.jpg",
+    "large": "https://cdn.myanimelist.net/images/anime/2/83188l.jpg",
+    "medium": "https://cdn.myanimelist.net/images/anime/2/83188t.jpg"
+  },
+  "banner": "KonoSuba adapts volumes 3 and 4 of Natsume Akatsuki's light novel series of the same name.",
+  "fanart": "https://artworks.thetvdb.com/banners/fanart/original/303867-1.jpg",
+  "format": "TV",
+  "status": "RELEASING",
+  "source": "LIGHT_NOVEL",
+  "title": {
+    "english": "KonoSuba: God's Blessing on This Wonderful World! 2",
+    "canonical": "Kono Subarashii Sekai ni Shukufuku wo! 2",
+    "harigana": "このすばらしいせかいにしゅくふくを！ 2",
+    "japanese": "この素晴らしい世界に祝福を！ 2",
+    "romaji": "Kono Subarashii Sekai ni Shukufuku wo! 2",
+    "synonyms": ["Give Blessings to This Wonderful World! 2"]
+  },
+  "ageRating": "PG-13 - Teens 13 or older",
+  "images": [
+    {
+      "url": "https://image.tmdb.org/t/p/original/rvZJxD36tKoglL8fXoMMWKGQfM.jpg",
+      "height": 2160,
+      "width": 3840,
+      "locale": null,
+      "type": "BACKDROP"
+    },
+    {
+      "url": "https://image.tmdb.org/t/p/original/oRaOeQlwktbGSd2T31FYAcgHZlh.jpg",
+      "height": 3000,
+      "width": 2000,
+      "locale": "en",
+      "type": "POSTER"
+    },
+    {
+      "url": "https://image.tmdb.org/t/p/original/8lOQYXFIthj28EDehbdos0pZUTw.jpg",
+      "height": 512,
+      "width": 512,
+      "locale": "en",
+      "type": "LOGO"
+    }
+  ],
+  "description": "Kazuma Satou is sent to a fantasy world...",
+  "updatedAt": 1715904000,
+  "moreInfo": "https://notify.moe/edge/series/vVO6tFmig",
+  "themeSongs": [
+    {
+      "id": "OP",
+      "name": "TOMORROW",
+      "video": "https://animethemes.moe/video/KonosubaS2-OP1.webm",
+      "audio": "https://themes.moe/api/themes/32937/OP/audio",
+      "meta": {
+        "type": "OP",
+        "number": 1,
+        "version": 1
+      }
+    },
+    {
+      "id": "ED",
+      "name": "Ouchi ni Kaeritai",
+      "video": "https://animethemes.moe/video/KonosubaS2-ED1.webm",
+      "audio": "https://themes.moe/api/themes/32937/ED/audio",
+      "meta": {
+        "type": "ED",
+        "number": 1,
+        "version": 1
+      }
+    }
+  ],
+  "schedule": {
+    "firstAirDate": 1452729600,
+    "lastAirDate": 1746576000,
+    "lastAiredEpisode": {
+      "id": 6243441,
+      "name": "Episode 13",
+      "overview": "Kazuma faces his greatest challenge yet.",
+      "airDate": 1746576000,
+      "episodeNumber": 13,
+      "productionCode": "S03E13",
+      "runtime": 26,
+      "seasonNumber": 3,
+      "tmdbId": 65844,
+      "image": null
+    },
+    "nextEpisodeToAir": {
+      "id": 6243442,
+      "name": "Episode 14",
+      "overview": "The party prepares for a new adventure.",
+      "airDate": 1747180800,
+      "episodeNumber": 14,
+      "productionCode": "S03E14",
+      "runtime": 26,
+      "seasonNumber": 3,
+      "tmdbId": 65844,
+      "image": "https://image.tmdb.org/t/p/original/example.jpg"
+    }
+  },
+  "trailers": [
+    {
+      "id": "https://www.youtube.com/watch?v=9jVxMt845AY",
+      "site": "youtube",
+      "thumbnail": "https://img.youtube.com/vi/9jVxMt845AY/maxresdefault.jpg"
+    }
+  ],
+  "networks": [
+    {
+      "id": 614,
+      "name": "Tokyo MX",
+      "originCountry": "JP",
+      "category": "DISTRIBUTION",
+      "isPrimary": true,
+      "logoPath": "https://image.tmdb.org/t/p/original/hSdroyVthq3CynxTIIY7lnS8w1.png"
+    },
+    {
+      "id": 6075,
+      "name": "Studio Deen",
+      "originCountry": "JP",
+      "category": "PRODUCTION",
+      "isPrimary": false,
+      "logoPath": "https://image.tmdb.org/t/p/original/vlfJrLVL1TeNrCeeLBAwJXNv65M.png"
+    }
+  ],
+  "airedEpisodes": 13,
+  "broadcast": "Mondays at 21:00 JST",
+  "isAdult": false,
+  "homepage": "https://konosuba.com",
+  "chapters": null,
+  "volumes": null,
+  "publishedFrom": null,
+  "publishedTo": null
 }
