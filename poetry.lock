@@ -1760,14 +1760,14 @@ doc = ["sphinx"]
 
 [[package]]
 name = "starlette"
-version = "0.51.0"
+version = "0.52.0"
 description = "The little ASGI library that shines."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "starlette-0.51.0-py3-none-any.whl", hash = "sha256:fb460a3d6fd3c958d729fdd96aee297f89a51b0181f16401fe8fd4cb6129165d"},
-    {file = "starlette-0.51.0.tar.gz", hash = "sha256:4c4fda9b1bc67f84037d3d14a5112e523509c369d9d47b111b2f984b0cc5ba6c"},
+    {file = "starlette-0.52.0-py3-none-any.whl", hash = "sha256:ae047dccdfedb2dd9f86efe182e259eb72bcf50e7cd49309a46c906160df2545"},
+    {file = "starlette-0.52.0.tar.gz", hash = "sha256:04f1ceafbda34cd571512b799650554d4f0dc638f09128e44ea521f32486f170"},
 ]
 
 [package.dependencies]
@@ -2206,4 +2206,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "1f8cda10ad4a7160010d3b42b0bd5bf2f046000f2c0e25e5a59853b2aa084b2b"
+content-hash = "ce2ab4d8656a2dce660b06cf305d8a76fbd634a9821c112014dc57c83fc6c647"
