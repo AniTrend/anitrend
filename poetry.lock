@@ -861,14 +861,14 @@ files = [
 
 [[package]]
 name = "growthbook"
-version = "2.1.1"
+version = "2.1.2"
 description = "Powerful Feature flagging and A/B testing for Python apps"
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "growthbook-2.1.1-py2.py3-none-any.whl", hash = "sha256:e7b519ca8df9cd90d9268b54a8d3a47b171cb85b468c02adad9223430464a388"},
-    {file = "growthbook-2.1.1.tar.gz", hash = "sha256:97c1f84d5a65ff75db32b22906f1050b9b1a2f95a6b5bbf708c76e6649fd2a63"},
+    {file = "growthbook-2.1.2-py2.py3-none-any.whl", hash = "sha256:1e3b819ab35ff6da69d8d5bfd96042cb98eae5a99a1d4535e900ee1d635e9e77"},
+    {file = "growthbook-2.1.2.tar.gz", hash = "sha256:1b25814c5489fe158da82c9ed8507710ef3358f3ad30f7219fe81d893f9e1b1a"},
 ]
 
 [package.dependencies]
@@ -2206,4 +2206,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "520832267da546991831eac11fe4fc9988e7ef989602a5b7497d33b01a454b44"
+content-hash = "83d499e2ee28a10ed18671648f775cd05b1c4c37874453cfc7fcca6785c4b6b6"
