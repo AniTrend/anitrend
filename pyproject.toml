@@ -10,7 +10,7 @@ packages = []
 [tool.poetry.dependencies]
 python = "^3.13"
 uplink = "0.10.0"
-requests = "2.33.0"
+requests = "2.33.1"
 marshmallow = "4.2.3"
 python-decouple = "3.8"
 django-cors-headers = "4.9.0"
