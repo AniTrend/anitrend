@@ -1026,20 +1026,15 @@ files = [
 
 [[package]]
 name = "marshmallow"
-version = "4.2.3"
+version = "4.2.4"
 description = "A lightweight library for converting complex datatypes to and from native Python datatypes."
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "marshmallow-4.2.3-py3-none-any.whl", hash = "sha256:c84fd89817ecea690bde1eb925036070e5e9883148217585adc56d5cfbc082b8"},
-    {file = "marshmallow-4.2.3.tar.gz", hash = "sha256:3e3fef6b3603721a25a723b8caedfa488369bddaf9bc03b40b9442c90aebd22b"},
+    {file = "marshmallow-4.2.4-py3-none-any.whl", hash = "sha256:06f3a7ec7081e54e8026a8bd5e7c4e0e88bff82a8fa33714a33166917f2b353a"},
+    {file = "marshmallow-4.2.4.tar.gz", hash = "sha256:1ab9c798651b9048d127969d9423a0e47510e34100df1d3e24c9d5b6cdc26a86"},
 ]
-
-[package.extras]
-dev = ["marshmallow[tests]", "pre-commit (>=3.5,<5.0)", "tox"]
-docs = ["autodocsumm (==0.2.14)", "furo (==2025.12.19)", "sphinx (==8.2.3)", "sphinx-copybutton (==0.5.2)", "sphinx-issues (==6.0.0)", "sphinxext-opengraph (==0.13.0)"]
-tests = ["pytest", "simplejson"]
 
 [[package]]
 name = "marshmallow-dataclass"
@@ -2200,4 +2195,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "0452e228a90f66b8f6a11e82e57a85a0411fb58ac9ce1abb6949bbd9a33ef812"
+content-hash = "0deb2ead0b81fec43dc8208f18872c223d63df05a09729bb718292c81b8ce129"
