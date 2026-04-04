@@ -14,6 +14,11 @@ usage() {
 }
 
 start_dev_server() {
+  if [[ -f .env ]]; then
+    set -a
+    source .env
+    set +a
+  fi
   python asgi_server.py
 }
 
