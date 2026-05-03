@@ -1803,19 +1803,19 @@ sanic = ["sanic (>=20.12.2)"]
 
 [[package]]
 name = "strawberry-graphql-django"
-version = "0.82.1"
+version = "0.84.0"
 description = "Strawberry GraphQL Django extension"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "strawberry_graphql_django-0.82.1-py3-none-any.whl", hash = "sha256:4fd54cd4cd17d3dae111c433a4a3aeaa10b98e4abeefc9614cbb6f28f9dbc51c"},
-    {file = "strawberry_graphql_django-0.82.1.tar.gz", hash = "sha256:a6fa235e4ada110d8e8aff82d12317535e63123f294fbcd6287af68895167a9c"},
+    {file = "strawberry_graphql_django-0.84.0-py3-none-any.whl", hash = "sha256:af20838ce7f01f71a86651156d967b69b495a43d479a5531f60ea381ccc973fb"},
+    {file = "strawberry_graphql_django-0.84.0.tar.gz", hash = "sha256:83b4c90f083883f542ddfdb5af64389bed5c1d2bb3112dec23b0d1ca7659bed2"},
 ]
 
 [package.dependencies]
 asgiref = ">=3.8"
-django = ">=4.2"
+django = ">=5.2"
 strawberry-graphql = ">=0.310.1"
 
 [package.extras]
@@ -2195,4 +2195,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13"
-content-hash = "a30e78ef9d6228a3e9ede64af6534ee1eeb1288288a59e42d23377c81fc3d9b7"
+content-hash = "5f55497a18069373ee2d57739fc0e4314c3653277141964e9ebbe150d724f22c"
